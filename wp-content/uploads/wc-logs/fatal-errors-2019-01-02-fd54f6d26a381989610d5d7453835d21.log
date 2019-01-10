@@ -1,0 +1,31 @@
+2019-01-02T00:10:12+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Coupon::get_coupon_message(), 0 passed in /home/virtwww/w_tst102_68a8c768/http/wp-content/themes/dishes-sf-child/functions.php on line 188 and exactly 1 expected in /home/virtwww/w_tst102_68a8c768/http/wp-content/plugins/woocommerce/includes/class-wc-coupon.php:926
+Stack trace:
+#0 /home/virtwww/w_tst102_68a8c768/http/wp-content/themes/dishes-sf-child/functions.php(188): WC_Coupon->get_coupon_message()
+#1 /home/virtwww/w_tst102_68a8c768/http/wp-includes/shortcodes.php(319): mycred_pro_render_points_to_coupon('', '', 'mycred_to_woo_c...')
+#2 [internal function]: do_shortcode_tag(Array)
+#3 /home/virtwww/w_tst102_68a8c768/http/wp-includes/shortcodes.php(197): preg_replace_callback('/\\[(\\[?)(mycred...', 'do_shortcode_ta...', '<p><code>[mycre...')
+#4 /home/virtwww/w_tst102_68a8c768/http/wp-includes/class-wp-hook.php(286): do_shortcode('<p><code>[mycre...')
+#5 /home/virtwww/w_tst102_68a8c768/http/wp-includes/plugin.php(203): WP_Hook->apply_filters('<p>< в /home/virtwww/w_tst102_68a8c768/http/wp-content/plugins/woocommerce/includes/class-wc-coupon.php на строке 926
+
+2019-01-02T12:02:25+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Post as array in /home/virtwww/w_tst102_68a8c768/http/wp-content/themes/dishes-sf-child/functions.php:177
+Stack trace:
+#0 /home/virtwww/w_tst102_68a8c768/http/wp-includes/shortcodes.php(319): mycred_pro_render_points_to_coupon('', '', 'mycred_to_woo_c...')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 /home/virtwww/w_tst102_68a8c768/http/wp-includes/shortcodes.php(197): preg_replace_callback('/\\[(\\[?)(mycred...', 'do_shortcode_ta...', '<p><code>[mycre...')
+#3 /home/virtwww/w_tst102_68a8c768/http/wp-includes/class-wp-hook.php(286): do_shortcode('<p><code>[mycre...')
+#4 /home/virtwww/w_tst102_68a8c768/http/wp-includes/plugin.php(203): WP_Hook->apply_filters('<p><code>[mycre...', Array)
+#5 /home/virtwww/w_tst102_68a8c768/http/wp-includes/post-template.php(240): apply_filters('the_content', '<code>[mycred_t...')
+#6 /home/virtwww/w_tst102_68a8c768/http/wp-content/themes/storefront/inc/storefront-template-functions.php(335): the_content()
+#7 /home/virtwww/w_tst102 в /home/virtwww/w_tst102_68a8c768/http/wp-content/themes/dishes-sf-child/functions.php на строке 177
+
+2019-01-02T12:02:27+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Post as array in /home/virtwww/w_tst102_68a8c768/http/wp-content/themes/dishes-sf-child/functions.php:177
+Stack trace:
+#0 /home/virtwww/w_tst102_68a8c768/http/wp-includes/shortcodes.php(319): mycred_pro_render_points_to_coupon('', '', 'mycred_to_woo_c...')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 /home/virtwww/w_tst102_68a8c768/http/wp-includes/shortcodes.php(197): preg_replace_callback('/\\[(\\[?)(mycred...', 'do_shortcode_ta...', '<p><code>[mycre...')
+#3 /home/virtwww/w_tst102_68a8c768/http/wp-includes/class-wp-hook.php(286): do_shortcode('<p><code>[mycre...')
+#4 /home/virtwww/w_tst102_68a8c768/http/wp-includes/plugin.php(203): WP_Hook->apply_filters('<p><code>[mycre...', Array)
+#5 /home/virtwww/w_tst102_68a8c768/http/wp-includes/post-template.php(240): apply_filters('the_content', '<code>[mycred_t...')
+#6 /home/virtwww/w_tst102_68a8c768/http/wp-content/themes/storefront/inc/storefront-template-functions.php(335): the_content()
+#7 /home/virtwww/w_tst102 в /home/virtwww/w_tst102_68a8c768/http/wp-content/themes/dishes-sf-child/functions.php на строке 177
+

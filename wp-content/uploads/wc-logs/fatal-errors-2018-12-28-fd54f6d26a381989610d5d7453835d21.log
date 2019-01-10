@@ -1,0 +1,6 @@
+2018-12-28T22:50:11+00:00 CRITICAL syntax error, unexpected '$WOOF' (T_VARIABLE) в /home/virtwww/w_tst102_68a8c768/http/wp-content/plugins/woocommerce-products-filter/views/woof.php на строке 27
+
+2018-12-28T22:52:15+00:00 CRITICAL syntax error, unexpected '$css_classes' (T_VARIABLE) в /home/virtwww/w_tst102_68a8c768/http/wp-content/plugins/woocommerce-products-filter/views/woof.php на строке 153
+
+2018-12-28T22:55:58+00:00 CRITICAL syntax error, unexpected '$woof_settings' (T_VARIABLE) в /home/virtwww/w_tst102_68a8c768/http/wp-content/plugins/woocommerce-products-filter/views/woof.php на строке 182
+

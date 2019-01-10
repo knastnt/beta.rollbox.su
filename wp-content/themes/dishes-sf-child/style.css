@@ -1,0 +1,19 @@
+/*
+Theme Name:		dishes-sf-child
+Author:			WooCommerce
+Author URI:		https://woocommerce.com
+Template:		storefront
+Version:		2.0.14
+License:		GNU General Public License v2 or later
+License URI:	http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:	dishes-sf-child
+*/
+/* =dishes-sf-child styles starts here
+-------------------------------------------------------------- */
+
+/*Переменные цветов*/
+:root{
+    --color-red: #eb3e32;
+    --color-darkgray: #363f4d;
+}
+

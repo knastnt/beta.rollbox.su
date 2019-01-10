@@ -1,0 +1,16 @@
+репозиторий гои - вся папка beta.rollbox.su
+перед коммитом открываем в локальной копии адрес https://beta.rollbox.su/export_db.php и ждём появления Success!
+только что экспортировалась база данных в файл beta.rollbox.su\-migrations-\db.sql
+коммитим.
+
+
+Как помещать на сервер:
+тупо заливаем всё что есть в локальной папке beta.rollbox.su на сервер и открываем сайт.
+при первом запуске произойдёт:
+замена 
+ wp-config.php на -migrations-\wp-config-original-for-production-1gb.ru.php
+ index.php на -migrations-\index-original-for-production.php
+удаление всех таблиц в базе
+импорт файла \-migrations-\db.sql с последующим удалением с сервера
+
+Если будут ошибки, они отобразятся и index.php заменен не будет, так что можно открывать сайт сколько угодно.
