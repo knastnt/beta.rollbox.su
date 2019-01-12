@@ -55,66 +55,119 @@ function custom_display_order_data_in_admin(){
 	*/
 	
 	
-$t=ob_get_contents();
+	$t=ob_get_contents();
 
-//file_put_contents($_SERVER['DOCUMENT_ROOT'].'/dump0.txt', $t, FILE_APPEND);
-/* содержимое $t = ...
+	//file_put_contents($_SERVER['DOCUMENT_ROOT'].'/dump0.txt', $t, FILE_APPEND);
+	/* содержимое $t = ...
 
-!!!!!!!!!!
-							<div class="wc-order-preview-addresses">
-								<div class="wc-order-preview-address">
-									<h2>Детали оплаты</h2>
-									{{{ data.formatted_billing_address }}}
+	!!!!!!!!!!
+								<div class="wc-order-preview-addresses">
+									<div class="wc-order-preview-address">
+										<h2>Детали оплаты</h2>
+										{{{ data.formatted_billing_address }}}
 
-									<# if ( data.data.billing.email ) { #>
-										<strong>Email</strong>
-										<a href="mailto:{{ data.data.billing.email }}">{{ data.data.billing.email }}</a>
+										<# if ( data.data.billing.email ) { #>
+											<strong>Email</strong>
+											<a href="mailto:{{ data.data.billing.email }}">{{ data.data.billing.email }}</a>
+										<# } #>
+
+										<# if ( data.data.billing.phone ) { #>
+											<strong>Телефон</strong>
+											<a href="tel:{{ data.data.billing.phone }}">{{ data.data.billing.phone }}</a>
+										<# } #>
+
+										<# if ( data.payment_via ) { #>
+											<strong>Платёж через</strong>
+											{{{ data.payment_via }}}
+										<# } #>
+									</div>
+									<# if ( data.needs_shipping ) { #>
+										<div class="wc-order-preview-address">
+											<h2>Детали доставки</h2>
+											<# if ( data.ship_to_billing ) { #>
+												{{{ data.formatted_billing_address }}}
+											<# } else { #>
+												<a href="{{ data.shipping_address_map_url }}" target="_blank">{{{ data.formatted_shipping_address }}}</a>
+											<# } #>
+
+											<# if ( data.shipping_via ) { #>
+												<strong>Метод доставки</strong>
+												{{ data.shipping_via }}
+											<# } #>
+										</div>
 									<# } #>
 
-									<# if ( data.data.billing.phone ) { #>
-										<strong>Телефон</strong>
-										<a href="tel:{{ data.data.billing.phone }}">{{ data.data.billing.phone }}</a>
-									<# } #>
-
-									<# if ( data.payment_via ) { #>
-										<strong>Платёж через</strong>
-										{{{ data.payment_via }}}
+									<# if ( data.data.customer_note ) { #>
+										<div class="wc-order-preview-note">
+											<strong>Заметка</strong>
+											{{ data.data.customer_note }}
+										</div>
 									<# } #>
 								</div>
-								<# if ( data.needs_shipping ) { #>
-									<div class="wc-order-preview-address">
-										<h2>Детали доставки</h2>
-										<# if ( data.ship_to_billing ) { #>
-											{{{ data.formatted_billing_address }}}
-										<# } else { #>
-											<a href="{{ data.shipping_address_map_url }}" target="_blank">{{{ data.formatted_shipping_address }}}</a>
-										<# } #>
 
-										<# if ( data.shipping_via ) { #>
-											<strong>Метод доставки</strong>
-											{{ data.shipping_via }}
-										<# } #>
-									</div>
-								<# } #>
+								{{{ data.item_html }}}
 
-								<# if ( data.data.customer_note ) { #>
-									<div class="wc-order-preview-note">
-										<strong>Заметка</strong>
-										{{ data.data.customer_note }}
-									</div>
-								<# } #>
-							</div>
+								????????
 
-							{{{ data.item_html }}}
+	*/
 
-							????????
+	//Стираем буфер вывода нафиг
+	ob_clean ();
 
-*/
+	//сдесь пишем свой код вывода, который будет вместо стертого
+	print_overrided_code($t);
 
-//Стираем буфер вывода нафиг
-ob_clean ();
-
-//сдесь пишем свой код вывода, который будет вместо стертого
-echo $t;
 }
 
+function print_overrided_code($t){
+	//echo $t; //Вывести оригинальное содержание	
+	?>
+	
+	<div class="wc-order-preview-addresses">
+		<div class="wc-order-preview-address">
+			<h2><?php esc_html_e( 'Billing details', 'woocommerce' ); ?></h2>
+			{{{ data.formatted_billing_address }}}
+
+			<# if ( data.data.billing.email ) { #>
+				<strong><?php esc_html_e( 'Email', 'woocommerce' ); ?></strong>
+				<a href="mailto:{{ data.data.billing.email }}">{{ data.data.billing.email }}</a>
+			<# } #>
+
+			<# if ( data.data.billing.phone ) { #>
+				<strong><?php esc_html_e( 'Phone', 'woocommerce' ); ?></strong>
+				<a href="tel:{{ data.data.billing.phone }}">{{ data.data.billing.phone }}</a>
+			<# } #>
+
+			<# if ( data.payment_via ) { #>
+				<strong><?php esc_html_e( 'Payment via', 'woocommerce' ); ?></strong>
+				{{{ data.payment_via }}}
+			<# } #>
+		</div>
+		<# if ( data.needs_shipping ) { #>
+			<div class="wc-order-preview-address">
+				<h2><?php esc_html_e( 'Shipping details', 'woocommerce' ); ?></h2>
+				<# if ( data.ship_to_billing ) { #>
+					{{{ data.formatted_billing_address }}}
+				<# } else { #>
+					<a href="{{ data.shipping_address_map_url }}" target="_blank">{{{ data.formatted_shipping_address }}}</a>
+				<# } #>
+
+				<# if ( data.shipping_via ) { #>
+					<strong><?php esc_html_e( 'Shipping method', 'woocommerce' ); ?></strong>
+					{{ data.shipping_via }}
+				<# } #>
+			</div>
+		<# } #>
+
+		<# if ( data.data.customer_note ) { #>
+			<div class="wc-order-preview-note">
+				<strong><?php esc_html_e( 'Note', 'woocommerce' ); ?></strong>
+				{{ data.data.customer_note }}
+			</div>
+		<# } #>
+	</div>
+
+	{{{ data.item_html }}}
+	
+	<?php
+}

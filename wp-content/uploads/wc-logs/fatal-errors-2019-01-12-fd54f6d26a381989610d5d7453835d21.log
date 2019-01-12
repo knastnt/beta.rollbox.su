@@ -90,3 +90,7 @@ Stack trace:
 #6 {main}
   thrown в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 9
 
+2019-01-12T12:33:19+00:00 CRITICAL syntax error, unexpected '}', expecting ',' or ';' в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 124
+
+2019-01-12T12:33:19+00:00 CRITICAL syntax error, unexpected '}', expecting ',' or ';' в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 124
+
