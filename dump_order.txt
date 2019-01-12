@@ -1,0 +1,2320 @@
+WC_Order Object
+(
+    [status_transition:protected] => 
+    [data:protected] => Array
+        (
+            [parent_id] => 0
+            [status] => cooking
+            [currency] => RUB
+            [version] => 3.5.3
+            [prices_include_tax] => 
+            [date_created] => WC_DateTime Object
+                (
+                    [utc_offset:protected] => 36000
+                    [date] => 2019-01-12 09:08:23.000000
+                    [timezone_type] => 1
+                    [timezone] => +00:00
+                )
+
+            [date_modified] => WC_DateTime Object
+                (
+                    [utc_offset:protected] => 36000
+                    [date] => 2019-01-12 09:11:30.000000
+                    [timezone_type] => 1
+                    [timezone] => +00:00
+                )
+
+            [discount_total] => 0
+            [discount_tax] => 0
+            [shipping_total] => 100.00
+            [shipping_tax] => 0
+            [cart_tax] => 0
+            [total] => 635.00
+            [total_tax] => 0
+            [customer_id] => 1
+            [order_key] => wc_order_5c39ae8727ee2
+            [billing] => Array
+                (
+                    [first_name] => я
+                    [last_name] => 
+                    [company] => 
+                    [address_1] => я
+                    [address_2] => 
+                    [city] => 
+                    [state] => 
+                    [postcode] => 
+                    [country] => RU
+                    [email] => 456kot@mail.ru
+                    [phone] => +79243071504
+                )
+
+            [shipping] => Array
+                (
+                    [first_name] => я
+                    [last_name] => 
+                    [company] => 
+                    [address_1] => я
+                    [address_2] => 
+                    [city] => 
+                    [state] => 
+                    [postcode] => 
+                    [country] => RU
+                )
+
+            [payment_method] => cod
+            [payment_method_title] => Оплата при доставке
+            [transaction_id] => 
+            [customer_ip_address] => 127.0.0.1
+            [customer_user_agent] => Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0
+            [created_via] => checkout
+            [customer_note] => 
+            [date_completed] => 
+            [date_paid] => 
+            [cart_hash] => c2ce7352f6ba4ce8989a6298f5fac263
+        )
+
+    [items:protected] => Array
+        (
+            [line_items] => Array
+                (
+                    [69] => WC_Order_Item_Product Object
+                        (
+                            [extra_data:protected] => Array
+                                (
+                                    [product_id] => 0
+                                    [variation_id] => 0
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 0
+                                    [subtotal_tax] => 0
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data:protected] => Array
+                                (
+                                    [order_id] => 148
+                                    [name] => Угорь в масаго - особенный1
+                                    [product_id] => 18
+                                    [variation_id] => 146
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 180
+                                    [subtotal_tax] => 0
+                                    [total] => 180
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [total] => Array
+                                                (
+                                                )
+
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [cache_group:protected] => order-items
+                            [meta_type:protected] => order_item
+                            [object_type:protected] => order_item
+                            [id:protected] => 69
+                            [changes:protected] => Array
+                                (
+                                )
+
+                            [object_read:protected] => 1
+                            [default_data:protected] => Array
+                                (
+                                    [order_id] => 0
+                                    [name] => 
+                                    [product_id] => 0
+                                    [variation_id] => 0
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 0
+                                    [subtotal_tax] => 0
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data_store:protected] => WC_Data_Store Object
+                                (
+                                    [instance:WC_Data_Store:private] => WC_Order_Item_Product_Data_Store Object
+                                        (
+                                            [internal_meta_keys:protected] => Array
+                                                (
+                                                    [0] => _order_id
+                                                    [1] => _name
+                                                    [2] => _product_id
+                                                    [3] => _variation_id
+                                                    [4] => _quantity
+                                                    [5] => _tax_class
+                                                    [6] => _subtotal
+                                                    [7] => _subtotal_tax
+                                                    [8] => _total
+                                                    [9] => _total_tax
+                                                    [10] => _taxes
+                                                    [11] => _product_id
+                                                    [12] => _variation_id
+                                                    [13] => _qty
+                                                    [14] => _tax_class
+                                                    [15] => _line_subtotal
+                                                    [16] => _line_subtotal_tax
+                                                    [17] => _line_total
+                                                    [18] => _line_tax
+                                                    [19] => _line_tax_data
+                                                )
+
+                                            [meta_type:protected] => order_item
+                                            [object_id_field_for_meta:protected] => order_item_id
+                                        )
+
+                                    [stores:WC_Data_Store:private] => Array
+                                        (
+                                            [coupon] => WC_Coupon_Data_Store_CPT
+                                            [customer] => WC_Customer_Data_Store
+                                            [customer-download] => WC_Customer_Download_Data_Store
+                                            [customer-download-log] => WC_Customer_Download_Log_Data_Store
+                                            [customer-session] => WC_Customer_Data_Store_Session
+                                            [order] => WC_Order_Data_Store_CPT
+                                            [order-refund] => WC_Order_Refund_Data_Store_CPT
+                                            [order-item] => WC_Order_Item_Data_Store
+                                            [order-item-coupon] => WC_Order_Item_Coupon_Data_Store
+                                            [order-item-fee] => WC_Order_Item_Fee_Data_Store
+                                            [order-item-product] => WC_Order_Item_Product_Data_Store
+                                            [order-item-shipping] => WC_Order_Item_Shipping_Data_Store
+                                            [order-item-tax] => WC_Order_Item_Tax_Data_Store
+                                            [payment-token] => WC_Payment_Token_Data_Store
+                                            [product] => WC_Product_Data_Store_CPT
+                                            [product-grouped] => WC_Product_Grouped_Data_Store_CPT
+                                            [product-variable] => WC_Product_Variable_Data_Store_CPT
+                                            [product-variation] => WC_Product_Variation_Data_Store_CPT
+                                            [shipping-zone] => WC_Shipping_Zone_Data_Store
+                                            [webhook] => WC_Webhook_Data_Store
+                                        )
+
+                                    [current_class_name:WC_Data_Store:private] => WC_Order_Item_Product_Data_Store
+                                    [object_type:WC_Data_Store:private] => order-item-product
+                                )
+
+                            [meta_data:protected] => Array
+                                (
+                                    [0] => WC_Meta_Data Object
+                                        (
+                                            [current_data:protected] => Array
+                                                (
+                                                    [id] => 498
+                                                    [key] => pa_sous
+                                                    [value] => osobennyj1
+                                                )
+
+                                            [data:protected] => Array
+                                                (
+                                                    [id] => 498
+                                                    [key] => pa_sous
+                                                    [value] => osobennyj1
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                    [70] => WC_Order_Item_Product Object
+                        (
+                            [extra_data:protected] => Array
+                                (
+                                    [product_id] => 0
+                                    [variation_id] => 0
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 0
+                                    [subtotal_tax] => 0
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data:protected] => Array
+                                (
+                                    [order_id] => 148
+                                    [name] => Угорь в масаго - особенный2
+                                    [product_id] => 18
+                                    [variation_id] => 147
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 185
+                                    [subtotal_tax] => 0
+                                    [total] => 185
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [total] => Array
+                                                (
+                                                )
+
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [cache_group:protected] => order-items
+                            [meta_type:protected] => order_item
+                            [object_type:protected] => order_item
+                            [id:protected] => 70
+                            [changes:protected] => Array
+                                (
+                                )
+
+                            [object_read:protected] => 1
+                            [default_data:protected] => Array
+                                (
+                                    [order_id] => 0
+                                    [name] => 
+                                    [product_id] => 0
+                                    [variation_id] => 0
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 0
+                                    [subtotal_tax] => 0
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data_store:protected] => WC_Data_Store Object
+                                (
+                                    [instance:WC_Data_Store:private] => WC_Order_Item_Product_Data_Store Object
+                                        (
+                                            [internal_meta_keys:protected] => Array
+                                                (
+                                                    [0] => _order_id
+                                                    [1] => _name
+                                                    [2] => _product_id
+                                                    [3] => _variation_id
+                                                    [4] => _quantity
+                                                    [5] => _tax_class
+                                                    [6] => _subtotal
+                                                    [7] => _subtotal_tax
+                                                    [8] => _total
+                                                    [9] => _total_tax
+                                                    [10] => _taxes
+                                                    [11] => _product_id
+                                                    [12] => _variation_id
+                                                    [13] => _qty
+                                                    [14] => _tax_class
+                                                    [15] => _line_subtotal
+                                                    [16] => _line_subtotal_tax
+                                                    [17] => _line_total
+                                                    [18] => _line_tax
+                                                    [19] => _line_tax_data
+                                                )
+
+                                            [meta_type:protected] => order_item
+                                            [object_id_field_for_meta:protected] => order_item_id
+                                        )
+
+                                    [stores:WC_Data_Store:private] => Array
+                                        (
+                                            [coupon] => WC_Coupon_Data_Store_CPT
+                                            [customer] => WC_Customer_Data_Store
+                                            [customer-download] => WC_Customer_Download_Data_Store
+                                            [customer-download-log] => WC_Customer_Download_Log_Data_Store
+                                            [customer-session] => WC_Customer_Data_Store_Session
+                                            [order] => WC_Order_Data_Store_CPT
+                                            [order-refund] => WC_Order_Refund_Data_Store_CPT
+                                            [order-item] => WC_Order_Item_Data_Store
+                                            [order-item-coupon] => WC_Order_Item_Coupon_Data_Store
+                                            [order-item-fee] => WC_Order_Item_Fee_Data_Store
+                                            [order-item-product] => WC_Order_Item_Product_Data_Store
+                                            [order-item-shipping] => WC_Order_Item_Shipping_Data_Store
+                                            [order-item-tax] => WC_Order_Item_Tax_Data_Store
+                                            [payment-token] => WC_Payment_Token_Data_Store
+                                            [product] => WC_Product_Data_Store_CPT
+                                            [product-grouped] => WC_Product_Grouped_Data_Store_CPT
+                                            [product-variable] => WC_Product_Variable_Data_Store_CPT
+                                            [product-variation] => WC_Product_Variation_Data_Store_CPT
+                                            [shipping-zone] => WC_Shipping_Zone_Data_Store
+                                            [webhook] => WC_Webhook_Data_Store
+                                        )
+
+                                    [current_class_name:WC_Data_Store:private] => WC_Order_Item_Product_Data_Store
+                                    [object_type:WC_Data_Store:private] => order-item-product
+                                )
+
+                            [meta_data:protected] => Array
+                                (
+                                    [0] => WC_Meta_Data Object
+                                        (
+                                            [current_data:protected] => Array
+                                                (
+                                                    [id] => 508
+                                                    [key] => pa_sous
+                                                    [value] => osobennyj2
+                                                )
+
+                                            [data:protected] => Array
+                                                (
+                                                    [id] => 508
+                                                    [key] => pa_sous
+                                                    [value] => osobennyj2
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                    [71] => WC_Order_Item_Product Object
+                        (
+                            [extra_data:protected] => Array
+                                (
+                                    [product_id] => 0
+                                    [variation_id] => 0
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 0
+                                    [subtotal_tax] => 0
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data:protected] => Array
+                                (
+                                    [order_id] => 148
+                                    [name] => Угорь в масаго - сандартный
+                                    [product_id] => 18
+                                    [variation_id] => 145
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 170
+                                    [subtotal_tax] => 0
+                                    [total] => 170
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [total] => Array
+                                                (
+                                                )
+
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [cache_group:protected] => order-items
+                            [meta_type:protected] => order_item
+                            [object_type:protected] => order_item
+                            [id:protected] => 71
+                            [changes:protected] => Array
+                                (
+                                )
+
+                            [object_read:protected] => 1
+                            [default_data:protected] => Array
+                                (
+                                    [order_id] => 0
+                                    [name] => 
+                                    [product_id] => 0
+                                    [variation_id] => 0
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 0
+                                    [subtotal_tax] => 0
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data_store:protected] => WC_Data_Store Object
+                                (
+                                    [instance:WC_Data_Store:private] => WC_Order_Item_Product_Data_Store Object
+                                        (
+                                            [internal_meta_keys:protected] => Array
+                                                (
+                                                    [0] => _order_id
+                                                    [1] => _name
+                                                    [2] => _product_id
+                                                    [3] => _variation_id
+                                                    [4] => _quantity
+                                                    [5] => _tax_class
+                                                    [6] => _subtotal
+                                                    [7] => _subtotal_tax
+                                                    [8] => _total
+                                                    [9] => _total_tax
+                                                    [10] => _taxes
+                                                    [11] => _product_id
+                                                    [12] => _variation_id
+                                                    [13] => _qty
+                                                    [14] => _tax_class
+                                                    [15] => _line_subtotal
+                                                    [16] => _line_subtotal_tax
+                                                    [17] => _line_total
+                                                    [18] => _line_tax
+                                                    [19] => _line_tax_data
+                                                )
+
+                                            [meta_type:protected] => order_item
+                                            [object_id_field_for_meta:protected] => order_item_id
+                                        )
+
+                                    [stores:WC_Data_Store:private] => Array
+                                        (
+                                            [coupon] => WC_Coupon_Data_Store_CPT
+                                            [customer] => WC_Customer_Data_Store
+                                            [customer-download] => WC_Customer_Download_Data_Store
+                                            [customer-download-log] => WC_Customer_Download_Log_Data_Store
+                                            [customer-session] => WC_Customer_Data_Store_Session
+                                            [order] => WC_Order_Data_Store_CPT
+                                            [order-refund] => WC_Order_Refund_Data_Store_CPT
+                                            [order-item] => WC_Order_Item_Data_Store
+                                            [order-item-coupon] => WC_Order_Item_Coupon_Data_Store
+                                            [order-item-fee] => WC_Order_Item_Fee_Data_Store
+                                            [order-item-product] => WC_Order_Item_Product_Data_Store
+                                            [order-item-shipping] => WC_Order_Item_Shipping_Data_Store
+                                            [order-item-tax] => WC_Order_Item_Tax_Data_Store
+                                            [payment-token] => WC_Payment_Token_Data_Store
+                                            [product] => WC_Product_Data_Store_CPT
+                                            [product-grouped] => WC_Product_Grouped_Data_Store_CPT
+                                            [product-variable] => WC_Product_Variable_Data_Store_CPT
+                                            [product-variation] => WC_Product_Variation_Data_Store_CPT
+                                            [shipping-zone] => WC_Shipping_Zone_Data_Store
+                                            [webhook] => WC_Webhook_Data_Store
+                                        )
+
+                                    [current_class_name:WC_Data_Store:private] => WC_Order_Item_Product_Data_Store
+                                    [object_type:WC_Data_Store:private] => order-item-product
+                                )
+
+                            [meta_data:protected] => Array
+                                (
+                                    [0] => WC_Meta_Data Object
+                                        (
+                                            [current_data:protected] => Array
+                                                (
+                                                    [id] => 518
+                                                    [key] => pa_sous
+                                                    [value] => sandartnyj
+                                                )
+
+                                            [data:protected] => Array
+                                                (
+                                                    [id] => 518
+                                                    [key] => pa_sous
+                                                    [value] => sandartnyj
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [tax_lines] => Array
+                (
+                )
+
+            [shipping_lines] => Array
+                (
+                    [72] => WC_Order_Item_Shipping Object
+                        (
+                            [extra_data:protected] => Array
+                                (
+                                    [method_title] => 
+                                    [method_id] => 
+                                    [instance_id] => 
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data:protected] => Array
+                                (
+                                    [order_id] => 148
+                                    [name] => Центральный округ
+                                    [method_title] => Центральный округ
+                                    [method_id] => flat_rate
+                                    [instance_id] => 3
+                                    [total] => 100.00
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [cache_group:protected] => order-items
+                            [meta_type:protected] => order_item
+                            [object_type:protected] => order_item
+                            [id:protected] => 72
+                            [changes:protected] => Array
+                                (
+                                )
+
+                            [object_read:protected] => 1
+                            [default_data:protected] => Array
+                                (
+                                    [order_id] => 0
+                                    [name] => 
+                                    [method_title] => 
+                                    [method_id] => 
+                                    [instance_id] => 
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data_store:protected] => WC_Data_Store Object
+                                (
+                                    [instance:WC_Data_Store:private] => WC_Order_Item_Shipping_Data_Store Object
+                                        (
+                                            [internal_meta_keys:protected] => Array
+                                                (
+                                                    [0] => _order_id
+                                                    [1] => _name
+                                                    [2] => _method_title
+                                                    [3] => _method_id
+                                                    [4] => _instance_id
+                                                    [5] => _total
+                                                    [6] => _total_tax
+                                                    [7] => _taxes
+                                                    [8] => method_id
+                                                    [9] => instance_id
+                                                    [10] => cost
+                                                    [11] => total_tax
+                                                    [12] => taxes
+                                                )
+
+                                            [meta_type:protected] => order_item
+                                            [object_id_field_for_meta:protected] => order_item_id
+                                        )
+
+                                    [stores:WC_Data_Store:private] => Array
+                                        (
+                                            [coupon] => WC_Coupon_Data_Store_CPT
+                                            [customer] => WC_Customer_Data_Store
+                                            [customer-download] => WC_Customer_Download_Data_Store
+                                            [customer-download-log] => WC_Customer_Download_Log_Data_Store
+                                            [customer-session] => WC_Customer_Data_Store_Session
+                                            [order] => WC_Order_Data_Store_CPT
+                                            [order-refund] => WC_Order_Refund_Data_Store_CPT
+                                            [order-item] => WC_Order_Item_Data_Store
+                                            [order-item-coupon] => WC_Order_Item_Coupon_Data_Store
+                                            [order-item-fee] => WC_Order_Item_Fee_Data_Store
+                                            [order-item-product] => WC_Order_Item_Product_Data_Store
+                                            [order-item-shipping] => WC_Order_Item_Shipping_Data_Store
+                                            [order-item-tax] => WC_Order_Item_Tax_Data_Store
+                                            [payment-token] => WC_Payment_Token_Data_Store
+                                            [product] => WC_Product_Data_Store_CPT
+                                            [product-grouped] => WC_Product_Grouped_Data_Store_CPT
+                                            [product-variable] => WC_Product_Variable_Data_Store_CPT
+                                            [product-variation] => WC_Product_Variation_Data_Store_CPT
+                                            [shipping-zone] => WC_Shipping_Zone_Data_Store
+                                            [webhook] => WC_Webhook_Data_Store
+                                        )
+
+                                    [current_class_name:WC_Data_Store:private] => WC_Order_Item_Shipping_Data_Store
+                                    [object_type:WC_Data_Store:private] => order-item-shipping
+                                )
+
+                            [meta_data:protected] => Array
+                                (
+                                    [0] => WC_Meta_Data Object
+                                        (
+                                            [current_data:protected] => Array
+                                                (
+                                                    [id] => 524
+                                                    [key] => Позиции
+                                                    [value] => Угорь в масаго - особенный1 &times; 1, Угорь в масаго - особенный2 &times; 1, Угорь в масаго - сандартный &times; 1
+                                                )
+
+                                            [data:protected] => Array
+                                                (
+                                                    [id] => 524
+                                                    [key] => Позиции
+                                                    [value] => Угорь в масаго - особенный1 &times; 1, Угорь в масаго - особенный2 &times; 1, Угорь в масаго - сандартный &times; 1
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [fee_lines] => Array
+                (
+                )
+
+            [coupon_lines] => Array
+                (
+                )
+
+        )
+
+    [items_to_delete:protected] => Array
+        (
+        )
+
+    [cache_group:protected] => orders
+    [data_store_name:protected] => order
+    [object_type:protected] => order
+    [id:protected] => 148
+    [changes:protected] => Array
+        (
+        )
+
+    [object_read:protected] => 1
+    [extra_data:protected] => Array
+        (
+        )
+
+    [default_data:protected] => Array
+        (
+            [parent_id] => 0
+            [status] => 
+            [currency] => 
+            [version] => 
+            [prices_include_tax] => 
+            [date_created] => 
+            [date_modified] => 
+            [discount_total] => 0
+            [discount_tax] => 0
+            [shipping_total] => 0
+            [shipping_tax] => 0
+            [cart_tax] => 0
+            [total] => 0
+            [total_tax] => 0
+            [customer_id] => 0
+            [order_key] => 
+            [billing] => Array
+                (
+                    [first_name] => 
+                    [last_name] => 
+                    [company] => 
+                    [address_1] => 
+                    [address_2] => 
+                    [city] => 
+                    [state] => 
+                    [postcode] => 
+                    [country] => 
+                    [email] => 
+                    [phone] => 
+                )
+
+            [shipping] => Array
+                (
+                    [first_name] => 
+                    [last_name] => 
+                    [company] => 
+                    [address_1] => 
+                    [address_2] => 
+                    [city] => 
+                    [state] => 
+                    [postcode] => 
+                    [country] => 
+                )
+
+            [payment_method] => 
+            [payment_method_title] => 
+            [transaction_id] => 
+            [customer_ip_address] => 
+            [customer_user_agent] => 
+            [created_via] => 
+            [customer_note] => 
+            [date_completed] => 
+            [date_paid] => 
+            [cart_hash] => 
+        )
+
+    [data_store:protected] => WC_Data_Store Object
+        (
+            [instance:WC_Data_Store:private] => WC_Order_Data_Store_CPT Object
+                (
+                    [internal_meta_keys:protected] => Array
+                        (
+                            [0] => _parent_id
+                            [1] => _status
+                            [2] => _currency
+                            [3] => _version
+                            [4] => _prices_include_tax
+                            [5] => _date_created
+                            [6] => _date_modified
+                            [7] => _discount_total
+                            [8] => _discount_tax
+                            [9] => _shipping_total
+                            [10] => _shipping_tax
+                            [11] => _cart_tax
+                            [12] => _total
+                            [13] => _total_tax
+                            [14] => _customer_id
+                            [15] => _order_key
+                            [16] => _billing
+                            [17] => _shipping
+                            [18] => _payment_method
+                            [19] => _payment_method_title
+                            [20] => _transaction_id
+                            [21] => _customer_ip_address
+                            [22] => _customer_user_agent
+                            [23] => _created_via
+                            [24] => _customer_note
+                            [25] => _date_completed
+                            [26] => _date_paid
+                            [27] => _cart_hash
+                            [28] => _customer_user
+                            [29] => _order_key
+                            [30] => _order_currency
+                            [31] => _billing_first_name
+                            [32] => _billing_last_name
+                            [33] => _billing_company
+                            [34] => _billing_address_1
+                            [35] => _billing_address_2
+                            [36] => _billing_city
+                            [37] => _billing_state
+                            [38] => _billing_postcode
+                            [39] => _billing_country
+                            [40] => _billing_email
+                            [41] => _billing_phone
+                            [42] => _shipping_first_name
+                            [43] => _shipping_last_name
+                            [44] => _shipping_company
+                            [45] => _shipping_address_1
+                            [46] => _shipping_address_2
+                            [47] => _shipping_city
+                            [48] => _shipping_state
+                            [49] => _shipping_postcode
+                            [50] => _shipping_country
+                            [51] => _completed_date
+                            [52] => _paid_date
+                            [53] => _edit_lock
+                            [54] => _edit_last
+                            [55] => _cart_discount
+                            [56] => _cart_discount_tax
+                            [57] => _order_shipping
+                            [58] => _order_shipping_tax
+                            [59] => _order_tax
+                            [60] => _order_total
+                            [61] => _payment_method
+                            [62] => _payment_method_title
+                            [63] => _transaction_id
+                            [64] => _customer_ip_address
+                            [65] => _customer_user_agent
+                            [66] => _created_via
+                            [67] => _order_version
+                            [68] => _prices_include_tax
+                            [69] => _date_completed
+                            [70] => _date_paid
+                            [71] => _payment_tokens
+                            [72] => _billing_address_index
+                            [73] => _shipping_address_index
+                            [74] => _recorded_sales
+                            [75] => _recorded_coupon_usage_counts
+                            [76] => _download_permissions_granted
+                            [77] => _order_stock_reduced
+                        )
+
+                    [meta_type:protected] => post
+                    [object_id_field_for_meta:protected] => 
+                )
+
+            [stores:WC_Data_Store:private] => Array
+                (
+                    [coupon] => WC_Coupon_Data_Store_CPT
+                    [customer] => WC_Customer_Data_Store
+                    [customer-download] => WC_Customer_Download_Data_Store
+                    [customer-download-log] => WC_Customer_Download_Log_Data_Store
+                    [customer-session] => WC_Customer_Data_Store_Session
+                    [order] => WC_Order_Data_Store_CPT
+                    [order-refund] => WC_Order_Refund_Data_Store_CPT
+                    [order-item] => WC_Order_Item_Data_Store
+                    [order-item-coupon] => WC_Order_Item_Coupon_Data_Store
+                    [order-item-fee] => WC_Order_Item_Fee_Data_Store
+                    [order-item-product] => WC_Order_Item_Product_Data_Store
+                    [order-item-shipping] => WC_Order_Item_Shipping_Data_Store
+                    [order-item-tax] => WC_Order_Item_Tax_Data_Store
+                    [payment-token] => WC_Payment_Token_Data_Store
+                    [product] => WC_Product_Data_Store_CPT
+                    [product-grouped] => WC_Product_Grouped_Data_Store_CPT
+                    [product-variable] => WC_Product_Variable_Data_Store_CPT
+                    [product-variation] => WC_Product_Variation_Data_Store_CPT
+                    [shipping-zone] => WC_Shipping_Zone_Data_Store
+                    [webhook] => WC_Webhook_Data_Store
+                )
+
+            [current_class_name:WC_Data_Store:private] => WC_Order_Data_Store_CPT
+            [object_type:WC_Data_Store:private] => order
+        )
+
+    [meta_data:protected] => Array
+        (
+            [0] => WC_Meta_Data Object
+                (
+                    [current_data:protected] => Array
+                        (
+                            [id] => 2420
+                            [key] => _wcpdf_invoice_settings
+                            [value] => Array
+                                (
+                                    [enabled] => 1
+                                    [attach_to_email_ids] => Array
+                                        (
+                                            [customer_completed_order] => 1
+                                            [wc_order_status_email_131] => 1
+                                        )
+
+                                    [display_shipping_address] => 1
+                                    [display_email] => 1
+                                    [display_phone] => 1
+                                    [display_date] => invoice_date
+                                    [display_number] => invoice_number
+                                    [number_format] => Array
+                                        (
+                                            [prefix] => 
+                                            [suffix] => 
+                                            [padding] => 
+                                        )
+
+                                    [my_account_buttons] => custom
+                                    [my_account_restrict] => Array
+                                        (
+                                            [cooking] => 1
+                                            [ready-delivery] => 1
+                                            [ready-self-out] => 1
+                                            [completed] => 1
+                                        )
+
+                                    [paper_size] => a4
+                                    [font_subsetting] => 
+                                    [header_logo] => 
+                                    [shop_name] => Array
+                                        (
+                                            [default] => Roll Box
+                                        )
+
+                                    [shop_address] => Array
+                                        (
+                                            [default] => пр.Мира, 29
+                                        )
+
+                                    [footer] => 
+                                    [extra_1] => 
+                                    [extra_2] => 
+                                    [extra_3] => 
+                                )
+
+                        )
+
+                    [data:protected] => Array
+                        (
+                            [id] => 2420
+                            [key] => _wcpdf_invoice_settings
+                            [value] => Array
+                                (
+                                    [enabled] => 1
+                                    [attach_to_email_ids] => Array
+                                        (
+                                            [customer_completed_order] => 1
+                                            [wc_order_status_email_131] => 1
+                                        )
+
+                                    [display_shipping_address] => 1
+                                    [display_email] => 1
+                                    [display_phone] => 1
+                                    [display_date] => invoice_date
+                                    [display_number] => invoice_number
+                                    [number_format] => Array
+                                        (
+                                            [prefix] => 
+                                            [suffix] => 
+                                            [padding] => 
+                                        )
+
+                                    [my_account_buttons] => custom
+                                    [my_account_restrict] => Array
+                                        (
+                                            [cooking] => 1
+                                            [ready-delivery] => 1
+                                            [ready-self-out] => 1
+                                            [completed] => 1
+                                        )
+
+                                    [paper_size] => a4
+                                    [font_subsetting] => 
+                                    [header_logo] => 
+                                    [shop_name] => Array
+                                        (
+                                            [default] => Roll Box
+                                        )
+
+                                    [shop_address] => Array
+                                        (
+                                            [default] => пр.Мира, 29
+                                        )
+
+                                    [footer] => 
+                                    [extra_1] => 
+                                    [extra_2] => 
+                                    [extra_3] => 
+                                )
+
+                        )
+
+                )
+
+            [1] => WC_Meta_Data Object
+                (
+                    [current_data:protected] => Array
+                        (
+                            [id] => 2421
+                            [key] => _wcpdf_invoice_date
+                            [value] => 1547284290
+                        )
+
+                    [data:protected] => Array
+                        (
+                            [id] => 2421
+                            [key] => _wcpdf_invoice_date
+                            [value] => 1547284290
+                        )
+
+                )
+
+            [2] => WC_Meta_Data Object
+                (
+                    [current_data:protected] => Array
+                        (
+                            [id] => 2422
+                            [key] => _wcpdf_invoice_date_formatted
+                            [value] => 2019-01-12 19:11:30
+                        )
+
+                    [data:protected] => Array
+                        (
+                            [id] => 2422
+                            [key] => _wcpdf_invoice_date_formatted
+                            [value] => 2019-01-12 19:11:30
+                        )
+
+                )
+
+            [3] => WC_Meta_Data Object
+                (
+                    [current_data:protected] => Array
+                        (
+                            [id] => 2423
+                            [key] => _wcpdf_invoice_number
+                            [value] => 21
+                        )
+
+                    [data:protected] => Array
+                        (
+                            [id] => 2423
+                            [key] => _wcpdf_invoice_number
+                            [value] => 21
+                        )
+
+                )
+
+            [4] => WC_Meta_Data Object
+                (
+                    [current_data:protected] => Array
+                        (
+                            [id] => 2424
+                            [key] => _wcpdf_invoice_number_data
+                            [value] => Array
+                                (
+                                    [number] => 21
+                                    [formatted_number] => 21
+                                    [prefix] => 
+                                    [suffix] => 
+                                    [document_type] => invoice
+                                    [order_id] => 148
+                                    [padding] => 
+                                )
+
+                        )
+
+                    [data:protected] => Array
+                        (
+                            [id] => 2424
+                            [key] => _wcpdf_invoice_number_data
+                            [value] => Array
+                                (
+                                    [number] => 21
+                                    [formatted_number] => 21
+                                    [prefix] => 
+                                    [suffix] => 
+                                    [document_type] => invoice
+                                    [order_id] => 148
+                                    [padding] => 
+                                )
+
+                        )
+
+                )
+
+        )
+
+)
+
+WC_Order Object
+(
+    [status_transition:protected] => 
+    [data:protected] => Array
+        (
+            [parent_id] => 0
+            [status] => cooking
+            [currency] => RUB
+            [version] => 3.5.3
+            [prices_include_tax] => 
+            [date_created] => WC_DateTime Object
+                (
+                    [utc_offset:protected] => 36000
+                    [date] => 2019-01-12 09:08:23.000000
+                    [timezone_type] => 1
+                    [timezone] => +00:00
+                )
+
+            [date_modified] => WC_DateTime Object
+                (
+                    [utc_offset:protected] => 36000
+                    [date] => 2019-01-12 09:11:30.000000
+                    [timezone_type] => 1
+                    [timezone] => +00:00
+                )
+
+            [discount_total] => 0
+            [discount_tax] => 0
+            [shipping_total] => 100.00
+            [shipping_tax] => 0
+            [cart_tax] => 0
+            [total] => 635.00
+            [total_tax] => 0
+            [customer_id] => 1
+            [order_key] => wc_order_5c39ae8727ee2
+            [billing] => Array
+                (
+                    [first_name] => я
+                    [last_name] => 
+                    [company] => 
+                    [address_1] => я
+                    [address_2] => 
+                    [city] => 
+                    [state] => 
+                    [postcode] => 
+                    [country] => RU
+                    [email] => 456kot@mail.ru
+                    [phone] => +79243071504
+                )
+
+            [shipping] => Array
+                (
+                    [first_name] => я
+                    [last_name] => 
+                    [company] => 
+                    [address_1] => я
+                    [address_2] => 
+                    [city] => 
+                    [state] => 
+                    [postcode] => 
+                    [country] => RU
+                )
+
+            [payment_method] => cod
+            [payment_method_title] => Оплата при доставке
+            [transaction_id] => 
+            [customer_ip_address] => 127.0.0.1
+            [customer_user_agent] => Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0
+            [created_via] => checkout
+            [customer_note] => 
+            [date_completed] => 
+            [date_paid] => 
+            [cart_hash] => c2ce7352f6ba4ce8989a6298f5fac263
+        )
+
+    [items:protected] => Array
+        (
+            [line_items] => Array
+                (
+                    [69] => WC_Order_Item_Product Object
+                        (
+                            [extra_data:protected] => Array
+                                (
+                                    [product_id] => 0
+                                    [variation_id] => 0
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 0
+                                    [subtotal_tax] => 0
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data:protected] => Array
+                                (
+                                    [order_id] => 148
+                                    [name] => Угорь в масаго - особенный1
+                                    [product_id] => 18
+                                    [variation_id] => 146
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 180
+                                    [subtotal_tax] => 0
+                                    [total] => 180
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [total] => Array
+                                                (
+                                                )
+
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [cache_group:protected] => order-items
+                            [meta_type:protected] => order_item
+                            [object_type:protected] => order_item
+                            [id:protected] => 69
+                            [changes:protected] => Array
+                                (
+                                )
+
+                            [object_read:protected] => 1
+                            [default_data:protected] => Array
+                                (
+                                    [order_id] => 0
+                                    [name] => 
+                                    [product_id] => 0
+                                    [variation_id] => 0
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 0
+                                    [subtotal_tax] => 0
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data_store:protected] => WC_Data_Store Object
+                                (
+                                    [instance:WC_Data_Store:private] => WC_Order_Item_Product_Data_Store Object
+                                        (
+                                            [internal_meta_keys:protected] => Array
+                                                (
+                                                    [0] => _order_id
+                                                    [1] => _name
+                                                    [2] => _product_id
+                                                    [3] => _variation_id
+                                                    [4] => _quantity
+                                                    [5] => _tax_class
+                                                    [6] => _subtotal
+                                                    [7] => _subtotal_tax
+                                                    [8] => _total
+                                                    [9] => _total_tax
+                                                    [10] => _taxes
+                                                    [11] => _product_id
+                                                    [12] => _variation_id
+                                                    [13] => _qty
+                                                    [14] => _tax_class
+                                                    [15] => _line_subtotal
+                                                    [16] => _line_subtotal_tax
+                                                    [17] => _line_total
+                                                    [18] => _line_tax
+                                                    [19] => _line_tax_data
+                                                )
+
+                                            [meta_type:protected] => order_item
+                                            [object_id_field_for_meta:protected] => order_item_id
+                                        )
+
+                                    [stores:WC_Data_Store:private] => Array
+                                        (
+                                            [coupon] => WC_Coupon_Data_Store_CPT
+                                            [customer] => WC_Customer_Data_Store
+                                            [customer-download] => WC_Customer_Download_Data_Store
+                                            [customer-download-log] => WC_Customer_Download_Log_Data_Store
+                                            [customer-session] => WC_Customer_Data_Store_Session
+                                            [order] => WC_Order_Data_Store_CPT
+                                            [order-refund] => WC_Order_Refund_Data_Store_CPT
+                                            [order-item] => WC_Order_Item_Data_Store
+                                            [order-item-coupon] => WC_Order_Item_Coupon_Data_Store
+                                            [order-item-fee] => WC_Order_Item_Fee_Data_Store
+                                            [order-item-product] => WC_Order_Item_Product_Data_Store
+                                            [order-item-shipping] => WC_Order_Item_Shipping_Data_Store
+                                            [order-item-tax] => WC_Order_Item_Tax_Data_Store
+                                            [payment-token] => WC_Payment_Token_Data_Store
+                                            [product] => WC_Product_Data_Store_CPT
+                                            [product-grouped] => WC_Product_Grouped_Data_Store_CPT
+                                            [product-variable] => WC_Product_Variable_Data_Store_CPT
+                                            [product-variation] => WC_Product_Variation_Data_Store_CPT
+                                            [shipping-zone] => WC_Shipping_Zone_Data_Store
+                                            [webhook] => WC_Webhook_Data_Store
+                                        )
+
+                                    [current_class_name:WC_Data_Store:private] => WC_Order_Item_Product_Data_Store
+                                    [object_type:WC_Data_Store:private] => order-item-product
+                                )
+
+                            [meta_data:protected] => Array
+                                (
+                                    [0] => WC_Meta_Data Object
+                                        (
+                                            [current_data:protected] => Array
+                                                (
+                                                    [id] => 498
+                                                    [key] => pa_sous
+                                                    [value] => osobennyj1
+                                                )
+
+                                            [data:protected] => Array
+                                                (
+                                                    [id] => 498
+                                                    [key] => pa_sous
+                                                    [value] => osobennyj1
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                    [70] => WC_Order_Item_Product Object
+                        (
+                            [extra_data:protected] => Array
+                                (
+                                    [product_id] => 0
+                                    [variation_id] => 0
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 0
+                                    [subtotal_tax] => 0
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data:protected] => Array
+                                (
+                                    [order_id] => 148
+                                    [name] => Угорь в масаго - особенный2
+                                    [product_id] => 18
+                                    [variation_id] => 147
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 185
+                                    [subtotal_tax] => 0
+                                    [total] => 185
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [total] => Array
+                                                (
+                                                )
+
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [cache_group:protected] => order-items
+                            [meta_type:protected] => order_item
+                            [object_type:protected] => order_item
+                            [id:protected] => 70
+                            [changes:protected] => Array
+                                (
+                                )
+
+                            [object_read:protected] => 1
+                            [default_data:protected] => Array
+                                (
+                                    [order_id] => 0
+                                    [name] => 
+                                    [product_id] => 0
+                                    [variation_id] => 0
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 0
+                                    [subtotal_tax] => 0
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data_store:protected] => WC_Data_Store Object
+                                (
+                                    [instance:WC_Data_Store:private] => WC_Order_Item_Product_Data_Store Object
+                                        (
+                                            [internal_meta_keys:protected] => Array
+                                                (
+                                                    [0] => _order_id
+                                                    [1] => _name
+                                                    [2] => _product_id
+                                                    [3] => _variation_id
+                                                    [4] => _quantity
+                                                    [5] => _tax_class
+                                                    [6] => _subtotal
+                                                    [7] => _subtotal_tax
+                                                    [8] => _total
+                                                    [9] => _total_tax
+                                                    [10] => _taxes
+                                                    [11] => _product_id
+                                                    [12] => _variation_id
+                                                    [13] => _qty
+                                                    [14] => _tax_class
+                                                    [15] => _line_subtotal
+                                                    [16] => _line_subtotal_tax
+                                                    [17] => _line_total
+                                                    [18] => _line_tax
+                                                    [19] => _line_tax_data
+                                                )
+
+                                            [meta_type:protected] => order_item
+                                            [object_id_field_for_meta:protected] => order_item_id
+                                        )
+
+                                    [stores:WC_Data_Store:private] => Array
+                                        (
+                                            [coupon] => WC_Coupon_Data_Store_CPT
+                                            [customer] => WC_Customer_Data_Store
+                                            [customer-download] => WC_Customer_Download_Data_Store
+                                            [customer-download-log] => WC_Customer_Download_Log_Data_Store
+                                            [customer-session] => WC_Customer_Data_Store_Session
+                                            [order] => WC_Order_Data_Store_CPT
+                                            [order-refund] => WC_Order_Refund_Data_Store_CPT
+                                            [order-item] => WC_Order_Item_Data_Store
+                                            [order-item-coupon] => WC_Order_Item_Coupon_Data_Store
+                                            [order-item-fee] => WC_Order_Item_Fee_Data_Store
+                                            [order-item-product] => WC_Order_Item_Product_Data_Store
+                                            [order-item-shipping] => WC_Order_Item_Shipping_Data_Store
+                                            [order-item-tax] => WC_Order_Item_Tax_Data_Store
+                                            [payment-token] => WC_Payment_Token_Data_Store
+                                            [product] => WC_Product_Data_Store_CPT
+                                            [product-grouped] => WC_Product_Grouped_Data_Store_CPT
+                                            [product-variable] => WC_Product_Variable_Data_Store_CPT
+                                            [product-variation] => WC_Product_Variation_Data_Store_CPT
+                                            [shipping-zone] => WC_Shipping_Zone_Data_Store
+                                            [webhook] => WC_Webhook_Data_Store
+                                        )
+
+                                    [current_class_name:WC_Data_Store:private] => WC_Order_Item_Product_Data_Store
+                                    [object_type:WC_Data_Store:private] => order-item-product
+                                )
+
+                            [meta_data:protected] => Array
+                                (
+                                    [0] => WC_Meta_Data Object
+                                        (
+                                            [current_data:protected] => Array
+                                                (
+                                                    [id] => 508
+                                                    [key] => pa_sous
+                                                    [value] => osobennyj2
+                                                )
+
+                                            [data:protected] => Array
+                                                (
+                                                    [id] => 508
+                                                    [key] => pa_sous
+                                                    [value] => osobennyj2
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                    [71] => WC_Order_Item_Product Object
+                        (
+                            [extra_data:protected] => Array
+                                (
+                                    [product_id] => 0
+                                    [variation_id] => 0
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 0
+                                    [subtotal_tax] => 0
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data:protected] => Array
+                                (
+                                    [order_id] => 148
+                                    [name] => Угорь в масаго - сандартный
+                                    [product_id] => 18
+                                    [variation_id] => 145
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 170
+                                    [subtotal_tax] => 0
+                                    [total] => 170
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [total] => Array
+                                                (
+                                                )
+
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [cache_group:protected] => order-items
+                            [meta_type:protected] => order_item
+                            [object_type:protected] => order_item
+                            [id:protected] => 71
+                            [changes:protected] => Array
+                                (
+                                )
+
+                            [object_read:protected] => 1
+                            [default_data:protected] => Array
+                                (
+                                    [order_id] => 0
+                                    [name] => 
+                                    [product_id] => 0
+                                    [variation_id] => 0
+                                    [quantity] => 1
+                                    [tax_class] => 
+                                    [subtotal] => 0
+                                    [subtotal_tax] => 0
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [subtotal] => Array
+                                                (
+                                                )
+
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data_store:protected] => WC_Data_Store Object
+                                (
+                                    [instance:WC_Data_Store:private] => WC_Order_Item_Product_Data_Store Object
+                                        (
+                                            [internal_meta_keys:protected] => Array
+                                                (
+                                                    [0] => _order_id
+                                                    [1] => _name
+                                                    [2] => _product_id
+                                                    [3] => _variation_id
+                                                    [4] => _quantity
+                                                    [5] => _tax_class
+                                                    [6] => _subtotal
+                                                    [7] => _subtotal_tax
+                                                    [8] => _total
+                                                    [9] => _total_tax
+                                                    [10] => _taxes
+                                                    [11] => _product_id
+                                                    [12] => _variation_id
+                                                    [13] => _qty
+                                                    [14] => _tax_class
+                                                    [15] => _line_subtotal
+                                                    [16] => _line_subtotal_tax
+                                                    [17] => _line_total
+                                                    [18] => _line_tax
+                                                    [19] => _line_tax_data
+                                                )
+
+                                            [meta_type:protected] => order_item
+                                            [object_id_field_for_meta:protected] => order_item_id
+                                        )
+
+                                    [stores:WC_Data_Store:private] => Array
+                                        (
+                                            [coupon] => WC_Coupon_Data_Store_CPT
+                                            [customer] => WC_Customer_Data_Store
+                                            [customer-download] => WC_Customer_Download_Data_Store
+                                            [customer-download-log] => WC_Customer_Download_Log_Data_Store
+                                            [customer-session] => WC_Customer_Data_Store_Session
+                                            [order] => WC_Order_Data_Store_CPT
+                                            [order-refund] => WC_Order_Refund_Data_Store_CPT
+                                            [order-item] => WC_Order_Item_Data_Store
+                                            [order-item-coupon] => WC_Order_Item_Coupon_Data_Store
+                                            [order-item-fee] => WC_Order_Item_Fee_Data_Store
+                                            [order-item-product] => WC_Order_Item_Product_Data_Store
+                                            [order-item-shipping] => WC_Order_Item_Shipping_Data_Store
+                                            [order-item-tax] => WC_Order_Item_Tax_Data_Store
+                                            [payment-token] => WC_Payment_Token_Data_Store
+                                            [product] => WC_Product_Data_Store_CPT
+                                            [product-grouped] => WC_Product_Grouped_Data_Store_CPT
+                                            [product-variable] => WC_Product_Variable_Data_Store_CPT
+                                            [product-variation] => WC_Product_Variation_Data_Store_CPT
+                                            [shipping-zone] => WC_Shipping_Zone_Data_Store
+                                            [webhook] => WC_Webhook_Data_Store
+                                        )
+
+                                    [current_class_name:WC_Data_Store:private] => WC_Order_Item_Product_Data_Store
+                                    [object_type:WC_Data_Store:private] => order-item-product
+                                )
+
+                            [meta_data:protected] => Array
+                                (
+                                    [0] => WC_Meta_Data Object
+                                        (
+                                            [current_data:protected] => Array
+                                                (
+                                                    [id] => 518
+                                                    [key] => pa_sous
+                                                    [value] => sandartnyj
+                                                )
+
+                                            [data:protected] => Array
+                                                (
+                                                    [id] => 518
+                                                    [key] => pa_sous
+                                                    [value] => sandartnyj
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [tax_lines] => Array
+                (
+                )
+
+            [shipping_lines] => Array
+                (
+                    [72] => WC_Order_Item_Shipping Object
+                        (
+                            [extra_data:protected] => Array
+                                (
+                                    [method_title] => 
+                                    [method_id] => 
+                                    [instance_id] => 
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data:protected] => Array
+                                (
+                                    [order_id] => 148
+                                    [name] => Центральный округ
+                                    [method_title] => Центральный округ
+                                    [method_id] => flat_rate
+                                    [instance_id] => 3
+                                    [total] => 100.00
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [cache_group:protected] => order-items
+                            [meta_type:protected] => order_item
+                            [object_type:protected] => order_item
+                            [id:protected] => 72
+                            [changes:protected] => Array
+                                (
+                                )
+
+                            [object_read:protected] => 1
+                            [default_data:protected] => Array
+                                (
+                                    [order_id] => 0
+                                    [name] => 
+                                    [method_title] => 
+                                    [method_id] => 
+                                    [instance_id] => 
+                                    [total] => 0
+                                    [total_tax] => 0
+                                    [taxes] => Array
+                                        (
+                                            [total] => Array
+                                                (
+                                                )
+
+                                        )
+
+                                )
+
+                            [data_store:protected] => WC_Data_Store Object
+                                (
+                                    [instance:WC_Data_Store:private] => WC_Order_Item_Shipping_Data_Store Object
+                                        (
+                                            [internal_meta_keys:protected] => Array
+                                                (
+                                                    [0] => _order_id
+                                                    [1] => _name
+                                                    [2] => _method_title
+                                                    [3] => _method_id
+                                                    [4] => _instance_id
+                                                    [5] => _total
+                                                    [6] => _total_tax
+                                                    [7] => _taxes
+                                                    [8] => method_id
+                                                    [9] => instance_id
+                                                    [10] => cost
+                                                    [11] => total_tax
+                                                    [12] => taxes
+                                                )
+
+                                            [meta_type:protected] => order_item
+                                            [object_id_field_for_meta:protected] => order_item_id
+                                        )
+
+                                    [stores:WC_Data_Store:private] => Array
+                                        (
+                                            [coupon] => WC_Coupon_Data_Store_CPT
+                                            [customer] => WC_Customer_Data_Store
+                                            [customer-download] => WC_Customer_Download_Data_Store
+                                            [customer-download-log] => WC_Customer_Download_Log_Data_Store
+                                            [customer-session] => WC_Customer_Data_Store_Session
+                                            [order] => WC_Order_Data_Store_CPT
+                                            [order-refund] => WC_Order_Refund_Data_Store_CPT
+                                            [order-item] => WC_Order_Item_Data_Store
+                                            [order-item-coupon] => WC_Order_Item_Coupon_Data_Store
+                                            [order-item-fee] => WC_Order_Item_Fee_Data_Store
+                                            [order-item-product] => WC_Order_Item_Product_Data_Store
+                                            [order-item-shipping] => WC_Order_Item_Shipping_Data_Store
+                                            [order-item-tax] => WC_Order_Item_Tax_Data_Store
+                                            [payment-token] => WC_Payment_Token_Data_Store
+                                            [product] => WC_Product_Data_Store_CPT
+                                            [product-grouped] => WC_Product_Grouped_Data_Store_CPT
+                                            [product-variable] => WC_Product_Variable_Data_Store_CPT
+                                            [product-variation] => WC_Product_Variation_Data_Store_CPT
+                                            [shipping-zone] => WC_Shipping_Zone_Data_Store
+                                            [webhook] => WC_Webhook_Data_Store
+                                        )
+
+                                    [current_class_name:WC_Data_Store:private] => WC_Order_Item_Shipping_Data_Store
+                                    [object_type:WC_Data_Store:private] => order-item-shipping
+                                )
+
+                            [meta_data:protected] => Array
+                                (
+                                    [0] => WC_Meta_Data Object
+                                        (
+                                            [current_data:protected] => Array
+                                                (
+                                                    [id] => 524
+                                                    [key] => Позиции
+                                                    [value] => Угорь в масаго - особенный1 &times; 1, Угорь в масаго - особенный2 &times; 1, Угорь в масаго - сандартный &times; 1
+                                                )
+
+                                            [data:protected] => Array
+                                                (
+                                                    [id] => 524
+                                                    [key] => Позиции
+                                                    [value] => Угорь в масаго - особенный1 &times; 1, Угорь в масаго - особенный2 &times; 1, Угорь в масаго - сандартный &times; 1
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [fee_lines] => Array
+                (
+                )
+
+            [coupon_lines] => Array
+                (
+                )
+
+        )
+
+    [items_to_delete:protected] => Array
+        (
+        )
+
+    [cache_group:protected] => orders
+    [data_store_name:protected] => order
+    [object_type:protected] => order
+    [id:protected] => 148
+    [changes:protected] => Array
+        (
+        )
+
+    [object_read:protected] => 1
+    [extra_data:protected] => Array
+        (
+        )
+
+    [default_data:protected] => Array
+        (
+            [parent_id] => 0
+            [status] => 
+            [currency] => 
+            [version] => 
+            [prices_include_tax] => 
+            [date_created] => 
+            [date_modified] => 
+            [discount_total] => 0
+            [discount_tax] => 0
+            [shipping_total] => 0
+            [shipping_tax] => 0
+            [cart_tax] => 0
+            [total] => 0
+            [total_tax] => 0
+            [customer_id] => 0
+            [order_key] => 
+            [billing] => Array
+                (
+                    [first_name] => 
+                    [last_name] => 
+                    [company] => 
+                    [address_1] => 
+                    [address_2] => 
+                    [city] => 
+                    [state] => 
+                    [postcode] => 
+                    [country] => 
+                    [email] => 
+                    [phone] => 
+                )
+
+            [shipping] => Array
+                (
+                    [first_name] => 
+                    [last_name] => 
+                    [company] => 
+                    [address_1] => 
+                    [address_2] => 
+                    [city] => 
+                    [state] => 
+                    [postcode] => 
+                    [country] => 
+                )
+
+            [payment_method] => 
+            [payment_method_title] => 
+            [transaction_id] => 
+            [customer_ip_address] => 
+            [customer_user_agent] => 
+            [created_via] => 
+            [customer_note] => 
+            [date_completed] => 
+            [date_paid] => 
+            [cart_hash] => 
+        )
+
+    [data_store:protected] => WC_Data_Store Object
+        (
+            [instance:WC_Data_Store:private] => WC_Order_Data_Store_CPT Object
+                (
+                    [internal_meta_keys:protected] => Array
+                        (
+                            [0] => _parent_id
+                            [1] => _status
+                            [2] => _currency
+                            [3] => _version
+                            [4] => _prices_include_tax
+                            [5] => _date_created
+                            [6] => _date_modified
+                            [7] => _discount_total
+                            [8] => _discount_tax
+                            [9] => _shipping_total
+                            [10] => _shipping_tax
+                            [11] => _cart_tax
+                            [12] => _total
+                            [13] => _total_tax
+                            [14] => _customer_id
+                            [15] => _order_key
+                            [16] => _billing
+                            [17] => _shipping
+                            [18] => _payment_method
+                            [19] => _payment_method_title
+                            [20] => _transaction_id
+                            [21] => _customer_ip_address
+                            [22] => _customer_user_agent
+                            [23] => _created_via
+                            [24] => _customer_note
+                            [25] => _date_completed
+                            [26] => _date_paid
+                            [27] => _cart_hash
+                            [28] => _customer_user
+                            [29] => _order_key
+                            [30] => _order_currency
+                            [31] => _billing_first_name
+                            [32] => _billing_last_name
+                            [33] => _billing_company
+                            [34] => _billing_address_1
+                            [35] => _billing_address_2
+                            [36] => _billing_city
+                            [37] => _billing_state
+                            [38] => _billing_postcode
+                            [39] => _billing_country
+                            [40] => _billing_email
+                            [41] => _billing_phone
+                            [42] => _shipping_first_name
+                            [43] => _shipping_last_name
+                            [44] => _shipping_company
+                            [45] => _shipping_address_1
+                            [46] => _shipping_address_2
+                            [47] => _shipping_city
+                            [48] => _shipping_state
+                            [49] => _shipping_postcode
+                            [50] => _shipping_country
+                            [51] => _completed_date
+                            [52] => _paid_date
+                            [53] => _edit_lock
+                            [54] => _edit_last
+                            [55] => _cart_discount
+                            [56] => _cart_discount_tax
+                            [57] => _order_shipping
+                            [58] => _order_shipping_tax
+                            [59] => _order_tax
+                            [60] => _order_total
+                            [61] => _payment_method
+                            [62] => _payment_method_title
+                            [63] => _transaction_id
+                            [64] => _customer_ip_address
+                            [65] => _customer_user_agent
+                            [66] => _created_via
+                            [67] => _order_version
+                            [68] => _prices_include_tax
+                            [69] => _date_completed
+                            [70] => _date_paid
+                            [71] => _payment_tokens
+                            [72] => _billing_address_index
+                            [73] => _shipping_address_index
+                            [74] => _recorded_sales
+                            [75] => _recorded_coupon_usage_counts
+                            [76] => _download_permissions_granted
+                            [77] => _order_stock_reduced
+                        )
+
+                    [meta_type:protected] => post
+                    [object_id_field_for_meta:protected] => 
+                )
+
+            [stores:WC_Data_Store:private] => Array
+                (
+                    [coupon] => WC_Coupon_Data_Store_CPT
+                    [customer] => WC_Customer_Data_Store
+                    [customer-download] => WC_Customer_Download_Data_Store
+                    [customer-download-log] => WC_Customer_Download_Log_Data_Store
+                    [customer-session] => WC_Customer_Data_Store_Session
+                    [order] => WC_Order_Data_Store_CPT
+                    [order-refund] => WC_Order_Refund_Data_Store_CPT
+                    [order-item] => WC_Order_Item_Data_Store
+                    [order-item-coupon] => WC_Order_Item_Coupon_Data_Store
+                    [order-item-fee] => WC_Order_Item_Fee_Data_Store
+                    [order-item-product] => WC_Order_Item_Product_Data_Store
+                    [order-item-shipping] => WC_Order_Item_Shipping_Data_Store
+                    [order-item-tax] => WC_Order_Item_Tax_Data_Store
+                    [payment-token] => WC_Payment_Token_Data_Store
+                    [product] => WC_Product_Data_Store_CPT
+                    [product-grouped] => WC_Product_Grouped_Data_Store_CPT
+                    [product-variable] => WC_Product_Variable_Data_Store_CPT
+                    [product-variation] => WC_Product_Variation_Data_Store_CPT
+                    [shipping-zone] => WC_Shipping_Zone_Data_Store
+                    [webhook] => WC_Webhook_Data_Store
+                )
+
+            [current_class_name:WC_Data_Store:private] => WC_Order_Data_Store_CPT
+            [object_type:WC_Data_Store:private] => order
+        )
+
+    [meta_data:protected] => Array
+        (
+            [0] => WC_Meta_Data Object
+                (
+                    [current_data:protected] => Array
+                        (
+                            [id] => 2420
+                            [key] => _wcpdf_invoice_settings
+                            [value] => Array
+                                (
+                                    [enabled] => 1
+                                    [attach_to_email_ids] => Array
+                                        (
+                                            [customer_completed_order] => 1
+                                            [wc_order_status_email_131] => 1
+                                        )
+
+                                    [display_shipping_address] => 1
+                                    [display_email] => 1
+                                    [display_phone] => 1
+                                    [display_date] => invoice_date
+                                    [display_number] => invoice_number
+                                    [number_format] => Array
+                                        (
+                                            [prefix] => 
+                                            [suffix] => 
+                                            [padding] => 
+                                        )
+
+                                    [my_account_buttons] => custom
+                                    [my_account_restrict] => Array
+                                        (
+                                            [cooking] => 1
+                                            [ready-delivery] => 1
+                                            [ready-self-out] => 1
+                                            [completed] => 1
+                                        )
+
+                                    [paper_size] => a4
+                                    [font_subsetting] => 
+                                    [header_logo] => 
+                                    [shop_name] => Array
+                                        (
+                                            [default] => Roll Box
+                                        )
+
+                                    [shop_address] => Array
+                                        (
+                                            [default] => пр.Мира, 29
+                                        )
+
+                                    [footer] => 
+                                    [extra_1] => 
+                                    [extra_2] => 
+                                    [extra_3] => 
+                                )
+
+                        )
+
+                    [data:protected] => Array
+                        (
+                            [id] => 2420
+                            [key] => _wcpdf_invoice_settings
+                            [value] => Array
+                                (
+                                    [enabled] => 1
+                                    [attach_to_email_ids] => Array
+                                        (
+                                            [customer_completed_order] => 1
+                                            [wc_order_status_email_131] => 1
+                                        )
+
+                                    [display_shipping_address] => 1
+                                    [display_email] => 1
+                                    [display_phone] => 1
+                                    [display_date] => invoice_date
+                                    [display_number] => invoice_number
+                                    [number_format] => Array
+                                        (
+                                            [prefix] => 
+                                            [suffix] => 
+                                            [padding] => 
+                                        )
+
+                                    [my_account_buttons] => custom
+                                    [my_account_restrict] => Array
+                                        (
+                                            [cooking] => 1
+                                            [ready-delivery] => 1
+                                            [ready-self-out] => 1
+                                            [completed] => 1
+                                        )
+
+                                    [paper_size] => a4
+                                    [font_subsetting] => 
+                                    [header_logo] => 
+                                    [shop_name] => Array
+                                        (
+                                            [default] => Roll Box
+                                        )
+
+                                    [shop_address] => Array
+                                        (
+                                            [default] => пр.Мира, 29
+                                        )
+
+                                    [footer] => 
+                                    [extra_1] => 
+                                    [extra_2] => 
+                                    [extra_3] => 
+                                )
+
+                        )
+
+                )
+
+            [1] => WC_Meta_Data Object
+                (
+                    [current_data:protected] => Array
+                        (
+                            [id] => 2421
+                            [key] => _wcpdf_invoice_date
+                            [value] => 1547284290
+                        )
+
+                    [data:protected] => Array
+                        (
+                            [id] => 2421
+                            [key] => _wcpdf_invoice_date
+                            [value] => 1547284290
+                        )
+
+                )
+
+            [2] => WC_Meta_Data Object
+                (
+                    [current_data:protected] => Array
+                        (
+                            [id] => 2422
+                            [key] => _wcpdf_invoice_date_formatted
+                            [value] => 2019-01-12 19:11:30
+                        )
+
+                    [data:protected] => Array
+                        (
+                            [id] => 2422
+                            [key] => _wcpdf_invoice_date_formatted
+                            [value] => 2019-01-12 19:11:30
+                        )
+
+                )
+
+            [3] => WC_Meta_Data Object
+                (
+                    [current_data:protected] => Array
+                        (
+                            [id] => 2423
+                            [key] => _wcpdf_invoice_number
+                            [value] => 21
+                        )
+
+                    [data:protected] => Array
+                        (
+                            [id] => 2423
+                            [key] => _wcpdf_invoice_number
+                            [value] => 21
+                        )
+
+                )
+
+            [4] => WC_Meta_Data Object
+                (
+                    [current_data:protected] => Array
+                        (
+                            [id] => 2424
+                            [key] => _wcpdf_invoice_number_data
+                            [value] => Array
+                                (
+                                    [number] => 21
+                                    [formatted_number] => 21
+                                    [prefix] => 
+                                    [suffix] => 
+                                    [document_type] => invoice
+                                    [order_id] => 148
+                                    [padding] => 
+                                )
+
+                        )
+
+                    [data:protected] => Array
+                        (
+                            [id] => 2424
+                            [key] => _wcpdf_invoice_number_data
+                            [value] => Array
+                                (
+                                    [number] => 21
+                                    [formatted_number] => 21
+                                    [prefix] => 
+                                    [suffix] => 
+                                    [document_type] => invoice
+                                    [order_id] => 148
+                                    [padding] => 
+                                )
+
+                        )
+
+                )
+
+        )
+
+)
+

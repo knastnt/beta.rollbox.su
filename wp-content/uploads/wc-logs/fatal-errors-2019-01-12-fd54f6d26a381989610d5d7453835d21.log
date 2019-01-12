@@ -28,3 +28,65 @@
 
 2019-01-12T09:52:33+00:00 CRITICAL require_once(): Failed opening required 'G:\OpenServer\domains\beta.rollbox.su/wp-content/themes/storefront/functions-modules/woocommerce_admin_order_preview-functions.php' (include_path='.;g:/openserver/modules/php/PHP-7.1-x64;g:/openserver/modules/php/PHP-7.1-x64/PEAR/pear') в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 11
 
+2019-01-12T10:24:36+00:00 CRITICAL syntax error, unexpected 'public' (T_PUBLIC), expecting end of file в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 34
+
+2019-01-12T10:24:37+00:00 CRITICAL syntax error, unexpected 'public' (T_PUBLIC), expecting end of file в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 34
+
+2019-01-12T10:44:47+00:00 CRITICAL Uncaught Error: Class 'WC_Admin_List_Table_Orders' not found in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:9
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php(11): require_once()
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(441): include('G:\\OpenServer\\d...')
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-config.php(89): require_once('G:\\OpenServer\\d...')
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-load.php(37): require_once('G:\\OpenServer\\d...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-admin\admin-ajax.php(22): require_once('G:\\OpenServer\\d...')
+#5 {main}
+  thrown в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 9
+
+2019-01-12T10:44:48+00:00 CRITICAL Uncaught Error: Class 'WC_Admin_List_Table_Orders' not found in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:9
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php(11): require_once()
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(441): include('G:\\OpenServer\\d...')
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-config.php(89): require_once('G:\\OpenServer\\d...')
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-load.php(37): require_once('G:\\OpenServer\\d...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-admin\admin.php(31): require_once('G:\\OpenServer\\d...')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-admin\edit.php(10): require_once('G:\\OpenServer\\d...')
+#6 {main}
+  thrown в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 9
+
+2019-01-12T11:05:47+00:00 CRITICAL require_once(): Failed opening required 'G:\OpenServer\domains\beta.rollbox.su/wp-content/themes/dishes-sf-child/functions-modules/woocommerce_admin_order_preview-functions.php' (include_path='.;g:/openserver/modules/php/PHP-7.1-x64;g:/openserver/modules/php/PHP-7.1-x64/PEAR/pear') в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 11
+
+2019-01-12T11:05:47+00:00 CRITICAL require_once(): Failed opening required 'G:\OpenServer\domains\beta.rollbox.su/wp-content/themes/dishes-sf-child/functions-modules/woocommerce_admin_order_preview-functions.php' (include_path='.;g:/openserver/modules/php/PHP-7.1-x64;g:/openserver/modules/php/PHP-7.1-x64/PEAR/pear') в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 11
+
+2019-01-12T11:06:11+00:00 CRITICAL Uncaught Error: Class 'WC_Admin_List_Table_Orders' not found in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:9
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php(11): require_once()
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(441): include('G:\\OpenServer\\d...')
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-config.php(89): require_once('G:\\OpenServer\\d...')
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-load.php(37): require_once('G:\\OpenServer\\d...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-admin\admin.php(31): require_once('G:\\OpenServer\\d...')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-admin\edit.php(10): require_once('G:\\OpenServer\\d...')
+#6 {main}
+  thrown в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 9
+
+2019-01-12T11:06:14+00:00 CRITICAL Uncaught Error: Class 'WC_Admin_List_Table_Orders' not found in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:9
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php(11): require_once()
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(441): include('G:\\OpenServer\\d...')
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-config.php(89): require_once('G:\\OpenServer\\d...')
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-load.php(37): require_once('G:\\OpenServer\\d...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-admin\admin.php(31): require_once('G:\\OpenServer\\d...')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-admin\edit.php(10): require_once('G:\\OpenServer\\d...')
+#6 {main}
+  thrown в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 9
+
+2019-01-12T11:06:53+00:00 CRITICAL Uncaught Error: Class 'WC_Admin_List_Table_Orders' not found in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:9
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php(11): require_once()
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(441): include('G:\\OpenServer\\d...')
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-config.php(89): require_once('G:\\OpenServer\\d...')
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-load.php(37): require_once('G:\\OpenServer\\d...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-admin\admin.php(31): require_once('G:\\OpenServer\\d...')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-admin\edit.php(10): require_once('G:\\OpenServer\\d...')
+#6 {main}
+  thrown в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 9
+
