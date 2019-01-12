@@ -12,6 +12,9 @@
 
 add_action( 'woocommerce_admin_order_preview_start', 'action_function_name_7949' );
 function action_function_name_7949(){
+	//ob_clean();
+ob_start();
+
 	echo "!!!!!!!!!!";
 }
 
@@ -35,6 +38,68 @@ function admin_order_preview_add_custom_meta_data( $data, $order ) {
 add_action( 'woocommerce_admin_order_preview_end', 'custom_display_order_data_in_admin' );
 function custom_display_order_data_in_admin(){
     // Call the stored value and display it
-    echo '<div>Value: {{data.custom_key}}</div><br>';
+    //echo '<div>Value: {{data.custom_key}}</div><br>';
+	echo "????????";
+	
+$t=ob_get_contents();
+
+//file_put_contents($_SERVER['DOCUMENT_ROOT'].'/dump0.txt', $t, FILE_APPEND);
+/* $t = ...
+
+!!!!!!!!!!
+							<div class="wc-order-preview-addresses">
+								<div class="wc-order-preview-address">
+									<h2>Детали оплаты</h2>
+									{{{ data.formatted_billing_address }}}
+
+									<# if ( data.data.billing.email ) { #>
+										<strong>Email</strong>
+										<a href="mailto:{{ data.data.billing.email }}">{{ data.data.billing.email }}</a>
+									<# } #>
+
+									<# if ( data.data.billing.phone ) { #>
+										<strong>Телефон</strong>
+										<a href="tel:{{ data.data.billing.phone }}">{{ data.data.billing.phone }}</a>
+									<# } #>
+
+									<# if ( data.payment_via ) { #>
+										<strong>Платёж через</strong>
+										{{{ data.payment_via }}}
+									<# } #>
+								</div>
+								<# if ( data.needs_shipping ) { #>
+									<div class="wc-order-preview-address">
+										<h2>Детали доставки</h2>
+										<# if ( data.ship_to_billing ) { #>
+											{{{ data.formatted_billing_address }}}
+										<# } else { #>
+											<a href="{{ data.shipping_address_map_url }}" target="_blank">{{{ data.formatted_shipping_address }}}</a>
+										<# } #>
+
+										<# if ( data.shipping_via ) { #>
+											<strong>Метод доставки</strong>
+											{{ data.shipping_via }}
+										<# } #>
+									</div>
+								<# } #>
+
+								<# if ( data.data.customer_note ) { #>
+									<div class="wc-order-preview-note">
+										<strong>Заметка</strong>
+										{{ data.data.customer_note }}
+									</div>
+								<# } #>
+							</div>
+
+							{{{ data.item_html }}}
+
+							????????
+
+*/
+
+ob_clean ();
+
+//Вместо этого пишем свой код наподобие того что в комментах
+echo $t;
 }
 

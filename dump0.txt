@@ -1,0 +1,48 @@
+!!!!!!!!!!
+							<div class="wc-order-preview-addresses">
+								<div class="wc-order-preview-address">
+									<h2>Детали оплаты</h2>
+									{{{ data.formatted_billing_address }}}
+
+									<# if ( data.data.billing.email ) { #>
+										<strong>Email</strong>
+										<a href="mailto:{{ data.data.billing.email }}">{{ data.data.billing.email }}</a>
+									<# } #>
+
+									<# if ( data.data.billing.phone ) { #>
+										<strong>Телефон</strong>
+										<a href="tel:{{ data.data.billing.phone }}">{{ data.data.billing.phone }}</a>
+									<# } #>
+
+									<# if ( data.payment_via ) { #>
+										<strong>Платёж через</strong>
+										{{{ data.payment_via }}}
+									<# } #>
+								</div>
+								<# if ( data.needs_shipping ) { #>
+									<div class="wc-order-preview-address">
+										<h2>Детали доставки</h2>
+										<# if ( data.ship_to_billing ) { #>
+											{{{ data.formatted_billing_address }}}
+										<# } else { #>
+											<a href="{{ data.shipping_address_map_url }}" target="_blank">{{{ data.formatted_shipping_address }}}</a>
+										<# } #>
+
+										<# if ( data.shipping_via ) { #>
+											<strong>Метод доставки</strong>
+											{{ data.shipping_via }}
+										<# } #>
+									</div>
+								<# } #>
+
+								<# if ( data.data.customer_note ) { #>
+									<div class="wc-order-preview-note">
+										<strong>Заметка</strong>
+										{{ data.data.customer_note }}
+									</div>
+								<# } #>
+							</div>
+
+							{{{ data.item_html }}}
+
+							????????
