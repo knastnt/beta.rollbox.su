@@ -7,23 +7,34 @@
 
 
 
+/*
+Суть такая: чтобы поправить содержание окошка просмотра ордера (при нажатии на глаз), делаем такой костыль.
+вывод этого окошка описан в функции order_preview_template() файла \wp-content\plugins\woocommerce\includes\admin\list-tables\class-wc-admin-list-table-orders.php
+сначала выполняются экшены привязанные к хуку woocommerce_admin_order_preview_start,
+затем выводится html-подобный код с вставленными в него именами переменных,
+затем выполняются экшены привязанные к хуку woocommerce_admin_order_preview_end.
+
+так как функция order_preview_template не переопределяется, я не нашел ничего лучшего чем перехватить и стереть вывод
+с между двумя этими хуками помощью ob_start(); ob_get_contents(); ob_clean ();
+а нужный html-подобный код вставил в акшен второго хука.
 
 
+*/
 
-add_action( 'woocommerce_admin_order_preview_start', 'action_function_name_7949' );
+
+add_action( 'woocommerce_admin_order_preview_start', 'action_function_name_7949', 10000, 0 ); //Приоритет 10000 - большой чтобы этат экшн выполнялся последним из возможно в будущем прикрепленных к этому хуку
 function action_function_name_7949(){
 	//ob_clean();
-ob_start();
-
-	echo "!!!!!!!!!!";
+	ob_start();
 }
 
-
+/*
+Из примера использования общей переменной
 // Add custom order meta data to make it accessible in Order preview template
 add_filter( 'woocommerce_admin_order_preview_get_order_details', 'admin_order_preview_add_custom_meta_data', 10, 2 );
 function admin_order_preview_add_custom_meta_data( $data, $order ) {
 	/*$data = print_r($data, 1) . PHP_EOL;
-    file_put_contents($_SERVER['DOCUMENT_ROOT'].'/dump.txt', $data, FILE_APPEND);*/
+    file_put_contents($_SERVER['DOCUMENT_ROOT'].'/dump.txt', $data, FILE_APPEND); /
 	
     // Replace '_custom_meta_key' by the correct postmeta key
     if( $custom_value = $order->get_meta('_custom_meta_key') )
@@ -32,19 +43,22 @@ function admin_order_preview_add_custom_meta_data( $data, $order ) {
 	$data['formatted_billing_address'] = 1111111; // <= Store the value in the data array.
 
     return $data;
-}
+*/
 
 // Display custom values in Order preview
-add_action( 'woocommerce_admin_order_preview_end', 'custom_display_order_data_in_admin' );
+add_action( 'woocommerce_admin_order_preview_end', 'custom_display_order_data_in_admin', 1, 0 ); //Приоритет 1 - наименьший чтобы этат экшн выполнялся первым из возможно в будущем прикрепленных к этому хуку
 function custom_display_order_data_in_admin(){
+	/*
+	Из примера использования общей переменной
     // Call the stored value and display it
-    //echo '<div>Value: {{data.custom_key}}</div><br>';
-	echo "????????";
+    echo '<div>Value: {{data.custom_key}}</div><br>';
+	*/
+	
 	
 $t=ob_get_contents();
 
 //file_put_contents($_SERVER['DOCUMENT_ROOT'].'/dump0.txt', $t, FILE_APPEND);
-/* $t = ...
+/* содержимое $t = ...
 
 !!!!!!!!!!
 							<div class="wc-order-preview-addresses">
@@ -97,9 +111,10 @@ $t=ob_get_contents();
 
 */
 
+//Стираем буфер вывода нафиг
 ob_clean ();
 
-//Вместо этого пишем свой код наподобие того что в комментах
+//сдесь пишем свой код вывода, который будет вместо стертого
 echo $t;
 }
 

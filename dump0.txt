@@ -1,4 +1,1140 @@
-!!!!!!!!!!
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html xmlns="http://www.w3.org/1999/xhtml" class="ie8 wp-toolbar"  lang="ru-RU">
+<![endif]-->
+<!--[if !(IE 8) ]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" class="wp-toolbar"  lang="ru-RU">
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Заказы &lsaquo; Roll Box &#8212; WordPress</title>
+<script type="text/javascript">
+addLoadEvent = function(func){if(typeof jQuery!="undefined")jQuery(document).ready(func);else if(typeof wpOnload!='function'){wpOnload=func;}else{var oldonload=wpOnload;wpOnload=function(){oldonload();func();}}};
+var ajaxurl = '/wp-admin/admin-ajax.php',
+	pagenow = 'edit-shop_order',
+	typenow = 'shop_order',
+	adminpage = 'edit-php',
+	thousandsSeparator = '&nbsp;',
+	decimalPoint = ',',
+	isRtl = 0;
+</script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<style type="text/css">
+		.fixed .column-stats {
+			width: 5em;
+		}
+	</style>
+	<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' href='https://beta.rollbox.su/wp-admin/load-styles.php?c=1&amp;dir=ltr&amp;load%5B%5D=dashicons,admin-bar,common,forms,admin-menu,dashboard,list-tables,edit,revisions,media,themes,about,nav-menus,wp-pointer,widgets&amp;load%5B%5D=,site-icon,l10n,buttons,wp-auth-check,wp-color-picker&amp;ver=5.0.3' type='text/css' media='all' />
+<link rel='stylesheet' id='installer-admin-css'  href='https://beta.rollbox.su/wp-content/plugins/woocommerce-products-filter/installer/res/css/admin.css?ver=1.7.15' type='text/css' media='all' />
+<!--[if lte IE 7]>
+<link rel='stylesheet' id='ie-css'  href='https://beta.rollbox.su/wp-admin/css/ie.min.css?ver=5.0.3' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='thickbox-css'  href='https://beta.rollbox.su/wp-includes/js/thickbox/thickbox.css?ver=5.0.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wpo-wcpdf-order-styles-css'  href='https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/css/order-styles.css?ver=2.2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='wpo-wcpdf-order-styles-buttons-css'  href='https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/css/order-styles-buttons.css?ver=2.2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='mailchimp-woocommerce-css'  href='https://beta.rollbox.su/wp-content/plugins/mailchimp-for-woocommerce/admin/css/mailchimp-woocommerce-admin.css?ver=2.1.11' type='text/css' media='all' />
+<link rel='stylesheet' id='storefront-plugin-install-css'  href='https://beta.rollbox.su/wp-content/themes/storefront/assets/css/admin/plugin-install.css?ver=2.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack-widget-social-icons-admin-css'  href='https://beta.rollbox.su/wp-content/plugins/jetpack/modules/widgets/social-icons/social-icons-admin.css?ver=20170506' type='text/css' media='all' />
+<link rel='stylesheet' id='woocommerce_admin_menu_styles-css'  href='https://beta.rollbox.su/wp-content/plugins/woocommerce/assets/css/menu.css?ver=3.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='woocommerce_admin_styles-css'  href='https://beta.rollbox.su/wp-content/plugins/woocommerce/assets/css/admin.css?ver=3.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='jquery-ui-style-css'  href='https://beta.rollbox.su/wp-content/plugins/woocommerce/assets/css/jquery-ui/jquery-ui.min.css?ver=3.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='https://beta.rollbox.su/wp-content/plugins/woocommerce-order-status-manager/assets/css/font-awesome.min.css?ver=1.9.2' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack-icons-css'  href='https://beta.rollbox.su/wp-content/plugins/jetpack/css/jetpack-icons.min.css?ver=6.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack-jitm-css-css'  href='https://beta.rollbox.su/wp-content/plugins/jetpack/css/jetpack-admin-jitm.min.css?ver=6.8.1-201243242' type='text/css' media='all' />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/beta.rollbox.su\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.0.3"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<script type='text/javascript'>
+/* <![CDATA[ */
+var installer_strings = {"installing":"Installing %s","updating":"Updating %s","activating":"Activating %s"};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpo_wcpdf_ajax = {"ajaxurl":"https:\/\/beta.rollbox.su\/wp-admin\/admin-ajax.php","nonce":"8cbff901df","bulk_actions":["invoice","packing-slip"],"confirm_delete":"\u0412\u044b \u0442\u043e\u0447\u043d\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u044d\u0442\u043e\u0442 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442? \u042d\u0442\u043e \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043e\u0442\u043c\u0435\u043d\u0435\u043d\u043e."};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var woocommerce_admin = {"i18n_decimal_error":"\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0447\u0438\u0441\u043b\u043e \u0432 \u0434\u0435\u0441\u044f\u0442\u0438\u0447\u043d\u043e\u043c \u0444\u043e\u0440\u043c\u0430\u0442\u0435 (.), \u0431\u0435\u0437 \u0442\u044b\u0441\u044f\u0447\u043d\u043e\u0433\u043e \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044f.","i18n_mon_decimal_error":"\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0447\u0438\u0441\u043b\u043e \u0432 \u0434\u0435\u043d\u0435\u0436\u043d\u043e\u043c \u0434\u0435\u0441\u044f\u0442\u0438\u0447\u043d\u043e\u043c \u0444\u043e\u0440\u043c\u0430\u0442\u0435 (.), \u0431\u0435\u0437 \u0442\u044b\u0441\u044f\u0447\u043d\u043e\u0433\u043e \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044f \u0438 \u0441\u0438\u043c\u0432\u043e\u043b\u043e\u0432 \u0432\u0430\u043b\u044e\u0442\u044b.","i18n_country_iso_error":"\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u043a\u043e\u0434 \u0441\u0442\u0440\u0430\u043d\u044b \u0432 \u0432\u0438\u0434\u0435 \u0434\u0432\u0443\u0445 \u0437\u0430\u0433\u043b\u0430\u0432\u043d\u044b\u0445 \u0431\u0443\u043a\u0432.","i18n_sale_less_than_regular_error":"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435, \u043a\u043e\u0442\u043e\u0440\u043e\u0435 \u043c\u0435\u043d\u044c\u0448\u0435 \u0431\u0430\u0437\u043e\u0432\u043e\u0439 \u0446\u0435\u043d\u044b.","i18n_delete_product_notice":"\u042d\u0442\u043e\u0442 \u0442\u043e\u0432\u0430\u0440 \u043f\u0440\u043e\u0434\u0430\u0432\u0430\u043b\u0441\u044f \u0438 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0441\u0432\u044f\u0437\u0430\u043d \u0441 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u044e\u0449\u0438\u043c\u0438 \u0437\u0430\u043a\u0430\u0437\u0430\u043c\u0438. \u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b, \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0435\u0433\u043e \u0443\u0434\u0430\u043b\u0438\u0442\u044c?","i18n_remove_personal_data_notice":"\u042d\u0442\u043e \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043e\u0442\u043c\u0435\u043d\u0435\u043d\u043e. \u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b, \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0435 \u0434\u0430\u043d\u043d\u044b\u0435 \u0438\u0437 \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0445 \u0437\u0430\u043a\u0430\u0437\u043e\u0432?","decimal_point":".","mon_decimal_point":".","ajax_url":"https:\/\/beta.rollbox.su\/wp-admin\/admin-ajax.php","strings":{"import_products":"\u0418\u043c\u043f\u043e\u0440\u0442","export_products":"\u042d\u043a\u0441\u043f\u043e\u0440\u0442"},"nonces":{"gateway_toggle":"cd0126625e"},"urls":{"import_products":null,"export_products":null}};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wc_enhanced_select_params = {"i18n_no_matches":"\u0421\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e","i18n_ajax_error":"\u041e\u0448\u0438\u0431\u043a\u0430 \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438","i18n_input_too_short_1":"\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 1 \u0438\u043b\u0438 \u0431\u043e\u043b\u0435\u0435 \u0441\u0438\u043c\u0432\u043e\u043b\u043e\u0432","i18n_input_too_short_n":"\u041d\u0443\u0436\u043d\u043e \u0432\u0432\u0435\u0441\u0442\u0438 \u0431\u043e\u043b\u044c\u0448\u0435 \u0441\u0438\u043c\u0432\u043e\u043b\u043e\u0432, \u0435\u0449\u0451 \u043a\u0430\u043a \u043c\u0438\u043d\u0438\u043c\u0443\u043c %qty%","i18n_input_too_long_1":"\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0443\u0434\u0430\u043b\u0438\u0442\u0435 1 \u0441\u0438\u043c\u0432\u043e\u043b","i18n_input_too_long_n":"\u041d\u0443\u0436\u043d\u043e \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u043b\u0438\u0448\u043d\u0438\u0435 \u0441\u0438\u043c\u0432\u043e\u043b\u044b, \u0438\u0445 \u0437\u0434\u0435\u0441\u044c %qty%","i18n_selection_too_long_1":"\u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u044b\u0431\u0440\u0430\u0442\u044c \u043b\u0438\u0448\u044c 1 \u0432\u0430\u0440\u0438\u0430\u043d\u0442","i18n_selection_too_long_n":"\u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u044b\u0431\u0440\u0430\u0442\u044c \u043d\u0435 \u0431\u043e\u043b\u0435\u0435 %qty%","i18n_load_more":"\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0435\u0449\u0451\u2026","i18n_searching":"\u041f\u043e\u0438\u0441\u043a\u2026","ajax_url":"https:\/\/beta.rollbox.su\/wp-admin\/admin-ajax.php","search_products_nonce":"1dc42a1c8f","search_customers_nonce":"a4bb2ed6ac","search_categories_nonce":"8ade432ffc"};
+/* ]]> */
+</script>
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+var userSettings = {"url":"\/","uid":"6","time":"1547295049","secure":"1"};var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};/* ]]> */
+</script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-admin/load-scripts.php?c=1&amp;load%5B%5D=jquery-core,jquery-migrate,utils,jquery-ui-core,jquery-ui-widget,underscore,wp-util,jquery-ui-mouse,jquery-ui-sortable&amp;ver=5.0.3'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/woocommerce-products-filter/installer/res/js/admin.js?ver=1.7.15'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/js/order-script.js?ver=2.2.5'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/mailchimp-for-woocommerce/admin/js/mailchimp-woocommerce-admin.js?ver=2.1.11'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/jetpack/modules/widgets/social-icons/social-icons-admin.js?ver=20170506'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/woocommerce/assets/js/jquery-tiptip/jquery.tipTip.min.js?ver=3.5.3'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/woocommerce/assets/js/admin/woocommerce_admin.min.js?ver=3.5.3'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/woocommerce/assets/js/selectWoo/selectWoo.full.min.js?ver=1.0.4'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/woocommerce/assets/js/admin/wc-enhanced-select.min.js?ver=3.5.3'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.11.4'></script>
+<script type='text/javascript'>
+jQuery(document).ready(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"\u0417\u0430\u043a\u0440\u044b\u0442\u044c","currentText":"\u0421\u0435\u0433\u043e\u0434\u043d\u044f","monthNames":["\u042f\u043d\u0432\u0430\u0440\u044c","\u0424\u0435\u0432\u0440\u0430\u043b\u044c","\u041c\u0430\u0440\u0442","\u0410\u043f\u0440\u0435\u043b\u044c","\u041c\u0430\u0439","\u0418\u044e\u043d\u044c","\u0418\u044e\u043b\u044c","\u0410\u0432\u0433\u0443\u0441\u0442","\u0421\u0435\u043d\u0442\u044f\u0431\u0440\u044c","\u041e\u043a\u0442\u044f\u0431\u0440\u044c","\u041d\u043e\u044f\u0431\u0440\u044c","\u0414\u0435\u043a\u0430\u0431\u0440\u044c"],"monthNamesShort":["\u042f\u043d\u0432","\u0424\u0435\u0432","\u041c\u0430\u0440","\u0410\u043f\u0440","\u041c\u0430\u0439","\u0418\u044e\u043d","\u0418\u044e\u043b","\u0410\u0432\u0433","\u0421\u0435\u043d","\u041e\u043a\u0442","\u041d\u043e\u044f","\u0414\u0435\u043a"],"nextText":"\u0414\u0430\u043b\u0435\u0435","prevText":"\u041d\u0430\u0437\u0430\u0434","dayNames":["\u0412\u043e\u0441\u043a\u0440\u0435\u0441\u0435\u043d\u044c\u0435","\u041f\u043e\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u0438\u043a","\u0412\u0442\u043e\u0440\u043d\u0438\u043a","\u0421\u0440\u0435\u0434\u0430","\u0427\u0435\u0442\u0432\u0435\u0440\u0433","\u041f\u044f\u0442\u043d\u0438\u0446\u0430","\u0421\u0443\u0431\u0431\u043e\u0442\u0430"],"dayNamesShort":["\u0412\u0441","\u041f\u043d","\u0412\u0442","\u0421\u0440","\u0427\u0442","\u041f\u0442","\u0421\u0431"],"dayNamesMin":["\u0412\u0441","\u041f\u043d","\u0412\u0442","\u0421\u0440","\u0427\u0442","\u041f\u0442","\u0421\u0431"],"dateFormat":"dd.mm.yy","firstDay":1,"isRTL":false});});
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var accounting_params = {"mon_decimal_point":"."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/woocommerce/assets/js/accounting/accounting.min.js?ver=0.4.2'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/woocommerce/assets/js/round/round.min.js?ver=3.5.3'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-includes/js/plupload/moxie.min.js?ver=1.3.5'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-includes/js/plupload/plupload.min.js?ver=2.1.9'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/woocommerce/assets/js/stupidtable/stupidtable.min.js?ver=3.5.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var woocommerce_admin_meta_boxes = {"remove_item_notice":"\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b, \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0435 \u043f\u0443\u043d\u043a\u0442\u044b? \u0412\u0430\u043c \u043c\u043e\u0436\u0435\u0442 \u043f\u043e\u0442\u0440\u0435\u0431\u043e\u0432\u0430\u0442\u044c\u0441\u044f \u0432\u0440\u0443\u0447\u043d\u0443\u044e \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043f\u043e \u044d\u0442\u043e\u0439 \u043f\u043e\u0437\u0438\u0446\u0438\u0438 \u043d\u0430 \u0441\u043a\u043b\u0430\u0434\u0435.","i18n_select_items":"\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u043f\u043e\u0437\u0438\u0446\u0438\u0438.","i18n_do_refund":"\u0412\u044b \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0437\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u0443 \u0432\u043e\u0437\u0432\u0440\u0430\u0442\u0430? \u042d\u0442\u043e \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043e\u0442\u043c\u0435\u043d\u0435\u043d\u043e.","i18n_delete_refund":"\u0412\u044b \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0443\u043d\u0438\u0447\u0442\u043e\u0436\u0438\u0442\u044c \u044d\u0442\u043e\u0442 \u0432\u043e\u0437\u0432\u0440\u0430\u0442? \u042d\u0442\u043e \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043e\u0442\u043c\u0435\u043d\u0435\u043d\u043e.","i18n_delete_tax":"\u0412\u044b \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u043d\u0430\u043b\u043e\u0433? \u042d\u0442\u043e \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043e\u0442\u043c\u0435\u043d\u0435\u043d\u043e.","remove_item_meta":"\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u043c\u0435\u0442\u0430-\u0434\u0430\u043d\u043d\u044b\u0435 \u044d\u0442\u043e\u0439 \u043f\u043e\u0437\u0438\u0446\u0438\u0438?","remove_attribute":"\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u044d\u0442\u043e\u0442 \u0430\u0442\u0440\u0438\u0431\u0443\u0442?","name_label":"\u0418\u043c\u044f","remove_label":"\u0423\u0434\u0430\u043b\u0438\u0442\u044c","click_to_toggle":"\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0434\u043b\u044f \u043f\u0435\u0440\u0435\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f","values_label":"\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435(\u044f)","text_attribute_tip":"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043a\u0430\u043a\u043e\u0439-\u043b\u0438\u0431\u043e \u0442\u0435\u043a\u0441\u0442 \u0438\u043b\u0438 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u044b, \u0440\u0430\u0437\u0434\u0435\u043b\u044f\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0432\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u043e\u0439 \u0447\u0435\u0440\u0442\u043e\u0439 (|).","visible_label":"\u041e\u0442\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435 \u0442\u043e\u0432\u0430\u0440\u043e\u0432","used_for_variations_label":"\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f \u0434\u043b\u044f \u0432\u0430\u0440\u0438\u0430\u0446\u0438\u0439","new_attribute_prompt":"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0434\u043b\u044f \u043d\u043e\u0432\u043e\u0433\u043e \u0442\u0435\u0440\u043c\u0438\u043d\u0430 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430:","calc_totals":"\u041f\u0435\u0440\u0435\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0438\u0442\u043e\u0433? \u042d\u0442\u043e \u0432\u044b\u0441\u0447\u0438\u0442\u0430\u0435\u0442 \u043d\u0430\u043b\u043e\u0433\u0438 \u043e\u0441\u043d\u043e\u0432\u044b\u0432\u0430\u044f\u0441\u044c \u043d\u0430 \u043c\u0435\u0441\u0442\u043e\u043d\u0430\u0445\u043e\u0436\u0434\u0435\u043d\u0438\u0438 \u043a\u043b\u0438\u0435\u043d\u0442\u0430 (\u0438\u043b\u0438 \u043c\u0430\u0433\u0430\u0437\u0438\u043d\u0430) \u0438 \u043e\u0431\u043d\u043e\u0432\u0438\u0442 \u0438\u0442\u043e\u0433\u043e\u0432\u044b\u0435 \u0441\u0443\u043c\u043c\u044b.","copy_billing":"\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043f\u043b\u0430\u0442\u0435\u0436\u043d\u0443\u044e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u0432 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u043e \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0435? \u042d\u0442\u043e \u043f\u0435\u0440\u0435\u0437\u0430\u043f\u0438\u0448\u0435\u0442 \u0443\u0436\u0435 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u0443\u044e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u043e \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0435.","load_billing":"\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u043f\u043b\u0430\u0442\u0435\u0436\u043d\u0443\u044e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u043a\u043b\u0438\u0435\u043d\u0442\u0430? \u042d\u0442\u043e \u043f\u0435\u0440\u0435\u0437\u0430\u043f\u0438\u0448\u0435\u0442 \u0443\u0436\u0435 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u0443\u044e \u043f\u043b\u0430\u0442\u0435\u0436\u043d\u0443\u044e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e.","load_shipping":"\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u043e \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0435 \u043a\u043b\u0438\u0435\u043d\u0442\u0430? \u042d\u0442\u043e \u043f\u0435\u0440\u0435\u0437\u0430\u043f\u0438\u0448\u0435\u0442 \u0443\u0436\u0435 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u0443\u044e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u043e \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0435.","featured_label":"\u0420\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u043c\u044b\u0439","prices_include_tax":"no","tax_based_on":"shipping","round_at_subtotal":"no","no_customer_selected":"\u041d\u0438 \u043e\u0434\u0438\u043d \u043a\u043b\u0438\u0435\u043d\u0442 \u043d\u0435 \u0432\u044b\u0431\u0440\u0430\u043d","plugin_url":"https:\/\/beta.rollbox.su\/wp-content\/plugins\/woocommerce","ajax_url":"https:\/\/beta.rollbox.su\/wp-admin\/admin-ajax.php","order_item_nonce":"ea7d4e6baf","add_attribute_nonce":"cf46e5cfc5","save_attributes_nonce":"0e0101a1fe","calc_totals_nonce":"df7b4cdcae","get_customer_details_nonce":"8ed9e0c75e","search_products_nonce":"1dc42a1c8f","grant_access_nonce":"2d323a9516","revoke_access_nonce":"fc9aaa22fa","add_order_note_nonce":"49c4f0bc48","delete_order_note_nonce":"bdc40d4f03","calendar_image":"https:\/\/beta.rollbox.su\/wp-content\/plugins\/woocommerce\/assets\/images\/calendar.png","post_id":"148","base_country":"RU","currency_format_num_decimals":"2","currency_format_symbol":"\u20bd","currency_format_decimal_sep":".","currency_format_thousand_sep":",","currency_format":"%s%v","rounding_precision":"6","tax_rounding_mode":"1","product_types":["simple","grouped","variable","external"],"i18n_download_permission_fail":"\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f \u2014 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u0443\u0436\u0435 \u0438\u043c\u0435\u0435\u0442 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0435 \u043d\u0430 \u044d\u0442\u043e\u0442 \u0444\u0430\u0439\u043b \u0438\u043b\u0438 \u043f\u043b\u0430\u0442\u0451\u0436\u043d\u044b\u0439 Email \u043d\u0435 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d. \u0423\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c, \u0447\u0442\u043e \u043f\u043b\u0430\u0442\u0451\u0436\u043d\u044b\u0439 Email \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d \u0438 \u0437\u0430\u043a\u0430\u0437 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d.","i18n_permission_revoke":"\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u043e\u0442\u043e\u0437\u0432\u0430\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u044d\u0442\u043e\u0439 \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0435?","i18n_tax_rate_already_exists":"\u0412\u044b \u043d\u0435 \u043c\u043e\u0436\u0435\u0442\u0435 \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043e\u0434\u043d\u0443 \u0438 \u0442\u0443 \u0436\u0435 \u043d\u0430\u043b\u043e\u0433\u043e\u0432\u0443\u044e \u0441\u0442\u0430\u0432\u043a\u0443 \u0434\u0432\u0430\u0436\u0434\u044b!","i18n_delete_note":"\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b, \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u044d\u0442\u0443 \u0437\u0430\u043c\u0435\u0442\u043a\u0443? \u042d\u0442\u043e \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435 \u043d\u0435\u043b\u044c\u0437\u044f \u043e\u0442\u043c\u0435\u043d\u0438\u0442\u044c.","i18n_apply_coupon":"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043a\u043e\u0434 \u043a\u0443\u043f\u043e\u043d\u0430, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u0438\u043c\u0435\u043d\u0438\u0442\u044c \u0435\u0433\u043e \u043a \u0434\u0430\u043d\u043d\u043e\u043c\u0443 \u0437\u0430\u043a\u0430\u0437\u0443.","i18n_add_fee":"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0444\u0438\u043a\u0441\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0438\u043b\u0438 \u043f\u0440\u043e\u0446\u0435\u043d\u0442\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0447\u0442\u043e\u0431\u044b \u0437\u0430\u0434\u0430\u0442\u044c \u0441\u0431\u043e\u0440."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/woocommerce/assets/js/admin/meta-boxes.min.js?ver=3.5.3'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-includes/js/backbone.min.js?ver=1.2.3'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/woocommerce/assets/js/admin/backbone-modal.min.js?ver=3.5.3'></script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/woocommerce/assets/js/admin/wc-clipboard.min.js?ver=3.5.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var woocommerce_admin_meta_boxes_order = {"countries":"[]","i18n_select_state_text":"\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u2026","default_country":"RU","default_state":"","placeholder_name":"\u0418\u043c\u044f (\u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e)","placeholder_value":"\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 (\u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e)"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://beta.rollbox.su/wp-content/plugins/woocommerce/assets/js/admin/meta-boxes-order.min.js?ver=3.5.3'></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+	var wpNotesIsJetpackClient = true;
+	var wpNotesIsJetpackClientV2 = true;
+	var wpNotesLinkAccountsURL = 'https://beta.rollbox.su/wp-admin/admin.php?page=jetpack';
+/* ]]> */
+</script>
+	<link id="wp-admin-canonical" rel="canonical" href="https://beta.rollbox.su/wp-admin/edit.php?post_type=shop_order" />
+	<script>
+		if ( window.history.replaceState ) {
+			window.history.replaceState( null, null, document.getElementById( 'wp-admin-canonical' ).href + window.location.hash );
+		}
+	</script>
+<script type="text/javascript">var _wpColorScheme = {"icons":{"base":"#82878c","focus":"#00a0d2","current":"#fff"}};</script>
+<style type="text/css" media="print">#wpadminbar { display:none; }</style>
+		<!-- Custom Order Status Icon styles -->
+		<style type="text/css">
+			/*<![CDATA[*/
+
+						
+						
+				
+				
+					
+											.widefat .column-order_status .order-status.status-processing, .widefat .column-order_status .order-status.status-cooking, .widefat .column-order_status .order-status.status-ready-delivery, .widefat .column-order_status .order-status.status-ready-self-out, .widefat .column-order_status .order-status.status-completed, .widefat .column-order_status .order-status.status-cancelled, .widefat .column-order_status .order-status.status-pending, .widefat .column-order_status .order-status.status-on-hold, .widefat .column-order_status .order-status.status-failed, .widefat .column-order_status .order-status.status-refunded {
+							position: relative;
+							padding: 0;
+							text-indent: -9999px;
+							background: transparent;
+							border: 0;
+							font-size: 2em;
+							line-height: 1;
+							vertical-align: text-top;
+						}
+					
+					.widefat .column-order_status .order-status.status-processing:after, .widefat .column-order_status .order-status.status-cooking:after, .widefat .column-order_status .order-status.status-ready-delivery:after, .widefat .column-order_status .order-status.status-ready-self-out:after, .widefat .column-order_status .order-status.status-completed:after, .widefat .column-order_status .order-status.status-cancelled:after, .widefat .column-order_status .order-status.status-pending:after, .widefat .column-order_status .order-status.status-on-hold:after, .widefat .column-order_status .order-status.status-failed:after, .widefat .column-order_status .order-status.status-refunded:after {
+						speak: none;
+						font-weight: normal;
+						font-variant: normal;
+						text-transform: none;
+						line-height: 1;
+						-webkit-font-smoothing: antialiased;
+						margin: 0;
+						text-indent: 0;
+						position: absolute;
+						top: 0;
+						left: 0;
+						text-align: center;
+											}
+
+							
+						.widefat .column-order_actions a.button {
+				padding: 0 0.5em;
+				height: 2em;
+				line-height: 1.9em;
+			}
+
+			
+								
+					.order_actions .processing, .order_actions .completed {
+						display: block;
+						text-indent: -9999px;
+						position: relative;
+						padding: 0!important;
+						height: 2em!important;
+						width: 2em;
+					}
+					.order_actions .processing:after, .order_actions .completed:after {
+						speak: none;
+						font-weight: 400;
+						font-variant: normal;
+						text-transform: none;
+						-webkit-font-smoothing: antialiased;
+						margin: 0;
+						text-indent: 0;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						text-align: center;
+						line-height: 1.85;
+					}
+
+							
+										
+					
+											.widefat .column-order_status .order-status.status-processing:after {
+							font-family: "WooCommerce";
+							content:     "\e011";
+						}
+					
+				
+					
+											.widefat .column-order_status .order-status.status-cooking:after {
+							font-family: "FontAwesome";
+							content:     "\f06d";
+						}
+					
+				
+					
+											.widefat .column-order_status .order-status.status-ready-delivery:after {
+							font-family: "WooCommerce";
+							content:     "\e019";
+						}
+					
+				
+					
+											.widefat .column-order_status .order-status.status-ready-self-out:after {
+							font-family: "FontAwesome";
+							content:     "\f0a4";
+						}
+					
+				
+					
+											.widefat .column-order_status .order-status.status-completed:after {
+							font-family: "WooCommerce";
+							content:     "\e015";
+						}
+					
+				
+					
+											.widefat .column-order_status .order-status.status-cancelled:after {
+							font-family: "WooCommerce";
+							content:     "\e013";
+						}
+					
+				
+					
+											.widefat .column-order_status .order-status.status-pending:after {
+							font-family: "WooCommerce";
+							content:     "\e012";
+						}
+					
+				
+					
+											.widefat .column-order_status .order-status.status-on-hold:after {
+							font-family: "WooCommerce";
+							content:     "\e033";
+						}
+					
+				
+					
+											.widefat .column-order_status .order-status.status-failed:after {
+							font-family: "WooCommerce";
+							content:     "\e016";
+						}
+					
+				
+					
+											.widefat .column-order_status .order-status.status-refunded:after {
+							font-family: "WooCommerce";
+							content:     "\e014";
+						}
+					
+							
+										
+					
+											.wc-order-preview .order-status.status-processing {
+							background-color: #7100e2;
+							color: white;
+						}
+					
+																		.order-status.status-processing {
+								background-color: none;
+								border: 0;
+								color: #7100e2							}
+											
+				
+					
+											.wc-order-preview .order-status.status-cooking {
+							background-color: #c90606;
+							color: white;
+						}
+					
+																		.order-status.status-cooking {
+								background-color: none;
+								border: 0;
+								color: #c90606							}
+											
+				
+					
+											.wc-order-preview .order-status.status-ready-delivery {
+							background-color: #eeee22;
+							color: black;
+						}
+					
+																		.order-status.status-ready-delivery {
+								background-color: none;
+								border: 0;
+								color: #eeee22							}
+											
+				
+					
+											.wc-order-preview .order-status.status-ready-self-out {
+							background-color: #72d62a;
+							color: black;
+						}
+					
+																		.order-status.status-ready-self-out {
+								background-color: none;
+								border: 0;
+								color: #72d62a							}
+											
+				
+					
+											.wc-order-preview .order-status.status-completed {
+							background-color: #c8d7e1;
+							color: black;
+						}
+					
+																		.order-status.status-completed {
+								background-color: none;
+								border: 0;
+								color: #c8d7e1							}
+											
+				
+					
+											.wc-order-preview .order-status.status-cancelled {
+							background-color: #e5e5e5;
+							color: black;
+						}
+					
+																		.order-status.status-cancelled {
+								background-color: none;
+								border: 0;
+								color: #e5e5e5							}
+											
+				
+					
+											.wc-order-preview .order-status.status-pending {
+							background-color: #c6e1c6;
+							color: black;
+						}
+					
+																		.order-status.status-pending {
+								background-color: none;
+								border: 0;
+								color: #c6e1c6							}
+											
+				
+					
+											.wc-order-preview .order-status.status-on-hold {
+							background-color: #f8dda7;
+							color: black;
+						}
+					
+																		.order-status.status-on-hold {
+								background-color: none;
+								border: 0;
+								color: #f8dda7							}
+											
+				
+					
+											.wc-order-preview .order-status.status-failed {
+							background-color: #eba3a3;
+							color: black;
+						}
+					
+																		.order-status.status-failed {
+								background-color: none;
+								border: 0;
+								color: #eba3a3							}
+											
+				
+					
+											.wc-order-preview .order-status.status-refunded {
+							background-color: #e5e5e5;
+							color: black;
+						}
+					
+																		.order-status.status-refunded {
+								background-color: none;
+								border: 0;
+								color: #e5e5e5							}
+											
+							
+										
+																		.widefat .column-wc_actions a.processing::after {
+								font-family: "WooCommerce";
+								content:     "\e00f";
+							}
+											
+				
+																		.widefat .column-wc_actions a.completed::after {
+								font-family: "Dashicons";
+								content:     "\f147";
+							}
+											
+							
+			/*]]>*/
+		</style>
+		</head>
+<body class="wp-admin wp-core-ui no-js   jetpack-connected  edit-php auto-fold admin-bar post-type-shop_order branch-5 version-5-0-3 admin-color-fresh locale-ru-ru no-customize-support no-svg">
+<script type="text/javascript">
+	document.body.className = document.body.className.replace('no-js','js');
+</script>
+
+
+<div id="wpwrap">
+
+<div id="adminmenumain" role="navigation" aria-label="Главное меню">
+<a href="#wpbody-content" class="screen-reader-shortcut">Перейти к основному содержимому</a>
+<a href="#wp-toolbar" class="screen-reader-shortcut">Перейти к верхней панели</a>
+<div id="adminmenuback"></div>
+<div id="adminmenuwrap">
+<ul id="adminmenu">
+
+
+	<li class="wp-first-item wp-not-current-submenu menu-top menu-top-first menu-icon-dashboard menu-top-first" id="menu-dashboard">
+	<a href='index.php' class="wp-first-item wp-not-current-submenu menu-top menu-top-first menu-icon-dashboard menu-top-first" ><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-dashboard'><br /></div><div class='wp-menu-name'>Консоль</div></a></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top toplevel_page_jetpack menu-top-last" id="toplevel_page_jetpack">
+	<a href='admin.php?page=jetpack#/dashboard' class="wp-has-submenu wp-not-current-submenu menu-top toplevel_page_jetpack menu-top-last" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before'><br /></div><div class='wp-menu-name'>Jetpack</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head' aria-hidden='true'>Jetpack</li><li class="wp-first-item"><a href='admin.php?page=jetpack#/dashboard' class="wp-first-item">Консоль</a></li><li><a href='admin.php?page=jetpack#/settings'>Настройки</a></li></ul></li>
+	<li class="wp-not-current-submenu wp-menu-separator" aria-hidden="true"><div class="separator"></div></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" id="menu-posts">
+	<a href='edit.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-post'><br /></div><div class='wp-menu-name'>Записи</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head' aria-hidden='true'>Записи</li><li class="wp-first-item"><a href='edit.php' class="wp-first-item">Все записи</a></li><li><a href='post-new.php'>Добавить новую</a></li></ul></li>
+	<li class="wp-not-current-submenu menu-top menu-icon-comments" id="menu-comments">
+	<a href='edit-comments.php' class="wp-not-current-submenu menu-top menu-icon-comments" ><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-comments'><br /></div><div class='wp-menu-name'>Комментарии <span class="awaiting-mod count-0"><span class="pending-count">0</span></span></div></a></li>
+	<li class="wp-has-submenu wp-has-current-submenu wp-menu-open menu-top menu-icon-shop_order" id="menu-posts-shop_order">
+	<a href='edit.php?post_type=shop_order' class="wp-has-submenu wp-has-current-submenu wp-menu-open menu-top menu-icon-shop_order" ><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-post'><br /></div><div class='wp-menu-name'>Заказы</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head' aria-hidden='true'>Заказы</li><li class="wp-first-item current"><a href='edit.php?post_type=shop_order' class="wp-first-item current" aria-current="page">Заказы</a></li><li><a href='post-new.php?post_type=shop_order'>Добавить заказ</a></li></ul></li>
+	<li class="wp-not-current-submenu menu-top menu-icon-generic toplevel_page_wc-reports menu-top-last" id="toplevel_page_wc-reports">
+	<a href='admin.php?page=wc-reports' class="wp-not-current-submenu menu-top menu-icon-generic toplevel_page_wc-reports menu-top-last" ><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-generic'><br /></div><div class='wp-menu-name'>Отчеты о продажах</div></a></li>
+	<li class="wp-not-current-submenu wp-menu-separator" aria-hidden="true"><div class="separator"></div></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users menu-top-first" id="menu-users">
+	<a href='profile.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users menu-top-first" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-users'><br /></div><div class='wp-menu-name'>Профиль</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head' aria-hidden='true'>Профиль</li><li class="wp-first-item"><a href='profile.php' class="wp-first-item">Ваш профиль</a></li><li><a href='profile.php?page=mycred_default-history'>Баллы История</a></li></ul></li>
+	<li class="wp-not-current-submenu menu-top menu-icon-tools" id="menu-tools">
+	<a href='tools.php' class="wp-not-current-submenu menu-top menu-icon-tools" ><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-tools'><br /></div><div class='wp-menu-name'>Инструменты</div></a></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" id="menu-settings"><a href='admin.php?page=sharing' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-settings'><br /></div><div class='wp-menu-name'>Настройки </div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head' aria-hidden='true'>Настройки </li><li class="wp-first-item"><a href='options-general.php?page=sharing' class="wp-first-item">Поделиться</a></li></ul></li><li id="collapse-menu" class="hide-if-no-js"><button type="button" id="collapse-button" aria-label="Свернуть главное меню" aria-expanded="true"><span class="collapse-button-icon" aria-hidden="true"></span><span class="collapse-button-label">Свернуть меню</span></button></li></ul>
+</div>
+</div>
+<div id="wpcontent">
+
+		<div id="wpadminbar" class="nojq nojs">
+						<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="Верхняя панель" tabindex="0">
+				<ul id="wp-admin-bar-root-default" class="ab-top-menu">
+		<li id="wp-admin-bar-menu-toggle"><a class="ab-item" href="#"><span class="ab-icon"></span><span class="screen-reader-text">Меню</span></a>		</li>
+		<li id="wp-admin-bar-wp-logo" class="menupop"><a class="ab-item" aria-haspopup="true" href="https://beta.rollbox.su/wp-admin/about.php"><span class="ab-icon"></span><span class="screen-reader-text">О WordPress</span></a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-wp-logo-default" class="ab-submenu">
+		<li id="wp-admin-bar-about"><a class="ab-item" href="https://beta.rollbox.su/wp-admin/about.php">О WordPress</a>		</li></ul><ul id="wp-admin-bar-wp-logo-external" class="ab-sub-secondary ab-submenu">
+		<li id="wp-admin-bar-wporg"><a class="ab-item" href="https://ru.wordpress.org/">WordPress.org</a>		</li>
+		<li id="wp-admin-bar-documentation"><a class="ab-item" href="https://codex.wordpress.org/Заглавная_страница">Документация</a>		</li>
+		<li id="wp-admin-bar-support-forums"><a class="ab-item" href="https://ru.wordpress.org/support/">Форумы поддержки</a>		</li>
+		<li id="wp-admin-bar-feedback"><a class="ab-item" href="https://ru.wordpress.org/support/forum/requests-and-feedback/">Обратная связь</a>		</li></ul></div>		</li>
+		<li id="wp-admin-bar-site-name" class="menupop"><a class="ab-item" aria-haspopup="true" href="https://beta.rollbox.su/">Roll Box</a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-site-name-default" class="ab-submenu">
+		<li id="wp-admin-bar-view-site"><a class="ab-item" href="https://beta.rollbox.su/">Перейти на сайт</a>		</li></ul></div>		</li>
+		<li id="wp-admin-bar-comments"><a class="ab-item" href="https://beta.rollbox.su/wp-admin/edit-comments.php"><span class="ab-icon"></span><span class="ab-label awaiting-mod pending-count count-0" aria-hidden="true">0</span><span class="screen-reader-text">0 комментариев ожидают проверки</span></a>		</li>
+		<li id="wp-admin-bar-new-content" class="menupop"><a class="ab-item" aria-haspopup="true" href="https://beta.rollbox.su/wp-admin/post-new.php"><span class="ab-icon"></span><span class="ab-label">Добавить</span></a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-new-content-default" class="ab-submenu">
+		<li id="wp-admin-bar-new-post"><a class="ab-item" href="https://beta.rollbox.su/wp-admin/post-new.php">Запись</a>		</li>
+		<li id="wp-admin-bar-new-shop_order"><a class="ab-item" href="https://beta.rollbox.su/wp-admin/post-new.php?post_type=shop_order">Заказ</a>		</li></ul></div>		</li></ul><ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+		<li id="wp-admin-bar-my-account" class="menupop with-avatar"><a class="ab-item" aria-haspopup="true" href="https://beta.rollbox.su/wp-admin/profile.php">Привет, <span class="display-name">manager</span><img alt='' src='https://secure.gravatar.com/avatar/866d50b3be6cd503ae206fcf73b37849?s=26&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/866d50b3be6cd503ae206fcf73b37849?s=52&#038;d=mm&#038;r=g 2x' class='avatar avatar-26 photo' height='26' width='26' /></a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-user-actions" class="ab-submenu">
+		<li id="wp-admin-bar-user-info"><a class="ab-item" tabindex="-1" href="https://beta.rollbox.su/wp-admin/profile.php"><img alt='' src='https://secure.gravatar.com/avatar/866d50b3be6cd503ae206fcf73b37849?s=64&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/866d50b3be6cd503ae206fcf73b37849?s=128&#038;d=mm&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' /><span class='display-name'>manager</span></a>		</li>
+		<li id="wp-admin-bar-edit-profile"><a class="ab-item" href="https://beta.rollbox.su/wp-admin/profile.php">Изменить профиль</a>		</li>
+		<li id="wp-admin-bar-logout"><a class="ab-item" href="https://beta.rollbox.su/wp-login.php?action=logout&#038;_wpnonce=51a3a5ee22">Выйти</a>		</li></ul><ul id="wp-admin-bar-my-account-default" class="ab-submenu">
+		<li id="wp-admin-bar-mycred-account" class="menupop ab-sub-secondary"><div class="ab-item ab-empty-item" aria-haspopup="true">Баллы</div><div class="ab-sub-wrapper"><ul id="wp-admin-bar-mycred-account-default" class="ab-submenu">
+		<li id="wp-admin-bar-mycred-account-balance-mycred-default"><div class="ab-item ab-empty-item">Баллы: 100</div>		</li>
+		<li id="wp-admin-bar-mycred-account-history-mycred-default"><a class="ab-item" href="https://beta.rollbox.su/wp-admin/users.php?page=mycred_default-history">Баллы История</a>		</li></ul></div>		</li></ul></div>		</li>
+		<li id="wp-admin-bar-notes" class="menupop"><div class="ab-item ab-empty-item"><span id="wpnt-notes-unread-count" class="wpnt-loading wpn-read">
+					<span class="noticon noticon-notification"></span>
+					</span></div><div id="wpnt-notes-panel2" style="display:none" lang="ru" dir="ltr"><div class="wpnt-notes-panel-header"><span class="wpnt-notes-header">Уведомления</span><span class="wpnt-notes-panel-link"></span></div></div>		</li></ul>			</div>
+						<a class="screen-reader-shortcut" href="https://beta.rollbox.su/wp-login.php?action=logout&#038;_wpnonce=51a3a5ee22">Выйти</a>
+					</div>
+
+		
+<div id="wpbody" role="main">
+
+<div id="wpbody-content" aria-label="Основное содержимое" tabindex="0">
+		<div id="screen-meta" class="metabox-prefs">
+
+			<div id="contextual-help-wrap" class="hidden" tabindex="-1" aria-label="Вкладка контекстной помощи">
+				<div id="contextual-help-back"></div>
+				<div id="contextual-help-columns">
+					<div class="contextual-help-tabs">
+						<ul>
+						
+							<li id="tab-link-woocommerce_support_tab" class="active">
+								<a href="#tab-panel-woocommerce_support_tab" aria-controls="tab-panel-woocommerce_support_tab">
+									Помощь и поддержка								</a>
+							</li>
+						
+							<li id="tab-link-woocommerce_bugs_tab">
+								<a href="#tab-panel-woocommerce_bugs_tab" aria-controls="tab-panel-woocommerce_bugs_tab">
+									Нашли ошибку?								</a>
+							</li>
+						
+							<li id="tab-link-woocommerce_education_tab">
+								<a href="#tab-panel-woocommerce_education_tab" aria-controls="tab-panel-woocommerce_education_tab">
+									Обучение								</a>
+							</li>
+						
+							<li id="tab-link-woocommerce_onboard_tab">
+								<a href="#tab-panel-woocommerce_onboard_tab" aria-controls="tab-panel-woocommerce_onboard_tab">
+									Помощник установки								</a>
+							</li>
+												</ul>
+					</div>
+
+										<div class="contextual-help-sidebar">
+						<p><strong>Дополнительная информация:</strong></p><p><a href="https://woocommerce.com/?utm_source=helptab&utm_medium=product&utm_content=about&utm_campaign=woocommerceplugin" target="_blank">О WooCommerce</a></p><p><a href="https://wordpress.org/plugins/woocommerce/" target="_blank">Проект WordPress.org</a></p><p><a href="https://github.com/woocommerce/woocommerce/" target="_blank">Проект Github</a></p><p><a href="https://woocommerce.com/storefront/?utm_source=helptab&utm_medium=product&utm_content=wcthemes&utm_campaign=woocommerceplugin" target="_blank">Официальная тема</a></p><p><a href="https://woocommerce.com/product-category/woocommerce-extensions/?utm_source=helptab&utm_medium=product&utm_content=wcextensions&utm_campaign=woocommerceplugin" target="_blank">Официальные расширения</a></p>					</div>
+					
+					<div class="contextual-help-tabs-wrap">
+						
+							<div id="tab-panel-woocommerce_support_tab" class="help-tab-content active">
+								<h2>Помощь и поддержка</h2><p>Если вам потребуется понять, как устроена система WooCommerce, как ее использовать и дополнять, <a href="https://docs.woocommerce.com/documentation/plugins/woocommerce/?utm_source=helptab&utm_medium=product&utm_content=docs&utm_campaign=woocommerceplugin">прочтите документацию</a>. В ней приведены все виды ресурсов, такие как фрагменты кода, руководства пользователя и многое другое.</p><p>Для получения дополнительной поддержки по ядру WooCommerce, вы можете посещать <a href="https://wordpress.org/support/plugin/woocommerce">форум сообщества</a>. Если вам требуется помощь с премиум-расширениями, поставляемыми WooThemes, пожалуйста <a href="https://woocommerce.com/my-account/tickets/?utm_source=helptab&utm_medium=product&utm_content=tickets&utm_campaign=woocommerceplugin">обращайтесь в нашу службу поддержки</a>.</p><p>Перед тем как обращаться за помощью, рекомендуется проверить состояние системы на соответствующей странице, с целью выявления проблем с вашей конфигурацией.</p><p><a href="https://beta.rollbox.su/wp-admin/admin.php?page=wc-status" class="button button-primary">Состояние системы</a> <a href="https://wordpress.org/support/plugin/woocommerce" class="button">Форум сообщества</a> <a href="https://woocommerce.com/my-account/tickets/?utm_source=helptab&utm_medium=product&utm_content=tickets&utm_campaign=woocommerceplugin" class="button">Центр поддержки WooCommerce</a></p>							</div>
+						
+							<div id="tab-panel-woocommerce_bugs_tab" class="help-tab-content">
+								<h2>Нашли ошибку?</h2><p>При обнаружении неполадок в ядре WooCommerce можно оформить заявку через <a href="https://github.com/woocommerce/woocommerce/issues?state=open">Github Issues</a>. Обязательно прочитайте <a href="https://github.com/woocommerce/woocommerce/blob/master/.github/CONTRIBUTING.md">руководство контрибутора</a>, прежде чем отправлять отчет. Чтобы мы могли быстрее решить проблему, опишите ее как можно подробнее и приложите <a href="https://beta.rollbox.su/wp-admin/admin.php?page=wc-status">отчет о состоянии системы</a>.</p><p><a href="https://github.com/woocommerce/woocommerce/issues?state=open" class="button button-primary">Сообщить об ошибке</a> <a href="https://beta.rollbox.su/wp-admin/admin.php?page=wc-status" class="button">Состояние системы</a></p>							</div>
+						
+							<div id="tab-panel-woocommerce_education_tab" class="help-tab-content">
+								<h2>Обучение</h2><p>Если вы хотите научиться работе с WooCommerce у эксперта, вам может быть полезен обучающий курс WooCommerce.</p><p><a href="https://docs.woocommerce.com/document/further-education/?utm_source=helptab&utm_medium=product&utm_content=edupartners&utm_campaign=woocommerceplugin" class="button button-primary">Дополнительное обучение</a></p>							</div>
+						
+							<div id="tab-panel-woocommerce_onboard_tab" class="help-tab-content">
+								<h2>Помощник установки</h2><p>Если вы хотите снова получить доступ к помощнику установки, кликните по кнопке ниже.</p><p><a href="https://beta.rollbox.su/wp-admin/index.php?page=wc-setup" class="button button-primary">Помощник установки</a></p>							</div>
+											</div>
+				</div>
+			</div>
+		<div id="screen-options-wrap" class="hidden" tabindex="-1" aria-label="Вкладка «Настройки экрана»">
+<form id='adv-settings' method='post'>
+		<fieldset class="metabox-prefs">
+		<legend>Колонки</legend>
+		<label><input class="hide-column-tog" name="order_number-hide" type="checkbox" id="order_number-hide" value="order_number" checked='checked' />Заказ</label>
+<label><input class="hide-column-tog" name="order_date-hide" type="checkbox" id="order_date-hide" value="order_date" checked='checked' />Дата</label>
+<label><input class="hide-column-tog" name="order_status-hide" type="checkbox" id="order_status-hide" value="order_status" checked='checked' />Статус</label>
+<label><input class="hide-column-tog" name="billing_address-hide" type="checkbox" id="billing_address-hide" value="billing_address" />Платёж</label>
+<label><input class="hide-column-tog" name="shipping_address-hide" type="checkbox" id="shipping_address-hide" value="shipping_address" />Доставка в</label>
+<label><input class="hide-column-tog" name="order_total-hide" type="checkbox" id="order_total-hide" value="order_total" checked='checked' />Итого</label>
+<label><input class="hide-column-tog" name="wc_actions-hide" type="checkbox" id="wc_actions-hide" value="wc_actions" />Действия</label>
+		</fieldset>
+				<fieldset class="screen-options">
+		<legend>Постраничная навигация</legend>
+							<label for="edit_shop_order_per_page">Количество элементов на странице:</label>
+				<input type="number" step="1" min="1" max="999" class="screen-per-page" name="wp_screen_options[value]"
+					id="edit_shop_order_per_page" maxlength="3"
+					value="20" />
+							<input type="hidden" name="wp_screen_options[option]" value="edit_shop_order_per_page" />
+		</fieldset>
+		<p class="submit"><input type="submit" name="screen-options-apply" id="screen-options-apply" class="button button-primary" value="Применить"  /></p>
+<input type="hidden" id="screenoptionnonce" name="screenoptionnonce" value="a378fe0770" />
+</form>
+</div>		</div>
+				<div id="screen-meta-links">
+					<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">
+			<button type="button" id="contextual-help-link" class="button show-settings" aria-controls="contextual-help-wrap" aria-expanded="false">Помощь</button>
+			</div>
+					<div id="screen-options-link-wrap" class="hide-if-no-js screen-meta-toggle">
+			<button type="button" id="show-settings-link" class="button show-settings" aria-controls="screen-options-wrap" aria-expanded="false">Настройки экрана</button>
+			</div>
+				</div>
+		<div class="updated woocommerce-message"><p><a href="https://beta.rollbox.su/wp-admin/admin.php?page=wc-addons&section=helper">Подключите свой магазин</a> к WooCommerce.com для приёма обновлений расширений и поддержки.</p></div>		<div class="jetpack-jitm-message"
+		     data-nonce="0a73df79e5"
+		     data-message-path="wp:edit-shop_order:admin_notices"
+		     data-query="post_type%3Dshop_order"
+		     data-redirect="%2Fwp-admin%2Fedit.php%3Fpost_type%3Dshop_order"
+		></div>
+		<div class="js-wc-plugin-framework-admin-notice-placeholder"></div><div class="wrap">
+<h1 class="wp-heading-inline">Заказы</h1>
+
+ <a href="https://beta.rollbox.su/wp-admin/post-new.php?post_type=shop_order" class="page-title-action">Добавить заказ</a>
+<hr class="wp-header-end">
+
+
+<h2 class='screen-reader-text'>Фильтровать заказы</h2><ul class='subsubsub'>
+	<li class='all'><a href="edit.php?post_type=shop_order&#038;all_posts=1" class="current" aria-current="page">Все <span class="count">(27)</span></a> |</li>
+	<li class='mine'><a href="edit.php?post_type=shop_order&#038;author=6">Мои <span class="count">(1)</span></a> |</li>
+	<li class='wc-processing'><a href="edit.php?post_status=wc-processing&#038;post_type=shop_order">Обрабатываются <span class="count">(2)</span></a> |</li>
+	<li class='wc-completed'><a href="edit.php?post_status=wc-completed&#038;post_type=shop_order">Завершен <span class="count">(21)</span></a> |</li>
+	<li class='wc-cancelled'><a href="edit.php?post_status=wc-cancelled&#038;post_type=shop_order">Отменен <span class="count">(1)</span></a> |</li>
+	<li class='wc-cooking'><a href="edit.php?post_status=wc-cooking&#038;post_type=shop_order">Принят и готовится <span class="count">(2)</span></a> |</li>
+	<li class='wc-ready-self-out'><a href="edit.php?post_status=wc-ready-self-out&#038;post_type=shop_order">Готов, самовывоз <span class="count">(1)</span></a></li>
+</ul>
+<form id="posts-filter" method="get">
+
+<p class="search-box">
+	<label class="screen-reader-text" for="post-search-input">Поиск по заказам:</label>
+	<input type="search" id="post-search-input" name="s" value="" />
+	<input type="submit" id="search-submit" class="button" value="Поиск по заказам"  /></p>
+
+<input type="hidden" name="post_status" class="post_status_page" value="all" />
+<input type="hidden" name="post_type" class="post_type_page" value="shop_order" />
+
+
+
+<input type="hidden" id="_wpnonce" name="_wpnonce" value="573f94a214" /><input type="hidden" name="_wp_http_referer" value="/wp-admin/edit.php?post_type=shop_order" />	<div class="tablenav top">
+
+				<div class="alignleft actions bulkactions">
+			<label for="bulk-action-selector-top" class="screen-reader-text">Выберите массовое действие</label><select name="action" id="bulk-action-selector-top">
+<option value="-1">Действия</option>
+	<option value="mark_processing">Изменить статус на "обработка"</option>
+	<option value="mark_on-hold">Изменить статус на "на удержании"</option>
+	<option value="mark_completed">Изменить статус на "завершено"</option>
+	<option value="remove_personal_data">Удалить личные данные</option>
+</select>
+<input type="submit" id="doaction" class="button action" value="Применить"  />
+		</div>
+				<div class="alignleft actions">
+		<label for="filter-by-date" class="screen-reader-text">Фильтр по дате</label>
+		<select name="m" id="filter-by-date">
+			<option selected='selected' value="0">Все даты</option>
+<option  value='201901'>Январь 2019</option>
+<option  value='201812'>Декабрь 2018</option>
+		</select>
+		<select class="wc-customer-search" name="_customer_user" data-placeholder="Фильтр по зарегистрированным пользователям" data-allow_clear="true">
+			<option value="" selected="selected"><option>
+		</select>
+		<input type="submit" name="filter_action" id="post-query-submit" class="button" value="Фильтр"  />		</div>
+<h2 class='screen-reader-text'>Навигация по заказам</h2><div class='tablenav-pages'><span class="displaying-num">27 элементов</span>
+<span class='pagination-links'><span class="tablenav-pages-navspan" aria-hidden="true">&laquo;</span>
+<span class="tablenav-pages-navspan" aria-hidden="true">&lsaquo;</span>
+<span class="paging-input"><label for="current-page-selector" class="screen-reader-text">Текущая страница</label><input class='current-page' id='current-page-selector' type='text' name='paged' value='1' size='1' aria-describedby='table-paging' /><span class='tablenav-paging-text'> из <span class='total-pages'>2</span></span></span>
+<a class='next-page' href='https://beta.rollbox.su/wp-admin/edit.php?post_type=shop_order&#038;paged=2'><span class='screen-reader-text'>Следующая страница</span><span aria-hidden='true'>&rsaquo;</span></a>
+<span class="tablenav-pages-navspan" aria-hidden="true">&raquo;</span></span></div>
+		<br class="clear" />
+	</div>
+<h2 class='screen-reader-text'>Список заказов</h2><table class="wp-list-table widefat fixed striped posts">
+	<thead>
+	<tr>
+		<td  id='cb' class='manage-column column-cb check-column'><label class="screen-reader-text" for="cb-select-all-1">Выделить все</label><input id="cb-select-all-1" type="checkbox" /></td><th scope="col" id='order_number' class='manage-column column-order_number column-primary sortable desc'><a href="https://beta.rollbox.su/wp-admin/edit.php?post_type=shop_order&#038;orderby=ID&#038;order=asc"><span>Заказ</span><span class="sorting-indicator"></span></a></th><th scope="col" id='order_date' class='manage-column column-order_date sortable desc'><a href="https://beta.rollbox.su/wp-admin/edit.php?post_type=shop_order&#038;orderby=date&#038;order=asc"><span>Дата</span><span class="sorting-indicator"></span></a></th><th scope="col" id='order_status' class='manage-column column-order_status'>Статус</th><th scope="col" id='billing_address' class='manage-column column-billing_address hidden'>Платёж</th><th scope="col" id='shipping_address' class='manage-column column-shipping_address hidden'>Доставка в</th><th scope="col" id='order_total' class='manage-column column-order_total sortable desc'><a href="https://beta.rollbox.su/wp-admin/edit.php?post_type=shop_order&#038;orderby=order_total&#038;order=asc"><span>Итого</span><span class="sorting-indicator"></span></a></th><th scope="col" id='wc_actions' class='manage-column column-wc_actions hidden'>Действия</th>	</tr>
+	</thead>
+
+	<tbody id="the-list">
+				<tr id="post-148" class="iedit author-other level-0 post-148 type-shop_order status-wc-cooking post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-148">Выбрать Order &ndash; Январь 12, 2019 @ 07:08 ПП</label>
+			<input id="cb-select-148" type="checkbox" name="post[]" value="148" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 12, 2019 @ 07:08 ПП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="148" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=148&#038;action=edit" class="order-view"><strong>#148 я</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-12T19:08:23+00:00" title="12.01.2019 19:08">3 часа назад</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-cooking tips" data-tip="Статус заказа изменен с Обработка на Принят и готовится.&lt;br /&gt;&lt;small&gt;плюс 1 другое примечание&lt;/small&gt;"><span>Принят и готовится</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">я, я<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D1%8F%2C%20%2C%20%2C%20%2C%20%2C%20RU&#038;z=16">я, я</a><span class="description">(Центральный округ)</span></td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>635.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p><a class="button wc-action-button wc-action-button-ready-delivery ready-delivery" href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=woocommerce_mark_order_status&#038;status=ready-delivery&#038;order_id=148&#038;_wpnonce=1d23682455" aria-label="Готов, доставка" title="Готов, доставка">Готов, доставка</a><a class="button wc-action-button wc-action-button-ready-self-out ready-self-out" href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=woocommerce_mark_order_status&#038;status=ready-self-out&#038;order_id=148&#038;_wpnonce=1d23682455" aria-label="Готов, самовывоз" title="Готов, самовывоз">Готов, самовывоз</a><a class="button wc-action-button wc-action-button-cancelled cancelled" href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=woocommerce_mark_order_status&#038;status=cancelled&#038;order_id=148&#038;_wpnonce=1d23682455" aria-label="Отменен" title="Отменен">Отменен</a>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=148&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=148&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-144" class="iedit author-other level-0 post-144 type-shop_order status-wc-processing post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-144">Выбрать Order &ndash; Январь 11, 2019 @ 10:21 ДП</label>
+			<input id="cb-select-144" type="checkbox" name="post[]" value="144" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 11, 2019 @ 10:21 ДП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="144" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=144&#038;action=edit" class="order-view"><strong>#144 костя</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-11T10:21:54+00:00" title="11.01.2019 10:21">Янв 11, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-processing tips" data-tip="Оплата по факту доставки. Статус заказа изменен с В ожидании оплаты на Обработка."><span>Обработка</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">костя, я ввёл адрес ь<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D1%8F%20%D0%B2%D0%B2%D1%91%D0%BB%20%D0%B0%D0%B4%D1%80%D0%B5%D1%81%20%D1%8C%2C%20%2C%20%2C%20%2C%20%2C%20RU&#038;z=16">костя, я ввёл адрес ь</a><span class="description">(Самовывоз)</span></td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>159.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p><a class="button wc-action-button wc-action-button-cooking cooking" href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=woocommerce_mark_order_status&#038;status=cooking&#038;order_id=144&#038;_wpnonce=1d23682455" aria-label="Принят и готовится" title="Принят и готовится">Принят и готовится</a><a class="button wc-action-button wc-action-button-cancelled cancelled" href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=woocommerce_mark_order_status&#038;status=cancelled&#038;order_id=144&#038;_wpnonce=1d23682455" aria-label="Отменен" title="Отменен">Отменен</a>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=144&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=144&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-141" class="iedit author-other level-0 post-141 type-shop_order status-wc-processing post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-141">Выбрать Order &ndash; Январь 9, 2019 @ 05:27 ПП</label>
+			<input id="cb-select-141" type="checkbox" name="post[]" value="141" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 9, 2019 @ 05:27 ПП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="141" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=141&#038;action=edit" class="order-view"><strong>#141 костя</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-09T17:27:20+00:00" title="09.01.2019 17:27">Янв 9, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-processing tips" data-tip="Оплата по факту доставки. Статус заказа изменен с В ожидании оплаты на Обработка."><span>Обработка</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">костя, я ввёл адрес ь<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D1%8F%20%D0%B2%D0%B2%D1%91%D0%BB%20%D0%B0%D0%B4%D1%80%D0%B5%D1%81%20%D1%8C%2C%20%2C%20%2C%20%2C%20%2C%20RU&#038;z=16">костя, я ввёл адрес ь</a><span class="description">(Самовывоз)</span></td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>139.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p><a class="button wc-action-button wc-action-button-cooking cooking" href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=woocommerce_mark_order_status&#038;status=cooking&#038;order_id=141&#038;_wpnonce=1d23682455" aria-label="Принят и готовится" title="Принят и готовится">Принят и готовится</a><a class="button wc-action-button wc-action-button-cancelled cancelled" href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=woocommerce_mark_order_status&#038;status=cancelled&#038;order_id=141&#038;_wpnonce=1d23682455" aria-label="Отменен" title="Отменен">Отменен</a>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=141&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=141&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-140" class="iedit author-other level-0 post-140 type-shop_order status-wc-cooking post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-140">Выбрать Order &ndash; Январь 9, 2019 @ 05:18 ПП</label>
+			<input id="cb-select-140" type="checkbox" name="post[]" value="140" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 9, 2019 @ 05:18 ПП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="140" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=140&#038;action=edit" class="order-view"><strong>#140 костя</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-09T17:18:07+00:00" title="09.01.2019 17:18">Янв 9, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-cooking tips" data-tip="Статус заказа изменен с Обработка на Принят и готовится.&lt;br /&gt;&lt;small&gt;плюс 1 другое примечание&lt;/small&gt;"><span>Принят и готовится</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">костя, я ввёл адрес ь<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D1%8F%20%D0%B2%D0%B2%D1%91%D0%BB%20%D0%B0%D0%B4%D1%80%D0%B5%D1%81%20%D1%8C%2C%20%2C%20%2C%20%2C%20%2C%20RU&#038;z=16">костя, я ввёл адрес ь</a><span class="description">(Самовывоз)</span></td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>159.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p><a class="button wc-action-button wc-action-button-ready-delivery ready-delivery" href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=woocommerce_mark_order_status&#038;status=ready-delivery&#038;order_id=140&#038;_wpnonce=1d23682455" aria-label="Готов, доставка" title="Готов, доставка">Готов, доставка</a><a class="button wc-action-button wc-action-button-ready-self-out ready-self-out" href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=woocommerce_mark_order_status&#038;status=ready-self-out&#038;order_id=140&#038;_wpnonce=1d23682455" aria-label="Готов, самовывоз" title="Готов, самовывоз">Готов, самовывоз</a><a class="button wc-action-button wc-action-button-cancelled cancelled" href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=woocommerce_mark_order_status&#038;status=cancelled&#038;order_id=140&#038;_wpnonce=1d23682455" aria-label="Отменен" title="Отменен">Отменен</a>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=140&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=140&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-139" class="iedit author-other level-0 post-139 type-shop_order status-wc-ready-self-out post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-139">Выбрать Order &ndash; Январь 9, 2019 @ 01:36 ПП</label>
+			<input id="cb-select-139" type="checkbox" name="post[]" value="139" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 9, 2019 @ 01:36 ПП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="139" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=139&#038;action=edit" class="order-view"><strong>#139 костя</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-09T13:36:58+00:00" title="09.01.2019 13:36">Янв 9, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-ready-self-out tips" data-tip="Статус заказа изменен с Принят и готовится на Готов, самовывоз.&lt;br /&gt;&lt;small&gt;плюс 2 других примечания&lt;/small&gt;"><span>Готов, самовывоз</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">костя, я ввёл адрес ь<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D1%8F%20%D0%B2%D0%B2%D1%91%D0%BB%20%D0%B0%D0%B4%D1%80%D0%B5%D1%81%20%D1%8C%2C%20%2C%20%2C%20%2C%20%2C%20RU&#038;z=16">костя, я ввёл адрес ь</a><span class="description">(Самовывоз)</span></td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>148.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p><a class="button wc-action-button wc-action-button-completed completed" href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=woocommerce_mark_order_status&#038;status=completed&#038;order_id=139&#038;_wpnonce=1d23682455" aria-label="Выполнен" title="Выполнен">Выполнен</a><a class="button wc-action-button wc-action-button-cancelled cancelled" href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=woocommerce_mark_order_status&#038;status=cancelled&#038;order_id=139&#038;_wpnonce=1d23682455" aria-label="Отменен" title="Отменен">Отменен</a>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=139&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=139&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-138" class="iedit author-other level-0 post-138 type-shop_order status-wc-completed post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-138">Выбрать Order &ndash; Январь 9, 2019 @ 12:33 ДП</label>
+			<input id="cb-select-138" type="checkbox" name="post[]" value="138" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 9, 2019 @ 12:33 ДП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="138" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=138&#038;action=edit" class="order-view"><strong>#138 костя</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-09T00:33:47+00:00" title="09.01.2019 00:33">Янв 9, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-completed tips" data-tip="Статус заказа изменен с Готов, самовывоз на Выполнен.&lt;br /&gt;&lt;small&gt;плюс 3 других примечания&lt;/small&gt;"><span>Выполнен</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">костя, я ввёл адрес ь<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D1%8F%20%D0%B2%D0%B2%D1%91%D0%BB%20%D0%B0%D0%B4%D1%80%D0%B5%D1%81%20%D1%8C%2C%20%2C%20%2C%20%2C%20%2C%20RU&#038;z=16">костя, я ввёл адрес ь</a><span class="description">(Центральный округ)</span></td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>398.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=138&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=138&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-136" class="iedit author-other level-0 post-136 type-shop_order status-wc-completed post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-136">Выбрать Order &ndash; Январь 9, 2019 @ 12:12 ДП</label>
+			<input id="cb-select-136" type="checkbox" name="post[]" value="136" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 9, 2019 @ 12:12 ДП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="136" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=136&#038;action=edit" class="order-view"><strong>#136 костя</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-09T00:12:51+00:00" title="09.01.2019 00:12">Янв 9, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-completed tips" data-tip="Статус заказа изменен с Готов, самовывоз на Выполнен.&lt;br /&gt;&lt;small&gt;плюс 3 других примечания&lt;/small&gt;"><span>Выполнен</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">костя, я ввёл адрес ь<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D1%8F%20%D0%B2%D0%B2%D1%91%D0%BB%20%D0%B0%D0%B4%D1%80%D0%B5%D1%81%20%D1%8C%2C%20%2C%20%2C%20%2C%20%2C%20RU&#038;z=16">костя, я ввёл адрес ь</a><span class="description">(Самовывоз)</span></td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>159.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=136&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=136&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-135" class="iedit author-other level-0 post-135 type-shop_order status-wc-completed post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-135">Выбрать Order &ndash; Январь 9, 2019 @ 12:08 ДП</label>
+			<input id="cb-select-135" type="checkbox" name="post[]" value="135" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 9, 2019 @ 12:08 ДП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="135" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=135&#038;action=edit" class="order-view"><strong>#135 имя</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-09T00:08:09+00:00" title="09.01.2019 00:08">Янв 9, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-completed tips" data-tip="Статус заказа изменен с Готов, доставка на Выполнен.&lt;br /&gt;&lt;small&gt;плюс 4 других примечания&lt;/small&gt;"><span>Выполнен</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">имя, адрес 18<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D0%B0%D0%B4%D1%80%D0%B5%D1%81%2018%2C%20%2C%20%2C%20%2C%20%2C%20RU&#038;z=16">имя, адрес 18</a><span class="description">(Самовывоз)</span></td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>139.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=135&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=135&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-134" class="iedit author-other level-0 post-134 type-shop_order status-wc-cancelled post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-134">Выбрать Order &ndash; Январь 8, 2019 @ 11:58 ПП</label>
+			<input id="cb-select-134" type="checkbox" name="post[]" value="134" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 8, 2019 @ 11:58 ПП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="134" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=134&#038;action=edit" class="order-view"><strong>#134 имя</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-08T23:58:44+00:00" title="08.01.2019 23:58">Янв 8, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-cancelled tips" data-tip="Статус заказа изменен с Обработка на Отменен.&lt;br /&gt;&lt;small&gt;плюс 1 другое примечание&lt;/small&gt;"><span>Отменен</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">имя, адрес 18<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D0%B0%D0%B4%D1%80%D0%B5%D1%81%2018%2C%20%2C%20%2C%20%2C%20%2C%20RU&#038;z=16">имя, адрес 18</a><span class="description">(Самовывоз)</span></td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>3,180.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=134&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=134&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-129" class="iedit author-other level-0 post-129 type-shop_order status-wc-completed post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-129">Выбрать Order &ndash; Январь 8, 2019 @ 10:34 ПП</label>
+			<input id="cb-select-129" type="checkbox" name="post[]" value="129" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 8, 2019 @ 10:34 ПП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="129" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=129&#038;action=edit" class="order-view"><strong>#129 костя</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-08T22:34:44+00:00" title="08.01.2019 22:34">Янв 8, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-completed tips" data-tip="Статус заказа изменен с Готов, доставка на Выполнен.&lt;br /&gt;&lt;small&gt;плюс 3 других примечания&lt;/small&gt;"><span>Выполнен</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">костя, я ввёл адрес ь<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в">&ndash;</td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>477.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=129&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=129&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-128" class="iedit author-self level-0 post-128 type-shop_order status-wc-completed hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-128">Выбрать Order &ndash; Январь 8, 2019 @ 10:26 ПП</label>
+			<input id="cb-select-128" type="checkbox" name="post[]" value="128" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 8, 2019 @ 10:26 ПП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="128" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=128&#038;action=edit" class="order-view"><strong>#128 </strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-08T22:26:02+00:00" title="08.01.2019 22:26">Янв 8, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-completed tips" data-tip="Статус заказа изменен с Готов, доставка на Выполнен.&lt;br /&gt;&lt;small&gt;плюс 3 других примечания&lt;/small&gt;"><span>Выполнен</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">&ndash;</td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D0%BF%D0%B5%D1%80%D0%B2%D0%BE%D1%81%D1%82%D1%80%D1%80%D0%BE%D0%B8%D1%82%D0%B5%D0%BB%D0%B5%D0%B9%2018%2C%209%2C%20%2C%20%2C%20%2C%20%2C%20RU&#038;z=16">первострроителей 18, 9</a></td><td class='order_total column-order_total' data-colname="Итого"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>159.00</span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=128&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=128&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-121" class="iedit author-other level-0 post-121 type-shop_order status-wc-completed post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-121">Выбрать Order &ndash; Январь 8, 2019 @ 05:13 ПП</label>
+			<input id="cb-select-121" type="checkbox" name="post[]" value="121" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 8, 2019 @ 05:13 ПП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="121" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=121&#038;action=edit" class="order-view"><strong>#121 костя</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-08T17:13:40+00:00" title="08.01.2019 17:13">Янв 8, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-completed tips" data-tip="Статус заказа изменен с Готов, доставка на Выполнен.&lt;br /&gt;&lt;small&gt;плюс 7 других примечаний&lt;/small&gt;"><span>Выполнен</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">костя, я ввёл адрес ь<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в">&ndash;</td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>986.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=121&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=121&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-106" class="iedit author-other level-0 post-106 type-shop_order status-wc-completed post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-106">Выбрать Order &ndash; Январь 8, 2019 @ 12:13 ДП</label>
+			<input id="cb-select-106" type="checkbox" name="post[]" value="106" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 8, 2019 @ 12:13 ДП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="106" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=106&#038;action=edit" class="order-view"><strong>#106 zz</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-08T00:13:08+00:00" title="08.01.2019 00:13">Янв 8, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-completed tips" data-tip="Статус заказа изменен с В ожидании оплаты на Выполнен.&lt;br /&gt;&lt;small&gt;плюс 4 других примечания&lt;/small&gt;"><span>Выполнен</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">zz, я ввёл адрес ь<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в">&ndash;</td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>309.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=106&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=106&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-105" class="iedit author-other level-0 post-105 type-shop_order status-wc-completed post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-105">Выбрать Order &ndash; Январь 8, 2019 @ 12:12 ДП</label>
+			<input id="cb-select-105" type="checkbox" name="post[]" value="105" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 8, 2019 @ 12:12 ДП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="105" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=105&#038;action=edit" class="order-view"><strong>#105 zz</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-08T00:12:10+00:00" title="08.01.2019 00:12">Янв 8, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-completed tips" data-tip="Статус заказа изменен с Готов, доставка на Выполнен.&lt;br /&gt;&lt;small&gt;плюс 3 других примечания&lt;/small&gt;"><span>Выполнен</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">zz, я ввёл адрес ь</td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в">&ndash;</td><td class='order_total column-order_total' data-colname="Итого"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>0.00</span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=105&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=105&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-96" class="iedit author-other level-0 post-96 type-shop_order status-wc-completed post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-96">Выбрать Order &ndash; Январь 7, 2019 @ 11:08 ПП</label>
+			<input id="cb-select-96" type="checkbox" name="post[]" value="96" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 7, 2019 @ 11:08 ПП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="96" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=96&#038;action=edit" class="order-view"><strong>#96 zz zx</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-07T23:08:12+00:00" title="07.01.2019 23:08">Янв 7, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-completed tips" data-tip="Статус заказа изменен с Обработка на Выполнен.&lt;br /&gt;&lt;small&gt;плюс 1 другое примечание&lt;/small&gt;"><span>Выполнен</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">zz zx, адрес, квартира, нас пункт, область, 681000<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D0%B0%D0%B4%D1%80%D0%B5%D1%81%2C%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0%2C%20%D0%BD%D0%B0%D1%81%20%D0%BF%D1%83%D0%BD%D0%BA%D1%82%2C%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C%20681000%2C%20RU&#038;z=16">zz zx, адрес, квартира, нас пункт, область, 681000</a><span class="description">(Самовывоз)</span></td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>747.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=96&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=96&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-95" class="iedit author-other level-0 post-95 type-shop_order status-wc-completed post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-95">Выбрать Order &ndash; Январь 7, 2019 @ 10:44 ПП</label>
+			<input id="cb-select-95" type="checkbox" name="post[]" value="95" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 7, 2019 @ 10:44 ПП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="95" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=95&#038;action=edit" class="order-view"><strong>#95 zz zx</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-07T22:44:51+00:00" title="07.01.2019 22:44">Янв 7, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-completed tips" data-tip="Статус заказа изменен с Обработка на Выполнен.&lt;br /&gt;&lt;small&gt;плюс 1 другое примечание&lt;/small&gt;"><span>Выполнен</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">zz zx, адрес, квартира, нас пункт, область, 681000<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D0%B0%D0%B4%D1%80%D0%B5%D1%81%2C%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0%2C%20%D0%BD%D0%B0%D1%81%20%D0%BF%D1%83%D0%BD%D0%BA%D1%82%2C%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C%20681000%2C%20RU&#038;z=16">zz zx, адрес, квартира, нас пункт, область, 681000</a><span class="description">(Самовывоз)</span></td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>159.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=95&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=95&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-94" class="iedit author-other level-0 post-94 type-shop_order status-wc-completed post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-94">Выбрать Order &ndash; Январь 3, 2019 @ 12:26 ДП</label>
+			<input id="cb-select-94" type="checkbox" name="post[]" value="94" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 3, 2019 @ 12:26 ДП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="94" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=94&#038;action=edit" class="order-view"><strong>#94 zz zx</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-03T00:26:32+00:00" title="03.01.2019 00:26">Янв 3, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-completed tips" data-tip="Статус заказа изменен с Обработка на Выполнен.&lt;br /&gt;&lt;small&gt;плюс 1 другое примечание&lt;/small&gt;"><span>Выполнен</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">zz zx, адрес, квартира, нас пункт, область, 681000<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D0%B0%D0%B4%D1%80%D0%B5%D1%81%2C%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0%2C%20%D0%BD%D0%B0%D1%81%20%D0%BF%D1%83%D0%BD%D0%BA%D1%82%2C%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C%20681000%2C%20RU&#038;z=16">zz zx, адрес, квартира, нас пункт, область, 681000</a><span class="description">(Самовывоз)</span></td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>747.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=94&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=94&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-90" class="iedit author-other level-0 post-90 type-shop_order status-wc-completed post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-90">Выбрать Order &ndash; Январь 2, 2019 @ 11:03 ПП</label>
+			<input id="cb-select-90" type="checkbox" name="post[]" value="90" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 2, 2019 @ 11:03 ПП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="90" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=90&#038;action=edit" class="order-view"><strong>#90 zz zx</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-02T23:03:11+00:00" title="02.01.2019 23:03">Янв 2, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-completed tips" data-tip="Статус заказа изменен с Обработка на Выполнен.&lt;br /&gt;&lt;small&gt;плюс 1 другое примечание&lt;/small&gt;"><span>Выполнен</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">zz zx, адрес, квартира, нас пункт, область, 681000<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D0%B0%D0%B4%D1%80%D0%B5%D1%81%2C%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0%2C%20%D0%BD%D0%B0%D1%81%20%D0%BF%D1%83%D0%BD%D0%BA%D1%82%2C%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C%20681000%2C%20RU&#038;z=16">zz zx, адрес, квартира, нас пункт, область, 681000</a><span class="description">(Самовывоз)</span></td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>3,176.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=90&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=90&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-76" class="iedit author-other level-0 post-76 type-shop_order status-wc-completed post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-76">Выбрать Order &ndash; Январь 1, 2019 @ 11:17 ПП</label>
+			<input id="cb-select-76" type="checkbox" name="post[]" value="76" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 1, 2019 @ 11:17 ПП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="76" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=76&#038;action=edit" class="order-view"><strong>#76 zz zx</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-01T23:17:34+00:00" title="01.01.2019 23:17">Янв 1, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-completed tips" data-tip="Статус заказа изменен с Обработка на Выполнен.&lt;br /&gt;&lt;small&gt;плюс 1 другое примечание&lt;/small&gt;"><span>Выполнен</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">zz zx, адрес, квартира, нас пункт, область, 681000<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D0%B0%D0%B4%D1%80%D0%B5%D1%81%2C%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0%2C%20%D0%BD%D0%B0%D1%81%20%D0%BF%D1%83%D0%BD%D0%BA%D1%82%2C%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C%20681000%2C%20RU&#038;z=16">zz zx, адрес, квартира, нас пункт, область, 681000</a><span class="description">(Самовывоз)</span></td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>158.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=76&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=76&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+			<tr id="post-72" class="iedit author-other level-0 post-72 type-shop_order status-wc-completed post-password-required hentry">
+			<th scope="row" class="check-column">			<label class="screen-reader-text" for="cb-select-72">Выбрать Order &ndash; Январь 1, 2019 @ 11:17 ДП</label>
+			<input id="cb-select-72" type="checkbox" name="post[]" value="72" />
+			<div class="locked-indicator">
+				<span class="locked-indicator-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text">&#8220;Order &ndash; Январь 1, 2019 @ 11:17 ДП&#8221; заблокирована</span>
+			</div>
+		</th><td class='order_number column-order_number has-row-actions column-primary' data-colname="Заказ"><a href="#" class="order-preview" data-order-id="72" title="Предпросмотр">Предпросмотр</a><a href="https://beta.rollbox.su/wp-admin/post.php?post=72&#038;action=edit" class="order-view"><strong>#72 zz zx</strong></a></td><td class='order_date column-order_date' data-colname="Дата"><time datetime="2019-01-01T11:17:44+00:00" title="01.01.2019 11:17">Янв 1, 2019</time></td><td class='order_status column-order_status' data-colname="Статус"><mark class="order-status status-completed tips" data-tip="Статус заказа изменен с Обработка на Выполнен.&lt;br /&gt;&lt;small&gt;плюс 1 другое примечание&lt;/small&gt;"><span>Выполнен</span></mark></td><td class='billing_address column-billing_address hidden' data-colname="Платёж">zz zx, адрес, квартира, нас пункт, область, 681000<span class="description">(Оплата при доставке)</span></td><td class='shipping_address column-shipping_address hidden' data-colname="Доставка в"><a target="_blank" href="https://maps.google.com/maps?&#038;q=%D0%B0%D0%B4%D1%80%D0%B5%D1%81%2C%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0%2C%20%D0%BD%D0%B0%D1%81%20%D0%BF%D1%83%D0%BD%D0%BA%D1%82%2C%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C%20681000%2C%20RU&#038;z=16">zz zx, адрес, квартира, нас пункт, область, 681000</a><span class="description">(Самовывоз)</span></td><td class='order_total column-order_total' data-colname="Итого"><span class="tips" data-tip="(Оплата при доставке)"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8381;</span>158.00</span></span></td><td class='wc_actions column-wc_actions hidden' data-colname="Действия"><p>			<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=invoice&amp;order_ids=72&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf exists invoice" target="_blank" alt="PDF Счет" data-tip="PDF Счет">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/invoice.png" alt="PDF Счет" width="16">
+			</a>
+						<a href="https://beta.rollbox.su/wp-admin/admin-ajax.php?action=generate_wpo_wcpdf&amp;document_type=packing-slip&amp;order_ids=72&amp;_wpnonce=8cbff901df" class="button tips wpo_wcpdf packing-slip" target="_blank" alt="PDF Упаковочный лист" data-tip="PDF Упаковочный лист">
+				<img src="https://beta.rollbox.su/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/assets/images/packing-slip.png" alt="PDF Упаковочный лист" width="16">
+			</a>
+			</p></td>		</tr>
+		</tbody>
+
+	<tfoot>
+	<tr>
+		<td   class='manage-column column-cb check-column'><label class="screen-reader-text" for="cb-select-all-2">Выделить все</label><input id="cb-select-all-2" type="checkbox" /></td><th scope="col"  class='manage-column column-order_number column-primary sortable desc'><a href="https://beta.rollbox.su/wp-admin/edit.php?post_type=shop_order&#038;orderby=ID&#038;order=asc"><span>Заказ</span><span class="sorting-indicator"></span></a></th><th scope="col"  class='manage-column column-order_date sortable desc'><a href="https://beta.rollbox.su/wp-admin/edit.php?post_type=shop_order&#038;orderby=date&#038;order=asc"><span>Дата</span><span class="sorting-indicator"></span></a></th><th scope="col"  class='manage-column column-order_status'>Статус</th><th scope="col"  class='manage-column column-billing_address hidden'>Платёж</th><th scope="col"  class='manage-column column-shipping_address hidden'>Доставка в</th><th scope="col"  class='manage-column column-order_total sortable desc'><a href="https://beta.rollbox.su/wp-admin/edit.php?post_type=shop_order&#038;orderby=order_total&#038;order=asc"><span>Итого</span><span class="sorting-indicator"></span></a></th><th scope="col"  class='manage-column column-wc_actions hidden'>Действия</th>	</tr>
+	</tfoot>
+
+</table>
+	<div class="tablenav bottom">
+
+				<div class="alignleft actions bulkactions">
+			<label for="bulk-action-selector-bottom" class="screen-reader-text">Выберите массовое действие</label><select name="action2" id="bulk-action-selector-bottom">
+<option value="-1">Действия</option>
+	<option value="mark_processing">Изменить статус на "обработка"</option>
+	<option value="mark_on-hold">Изменить статус на "на удержании"</option>
+	<option value="mark_completed">Изменить статус на "завершено"</option>
+	<option value="remove_personal_data">Удалить личные данные</option>
+</select>
+<input type="submit" id="doaction2" class="button action" value="Применить"  />
+		</div>
+				<div class="alignleft actions">
+		</div>
+<div class='tablenav-pages'><span class="displaying-num">27 элементов</span>
+<span class='pagination-links'><span class="tablenav-pages-navspan" aria-hidden="true">&laquo;</span>
+<span class="tablenav-pages-navspan" aria-hidden="true">&lsaquo;</span>
+<span class="screen-reader-text">Текущая страница</span><span id="table-paging" class="paging-input"><span class="tablenav-paging-text">1 из <span class='total-pages'>2</span></span></span>
+<a class='next-page' href='https://beta.rollbox.su/wp-admin/edit.php?post_type=shop_order&#038;paged=2'><span class='screen-reader-text'>Следующая страница</span><span aria-hidden='true'>&rsaquo;</span></a>
+<span class="tablenav-pages-navspan" aria-hidden="true">&raquo;</span></span></div>
+		<br class="clear" />
+	</div>
+
+</form>
+
+
+	<form method="get"><table style="display: none"><tbody id="inlineedit">
+		
+		<tr id="inline-edit" class="inline-edit-row inline-edit-row-page quick-edit-row quick-edit-row-page inline-edit-shop_order" style="display: none"><td colspan="5" class="colspanchange">
+
+		<fieldset class="inline-edit-col-left">
+			<legend class="inline-edit-legend">Свойства</legend>
+			<div class="inline-edit-col">
+	
+			<label>
+				<span class="title">Заголовок</span>
+				<span class="input-text-wrap"><input type="text" name="post_title" class="ptitle" value="" /></span>
+			</label>
+
+		
+				<fieldset class="inline-edit-date">
+			<legend><span class="title">Дата</span></legend>
+				<div class="timestamp-wrap"><label><span class="screen-reader-text">Месяц</span><select name="mm">
+			<option value="01" data-text="Янв"  selected='selected'>01-Янв</option>
+			<option value="02" data-text="Фев" >02-Фев</option>
+			<option value="03" data-text="Мар" >03-Мар</option>
+			<option value="04" data-text="Апр" >04-Апр</option>
+			<option value="05" data-text="Май" >05-Май</option>
+			<option value="06" data-text="Июн" >06-Июн</option>
+			<option value="07" data-text="Июл" >07-Июл</option>
+			<option value="08" data-text="Авг" >08-Авг</option>
+			<option value="09" data-text="Сен" >09-Сен</option>
+			<option value="10" data-text="Окт" >10-Окт</option>
+			<option value="11" data-text="Ноя" >11-Ноя</option>
+			<option value="12" data-text="Дек" >12-Дек</option>
+</select></label> <label><span class="screen-reader-text">День</span><input type="text" name="jj" value="12" size="2" maxlength="2" autocomplete="off" /></label>, <label><span class="screen-reader-text">Год</span><input type="text" name="aa" value="2019" size="4" maxlength="4" autocomplete="off" /></label> в <label><span class="screen-reader-text">Час</span><input type="text" name="hh" value="19" size="2" maxlength="2" autocomplete="off" /></label>:<label><span class="screen-reader-text">Минута</span><input type="text" name="mn" value="08" size="2" maxlength="2" autocomplete="off" /></label></div><input type="hidden" id="ss" name="ss" value="23" />			</fieldset>
+			<br class="clear" />
+	
+		</div></fieldset>
+
+	
+		<fieldset class="inline-edit-col-right"><div class="inline-edit-col">
+
+	
+	
+	
+	
+			<div class="inline-edit-group wp-clearfix">
+							<label class="alignleft">
+					<input type="checkbox" name="comment_status" value="open" />
+					<span class="checkbox-title">Разрешить комментарии</span>
+				</label>
+						</div>
+
+	
+			<div class="inline-edit-group wp-clearfix">
+				<label class="inline-edit-status alignleft">
+					<span class="title">Статус</span>
+					<select name="_status">
+												<option value="pending">На утверждении</option>
+						<option value="draft">Черновик</option>
+					</select>
+				</label>
+
+	
+			</div>
+
+	
+		</div></fieldset>
+
+			<div class="submit inline-edit-save">
+			<button type="button" class="button cancel alignleft">Отмена</button>
+			<input type="hidden" id="_inline_edit" name="_inline_edit" value="43a9680c36" />				<button type="button" class="button button-primary save alignright">Обновить</button>
+				<span class="spinner"></span>
+						<input type="hidden" name="post_view" value="list" />
+			<input type="hidden" name="screen" value="edit-shop_order" />
+							<input type="hidden" name="post_author" value="" />
+						<br class="clear" />
+			<div class="notice notice-error notice-alt inline hidden">
+				<p class="error"></p>
+			</div>
+		</div>
+		</td></tr>
+	
+		<tr id="bulk-edit" class="inline-edit-row inline-edit-row-page bulk-edit-row bulk-edit-row-page bulk-edit-shop_order" style="display: none"><td colspan="5" class="colspanchange">
+
+		<fieldset class="inline-edit-col-left">
+			<legend class="inline-edit-legend">Массовое редактирование</legend>
+			<div class="inline-edit-col">
+				<div id="bulk-title-div">
+				<div id="bulk-titles"></div>
+			</div>
+
+	
+	
+		</div></fieldset>
+
+	
+		<fieldset class="inline-edit-col-right"><div class="inline-edit-col">
+
+	
+	
+	
+	
+			<div class="inline-edit-group wp-clearfix">
+					<label class="alignleft">
+				<span class="title">Комментарии</span>
+				<select name="comment_status">
+					<option value="">&mdash; Как есть &mdash;</option>
+					<option value="open">Разрешить</option>
+					<option value="closed">Запретить</option>
+				</select>
+			</label>
+					</div>
+
+	
+			<div class="inline-edit-group wp-clearfix">
+				<label class="inline-edit-status alignleft">
+					<span class="title">Статус</span>
+					<select name="_status">
+							<option value="-1">&mdash; Как есть &mdash;</option>
+												<option value="pending">На утверждении</option>
+						<option value="draft">Черновик</option>
+					</select>
+				</label>
+
+	
+			</div>
+
+	
+		</div></fieldset>
+
+			<div class="submit inline-edit-save">
+			<button type="button" class="button cancel alignleft">Отмена</button>
+			<input type="submit" name="bulk_edit" id="bulk_edit" class="button button-primary alignright" value="Обновить"  />			<input type="hidden" name="post_view" value="list" />
+			<input type="hidden" name="screen" value="edit-shop_order" />
+						<br class="clear" />
+			<div class="notice notice-error notice-alt inline hidden">
+				<p class="error"></p>
+			</div>
+		</div>
+		</td></tr>
+			</tbody></table></form>
+
+<div id="ajax-response"></div>
+<br class="clear" />
+</div>
+
+
+<div class="clear"></div></div><!-- wpbody-content -->
+<div class="clear"></div></div><!-- wpbody -->
+<div class="clear"></div></div><!-- wpcontent -->
+
+<div id="wpfooter" role="contentinfo">
+		<p id="footer-left" class="alignleft">
+		<span id="footer-thankyou">Спасибо вам за творчество с <a href="https://ru.wordpress.org/">WordPress</a>.</span>	</p>
+	<p id="footer-upgrade" class="alignright">
+		Версия 5.0.3	</p>
+	<div class="clear"></div>
+</div>
+			<script type="text/javascript">
+			jQuery(document).ready(function() {
+								jQuery('<option>').val('invoice').html('PDF Счет').appendTo("select[name='action'], select[name='action2']");
+								jQuery('<option>').val('packing-slip').html('PDF Упаковочный лист').appendTo("select[name='action'], select[name='action2']");
+							});
+			</script>
+					<script type="text/template" id="tmpl-wc-modal-view-order">
+			<div class="wc-backbone-modal wc-order-preview">
+				<div class="wc-backbone-modal-content">
+					<section class="wc-backbone-modal-main" role="main">
+						<header class="wc-backbone-modal-header">
+							<mark class="order-status status-{{ data.status }}"><span>{{ data.status_name }}</span></mark>
+														<h1>Заказ #{{ data.order_number }}</h1>
+							<button class="modal-close modal-close-link dashicons dashicons-no-alt">
+								<span class="screen-reader-text">Закрыть модальную панель</span>
+							</button>
+						</header>
+						<article>
+							!!!!!!!!!!
 							<div class="wc-order-preview-addresses">
 								<div class="wc-order-preview-address">
 									<h2>Детали оплаты</h2>
