@@ -28,31 +28,39 @@ function action_function_name_7949(){
 	ob_start();
 }
 
-/*
-Из примера использования общей переменной
+
+//Из примера использования общей переменной
 // Add custom order meta data to make it accessible in Order preview template
 add_filter( 'woocommerce_admin_order_preview_get_order_details', 'admin_order_preview_add_custom_meta_data', 10, 2 );
 function admin_order_preview_add_custom_meta_data( $data, $order ) {
 	/*$data = print_r($data, 1) . PHP_EOL;
-    file_put_contents($_SERVER['DOCUMENT_ROOT'].'/dump.txt', $data, FILE_APPEND); /
+    file_put_contents($_SERVER['DOCUMENT_ROOT'].'/dump.txt', $data, FILE_APPEND); */
 	
     // Replace '_custom_meta_key' by the correct postmeta key
-    if( $custom_value = $order->get_meta('_custom_meta_key') )
-        $data['custom_key'] = $custom_value; // <= Store the value in the data array.
+    //if( $custom_value = $order->get_meta('_custom_meta_key') )
+		
+//file_put_contents($_SERVER['DOCUMENT_ROOT'].'/dump.txt', $order->get_status(), FILE_APPEND);
+		if ( is_user_logged_in() && $order->get_status() !== "processing" ) {
+			$order_id = $order->get_id(); //method_exists($order, 'get_id') ? $order->get_id() : $order->id;
+			$pdf_url = wp_nonce_url( admin_url( 'admin-ajax.php?action=generate_wpo_wcpdf&template_type=invoice&order_ids=' . $order_id . '&my-account'), 'generate_wpo_wcpdf' );
+			$text = '<p><a href="'.esc_attr($pdf_url).'" target="_blank">Распечатать счет</a></p>';
+		}
+        $data['custom_key'] = $text; // <= Store the value in the data array.
+	
        
-	$data['formatted_billing_address'] = 1111111; // <= Store the value in the data array.
+	//$data['formatted_billing_address'] = 1111111; // <= Store the value in the data array.
 
     return $data;
-*/
+}
 
 // Display custom values in Order preview
-add_action( 'woocommerce_admin_order_preview_end', 'custom_display_order_data_in_admin', 1, 0 ); //Приоритет 1 - наименьший чтобы этат экшн выполнялся первым из возможно в будущем прикрепленных к этому хуку
-function custom_display_order_data_in_admin(){
+add_action( 'woocommerce_admin_order_preview_end', 'custom_display_order_data_in_admin' ); //Приоритет 1 - наименьший чтобы этат экшн выполнялся первым из возможно в будущем прикрепленных к этому хуку
+function custom_display_order_data_in_admin( ){
 	/*
 	Из примера использования общей переменной
-    // Call the stored value and display it
-    echo '<div>Value: {{data.custom_key}}</div><br>';
-	*/
+    // Call the stored value and display it*/
+    //echo '<div>Value: {{data.custom_key}}</div><br>';
+	
 	
 	
 	$t=ob_get_contents();
@@ -116,6 +124,8 @@ function custom_display_order_data_in_admin(){
 
 	//сдесь пишем свой код вывода, который будет вместо стертого
 	print_overrided_code($t);
+	
+	
 
 }
 
@@ -159,6 +169,8 @@ function print_overrided_code($t){
 			<# }else{ #>
 					<strong>Самовывоз</strong>
 			<# } #>
+			<br><br><br>
+			<div> {{{data.custom_key}}}</div>
 		</div>
 
 		<# if ( data.data.customer_note ) { #>
@@ -174,4 +186,7 @@ function print_overrided_code($t){
 	
 	<?php
 }
+
+
+
  ?>

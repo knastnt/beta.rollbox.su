@@ -94,3 +94,108 @@ Stack trace:
 
 2019-01-12T12:33:19+00:00 CRITICAL syntax error, unexpected '}', expecting ',' or ';' в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 124
 
+2019-01-12T13:01:56+00:00 CRITICAL syntax error, unexpected end of file в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 176
+
+2019-01-12T13:02:11+00:00 CRITICAL syntax error, unexpected end of file в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 176
+
+2019-01-12T13:02:26+00:00 CRITICAL syntax error, unexpected end of file в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 176
+
+2019-01-12T13:02:41+00:00 CRITICAL syntax error, unexpected end of file в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 176
+
+2019-01-12T13:04:41+00:00 CRITICAL syntax error, unexpected end of file в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 176
+
+2019-01-12T13:06:41+00:00 CRITICAL syntax error, unexpected end of file в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 176
+
+2019-01-12T13:41:31+00:00 CRITICAL Uncaught Error: Using $this when not in object context in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:153
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php(118): print_overrided_code('\n\t\t\t\t\t\t\t<div cl...')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(284): custom_display_order_data_in_admin()
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\admin\list-tables\class-wc-admin-list-table-orders.php(400): do_action('woocommerce_adm...')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WC_Admin_List_Table_Orders->order_preview_tem в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 153
+
+2019-01-12T13:46:49+00:00 CRITICAL Uncaught Error: Call to a member function get_formatted_shipping_address() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:153
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php(118): print_overrided_code('\n\t\t\t\t\t\t\t<div cl...')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(284): custom_display_order_data_in_admin()
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\admin\list-tables\class-wc-admin-list-table-orders.php(400): do_action('woocommerce_adm...')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WC_Admin_List_Tab в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 153
+
+2019-01-12T13:47:01+00:00 CRITICAL Uncaught Error: Call to a member function get_formatted_shipping_address() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:153
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php(118): print_overrided_code('\n\t\t\t\t\t\t\t<div cl...')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(284): custom_display_order_data_in_admin()
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\admin\list-tables\class-wc-admin-list-table-orders.php(400): do_action('woocommerce_adm...')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WC_Admin_List_Tab в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 153
+
+2019-01-12T14:32:01+00:00 CRITICAL Class 'WPO\WC\PDF_Invoices\Documents\Order_Document_Methods' not found в G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce-pdf-invoices-packing-slips\includes\legacy\class-wcpdf-legacy-document.php на строке 23
+
+2019-01-12T14:32:02+00:00 CRITICAL Class 'WPO\WC\PDF_Invoices\Documents\Order_Document_Methods' not found в G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce-pdf-invoices-packing-slips\includes\legacy\class-wcpdf-legacy-document.php на строке 23
+
+2019-01-12T14:32:33+00:00 CRITICAL Class 'WPO\WC\PDF_Invoices\Documents\Order_Document_Methods' not found в G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce-pdf-invoices-packing-slips\includes\legacy\class-wcpdf-legacy-document.php на строке 23
+
+2019-01-12T14:33:03+00:00 CRITICAL Class 'WPO\WC\PDF_Invoices\Documents\Order_Document_Methods' not found в G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce-pdf-invoices-packing-slips\includes\legacy\class-wcpdf-legacy-document.php на строке 23
+
+2019-01-12T14:33:10+00:00 CRITICAL Class 'WPO\WC\PDF_Invoices\Documents\Order_Document_Methods' not found в G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce-pdf-invoices-packing-slips\includes\legacy\class-wcpdf-legacy-document.php на строке 23
+
+2019-01-12T14:45:01+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function {closure}(), 1 passed in G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php on line 288 and exactly 2 expected in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:49
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(288): {closure}(Array)
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(203): WP_Hook->apply_filters(Array, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\admin\list-tables\class-wc-admin-list-table-orders.php(618): apply_filters('woocommerce_adm...', Array, Object(WC_Order))
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(515): WC_Admin_List_Table_Orders::order_preview_get_order_details(Object(WC_Order))
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WC_AJAX::get_order в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 49
+
+2019-01-12T14:46:31+00:00 CRITICAL Uncaught Error: Call to a member function get_meta() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:134
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php(123): print_overrided_code('\n\t\t\t\t\t\t\t<div cl...')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(284): custom_display_order_data_in_admin()
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\admin\list-tables\class-wc-admin-list-table-orders.php(400): do_action('woocommerce_adm...')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WC_Admin_List_Table_Orders->order_previ в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 134
+
+2019-01-12T14:46:44+00:00 CRITICAL Uncaught Error: Call to a member function get_meta() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:134
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php(123): print_overrided_code('\n\t\t\t\t\t\t\t<div cl...')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(284): custom_display_order_data_in_admin()
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\admin\list-tables\class-wc-admin-list-table-orders.php(400): do_action('woocommerce_adm...')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WC_Admin_List_Table_Orders->order_previ в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 134
+
+2019-01-12T14:59:31+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function custom_display_order_data_in_admin(), 0 passed in G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php on line 284 and exactly 1 expected in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:50
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(284): custom_display_order_data_in_admin()
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\admin\list-tables\class-wc-admin-list-table-orders.php(400): do_action('woocommerce_adm...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WC_Admin_List_Table_Orders->order_preview_template('')
+#5 G:\OpenServer\domains\beta. в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 50
+
+2019-01-12T15:00:21+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function custom_display_order_data_in_admin(), 0 passed in G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php on line 284 and exactly 1 expected in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:50
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(284): custom_display_order_data_in_admin()
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\admin\list-tables\class-wc-admin-list-table-orders.php(400): do_action('woocommerce_adm...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WC_Admin_List_Table_Orders->order_preview_template('')
+#5 G:\OpenServer\domains\beta. в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 50
+
+2019-01-12T15:31:41+00:00 CRITICAL syntax error, unexpected '?>' в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 120
+
+2019-01-12T15:31:43+00:00 CRITICAL syntax error, unexpected '?>' в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 120
+
+2019-01-12T15:39:17+00:00 CRITICAL Cannot redeclare custom_display_order_data_in_admin() (previously declared in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:58) в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 201
+
+2019-01-12T15:39:19+00:00 CRITICAL Cannot redeclare custom_display_order_data_in_admin() (previously declared in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:58) в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 201
+
+2019-01-12T15:40:37+00:00 CRITICAL Cannot redeclare custom_display_order_data_in_admin() (previously declared in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:58) в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 201
+
+2019-01-12T15:40:54+00:00 CRITICAL Cannot redeclare custom_display_order_data_in_admin() (previously declared in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php:58) в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions-modules\woocommerce_admin_order_preview-functions.php на строке 201
+
