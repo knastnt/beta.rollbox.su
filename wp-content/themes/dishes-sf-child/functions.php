@@ -377,11 +377,12 @@ function custom_override_checkout_fields( $fields ) {
 	//unset($fields[‘account’][‘account_password’]); //пароль
 	//unset($fields['account']['account_password-2']); //подтверждение пароля
 	
+	//Не обязателен E-mail если человек не залогинен
+	$fields['billing']['billing_email']['required'] = false;
 	
-	$fields['billing']['billing_email']['required'] = false; //телефон
-	
+	//Если залогинен, скрываем поле ввода  E-mail
 	if ( is_user_logged_in() )
-		unset($fields['billing']['billing_email']); //телефон
+		unset($fields['billing']['billing_email']);
 	
 	return $fields;
 }

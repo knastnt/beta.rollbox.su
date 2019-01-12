@@ -119,6 +119,7 @@ function custom_display_order_data_in_admin(){
 
 }
 
+//Здесь как-раз тот код, что выводится внутри окна просмотра ордера
 function print_overrided_code($t){
 	//echo $t; //Вывести оригинальное содержание	
 	?>
@@ -126,7 +127,8 @@ function print_overrided_code($t){
 	<div class="wc-order-preview-addresses">
 		<div class="wc-order-preview-address">
 			<h2><?php esc_html_e( 'Billing details', 'woocommerce' ); ?></h2>
-			{{{ data.formatted_billing_address }}}
+			{{ data.data.billing.first_name }}
+			{{ data.data.billing.last_name }}
 
 			<# if ( data.data.billing.email ) { #>
 				<strong><?php esc_html_e( 'Email', 'woocommerce' ); ?></strong>
@@ -135,7 +137,7 @@ function print_overrided_code($t){
 
 			<# if ( data.data.billing.phone ) { #>
 				<strong><?php esc_html_e( 'Phone', 'woocommerce' ); ?></strong>
-				<a href="tel:{{ data.data.billing.phone }}">{{ data.data.billing.phone }}</a>
+				{{ data.data.billing.phone }}
 			<# } #>
 
 			<# if ( data.payment_via ) { #>
@@ -143,21 +145,21 @@ function print_overrided_code($t){
 				{{{ data.payment_via }}}
 			<# } #>
 		</div>
-		<# if ( data.needs_shipping ) { #>
-			<div class="wc-order-preview-address">
-				<h2><?php esc_html_e( 'Shipping details', 'woocommerce' ); ?></h2>
-				<# if ( data.ship_to_billing ) { #>
-					{{{ data.formatted_billing_address }}}
-				<# } else { #>
-					<a href="{{ data.shipping_address_map_url }}" target="_blank">{{{ data.formatted_shipping_address }}}</a>
-				<# } #>
+		<div class="wc-order-preview-address">
+			<h2>Получение заказа</h2>
+			<# if ( data.needs_shipping ) { #>
+				<strong>Адрес:</strong>
+					
+					{{ data.data.shipping.address_1 }} <a href="https://yandex.ru/search/?text={{ data.data.shipping.address_1 }}" target="_blank"> поиск</a>
 
-				<# if ( data.shipping_via ) { #>
-					<strong><?php esc_html_e( 'Shipping method', 'woocommerce' ); ?></strong>
-					{{ data.shipping_via }}
-				<# } #>
-			</div>
-		<# } #>
+					<# if ( data.shipping_via ) { #>
+						<strong><?php esc_html_e( 'Shipping method', 'woocommerce' ); ?></strong>
+						{{ data.shipping_via }}
+					<# } #>
+			<# }else{ #>
+					<strong>Самовывоз</strong>
+			<# } #>
+		</div>
 
 		<# if ( data.data.customer_note ) { #>
 			<div class="wc-order-preview-note">
@@ -169,5 +171,7 @@ function print_overrided_code($t){
 
 	{{{ data.item_html }}}
 	
+	
 	<?php
 }
+ ?>
