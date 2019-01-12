@@ -4,6 +4,12 @@
 define("SHOW_MSG_IF_NOT_LOGGINED", false);
 define("DEBUG_MODE", false);
 
+
+//// превью заказа при нажатии на глаз
+//https://wp-kama.ru/function/WC_Admin_List_Table_Orders::order_preview_template
+//////////////////////////////////
+require_once( get_stylesheet_directory() . '/functions-modules/woocommerce_admin_order_preview-functions.php' );
+
 /**
  * Convert myCRED Points into WooCommerce Coupon
  * Requires myCRED 1.4 or higher!
@@ -424,3 +430,4 @@ function custom_override_checkout_fields( $fields ) {
 
 }
 add_action( 'woocommerce_order_status_completed', 'mycred_pro_reward_order_percentage' );*/
+

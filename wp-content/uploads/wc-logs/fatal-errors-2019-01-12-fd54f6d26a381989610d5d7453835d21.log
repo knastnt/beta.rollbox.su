@@ -1,0 +1,30 @@
+2019-01-12T09:20:15+00:00 CRITICAL syntax error, unexpected ';' в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 430
+
+2019-01-12T09:20:22+00:00 CRITICAL syntax error, unexpected ';' в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 430
+
+2019-01-12T09:20:24+00:00 CRITICAL syntax error, unexpected ';' в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 430
+
+2019-01-12T09:20:29+00:00 CRITICAL syntax error, unexpected ';' в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 430
+
+2019-01-12T09:20:32+00:00 CRITICAL syntax error, unexpected ';' в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 430
+
+2019-01-12T09:20:39+00:00 CRITICAL syntax error, unexpected ';' в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 430
+
+2019-01-12T09:43:53+00:00 CRITICAL require_once(): Failed opening required 'G:\OpenServer\domains\beta.rollbox.su/wp-content/themes/storefrontwoocommerce_admin_order_preview/functions.php' (include_path='.;g:/openserver/modules/php/PHP-7.1-x64;g:/openserver/modules/php/PHP-7.1-x64/PEAR/pear') в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 432
+
+2019-01-12T09:45:40+00:00 CRITICAL require_once(): Failed opening required 'G:\OpenServer\domains\beta.rollbox.su/wp-content/themes/storefrontfunctions-modules/woocommerce_admin_order_preview-functions.php' (include_path='.;g:/openserver/modules/php/PHP-7.1-x64;g:/openserver/modules/php/PHP-7.1-x64/PEAR/pear') в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 432
+
+2019-01-12T09:45:41+00:00 CRITICAL require_once(): Failed opening required 'G:\OpenServer\domains\beta.rollbox.su/wp-content/themes/storefrontfunctions-modules/woocommerce_admin_order_preview-functions.php' (include_path='.;g:/openserver/modules/php/PHP-7.1-x64;g:/openserver/modules/php/PHP-7.1-x64/PEAR/pear') в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 432
+
+2019-01-12T09:45:57+00:00 CRITICAL require_once(): Failed opening required 'G:\OpenServer\domains\beta.rollbox.su/wp-content/themes/storefront/functions-modules/woocommerce_admin_order_preview-functions.php' (include_path='.;g:/openserver/modules/php/PHP-7.1-x64;g:/openserver/modules/php/PHP-7.1-x64/PEAR/pear') в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 432
+
+2019-01-12T09:46:47+00:00 CRITICAL require_once(): Failed opening required 'G:\OpenServer\domains\beta.rollbox.su/wp-content/themes/storefront/functions-modules/woocommerce_admin_order_preview-functions.php' (include_path='.;g:/openserver/modules/php/PHP-7.1-x64;g:/openserver/modules/php/PHP-7.1-x64/PEAR/pear') в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 432
+
+2019-01-12T09:46:49+00:00 CRITICAL require_once(): Failed opening required 'G:\OpenServer\domains\beta.rollbox.su/wp-content/themes/storefront/functions-modules/woocommerce_admin_order_preview-functions.php' (include_path='.;g:/openserver/modules/php/PHP-7.1-x64;g:/openserver/modules/php/PHP-7.1-x64/PEAR/pear') в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 432
+
+2019-01-12T09:47:37+00:00 CRITICAL require_once(): Failed opening required 'G:\OpenServer\domains\beta.rollbox.su/wp-content/themes/storefront/functions-modules/woocommerce_admin_order_preview-functions.php' (include_path='.;g:/openserver/modules/php/PHP-7.1-x64;g:/openserver/modules/php/PHP-7.1-x64/PEAR/pear') в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 11
+
+2019-01-12T09:48:42+00:00 CRITICAL require_once(): Failed opening required 'G:\OpenServer\domains\beta.rollbox.su/wp-content/functions-modules/woocommerce_admin_order_preview-functions.php' (include_path='.;g:/openserver/modules/php/PHP-7.1-x64;g:/openserver/modules/php/PHP-7.1-x64/PEAR/pear') в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 11
+
+2019-01-12T09:52:33+00:00 CRITICAL require_once(): Failed opening required 'G:\OpenServer\domains\beta.rollbox.su/wp-content/themes/storefront/functions-modules/woocommerce_admin_order_preview-functions.php' (include_path='.;g:/openserver/modules/php/PHP-7.1-x64;g:/openserver/modules/php/PHP-7.1-x64/PEAR/pear') в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 11
+
