@@ -188,5 +188,24 @@ function print_overrided_code($t){
 }
 
 
+//После оформления заказа в превью доступны две кнопки: "Готов, передан в доставку" и "Готов, самовывоз".
+//В зависимости от заказа одна из них будет удалена
+add_filter( 'woocommerce_admin_order_preview_actions', 'remove_one_delivery_button', 30, 2 );
+function remove_one_delivery_button( $actions, $order ){
+	// filter...
+	/*$data = print_r($order, 1) . PHP_EOL;
+	file_put_contents($_SERVER['DOCUMENT_ROOT'].'/dump.txt', $data);//, FILE_APPEND);*/
+	
+	//Проверяем, доставка это или самовывоз
+	if($order->needs_shipping_address()){
+		//Удаляем кнопку самовывоза
+		unset($actions['status']['actions']['ready-self-out']);
+	}else{
+		//Удаляем кнопку доставки
+		unset($actions['status']['actions']['ready-delivery']);
+	}
+
+	return $actions;
+}
 
  ?>
