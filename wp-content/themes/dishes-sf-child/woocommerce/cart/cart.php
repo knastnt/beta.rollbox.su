@@ -88,8 +88,10 @@ do_action( 'woocommerce_before_cart' ); ?>
 						<td class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'woocommerce' ); ?>">
 						<?php
 						if ( $_product->is_sold_individually() ) {
+							//Если продукт может быть только в единственном числе
 							$product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key );
 						} else {
+							//Если продукт может быть во множественном числе
 							$product_quantity = woocommerce_quantity_input( array(
 								'input_name'   => "cart[{$cart_item_key}][qty]",
 								'input_value'  => $cart_item['quantity'],
