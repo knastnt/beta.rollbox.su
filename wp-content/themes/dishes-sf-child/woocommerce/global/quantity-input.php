@@ -29,12 +29,17 @@ if ( $max_value && $min_value === $max_value ) {
 	?>
 	<div class="quantity">
 		<label class="screen-reader-text" for="<?php echo esc_attr( $input_id ); ?>"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></label>
+		
+		<!-- Делаем +/- на количестве товара
+			http://denis-creative.com/kak-stilizovat-strelki-dlya-input-type-number/ -->
+		<!--button class="quantity-arrow-minus"> - </button-->
+		<input id="btn-<?php echo trim(esc_attr( $input_id )); ?>" class="quantity-arrow-minus" type=button value=' - '>
 		<input
 			type="number"
 			id="<?php echo esc_attr( $input_id ); ?>"
-			class="input-text qty text"
+			class="input-text qty text quantity-num"
 			step="<?php echo esc_attr( $step ); ?>"
-			min="<?php echo esc_attr( $min_value ); ?>"
+			min="1"
 			max="<?php echo esc_attr( 0 < $max_value ? $max_value : '' ); ?>"
 			name="<?php echo esc_attr( $input_name ); ?>"
 			value="<?php echo esc_attr( $input_value ); ?>"
@@ -43,6 +48,9 @@ if ( $max_value && $min_value === $max_value ) {
 			pattern="<?php echo esc_attr( $pattern ); ?>"
 			inputmode="<?php echo esc_attr( $inputmode ); ?>"
 			aria-labelledby="<?php echo esc_attr( $labelledby ); ?>" />
+		<!--button class="quantity-arrow-plus"> + </button-->
+		<input id="btn-<?php echo trim(esc_attr( $input_id )); ?>" class="quantity-arrow-plus" type=button value=' + '>
+				
 	</div>
 	<?php
 }
