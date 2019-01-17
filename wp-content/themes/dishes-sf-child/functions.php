@@ -4,12 +4,13 @@
 define("SHOW_MSG_IF_NOT_LOGGINED", false);
 define("DEBUG_MODE", false);
 
-//wp_enqueue_script('dishes-sf-child-func', get_template_directory_uri() . '/js/dishes-sf-child-func.js', array(), false, true);
+//подключаем скрипт для работы кнопок изменения количества товара
 add_action( 'wp_enqueue_scripts', 'true_include_myscript' );
 function true_include_myscript() {
  	wp_enqueue_script( 'dishes-sf-child-func', get_stylesheet_directory_uri() . '/js/dishes-sf-child-func.js' );
 }
  
+
 
 
 //// превью заказа при нажатии на глаз
