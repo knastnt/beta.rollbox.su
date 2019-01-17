@@ -19,6 +19,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/////////////////////////////////////////////////////////////////////////////////
 function clear_methods($available_methods) {
 	$returned_methods = array();
 	$free_delivery = 0; //0 - no free, 1 - in town, 2 - for all
@@ -60,6 +61,7 @@ function clear_methods($available_methods) {
 	}
 	return $returned_methods;
 }
+/////////////////////////////////////////////////////////////////////////////////
 
 $formatted_destination    = isset( $formatted_destination ) ? $formatted_destination : WC()->countries->get_formatted_address( $package['destination'], ', ' );
 $has_calculated_shipping  = ! empty( $has_calculated_shipping );
@@ -72,7 +74,7 @@ $calculator_text          = '';
 		<?php if ( $available_methods ) : ?>
 			<ul id="shipping_method" class="woocommerce-shipping-methods">
 				<?php
-				$available_methods = clear_methods($available_methods);
+				$available_methods = clear_methods($available_methods); /////////////////////////////////////////////////////////////////////////////////
 				foreach ( $available_methods as $method ) : ?>
 					<li>
 						<?php
