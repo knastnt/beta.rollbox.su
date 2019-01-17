@@ -10,13 +10,18 @@ function true_include_myscript() {
  	wp_enqueue_script( 'dishes-sf-child-func', get_stylesheet_directory_uri() . '/js/dishes-sf-child-func.js' );
 }
  
+ 
 
 
 
-//// превью заказа при нажатии на глаз
-//https://wp-kama.ru/function/WC_Admin_List_Table_Orders::order_preview_template
-//////////////////////////////////
+// превью заказа при нажатии на глаз
 require_once( get_stylesheet_directory() . '/functions-modules/woocommerce_admin_order_preview-functions.php' );
+
+// убираются лишние способы доставки в зависимости от цены
+require_once( get_stylesheet_directory() . '/functions-modules/woocommerce_clear_shipping_methods-functions.php' );
+
+
+
 
 /**
  * Convert myCRED Points into WooCommerce Coupon
