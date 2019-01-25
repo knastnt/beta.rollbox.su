@@ -112,7 +112,11 @@ abstract class WOOF_EXT {
     //new from v.2.1.6
     public static function get_ext_idx($full_path)
     {
-        return md5(str_replace(ABSPATH, '', $full_path));
+        //Вот тут проблема определения активированных расширений при смене файлового пути до расширения. Замена не происходит т.к. в винде слеши в другую сторону
+        $full_path_corrected = str_replace('\\', '/', $full_path);
+        $ABSPATH_corrected = str_replace('\\', '/', ABSPATH);
+        $f = str_replace($ABSPATH_corrected, '', $full_path_corrected);
+        return md5($f);
     }
 
     abstract public function init();
