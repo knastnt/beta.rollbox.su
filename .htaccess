@@ -7,9 +7,6 @@ RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
-# Rewrite HTTP to HTTPS
-RewriteCond %{HTTPS} !=on
-RewriteRule ^(.*) https://%{SERVER_NAME}/$1 [R,L]
 </IfModule>
 
 # END WordPress
