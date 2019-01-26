@@ -7,6 +7,7 @@ jQuery( function( $ ) {
 	  if ($quantityNum.val() > 1) {
 		$quantityNum.val(+$quantityNum.val() - 1);
 		$( '.woocommerce-cart-form :input[name="update_cart"]' ).prop( 'disabled', false );
+		$quantityNum.trigger('change');
 	  }
 	});
 
@@ -33,6 +34,7 @@ jQuery( function( $ ) {
 	  var $quantityNum = $('#' + $input);
 	  $quantityNum.val(+$quantityNum.val() + 1);
 	  $( '.woocommerce-cart-form :input[name="update_cart"]' ).prop( 'disabled', false );
+	  $quantityNum.trigger('change');
 	  //$( '.woocommerce-cart-form :input[name="update_cart"]' ).click();
 	});
 
