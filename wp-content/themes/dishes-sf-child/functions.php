@@ -5,20 +5,20 @@ define("SHOW_MSG_IF_NOT_LOGGINED", false);
 define("DEBUG_MODE", false);
 
 
-//подмена core js в woocommerce
+/*//подмена core js в woocommerce для ajax автообновления корзины при изменении количества товаров
 add_action( 'wp_enqueue_scripts', 'load_theme_scripts' );
 
     function load_theme_scripts() {
         global $wp_scripts; 
-        $wp_scripts->registered[ 'wc-cart' ]->src = get_stylesheet_directory_uri() . '/js/cart.js';
+        $wp_scripts->registered[ 'wc-cart' ]->src = get_stylesheet_directory_uri() . '/functions-modules/woocommerce_ajax_change_quantity/js/cart.js';
     }
 
 
 //подключаем скрипт для работы кнопок изменения количества товара
 add_action( 'wp_enqueue_scripts', 'true_include_myscript' );
 function true_include_myscript() {
- 	wp_enqueue_script( 'dishes-sf-child-func', get_stylesheet_directory_uri() . '/js/dishes-sf-child-func.js' );
-}
+ 	wp_enqueue_script( 'dishes-sf-child-func', get_stylesheet_directory_uri() . '/functions-modules/woocommerce_ajax_change_quantity/js/dishes-sf-child-func.js' );
+}*/
  
  
 
@@ -29,6 +29,9 @@ require_once( get_stylesheet_directory() . '/functions-modules/woocommerce_admin
 
 // убираются лишние способы доставки в зависимости от цены
 require_once( get_stylesheet_directory() . '/functions-modules/woocommerce_clear_shipping_methods-functions.php' );
+
+// добавление +/- для количества товаров в корзине и автообновление
+require_once( get_stylesheet_directory() . '/functions-modules/woocommerce_ajax_change_quantity/woocommerce_ajax_change_quantity.php' );
 
 
 
