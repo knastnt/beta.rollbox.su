@@ -15,34 +15,34 @@ function clear_shipping_methods($available_methods) {
 		if($method->get_label() == 'Бесплатная доставка по городу') $free_delivery++;
 		if($method->get_label() == 'Бесплатная доставка') $free_delivery++;
 	}
-	foreach ( $available_methods as $method ){
+	foreach ( $available_methods as $method_name => $method ){
 		switch ($method->get_label()) {
 			case 'Самовывоз':
-				$returned_methods[] = $method;
+				$returned_methods[$method_name] = $method;
 				break;
 			case 'Бесплатная доставка по городу':
 				if($free_delivery == 1){
-					$returned_methods[] = $method;
+					$returned_methods[$method_name] = $method;
 				}
 				break;
 			case 'Бесплатная доставка':
 				if($free_delivery == 2){
-					$returned_methods[] = $method;
+					$returned_methods[$method_name] = $method;
 				}
 				break;
 			case 'Центральный округ':
 				if($free_delivery == 0){
-					$returned_methods[] = $method;
+					$returned_methods[$method_name] = $method;
 				}
 				break;
 			case 'Ленинский округ':
 				if($free_delivery == 0){
-					$returned_methods[] = $method;
+					$returned_methods[$method_name] = $method;
 				}
 				break;
 			case 'За город':
 				if($free_delivery < 2){
-					$returned_methods[] = $method;
+					$returned_methods[$method_name] = $method;
 				}
 				break;
 		}
