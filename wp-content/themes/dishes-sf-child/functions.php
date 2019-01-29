@@ -6,57 +6,14 @@ define("DEBUG_MODE", false);
 
 
  
-function remove_some_notices(){
-    $notices = WC()->session->get( 'wc_notices', array() );
+function remove_some_notices($content){
 
-    //var_dump($notices);
-
-    if( isset($notices['success']) ){
-        //echo '$notices[\'success\'] - есть';
-
-        if(($key = array_search('Корзина обновлена.1',$notices['success'])) !== FALSE){
-             unset($notices['success'][$key]);
-        }
-
-        if(count($notices['success']) == 0) unset($notices['success']);
-    }else{
-        //echo '$notices[\'success\'] - нет';
-    }
-
-    //var_dump($notices);
- } 
-add_action( 'woocommerce_add_message', 'remove_some_notices' );
-
-/*add_filter( 'woocommerce_add_message', 'remove_notices' );
-function remove_notices($content){
-
-	if (content == 'Корзина обновлена.') return '';
-
-	return $content;
-}*/
-
-/*function remove_some_notices($content){
-    $notices = WC()->session->get( 'wc_notices', array() );
-
-    //var_dump($notices);
-
-    if( isset($notices['success']) ){
-        //echo '$notices[\'success\'] - есть';
-
-        if(($key = array_search('Корзина обновлена.',$notices['success'])) !== FALSE){
-            unset($notices['success'][$key]);
-        }
-
-        if(count($notices['success']) == 0) unset($notices['success']);
-    }else{
-        //echo '$notices[\'success\'] - нет';
-    }
-
-    //var_dump($notices);
+    // Удаляем следующие сообщения
+    if ($content == 'Корзина обновлена.') return '';
 
     return $content;
 }
-add_filter( 'woocommerce_add_to_cart_hash', 'remove_some_notices' );*/
+add_filter( 'woocommerce_add_message', 'remove_some_notices' );
 
 
 
