@@ -10,10 +10,12 @@ function remove_some_notices($content){
 
     // Удаляем следующие сообщения
     if ($content == 'Корзина обновлена.') return '';
+    if ($content == "У вас есть купон? <a href=\"#\" class=\"showcoupon\">Нажмите здесь для введения кода</a>") return ''; //пришлось редактировать шаблон notices\notice.php
 
     return $content;
 }
 add_filter( 'woocommerce_add_message', 'remove_some_notices' );
+add_filter( 'woocommerce_add_notice', 'remove_some_notices' ); //пришлось редактировать шаблон notices\notice.php
 
 
 
