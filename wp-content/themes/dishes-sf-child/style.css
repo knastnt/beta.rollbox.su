@@ -14,6 +14,7 @@ Text Domain:	dishes-sf-child
 /*Переменные цветов*/
 :root{
 
+    --color-lightred: #fed1d1;;
     --color-red: #eb3e32;
     --color-lightgray: #ef655b;
     --color-darkgray: #363f4d;
@@ -30,21 +31,36 @@ Text Domain:	dishes-sf-child
 /*Header*/
 .site-header{
     background-color: var(--color-red);
+    padding-top: 0;
 }
 .header-top{
     margin-bottom: 2em;
     border-bottom: 1px solid var(--color-lightgray);
 }
+.header-top a{
+    color: var(--color-lightred);
+}
 .top-order p{
     color: var(--color-white);
-    font-size: 0.9em;
+    font-size: 0.8em;
     display: inline-block;
-    padding: 0 20px 0 23px;
-    margin-right: 20px;
+    padding: 0 2em 0 0;
+    margin: 0.5em 1.5em 0.5em 0;
+    position: relative;
 }
 .top-order p.order1::before {
     font-family: 'Font Awesome 5 Free';
     content: "\f017";
     margin-right: 8px;
+}
+.top-order p.order1::after {
+    height: 16px;
+    width: 1px;
+    background: #fff;
+    opacity: 0.2;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 2px;
 }
 
