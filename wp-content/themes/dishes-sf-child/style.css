@@ -27,15 +27,6 @@ Text Domain:	dishes-sf-child
 }
 .header-top{
     margin-bottom: 2em;
-}
-
-.header-top hr{
-    margin: 0;
-
-    position: absolute;
-    height: 0;
-    width: 100%;
-    left: 0;
-
     border-bottom: 1px solid var(--color-lightgray);
 }
+
