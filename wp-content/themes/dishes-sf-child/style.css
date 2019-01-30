@@ -102,11 +102,17 @@ Text Domain:	dishes-sf-child
 .aws-container .aws-search-field {
     border: 0;
 }
-.site-search input {
+.aws-container .aws-search-form input {
+    border-radius: 30px !important;
     background-color: var(--color-white);
 }
-.aws-container .aws-search-form * {
-    border-radius: 30px !important;
+.site-search .widget_product_search form::before {
+    top: 1.05em;
+    z-index: 100;
+}
+.site-search .widget_product_search form input[type="search"],
+.site-search .widget_product_search form input[type="text"] {
+    padding-left: 3.617924em;
 }
 
 
