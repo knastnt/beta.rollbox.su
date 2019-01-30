@@ -28,11 +28,18 @@ Text Domain:	dishes-sf-child
 }
 
 
-/*Header*/
+/*
+ *
+ * Header
+ *
+ */
 .site-header{
     background-color: var(--color-red);
     padding-top: 0;
 }
+
+
+/*верхняя строка хеадера*/
 .header-top{
     margin-bottom: 2em;
     border-bottom: 1px solid var(--color-lightgray);
@@ -90,3 +97,33 @@ Text Domain:	dishes-sf-child
     top: 2px;
 }
 
+
+/*строка с лого, поиском ...*/
+.aws-container .aws-search-field {
+    border: 0;
+}
+.site-search input {
+    background-color: var(--color-white);
+}
+.aws-container .aws-search-form * {
+    border-radius: 30px !important;
+}
+
+
+
+
+/*///////////////////////////////////////////////////////////////////////////*/
+@media (min-width:768px) {
+    /*
+     *
+     * Header
+     *
+     */
+    .woocommerce-active .site-header .site-branding {
+        width: 20.913%;
+    }
+    .woocommerce-active .site-header .site-search {
+        float: left;
+        width: 45.739%;
+    }
+}
