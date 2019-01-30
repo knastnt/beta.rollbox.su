@@ -114,6 +114,9 @@ Text Domain:	dishes-sf-child
 .site-search .widget_product_search form input[type="text"] {
     padding-left: 3.617924em;
 }
+.site-header-cart .cart-contents {
+    padding: 0.618em 0;
+}
 
 
 

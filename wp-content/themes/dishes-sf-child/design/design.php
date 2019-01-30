@@ -59,3 +59,21 @@ function get_phone() {
 function is_today_sanitary_day() {
     return false;
 }
+
+
+
+
+
+
+// переместить корзину рядом с поиском
+add_action('storefront_header', 'storefront_header_cart', 40);
+add_action( 'storefront_header', 'replace_cart', 41 );
+function replace_cart()
+{
+    /*if( $priority = has_action('storefront_header', 'storefront_header_cart') ){
+        echo "У хука init есть функция storefront_header_cart с приоритетом ". $priority;
+    }else{
+        echo 'нету';
+    }*/
+    remove_action('storefront_header', 'storefront_header_cart', 60);
+}
