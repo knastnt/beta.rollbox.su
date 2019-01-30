@@ -5,7 +5,7 @@ define("SHOW_MSG_IF_NOT_LOGGINED", false);
 define("DEBUG_MODE", false);
 
 
- 
+ //Не показываем некоторые сообщения
 function remove_some_notices($content){
 
     // Удаляем следующие сообщения
@@ -18,6 +18,9 @@ add_filter( 'woocommerce_add_message', 'remove_some_notices' );
 add_filter( 'woocommerce_add_notice', 'remove_some_notices' ); //пришлось редактировать шаблон notices\notice.php
 
 
+
+// изменение дизайна
+require_once( get_stylesheet_directory() . '/design/design.php' );
 
 // превью заказа при нажатии на глаз
 require_once( get_stylesheet_directory() . '/functions-modules/woocommerce_admin_order_preview-functions.php' );

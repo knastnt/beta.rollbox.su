@@ -1,0 +1,338 @@
+2019-01-29T05:14:18+00:00 CRITICAL syntax error, unexpected ')' в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:14:26+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): gfc_insert_coupon_code_to_session('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\Ope в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:14:30+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): gfc_insert_coupon_code_to_session('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\Ope в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:16:53+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): gfc_insert_coupon_code_to_session('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\Ope в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:17:23+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): gfc_insert_coupon_code_to_session('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\Ope в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:18:10+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): gfc_insert_coupon_code_to_session('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\Ope в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:18:23+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): gfc_insert_coupon_code_to_session('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\Ope в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:20:55+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): gfc_insert_coupon_code_to_session('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\Ope в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:22:54+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): gfc_insert_coupon_code_to_session('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\Ope в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:27:45+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function remove_notices(), 1 passed in G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php on line 286 and exactly 2 expected in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:15
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_notices('\xD0\x9A\xD0\xBE\xD1\x80\xD0\xB7\xD0\xB8\xD0\xBD\xD0\xB0 ...')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(203): WP_Hook->apply_filters('\xD0\x9A\xD0\xBE\xD1\x80\xD0\xB7\xD0\xB8\xD0\xBD\xD0\xB0 ...', Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\wc-notice-functions.php(85): apply_filters('woocommerce_add...', '\xD0\x9A\xD0\xBE\xD1\x80\xD0\xB7\xD0\xB8\xD0\xBD\xD0\xB0 ...')
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-wc-form-handler.php(637): wc_add_notice('\xD0\x9A\xD0\xBE\xD1\x80\xD0\xB7\xD0\xB8\xD0\xBD\xD0\xB0 ...')
+#4 G:\ в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 15
+
+2019-01-29T05:28:18+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function remove_notices(), 1 passed in G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php on line 286 and exactly 2 expected in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:15
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_notices('\xD0\x9A\xD0\xBE\xD1\x80\xD0\xB7\xD0\xB8\xD0\xBD\xD0\xB0 ...')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(203): WP_Hook->apply_filters('\xD0\x9A\xD0\xBE\xD1\x80\xD0\xB7\xD0\xB8\xD0\xBD\xD0\xB0 ...', Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\wc-notice-functions.php(85): apply_filters('woocommerce_add...', '\xD0\x9A\xD0\xBE\xD1\x80\xD0\xB7\xD0\xB8\xD0\xBD\xD0\xB0 ...')
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-wc-form-handler.php(637): wc_add_notice('\xD0\x9A\xD0\xBE\xD1\x80\xD0\xB7\xD0\xB8\xD0\xBD\xD0\xB0 ...')
+#4 G:\ в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 15
+
+2019-01-29T05:35:25+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): gfc_insert_coupon_code_to_session('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\Ope в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:39:21+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:39:27+00:00 CRITICAL syntax error, unexpected ';' в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 13
+
+2019-01-29T05:39:29+00:00 CRITICAL syntax error, unexpected ';' в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 13
+
+2019-01-29T05:40:25+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:40:29+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:43:04+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:43:43+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:44:05+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:44:23+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:45:12+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:45:15+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:45:41+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:45:50+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:47:57+00:00 CRITICAL syntax error, unexpected '}' в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 20
+
+2019-01-29T05:48:11+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:48:14+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:49:16+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:49:19+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:49:25+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T05:49:47+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php:10
+Stack trace:
+#0 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): remove_some_notices('')
+#1 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 G:\OpenServer\domains\beta.rollbox.su\wp-content\plugins\woocommerce\includes\class-woocommerce.php(503): do_action('woocommerce_ini...')
+#4 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(286): WooCommerce->init('')
+#5 G:\OpenServer\domains\beta.rollbox.su\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 G:\OpenServer\domains\beta.rollbox.su\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 G:\OpenServer\domains\beta.rollbox.su\wp-settings.php(467): do_action('init')
+#8 G:\OpenServer\domain в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 10
+
+2019-01-29T06:26:47+00:00 CRITICAL syntax error, unexpected 'return' (T_RETURN) в G:\OpenServer\domains\beta.rollbox.su\wp-content\themes\dishes-sf-child\functions.php на строке 15
+
