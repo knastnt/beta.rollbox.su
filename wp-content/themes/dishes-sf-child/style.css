@@ -40,7 +40,7 @@ Text Domain:	dishes-sf-child
 .header-top a{
     color: var(--color-lightred);
 }
-.top-order p{
+.top-info p{
     color: var(--color-white);
     font-size: 0.8em;
     display: inline-block;
@@ -48,12 +48,38 @@ Text Domain:	dishes-sf-child
     margin: 0.5em 1.5em 0.5em 0;
     position: relative;
 }
-.top-order p.order1::before {
+.top-info p::before {
     font-family: 'Font Awesome 5 Free';
-    content: "\f017";
     margin-right: 8px;
 }
-.top-order p.order1::after {
+.top-info p.info1::before {
+    content: "\f017";
+}
+.top-info p.info2::before {
+    content: "\f095";
+}
+.top-info p.info3::before {
+    content: "\f015";
+}
+.top-info p.info4::before {
+    content: "\f007";
+}
+.top-info p.info5::before {
+    content: "\f234";
+}
+.top-info p.info6::before {
+    content: "\f2f6";
+}
+.top-info p.info4,
+.top-info p.info5,
+.top-info p.info6 {
+    float: right;
+    padding: 0 0 0 2em;
+    margin: 0.5em 0 0.5em 1.5em;
+}
+
+.top-info p.info1::after,
+.top-info p.info2::after {
     height: 16px;
     width: 1px;
     background: #fff;

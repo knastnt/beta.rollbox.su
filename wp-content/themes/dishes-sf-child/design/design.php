@@ -9,9 +9,17 @@ function header_top() {
     <div class="header-top">
         <div class="col-full">
 
-            <div class="top-order">
-                <p class="order1"><?php get_order1_text(); ?></p>
-                <p class="order2">Телефон: <?php get_phone(); ?></p>
+            <div class="top-info">
+                <p class="info1"><?php get_info1_text(); ?></p>
+                <p class="info2"><?php get_phone(); ?></p>
+                <p class="info3">г.Комсомольск-на-Амуре, проспект Мира 29</p>
+
+                <?php if(is_user_logged_in()) { ?>
+                    <p class="info4"><a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Личный кабинет</a></p>
+                <?php } else { ?>
+                    <p class="info5"><a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Регистрация</a></p>
+                    <p class="info6"><a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Войти</a></p>
+                <?php } ?>
             </div>
 
         </div>
@@ -21,7 +29,7 @@ function header_top() {
 }
 
 
-function get_order1_text() {
+function get_info1_text() {
     if (is_today_sanitary_day()) {
         echo "Сегодня санитарный день. <a href=\"#raspisanie\">Посмотреть Расписание. ^</a>";
     }else{
