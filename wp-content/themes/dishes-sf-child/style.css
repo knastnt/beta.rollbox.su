@@ -129,7 +129,8 @@ Text Domain:	dishes-sf-child
      *
      */
     .woocommerce-active .site-header .site-branding {
-        width: 20.913%;
+        width: auto;
+        margin-right: 7%;
     }
     .woocommerce-active .site-header .site-search {
         float: left;
