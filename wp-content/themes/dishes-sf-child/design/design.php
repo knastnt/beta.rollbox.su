@@ -1,5 +1,9 @@
 <?php
 
+// мобильное меню
+require_once( get_stylesheet_directory() . '/design/flexmobilemenu/flexmobilemenu.php' );
+
+
 
 //Нужно подвинуть этот экшн перед ним storefront_header_container с нулевым приоритетом. это оказалось просто: приоритет -1
 add_action( 'storefront_header', 'header_top', -1 );
