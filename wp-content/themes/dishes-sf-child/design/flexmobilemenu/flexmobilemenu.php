@@ -95,14 +95,16 @@ function close_menu_wrapper() {
         <?php
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         if ( has_nav_menu( 'flex_mobile_menu' ) ) : ?>
-            <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'twentysixteen' ); ?>">
-                <?php
-                wp_nav_menu( array(
-                    'theme_location' => 'flex_mobile_menu',
-                    'walker' => new flex_mobile_walker_nav_menu()
-                ) );
-                ?>
-            </nav><!-- .main-navigation -->
+            <nav id="flexmobilemainmenu" data-id="flexmobile-mainmenu" class="outer-nav left vertical">
+            </nav>
+
+            <?php
+            wp_nav_menu( array(
+                'theme_location' => 'flex_mobile_menu',
+                'walker' => new flex_mobile_walker_nav_menu()
+            ) );
+            ?>
+
         <?php endif;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ?>
