@@ -6,6 +6,16 @@
  * Time: 21:06
  */
 
+require_once( get_stylesheet_directory() . '/design/flexmobilemenu/flex_mobile_walker_nav_menu.php' );
+
+
+register_nav_menus(
+    array(
+        'flex_mobile_menu' => 'Мобильное меню flex'
+    )
+);
+
+
 add_action('storefront_before_site', 'open_menu_wrapper');
 add_action('wp_footer', 'close_menu_wrapper');
 
@@ -77,6 +87,30 @@ function close_menu_wrapper() {
             <a class="flexmobile icon-upload" href="#">Uploads3</a>
             <a class="flexmobile icon-lock" href="#">Security3</a>
         </nav>
+
+
+
+
+1111111111111111111111111111111111111111111111111111
+        <?php
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        if ( has_nav_menu( 'flex_mobile_menu' ) ) : ?>
+            <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'twentysixteen' ); ?>">
+                <?php
+                wp_nav_menu( array(
+                    'theme_location' => 'flex_mobile_menu',
+                    'walker' => new flex_mobile_walker_nav_menu()
+                ) );
+                ?>
+            </nav><!-- .main-navigation -->
+        <?php endif;
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ?>
+222222222222222222222222222222222222222222222222222
+
+
+
+
 
         <!--ul id="menu-moe-menju-1" class="menu outer-nav left vertical">
             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-37 current_page_item menu-item-has-children menu-item-64">
