@@ -6,7 +6,7 @@
  * Time: 21:06
  */
 
-require_once( get_stylesheet_directory() . '/design/flexmobilemenu/flex_mobile_walker_nav_menu.php' );
+//require_once( get_stylesheet_directory() . '/design/flexmobilemenu/flex_mobile_walker_nav_menu.php' );
 
 
 register_nav_menus(
@@ -18,6 +18,28 @@ register_nav_menus(
 
 add_action('storefront_before_site', 'open_menu_wrapper');
 add_action('wp_footer', 'close_menu_wrapper');
+
+
+class FlexMenuItem {
+    public $ID;
+    public $parent_ID;
+    public $title;
+    public $link;
+
+    public $childs = array();
+
+    /**
+     * FlexMenuItem constructor.
+     * @param $ID
+     */
+    public function __construct($ID)
+    {
+        $this->ID = $ID;
+    }
+
+
+}
+
 
 function open_menu_wrapper() {
     ?>
@@ -99,10 +121,117 @@ function close_menu_wrapper() {
             </nav>
 
             <?php
-            wp_nav_menu( array(
+            /*wp_nav_menu( array(
                 'theme_location' => 'flex_mobile_menu',
                 'walker' => new flex_mobile_walker_nav_menu()
-            ) );
+            ) );*/
+
+
+
+
+
+
+/*
+            // Получим элементы меню на основе параметра $menu_name (тоже что и 'theme_location' или 'menu' в аргументах wp_nav_menu)
+            // Этот код - основа функции wp_nav_menu, где получается ID меню из слага
+
+            $menu_name = 'flex_mobile_menu';
+            $locations = get_nav_menu_locations();
+
+            if( $locations && isset($locations[ $menu_name ]) ){
+                $menu = wp_get_nav_menu_object( $locations[ $menu_name ] ); // получаем объект меню
+
+                $menu_items = wp_get_nav_menu_items( $menu ); // получаем элементы меню
+
+                //$menu_item->menu_item_parent
+
+                // создаем список
+                $menu_list = '<ul id="menu-' . $menu_name . '">';
+
+                foreach ( (array) $menu_items as $key => $menu_item ){
+                    $menu_list .= '<li><a href="' . $menu_item->url . '">' . $menu_item->title . '</a></li>';
+                }
+
+                $menu_list .= '</ul>';
+            }
+            else
+                $menu_list = '<ul><li>Меню "' . $menu_name . '" не определено.</li></ul>';
+*/
+
+
+
+
+
+
+
+
+  $menu_name = 'flex_mobile_menu';
+  $locations = get_nav_menu_locations();
+  $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+  $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
+
+  $menu_array = array();
+?>
+
+            <nav>
+                <ul class="main-nav">
+                    <?php
+                    $count = 0;
+                    $submenu = false;
+                    foreach( $menuitems as $item ) {
+                        $flexMenuItem = new FlexMenuItem($item->ID);
+
+                        $menu_array[$item->ID] = $flexMenuItem;
+
+                        $flexMenuItem->link = $item->url;
+
+                        $flexMenuItem->title = $item->title;
+
+                        $flexMenuItem->parent_ID = $item->menu_item_parent;
+
+                        if ($flexMenuItem->parent_ID) {
+                            $menu_array[$flexMenuItem->parent_ID]->childs[] = $flexMenuItem->ID;
+                        }
+
+                            /*?>
+                                <li class="item">
+                                    <a href="<?php echo $link; ?>" class="title"><?php echo $title; ?></a>
+                                </li>
+                            <?php
+
+                            if (!isset($menu_items[$count + 1]) || $menuitems[$count + 1]->menu_item_parent != $parent_id && $submenu) {
+                                ?>
+                                </ul>
+                                <?php
+                                $submenu = false;
+                            }
+
+                        }
+
+                        if (!isset($menu_items[$count + 1]) || $menuitems[$count + 1]->menu_item_parent != $parent_id) {
+
+                            ?>
+                            </li>
+                            <?php
+                            $submenu = false;
+                        }
+
+                        $count++;*/
+
+                    }
+                    echo '';
+                    ?>
+
+                </ul>
+            </nav>
+
+
+
+
+<?php
+
+
+
             ?>
 
         <?php endif;
