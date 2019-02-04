@@ -61,14 +61,7 @@ function open_menu_wrapper() {
                 <?php
 }
 function close_menu_wrapper() {
-    ?>
-
-
-
-
-
-
-
+                ?>
 
 
             </div><!-- wrapper -->
@@ -111,130 +104,79 @@ function close_menu_wrapper() {
         </nav>
 
 
-
-
-1111111111111111111111111111111111111111111111111111
+        1111111111111111111111111111111111111111111111111111
         <?php
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        if ( has_nav_menu( 'flex_mobile_menu' ) ) : ?>
-            <nav id="flexmobilemainmenu" data-id="flexmobile-mainmenu" class="outer-nav left vertical">
-            </nav>
-
+        if (has_nav_menu('flex_mobile_menu')) {
+            ?>
+                <nav id="flexmobilemainmenu" data-id="flexmobile-mainmenu" class="outer-nav left vertical">
+                </nav>
             <?php
-            /*wp_nav_menu( array(
-                'theme_location' => 'flex_mobile_menu',
-                'walker' => new flex_mobile_walker_nav_menu()
-            ) );*/
 
 
-
-
-
-
-/*
-            // Получим элементы меню на основе параметра $menu_name (тоже что и 'theme_location' или 'menu' в аргументах wp_nav_menu)
-            // Этот код - основа функции wp_nav_menu, где получается ID меню из слага
 
             $menu_name = 'flex_mobile_menu';
             $locations = get_nav_menu_locations();
+            $menu = wp_get_nav_menu_object($locations[$menu_name]);
+            $menuitems = wp_get_nav_menu_items($menu->term_id, array('order' => 'DESC'));
 
-            if( $locations && isset($locations[ $menu_name ]) ){
-                $menu = wp_get_nav_menu_object( $locations[ $menu_name ] ); // получаем объект меню
+            $menu_array = array();
+            $parents_array = array();
 
-                $menu_items = wp_get_nav_menu_items( $menu ); // получаем элементы меню
 
-                //$menu_item->menu_item_parent
+            foreach ($menuitems as $item) {
+                $flexMenuItem = new FlexMenuItem($item->ID);
 
-                // создаем список
-                $menu_list = '<ul id="menu-' . $menu_name . '">';
+                $menu_array[$item->ID] = $flexMenuItem;
 
-                foreach ( (array) $menu_items as $key => $menu_item ){
-                    $menu_list .= '<li><a href="' . $menu_item->url . '">' . $menu_item->title . '</a></li>';
+                $flexMenuItem->link = $item->url;
+
+                $flexMenuItem->title = $item->title;
+
+                $flexMenuItem->parent_ID = $item->menu_item_parent;
+
+                if ($flexMenuItem->parent_ID) {
+                    $menu_array[$flexMenuItem->parent_ID]->childs[] = $flexMenuItem->ID;
+                    $parents_array[$flexMenuItem->parent_ID] = true;
                 }
 
-                $menu_list .= '</ul>';
+
+
             }
-            else
-                $menu_list = '<ul><li>Меню "' . $menu_name . '" не определено.</li></ul>';
-*/
-
-
-
-
-
-
-
-
-  $menu_name = 'flex_mobile_menu';
-  $locations = get_nav_menu_locations();
-  $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-  $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
-
-  $menu_array = array();
-?>
-
-            <nav>
-                <ul class="main-nav">
-                    <?php
-                    $count = 0;
-                    $submenu = false;
-                    foreach( $menuitems as $item ) {
-                        $flexMenuItem = new FlexMenuItem($item->ID);
-
-                        $menu_array[$item->ID] = $flexMenuItem;
-
-                        $flexMenuItem->link = $item->url;
-
-                        $flexMenuItem->title = $item->title;
-
-                        $flexMenuItem->parent_ID = $item->menu_item_parent;
-
-                        if ($flexMenuItem->parent_ID) {
-                            $menu_array[$flexMenuItem->parent_ID]->childs[] = $flexMenuItem->ID;
-                        }
-
-                            /*?>
-                                <li class="item">
-                                    <a href="<?php echo $link; ?>" class="title"><?php echo $title; ?></a>
-                                </li>
-                            <?php
-
-                            if (!isset($menu_items[$count + 1]) || $menuitems[$count + 1]->menu_item_parent != $parent_id && $submenu) {
-                                ?>
-                                </ul>
-                                <?php
-                                $submenu = false;
-                            }
-
-                        }
-
-                        if (!isset($menu_items[$count + 1]) || $menuitems[$count + 1]->menu_item_parent != $parent_id) {
-
-                            ?>
-                            </li>
-                            <?php
-                            $submenu = false;
-                        }
-
-                        $count++;*/
-
-                    }
-                    echo '';
-                    ?>
-
-                </ul>
-            </nav>
-
-
-
-
-<?php
-
-
 
             ?>
+                <nav id="flexmobile-mainmenu" data-parent="" style="display: none;">
+            <?php
+                    /*<a class="flexmobile icon-home" link_on="flexmobile-submenu-1" href="#">Home</a></li>
+                    <a class="flexmobile icon-news" href="#">News</a>
+                    <a class="flexmobile icon-image" href="#">Images</a>
+                    <a class="flexmobile icon-upload" href="#">Uploads</a>
+                    <a class="flexmobile icon-star" href="#">Favorites</a>
+                    <a class="flexmobile icon-mail" href="#">Messages</a>
+                    <a class="flexmobile icon-lock" href="#">Security</a>*/
 
-        <?php endif;
+                    foreach ($menu_array as $item) {
+                        if($item->parent_ID == 0){
+                            $link_on = "";
+                            if( $item->childs){
+                                $link_on = "link_on=\"" . $item->ID . "-link-" . implode('-', $item->childs) . "\"";
+                            }
+                            echo "<a class=\"flexmobile icon-" . $item->ID . "\" href=\"" . $item->link . "\" " . $link_on . ">" . $item->title ."</a>";
+                        }
+                    }
+            ?>
+                </nav>
+            <?php
+
+            /*foreach ($parents_array as $parent) {
+
+
+            }*/
+
+            echo '';
+
+
+        }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ?>
 222222222222222222222222222222222222222222222222222
