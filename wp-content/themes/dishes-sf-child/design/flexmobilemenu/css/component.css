@@ -98,7 +98,7 @@ html, body, .perspective {
 }
 
 .outer-nav.left {
-	left: 25%;
+	left: 15%;
 }
 
 .outer-nav.right {
@@ -653,7 +653,7 @@ html, body, .perspective {
 	.outer-nav.horizontal,
 	.outer-nav.vertical {
 		font-size: 1.2em;
-		width: 6.8em;
+		width: 9.8em;
 	}
 
 	.outer-nav.right {

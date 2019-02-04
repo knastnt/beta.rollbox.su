@@ -60,9 +60,9 @@
                 $('#flexmobilemainmenu').attr('data-id', $link_on_child_id);
 
                 $("#flexmobilemainmenu a").css({opacity: 0.99});
-                $('#flexmobilemainmenu').css({ left: '26%'});
+                $('#flexmobilemainmenu').css({ left: '16%'});
                 $("#flexmobilemainmenu").animate({
-                    left: '25%',
+                    left: '15%',
                 });
 
             }, 500); // время в мс
