@@ -52,7 +52,7 @@
                 var $child_content = $('#' + $link_on_child_id).html();
 
                 if($link_on_parent_nav_id != ""){
-                    $back = "<a class=\"flexmobile icon-home\" link_on=\"" + $link_on_parent_nav_id + "\" href=\"#\">back</a>";
+                    $back = "<a class=\"flexmobile icon-home\" link_on=\"" + $link_on_parent_nav_id + "\" href=\"#\">Назад</a>";
                 }else{
                     $back = "";
                 }
