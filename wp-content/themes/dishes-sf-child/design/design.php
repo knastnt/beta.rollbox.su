@@ -3,6 +3,9 @@
 // мобильное меню
 require_once( get_stylesheet_directory() . '/design/flexmobilemenu/flexmobilemenu.php' );
 
+// корзина в шапке
+require_once( get_stylesheet_directory() . '/design/header-cart/header-cart.php' );
+
 
 
 //Нужно подвинуть этот экшн перед ним storefront_header_container с нулевым приоритетом. это оказалось просто: приоритет -1
@@ -67,17 +70,3 @@ function is_today_sanitary_day() {
 
 
 
-
-
-// переместить корзину рядом с поиском
-add_action('storefront_header', 'storefront_header_cart', 40);
-add_action( 'storefront_header', 'replace_cart', 41 );
-function replace_cart()
-{
-    /*if( $priority = has_action('storefront_header', 'storefront_header_cart') ){
-        echo "У хука init есть функция storefront_header_cart с приоритетом ". $priority;
-    }else{
-        echo 'нету';
-    }*/
-    remove_action('storefront_header', 'storefront_header_cart', 60);
-}
