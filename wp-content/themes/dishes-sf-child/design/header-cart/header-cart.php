@@ -6,6 +6,8 @@
  * Time: 17:36
  */
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // переместить корзину рядом с поиском
 add_action('storefront_header', 'storefront_header_cart', 40);
 add_action( 'storefront_header', 'replace_cart', 41 );
@@ -19,6 +21,39 @@ function replace_cart()
     remove_action('storefront_header', 'storefront_header_cart', 60);
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+if ( ! function_exists( 'storefront_header_cart' ) ) {
+    /**
+     * Display Header Cart
+     *
+     * @since  1.0.0
+     * @uses  storefront_is_woocommerce_activated() check if WooCommerce is activated
+     * @return void
+     */
+    function storefront_header_cart() {
+        wp_deregister_script( 'storefront-header-cart' );
+        if ( storefront_is_woocommerce_activated() ) {
+            if ( is_cart() ) {
+                $class = 'current-menu-item';
+            } else {
+                $class = '';
+            }
+            ?>
+            <ul id="site-header-cart" class="site-header-cart menu">
+                <li class="<?php echo esc_attr( $class ); ?>"-->
+                    <?php storefront_cart_link(); ?>
+                </li>
+                <!--li>
+                    <?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
+                </li-->
+            </ul>
+            <?php
+        }
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 if ( ! function_exists( 'storefront_cart_link' ) ) {
     /**
@@ -45,10 +80,10 @@ if ( ! function_exists( 'storefront_cart_link' ) ) {
             <button type="button" data-toggle="dropdown" data-loading-text="Loading..."
                     class="btn dropdown-toggle dropdown-cart">
                 <i class="ion-android-cart"></i>
-                <span id="cart-total"><span class="number-cart">0</span>$0.00<i class="ion-chevron-down"></i></span>
+                <span id="cart-total"><span class="number-cart">0</span><span class="woocommerce-Price-currencySymbol">₽</span>0.00<i class="ion-chevron-down"></i></span>
             </button>
 
-            <ul class="dropdown-menu pull-right" style="display: block;"><li class="has-scroll">
+            <ul class="dropdown-menu pull-right"><li class="has-scroll">
                     <table class="table">
                         <tbody><tr>
                             <td class="text-center cart-image"> <a href="http://demo.towerthemes.com/tt_boxstore/index.php?route=product/product&amp;product_id=30"><img class="cart-image" src="http://demo.towerthemes.com/tt_boxstore/image/cache/catalog/product1/2-100x100.jpg" alt="Aliquam Consequat Eget Non Arc..." title="Aliquam Consequat Eget Non Arc..."></a> </td>
@@ -76,6 +111,9 @@ if ( ! function_exists( 'storefront_cart_link' ) ) {
                     </p>
                 </li></ul>
         </div>
+
+
+        <script src="<?php echo get_stylesheet_directory_uri(); ?>/design/header-cart/header-cart.js"></script>
         <?php
     }
 

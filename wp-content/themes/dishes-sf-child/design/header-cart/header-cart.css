@@ -4,8 +4,8 @@
     width: auto;
 }
 #cart-total {
-    font-size:14px;
-    font-weight:500;
+    font-size:1.2em;
+    font-weight:600;
     color:#fff;
 }
 #cart-total i {
@@ -60,6 +60,24 @@
     -moz-transition: ease-in-out .3s all;
     transition: ease-in-out .3s all;
 }
+#cart .dropdown-cart .ion-android-cart:before,
+#cart .dropdown-cart .ion-chevron-down:before,
+#cart i.ion-close-round:before{
+    display: inline-block;
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+    font-size: 0.9em;
+}
+#cart .dropdown-cart .ion-android-cart:before {
+    content: "\f07a";
+}
+#cart .dropdown-cart .ion-chevron-down:before {
+    content: "\f107";
+    font-size: 1.5em;
+}
+#cart i.ion-close-round:before {
+    content: "\f00d";
+}
 #cart > button > i:hover {
     color:#363f4d;
 }
@@ -78,6 +96,10 @@
     box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.1);
     color:#555555;
     font-size:13px;
+    position: absolute;
+    right: 0;
+    display: none;
+    list-style: none;
 }
 #cart .dropdown-menu:before {
     content: '';
