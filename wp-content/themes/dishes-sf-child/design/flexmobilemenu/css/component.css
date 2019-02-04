@@ -139,28 +139,43 @@ html, body, .perspective {
 
 .outer-nav a::before {
 	display: inline-block;
-	font-family: 'typicons';
+	font-family: 'Font Awesome 5 Free';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
-	margin-right: 10px;
+	margin-right: 20px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
+	font-size: 0.7em;
 }
 
-.icon-news::before { content: "\e600" }
-.icon-home::before { content: "\e601" }
-.icon-image::before { content: "\e602" }
-.icon-upload::before { content: "\e603" }
-.icon-star::before { content: "\e604" }
-.icon-mail::before { content: "\e605" }
-.icon-lock::before { content: "\e606" }
-.icon-chart-pie::before { content: "\e607" }
+.outer-nav a::after {
+	display: inline-block;
+	font-family: 'Font Awesome 5 Free';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 3;
+	margin-left: 3em;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	float: right;
+	font-size: 0.6em;
+}
+
+.havechilds::after { content: "\f141" }
+
+.icon-test::before { content: "\e600" }
+
 
 /* Individual Effects */
 

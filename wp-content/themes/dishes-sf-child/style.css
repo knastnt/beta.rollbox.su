@@ -121,6 +121,18 @@ Text Domain:	dishes-sf-child
 
 
 
+/*мобильное flex меню*/
+.icon-home::before { content: "\f100" } /*назад*/
+.icon-169::before { content: "\f002" } /*поиск*/
+.icon-172::before { content: "\f07a" }
+.icon-image::before { content: "\e602" }
+.icon-upload::before { content: "\e603" }
+.icon-star::before { content: "\e604" }
+.icon-mail::before { content: "\e605" }
+.icon-lock::before { content: "\e606" }
+.icon-chart-pie::before { content: "\e607" }
+
+
 /*///////////////////////////////////////////////////////////////////////////*/
 @media (min-width:768px) {
     /*

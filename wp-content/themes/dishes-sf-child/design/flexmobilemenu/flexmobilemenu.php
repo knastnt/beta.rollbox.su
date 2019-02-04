@@ -6,7 +6,8 @@
  * Time: 21:06
  */
 
-require_once( get_stylesheet_directory() . '/design/flexmobilemenu/flex_mobile_walker_nav_menu.php' );
+//Не делать ссылки у пунктов меню с дочерними элементами
+define('NO_LINKS_ON_ITEMS_WITH_CHILDS', true);
 
 
 register_nav_menus(
@@ -18,6 +19,31 @@ register_nav_menus(
 
 add_action('storefront_before_site', 'open_menu_wrapper');
 add_action('wp_footer', 'close_menu_wrapper');
+
+
+class FlexMenuItem {
+    public $ID;
+    public $parent_ID;
+    public $title;
+    public $link;
+
+    public $childs = array();
+
+    //public $parent_nav_id;
+    public $childs_nav_link;
+
+    /**
+     * FlexMenuItem constructor.
+     * @param $ID
+     */
+    public function __construct($ID)
+    {
+        $this->ID = $ID;
+    }
+
+
+}
+
 
 function open_menu_wrapper() {
     ?>
@@ -39,29 +65,14 @@ function open_menu_wrapper() {
                 <?php
 }
 function close_menu_wrapper() {
-    ?>
-
-
-
-
-
-
-
+                ?>
 
 
             </div><!-- wrapper -->
         </div><!-- /container -->
-        <!--nav class="outer-nav left vertical">
-            <a href="#" class="icon-home">Home</a>
-            <a href="#" class="icon-news">News</a>
-            <a href="#" class="icon-image">Images</a>
-            <a href="#" class="icon-upload">Uploads</a>
-            <a href="#" class="icon-star">Favorites</a>
-            <a href="#" class="icon-mail">Messages</a>
-            <a href="#" class="icon-lock">Security</a>
-        </nav-->
 
-        <nav id="flexmobilemainmenu" data-id="flexmobile-mainmenu" class="outer-nav left vertical">
+
+        <!--nav id="flexmobilemainmenu" data-id="flexmobile-mainmenu" class="outer-nav left vertical">
         </nav>
         <nav id="flexmobile-mainmenu" data-parent="" style="display: none;">
             <a class="flexmobile icon-home" link_on="flexmobile-submenu-1" href="#">Home</a></li>
@@ -72,41 +83,123 @@ function close_menu_wrapper() {
             <a class="flexmobile icon-mail" href="#">Messages</a>
             <a class="flexmobile icon-lock" href="#">Security</a>
         </nav>
-        <!-- Submenu 1 -->
+        <!-- Submenu 1 ->
         <nav id="flexmobile-submenu-1" data-parent="flexmobile-mainmenu" style="display: none;">
             <a class="flexmobile icon-home" link_on="flexmobile-submenu-1-1" href="#">Home2</a>
             <a class="flexmobile icon-news" href="#">News2</a>
             <a class="flexmobile icon-image" href="#">Images2</a>
             <a class="flexmobile icon-upload" href="#">Uploads2</a>
         </nav>
-        <!-- Submenu 1-1 -->
-        <nav id="flexmobile-submenu-1-1" data-parent="flexmobile-submenu-1" style="display: none;">
+        <!-- Submenu 1-1 ->
+        <nav-- id="flexmobile-submenu-1-1" data-parent="flexmobile-submenu-1" style="display: none;">
             <a class="flexmobile icon-home" href="#">Home3</a>
             <a class="flexmobile icon-news" href="#">News3</a>
             <a class="flexmobile icon-image" href="#">Images3</a>
             <a class="flexmobile icon-upload" href="#">Uploads3</a>
             <a class="flexmobile icon-lock" href="#">Security3</a>
-        </nav>
+        </nav-->
 
 
 
-
-1111111111111111111111111111111111111111111111111111
         <?php
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        if ( has_nav_menu( 'flex_mobile_menu' ) ) : ?>
-            <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'twentysixteen' ); ?>">
-                <?php
-                wp_nav_menu( array(
-                    'theme_location' => 'flex_mobile_menu',
-                    'walker' => new flex_mobile_walker_nav_menu()
-                ) );
+        if (has_nav_menu('flex_mobile_menu')) {
+            ?>
+                <nav id="flexmobilemainmenu" data-id="flexmobile-mainmenu" class="outer-nav left vertical">
+                </nav>
+            <?php
+
+
+
+            $menu_name = 'flex_mobile_menu';
+            $locations = get_nav_menu_locations();
+            $menu = wp_get_nav_menu_object($locations[$menu_name]);
+            $menuitems = wp_get_nav_menu_items($menu->term_id, array('order' => 'DESC'));
+
+            $menu_array = array();
+            $parents_array = array();
+
+
+            foreach ($menuitems as $item) {
+                $flexMenuItem = new FlexMenuItem($item->ID);
+
+                $menu_array[$item->ID] = $flexMenuItem;
+
+                $flexMenuItem->link = $item->url;
+
+                $flexMenuItem->title = $item->title;
+
+                $flexMenuItem->parent_ID = $item->menu_item_parent;
+
+                if ($flexMenuItem->parent_ID) {
+                    $menu_array[$flexMenuItem->parent_ID]->childs[] = $flexMenuItem->ID;
+                }
+
+                $parents_array[$flexMenuItem->parent_ID] = $flexMenuItem->parent_ID;
+
+            }
+
+            foreach ($menu_array as $item) {
+                //На каждый пункт по линку на чилдренов
+                $link_on = "";
+                if( $item->childs){
+                    $link_on = $item->ID . "-link-" . implode('-', $item->childs);
+                }
+                $item->childs_nav_link = $link_on;
+            }
+
+
+
+            foreach ($parents_array as $parent) {
+
+                if($parent == 0) {
+                    ?>
+                        <nav id="flexmobile-mainmenu" data-parent="" style="display: none;">
+                    <?php
+                }else{
+                    $id = $menu_array[$parent]->childs_nav_link;
+                    $dataParent = $menu_array[$parent]->parent_ID;
+                    if($dataParent == 0){
+                        $dataParent = "flexmobile-mainmenu";
+                    }else{
+                        $dataParent = $menu_array[$dataParent]->childs_nav_link;
+                    }
+                    ?>
+                        <nav id="<?php echo $id; ?>" data-parent="<?php echo $dataParent; ?>" style="display: none;">
+                    <?php
+                }
+                    /*<a class="flexmobile icon-home" link_on="flexmobile-submenu-1" href="#">Home</a></li>
+                    <a class="flexmobile icon-news" href="#">News</a>
+                    <a class="flexmobile icon-image" href="#">Images</a>
+                    <a class="flexmobile icon-upload" href="#">Uploads</a>
+                    <a class="flexmobile icon-star" href="#">Favorites</a>
+                    <a class="flexmobile icon-mail" href="#">Messages</a>
+                    <a class="flexmobile icon-lock" href="#">Security</a>*/
+
+                    foreach ($menu_array as $item) {
+
+                        if($item->parent_ID == $parent) {
+                            if($item->childs_nav_link){
+                                if(NO_LINKS_ON_ITEMS_WITH_CHILDS) $item->link = "#";
+                                echo "<a class=\"flexmobile havechilds icon-" . $item->ID . "\" href=\"" . $item->link . "\" link_on=\"" . $item->childs_nav_link . "\">" . $item->title . "</a>";
+                            }else{
+                                echo "<a class=\"flexmobile icon-" . $item->ID . "\" href=\"" . $item->link . "\">" . $item->title . "</a>";
+                            }
+                        }
+
+                    }
                 ?>
-            </nav><!-- .main-navigation -->
-        <?php endif;
+                    </nav>
+                <?php
+
+            }
+
+
+
+        }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ?>
-222222222222222222222222222222222222222222222222222
+
 
 
 
