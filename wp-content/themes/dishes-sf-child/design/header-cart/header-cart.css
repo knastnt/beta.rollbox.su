@@ -102,8 +102,8 @@
 }
 /*Ширина элемента товара корзины*/
 #site-header-cart li.woocommerce-mini-cart-item  {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 /*Заголовок элемента товара корзины*/
 #site-header-cart .woocommerce-mini-cart-item a  {
@@ -126,6 +126,13 @@
 /*Крестик удаления товара*/
 #site-header-cart .widget_shopping_cart .product_list_widget li a.remove {
     float: right !important;
+}
+
+#site-header .widget_shopping_cart p.total {
+
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
 }
 
 /*////////////   /\    //////////////////////////////    /\     ////////////*/
