@@ -182,6 +182,11 @@
     background: var(--color-red);
 }
 
+/*корзина пуста*/
+.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__empty-message {
+    margin-top: 0.3em;
+}
+
 /*////////////   /\    //////////////////////////////    /\     ////////////*
 #cart i.ion-close-round:before{
     display: inline-block;
