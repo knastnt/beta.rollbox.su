@@ -1,7 +1,8 @@
 /* cart */
-#cart{
+#site-header-cart{
     float: right;
     width: auto;
+    top: -5px;
 }
 #cart-total {
     font-size:1.2em;
@@ -10,7 +11,6 @@
 }
 #cart-total i {
     font-size: 10px;
-    margin-left: 6px;
 }
 #cart-total .number-cart {
     width:28px;
@@ -35,16 +35,8 @@
     display: block;
     text-align: left;
 }
-#cart > button {
-    background: none;
-    box-shadow: none;
-    padding: 0;
-    text-align:center;
-    float: right;
-    border:0;
-    position:relative;
-}
-#cart .dropdown-cart .ion-android-cart {
+
+#site-header-cart .cart-contents .ion-android-cart {
     font-size: 20px;
     width: 50px;
     height:50px;
@@ -60,20 +52,32 @@
     -moz-transition: ease-in-out .3s all;
     transition: ease-in-out .3s all;
 }
-#cart .dropdown-cart .ion-android-cart:before,
-#cart .dropdown-cart .ion-chevron-down:before,
-#cart i.ion-close-round:before{
+#site-header-cart .cart-contents .ion-android-cart:before,
+#site-header-cart .cart-contents .ion-chevron-down:before{
     display: inline-block;
     font-family: "Font Awesome 5 Free";
     font-style: normal;
     font-size: 0.9em;
 }
-#cart .dropdown-cart .ion-android-cart:before {
+#site-header-cart .cart-contents .ion-android-cart:before{
     content: "\f07a";
+    margin-left: 12px;
 }
-#cart .dropdown-cart .ion-chevron-down:before {
+#site-header-cart .cart-contents .ion-chevron-down:before {
     content: "\f107";
     font-size: 1.5em;
+}
+
+#site-header-cart .cart-contents::after {
+    content: "" !important;
+}
+
+/*////////////   /\    //////////////////////////////    /\     ////////////*/
+#cart i.ion-close-round:before{
+    display: inline-block;
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+    font-size: 0.9em;
 }
 #cart i.ion-close-round:before {
     content: "\f00d";
