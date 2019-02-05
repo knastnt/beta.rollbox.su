@@ -5,7 +5,7 @@
     top: -5px;
 }
 #cart-total {
-    font-size:1.2em;
+    font-size:1.1em;
     font-weight:600;
     color:#fff;
 }
@@ -77,20 +77,56 @@
 #site-header-cart .widget_shopping_cart_content {
     background: #fff;
     border: 0;
-    min-width: 355px;
+    min-width: 435px;
     margin: 0;
     padding: 35px 35px 0;
     top: 65px;
     border-radius: 3px;
     box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.1);
     color: #555555;
-    font-size: 13px;
+    font-size: 1em;
     position: absolute;
     right: 0;
     top: 0;
 }
+#site-header-cart .widget_shopping_cart_content a {
+    font-size: 1.1em;
+}
 
-
+/*Изображение товара в корзине*/
+#site-header-cart .widget_shopping_cart .product_list_widget img {
+    float: left;
+    margin-left: 0;
+    max-width: 22%;
+    margin-right: 1em;
+}
+/*Ширина элемента товара корзины*/
+#site-header-cart li.woocommerce-mini-cart-item  {
+    padding-left: 0;
+    padding-right: 0;
+}
+/*Заголовок элемента товара корзины*/
+#site-header-cart .woocommerce-mini-cart-item a  {
+    -webkit-transition: ease-in-out .3s all;
+    -moz-transition: ease-in-out .3s all;
+    transition: ease-in-out .3s all;
+}
+#site-header-cart .woocommerce-mini-cart-item a:hover  {
+    color: var(--color-red);
+}
+/*Количество х Цена*/
+.site-header .product_list_widget li .quantity {
+    color: var(--color-lightgray);
+}
+/*Итоговая цена одного товара помноженного на кол-во*/
+#site-header-cart .cart-price-p {
+    font-size: 1.3em;
+    color: var(--color-red);
+}
+/*Крестик удаления товара*/
+#site-header-cart .widget_shopping_cart .product_list_widget li a.remove {
+    float: right !important;
+}
 
 /*////////////   /\    //////////////////////////////    /\     ////////////*/
 #cart i.ion-close-round:before{

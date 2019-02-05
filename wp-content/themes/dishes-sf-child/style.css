@@ -16,8 +16,9 @@ Text Domain:	dishes-sf-child
 
     --color-lightred: #fed1d1;;
     --color-red: #eb3e32;
-    --color-lightgray: #ef655b;
+    --color-orange: #ef655b;
     --color-darkgray: #363f4d;
+    --color-lightgray: #a4a4a4;
     --color-white: #ffffff;
 }
 
@@ -42,7 +43,7 @@ Text Domain:	dishes-sf-child
 /*верхняя строка хеадера*/
 .header-top{
     margin-bottom: 2em;
-    border-bottom: 1px solid var(--color-lightgray);
+    border-bottom: 1px solid var(--color-orange);
 }
 .header-top a{
     color: var(--color-lightred);
