@@ -160,6 +160,9 @@
     font-weight: 500;
     border-radius: 3px;
 }
+#site-header-cart p.woocommerce-mini-cart__buttons a:after {
+    content: "";
+}
 #site-header-cart p.woocommerce-mini-cart__buttons a:hover{
     color: var(--color-white);
     background: var(--color-red);
