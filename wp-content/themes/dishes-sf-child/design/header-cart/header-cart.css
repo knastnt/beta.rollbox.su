@@ -106,7 +106,8 @@
     padding-right: 0 !important;
 }
 /*Заголовок элемента товара корзины*/
-#site-header-cart .woocommerce-mini-cart-item a  {
+#site-header-cart .woocommerce-mini-cart-item a,
+#site-header-cart p.woocommerce-mini-cart__buttons a{
     -webkit-transition: ease-in-out .3s all;
     -moz-transition: ease-in-out .3s all;
     transition: ease-in-out .3s all;
@@ -127,12 +128,40 @@
 #site-header-cart .widget_shopping_cart .product_list_widget li a.remove {
     float: right !important;
 }
-
-#site-header .widget_shopping_cart p.total {
-
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-
+/*Ширина подытога и кнопки внизу*/
+#site-header-cart p.woocommerce-mini-cart__total,
+#site-header-cart p.woocommerce-mini-cart__buttons {
+    padding-left: 0;
+    padding-right: 0;
+    border-bottom: none;
+    background-color: unset;
+    font-size: 1.1em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+#site-header-cart p.woocommerce-mini-cart__total {
+    text-align: left;
+    color: black;
+}
+#site-header-cart p.woocommerce-mini-cart__total span {
+    float: right;
+}
+#site-header-cart p.woocommerce-mini-cart__buttons {
+    background: var(--color-darkgray);
+    margin-left: -35px;
+    margin-right: -35px;
+    padding: 23px 35px;
+    border-radius: 0px 0px 3px 3px;
+}
+#site-header-cart p.woocommerce-mini-cart__buttons a {
+    background: var(--color-darkgray-light);
+    color: var(--color-white);
+    font-weight: 500;
+    border-radius: 3px;
+}
+#site-header-cart p.woocommerce-mini-cart__buttons a:hover{
+    color: var(--color-white);
+    background: var(--color-red);
 }
 
 /*////////////   /\    //////////////////////////////    /\     ////////////*/
@@ -255,36 +284,7 @@
     font-size: 16px;
     color: #929292;
 }
-#cart p.cart-button a:last-child{
-    margin: 0;
-}
-#cart p.cart-button {
-    text-align:left;
-}
-#cart p.cart-button a {
-    border:0;
-    background:#495465;
-    color: #fff;
-    height: 50px;
-    line-height: 53px;
-    text-align: center;
-    padding: 0 30px;
-    display: block;
-    text-transform: uppercase;
-    font-size: 13px;
-    font-weight: 500;
-    display:inline-block;
-    width:100%;
-    border-radius: 3px;
-}
-#cart p.cart-button a:hover{
-    color: #fff;
-    background: #eb3e32;
-    border-color:#eb3e32;
-}
-#cart .cart-button a.view-cart {
-    margin-bottom:15px;
-}
+
 #cart .dropdown-menu .info-item {
     padding:10px 20px;
 }
