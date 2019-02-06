@@ -16,8 +16,10 @@ Text Domain:	dishes-sf-child
 
     --color-lightred: #fed1d1;;
     --color-red: #eb3e32;
-    --color-lightgray: #ef655b;
+    --color-orange: #ef655b;
     --color-darkgray: #363f4d;
+    --color-darkgray-light: #495465;
+    --color-lightgray: #a4a4a4;
     --color-white: #ffffff;
 }
 
@@ -42,7 +44,7 @@ Text Domain:	dishes-sf-child
 /*верхняя строка хеадера*/
 .header-top{
     margin-bottom: 2em;
-    border-bottom: 1px solid var(--color-lightgray);
+    border-bottom: 1px solid var(--color-orange);
 }
 .header-top a{
     color: var(--color-lightred);
@@ -143,9 +145,11 @@ Text Domain:	dishes-sf-child
     .woocommerce-active .site-header .site-branding {
         width: auto;
         margin-right: 7%;
+        margin-top: 10px;
     }
     .woocommerce-active .site-header .site-search {
         float: left;
-        width: 45.739%;
+        width: 56.739%;
+        margin-top: 10px;
     }
 }
