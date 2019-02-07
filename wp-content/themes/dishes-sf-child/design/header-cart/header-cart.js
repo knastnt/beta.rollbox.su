@@ -8,25 +8,25 @@ jQuery( function( $ ) {
     });
     $(function dropDown()
     {
-        elementClick = '#cart button.dropdown-cart';
-        elementSlide =  '.dropdown-menu';
+        elementClick = '#site-header-cart a.cart-contents';
+        elementSlide = '#site-header-cart .widget_shopping_cart_content';
         activeClass = 'active';
 
         $(elementClick).on('click', function(e){
             e.stopPropagation();
-            var subUl = $(this).next(elementSlide);
+            var subUl = $(elementSlide);
             if(subUl.is(':hidden'))
             {
                 subUl.slideDown();
-                $(this).addClass(activeClass);
+                $(elementClick).addClass(activeClass);
             }
             else
             {
                 subUl.slideUp();
-                $(this).removeClass(activeClass);
+                $(elementClick).removeClass(activeClass);
             }
-            $(elementClick).not(this).next(elementSlide).slideUp();
-            $(elementClick).not(this).removeClass(activeClass);
+            /*$(elementClick).not(this).next(elementSlide).slideUp();
+            $(elementClick).not(this).removeClass(activeClass);*/
             e.preventDefault();
         });
 
@@ -36,7 +36,7 @@ jQuery( function( $ ) {
 
         $(document).on('click', function(e){
             e.stopPropagation();
-            var elementHide = $(elementClick).next(elementSlide);
+            var elementHide = $(elementSlide);
             $(elementHide).slideUp();
             $(elementClick).removeClass('active');
         });

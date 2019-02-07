@@ -187,6 +187,20 @@
     margin-top: 0.3em;
 }
 
+
+/*Отмена открытия при наведении*/
+.site-header-cart.focus .widget_shopping_cart, .site-header-cart:hover .widget_shopping_cart {
+    /*left: 0;*/
+    display: block;
+}
+.site-header-cart .widget_shopping_cart {
+    left: 0;
+    display: block;
+}
+.site-header-cart .widget_shopping_cart_content {
+    display: none;
+}
+
 /*////////////   /\    //////////////////////////////    /\     ////////////*
 #cart i.ion-close-round:before{
     display: inline-block;

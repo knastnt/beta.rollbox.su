@@ -51,6 +51,9 @@ if ( ! function_exists( 'storefront_header_cart' ) ) {
                     <?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
                 </li>
             </ul>
+
+            <script src="<?php echo get_stylesheet_directory_uri(); ?>/design/header-cart/header-cart.js"></script>
+
             <?php
         }
     }
