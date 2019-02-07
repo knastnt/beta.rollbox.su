@@ -12,7 +12,7 @@ jQuery( function( $ ) {
         elementSlide = '#site-header-cart .widget_shopping_cart_content';
         activeClass = 'active';
 
-        $(elementClick).on('click', function(e){
+        $(elementClick).live('click', function(e){
             e.stopPropagation();
             var subUl = $(elementSlide);
             if(subUl.is(':hidden'))
@@ -30,7 +30,7 @@ jQuery( function( $ ) {
             e.preventDefault();
         });
 
-        $(elementSlide).on('click', function(e){
+        $(elementSlide).live('click', function(e){
             e.stopPropagation();
         });
 
