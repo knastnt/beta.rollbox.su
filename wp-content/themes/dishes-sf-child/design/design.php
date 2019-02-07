@@ -37,18 +37,22 @@ function header_top() {
 
 
 function get_info1_text() {
+    $beforeButtonText = "Сегодня принимаем заказы";
+    $buttonText = "с 11:00 до 22:30";
+
     if (is_today_sanitary_day()) {
-        echo "Сегодня санитарный день. <a href=\"#raspisanie\">Посмотреть Расписание. ^</a>";
+        $beforeButtonText = "Сегодня санитарный день.";
+        $buttonText = "Посмотреть Расписание.";
     }else{
+        //echo current_time('N');
         $os = array(5, 6, 7); //Пятница, Суббота и Воскресенье
-        if (in_array(date("N"), $os)) {
-            echo "Сегодня принимаем заказы с <a href=\"#raspisanie\">11:00 до 23:30 ^</a>";
-        }else{
-            echo "Сегодня принимаем заказы с <a href=\"#raspisanie\">11:00 до 22:30 ^</a>";
+        if (in_array(current_time('N'), $os)) {
+            $buttonText = "с 11:00 до 23:30";
         }
 
 
     }
+    echo $beforeButtonText . "<a href=\"#raspisanie\">" . $buttonText . " ^</a>";
 }
 
 function get_phone() {
