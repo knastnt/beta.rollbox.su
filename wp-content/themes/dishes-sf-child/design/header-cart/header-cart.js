@@ -1,11 +1,4 @@
 jQuery( function( $ ) {
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 167) {
-            $('.top-menu').addClass("fix-nav");
-        } else {
-            $('.top-menu').removeClass("fix-nav");
-        }
-    });
     $(function dropDown()
     {
         elementClick = '#site-header-cart a.cart-contents';
@@ -25,8 +18,6 @@ jQuery( function( $ ) {
                 subUl.slideUp();
                 $(elementClick).removeClass(activeClass);
             }
-            /*$(elementClick).not(this).next(elementSlide).slideUp();
-            $(elementClick).not(this).removeClass(activeClass);*/
             e.preventDefault();
         });
 

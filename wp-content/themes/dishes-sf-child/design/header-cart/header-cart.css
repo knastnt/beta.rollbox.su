@@ -50,7 +50,7 @@
     margin-right:13px;
 }
 #site-header-cart .cart-contents .ion-android-cart:before,
-#site-header-cart .cart-contents .ion-chevron-down:before{
+.ion-chevron-down:before{
     display: inline-block;
     font-family: "Font Awesome 5 Free";
     font-style: normal;
