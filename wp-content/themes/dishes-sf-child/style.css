@@ -45,33 +45,27 @@ Text Domain:	dishes-sf-child
 /*Выпадающие меню*/
 .dropdown-site-menu {
     position: absolute;
-    left: 0;
     z-index: 1000;
     display: none;
     float: left;
-    min-width: 160px;
-    padding: 5px 0;
     margin: 2px 0 0;
     font-size: 14px;
     text-align: left;
     list-style: none;
-    background-color: #fff;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    border: 1px solid #ccc;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: 4px;
-    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
-    box-shadow: 0 6px 12px rgba(0,0,0,.175);
 
     border: 0;
-    left: initial;
     padding: 15px 18px;
     box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.1);
     border-radius: 3px;
-    margin: 0;
     min-width: 110px;
     background: #fff;
+}
+
+/*i со стрелочкой вниз*/
+.ion-chevron-down::before {
+    content: "\f107";
 }
 
 /*
@@ -144,9 +138,11 @@ Text Domain:	dishes-sf-child
     top: 2px;
 }
 
-.ion-chevron-down::before {
-    content: "\f107";
+.top-info .info1 .dropdown-site-menu {
+    right: 0px;
+    margin-right: 15px;
 }
+
 
 
 /*строка с лого, поиском ...*/
