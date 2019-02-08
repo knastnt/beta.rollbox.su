@@ -10,6 +10,11 @@ jQuery( function( $ ) {
             var subUl = $(elementSlide);
             if(subUl.is(':hidden'))
             {
+
+                /*Сворачиваем другие меню*/
+                $('.dropdown-site-menu').slideUp();
+                $('button.dropdown-toggle').removeClass(activeClass);
+
                 subUl.slideDown();
                 $(elementClick).addClass(activeClass);
             }

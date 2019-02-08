@@ -18,6 +18,12 @@
             var subUl = $(this).next(elSlide);
             if(subUl.is(':hidden'))
             {
+
+                /*Сворачиваем корзину*/
+                $('#site-header-cart .widget_shopping_cart_content').slideUp();
+                $('#site-header-cart a.cart-contents').removeClass(activeClass);
+
+
                 subUl.slideDown();
                 $(this).addClass(activitedClass);
             }
