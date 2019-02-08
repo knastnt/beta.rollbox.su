@@ -52,8 +52,36 @@ function get_info1_text() {
         <i class="ion-chevron-down"></i>
     </button>
     <ul class="dropdown-site-menu" style="">
-        <li><button class="btn btn-link btn-block language-select item-selected" type="button" name="en-gb"><img src="catalog/language/en-gb/en-gb.png" alt="English" title="English">English</button></li>
-        <li><button class="btn btn-link btn-block language-select" type="button" name="fr-gb"><img src="catalog/language/fr-gb/fr-gb.png" alt="French" title="French">French</button></li>
+        <li>
+            <table>
+                <tr>
+                    <td>Понедельник</td>
+                    <td rowspan="4" style="vertical-align: middle;">с 11:00 до 22:30</td>
+                </tr>
+                <tr>
+                    <td>Вторник</td>
+                </tr>
+                <tr>
+                    <td>Среда</td>
+                </tr>
+                <tr>
+                    <td>Четверг</td>
+                </tr>
+                <tr>
+                    <td style="border-bottom: 1px solid #dbdbdb;"></td><td style="border-bottom: 1px solid #dbdbdb;"></td>
+                </tr>
+                <tr>
+                    <td>Пятница</td>
+                    <td rowspan="3" style="vertical-align: middle;">с 11:00 до 23:30</td>
+                </tr>
+                <tr>
+                    <td>Суббота</td>
+                </tr>
+                <tr>
+                    <td>Воскресенье</td>
+                </tr>
+            </table>
+        </li>
     </ul>
     <?php
 }
