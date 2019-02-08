@@ -52,7 +52,7 @@ function theme_settings(){
     add_settings_section( 'section_id_2', 'Санитарный день', '', 'rollbox_page' );
 
     // URL для отправки POST
-    add_settings_field('sanitary_day', 'Дата санитарного дня', 'fill_sanitary_day', 'rollbox_page', 'section_id_2' );
+    add_settings_field('sanitary_day', 'Дата санитарного дня (31.01.2019)', 'fill_sanitary_day', 'rollbox_page', 'section_id_2' );
 }
 
 /*## Заполняем опцию 1
@@ -87,19 +87,20 @@ function fill_sanitary_day(){
 ## Очистка данных
 function sanitize_callback( $options ){
     // очищаем
-    foreach( $options as $name => & $val ){
-        /*if( $name == 'input' )
-            $val = strip_tags( $val );
+    foreach( $options as $key => $value ){
+        // Проверка на то, имеет текущая опция значение или нет. Если да, то обрабатываем её
+        if( isset( $options[$key] ) ) {
 
-        if( $name == 'checkbox' )
-            $val = intval( $val );*/
+            // Вырезаем все HTML- и PHP-теги, а также правильным образом обрабатываем строки в кавычках
+            $options[$key] = strip_tags( stripslashes( $options[ $key ] ) );
 
-        if( $name == 'send_new_orders_to_kristall' ){
-            $val = intval( $val );
-        }
 
-        if( $name == 'sanitary_day' ){
-            //$val = intval( $val );
+
+            if( $key == 'sanitary_day' ){
+                $options[ $key ]  = str_replace(",", ".", $value );
+            }
+
+
         }
     }
 

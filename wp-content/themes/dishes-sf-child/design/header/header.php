@@ -71,5 +71,13 @@ function get_phone() {
 }
 
 function is_today_sanitary_day() {
-    return false;
+    // Достаем санитарный день из настроек
+    $sanitaryDay = explode(".", get_option( 'rollbox_options_array' ) ['sanitary_day']);
+    $nowDay = explode(".", current_time('d.m.Y'));
+
+
+    foreach ($nowDay as $key => $value){
+        if((int)$value != (int)$sanitaryDay[$key]) return false;
+    }
+    return true;
 }
