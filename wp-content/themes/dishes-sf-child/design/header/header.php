@@ -9,15 +9,15 @@ function header_top() {
         <div class="col-full">
 
             <div class="top-info">
-                <p class="info1"><?php get_info1_text(); ?></p>
-                <p class="info2"><?php get_phone(); ?></p>
-                <p class="info3">г.Комсомольск-на-Амуре, проспект Мира 29</p>
+                <div class="info1"><?php get_info1_text(); ?></div>
+                <div class="info2"><?php get_phone(); ?></div>
+                <div class="info3">г.Комсомольск-на-Амуре, проспект Мира 29</div>
 
                 <?php if(is_user_logged_in()) { ?>
-                    <p class="info4"><a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Личный кабинет</a></p>
+                    <div class="info4"><a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Личный кабинет</a></div>
                 <?php } else { ?>
-                    <p class="info5"><a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Регистрация</a></p>
-                    <p class="info6"><a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Войти</a></p>
+                    <div class="info5"><a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Регистрация</a></div>
+                    <div class="info6"><a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Войти</a></div>
                 <?php } ?>
             </div>
 
@@ -51,6 +51,10 @@ function get_info1_text() {
         <?php echo $buttonText; ?>
         <i class="ion-chevron-down"></i>
     </button>
+    <ul class="dropdown-site-menu" style="">
+        <li><button class="btn btn-link btn-block language-select item-selected" type="button" name="en-gb"><img src="catalog/language/en-gb/en-gb.png" alt="English" title="English">English</button></li>
+        <li><button class="btn btn-link btn-block language-select" type="button" name="fr-gb"><img src="catalog/language/fr-gb/fr-gb.png" alt="French" title="French">French</button></li>
+    </ul>
     <?php
 }
 
