@@ -18,6 +18,8 @@ add_filter( 'woocommerce_add_message', 'remove_some_notices' );
 add_filter( 'woocommerce_add_notice', 'remove_some_notices' ); //пришлось редактировать шаблон notices\notice.php
 
 
+// страница настроек rollbox
+require_once( plugin_dir_path(__FILE__ ) . '/options/options-page.php' );
 
 // изменение дизайна
 require_once( get_stylesheet_directory() . '/design/design.php' );
