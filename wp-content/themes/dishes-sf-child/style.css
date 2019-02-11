@@ -178,15 +178,41 @@ Text Domain:	dishes-sf-child
 
 
 /*мобильное flex меню*/
-.icon-home::before { content: "\f100" } /*назад*/
-.icon-169::before { content: "\f002" } /*поиск*/
-.icon-172::before { content: "\f07a" }
-.icon-image::before { content: "\e602" }
-.icon-upload::before { content: "\e603" }
-.icon-star::before { content: "\e604" }
-.icon-mail::before { content: "\e605" }
-.icon-lock::before { content: "\e606" }
-.icon-chart-pie::before { content: "\e607" }
+.icon-home::before { content: "\f100"; } /*назад*/
+.icon-169::before { content: "\f002"; } /*поиск*/
+.icon-172::before { content: "\f07a"; }
+.icon-image::before { content: "\e602"; }
+.icon-upload::before { content: "\e603"; }
+.icon-star::before { content: "\e604"; }
+.icon-mail::before { content: "\e605"; }
+.icon-lock::before { content: "\e606"; }
+.icon-chart-pie::before { content: "\e607"; }
+
+
+
+/*Sticky menu - прилипающее*/
+#stickey_menu_wrapper {
+    /*position: fixed;
+    width: 100%;
+    z-index: 1000;
+    height: 80px;*/
+    transition: all 200ms ease;
+    position: fixed;
+    height: 50px;
+    background-color: red;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    left: 0;
+    display:none;
+}
+#content{
+    /*padding-top: 50px; /* adjust this to match the height of your header */
+}
+#stickey_menu_wrapper.fix-nav {
+    display:block;
+}
 
 
 /*///////////////////////////////////////////////////////////////////////////*/

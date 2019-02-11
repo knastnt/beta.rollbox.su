@@ -1,12 +1,5 @@
 (function($) {
 
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 167) {
-            $('.top-menu').addClass("fix-nav");
-        } else {
-            $('.top-menu').removeClass("fix-nav");
-        }
-    });
     $(function dropDown()
     {
         elClick = 'button.dropdown-toggle';

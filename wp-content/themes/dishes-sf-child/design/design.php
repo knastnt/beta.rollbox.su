@@ -9,6 +9,9 @@ require_once( get_stylesheet_directory() . '/design/header/header.php' );
 // корзина в шапке
 require_once( get_stylesheet_directory() . '/design/header-cart/header-cart.php' );
 
+// Прилипающее меню
+require_once( get_stylesheet_directory() . '/design/stickeymenu/stickeymenu.php' );
+
 
 
 //подключаем js с общими функциями
