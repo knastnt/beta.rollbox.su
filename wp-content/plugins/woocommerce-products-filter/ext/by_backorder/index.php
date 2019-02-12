@@ -68,6 +68,186 @@ final class WOOF_EXT_BY_ONBACKORDER extends WOOF_EXT {
         );
     }
 
+    public function assemble_query_params(&$meta_query, $wp_query = NULL)
+    {
+        global $WOOF;
+        $request = $WOOF->get_request_data();
+
+        if (isset($request['backorder']))
+        {
+            if ($request['backorder'] == 'onbackorder')
+            {
+                $meta_query[] = array(
+                    'key' => '_stock_status',
+                    'value' => 'onbackorder', //instock,outofstock
+                    'compare' => 'NOT IN'
+                );
+            }
+
+        }
+
+       //+++
+
+      
+        $use_for = isset($WOOF->settings['by_backorder']['use_for']) ? $WOOF->settings['by_backorder']['use_for'] : 'simple';
+        if ($use_for == 'both')
+        {
+            add_filter('posts_where', array($this, 'posts_where'), 9999);
+        }
+
+        //***
+
+        return $meta_query;
+    }
+
+    public function posts_where($where = '')
+    {
+        global $WOOF, $wpdb;
+        $request = $WOOF->get_request_data();
+        static $where_backorder = "";
+
+        //cache on the fly
+        if (!empty($where_backorder))
+        {
+            return $where . $where_backorder;
+        }
+
+        //+++
+
+        /*
+          $in = $wpdb->get_results("
+          SELECT DISTINCT(posts.ID),posts.post_parent
+          FROM $wpdb->posts AS posts
+          INNER JOIN $wpdb->postmeta AS postmeta ON ( posts.ID = postmeta.post_id )
+          WHERE posts.post_type='product_variation'
+          AND postmeta.meta_key = '_stock_status'
+          AND postmeta.meta_value='outofstock'
+          GROUP BY postmeta.post_id", ARRAY_A);
+
+
+          print_r($in);exit;
+         */
+
+        /*
+         * $args = array(
+          'nopaging' => true,
+          'suppress_filters' => true,
+          'post_status' => 'publish',
+          'post_type' => array('product_variation'),
+          'meta_query' => array(
+          array(
+          'key' => '_stock_status',
+          'value' => 'outofstock'
+          ),
+          array(
+          'key' => 'attribute_pa_color',
+          'value' => 'Black'
+          ),
+          array(
+          'key' => 'attribute_pa_shoe-size',
+          'value' => 'US7.5/UK6.5'
+          )
+          ),
+          //'tax_query' => $tax_query
+          );
+         */
+
+        if (isset($request['backorder']))
+        {
+            if ($request['backorder'] == 'onbackorder')
+            {
+                $taxonomies = $WOOF->get_taxonomies();
+                $prod_attributes = array();
+                foreach ($taxonomies as $key => $value)
+                {
+                    if (substr($key, 0, 3) == 'pa_')
+                    {
+                        $prod_attributes[] = $key;
+                    }
+                }
+
+                $prod_attributes_in_request = array();
+                if (!empty($prod_attributes))
+                {
+                    foreach ($prod_attributes as $value)
+                    {
+                        if (in_array($value, array_keys($request)))
+                        {
+                            $prod_attributes_in_request[] = $value;
+                        }
+                    }
+
+                    //***
+
+                    if (!empty($prod_attributes_in_request))
+                    {
+                         $meta_query = array('relation' => 'AND');
+                        $meta_query[] = array(
+                            'key' => '_stock_status',
+                            'value' => 'onbackorder'
+                        );
+                         $sub_meta_query=array('relation' => 'AND');
+                        $term_in_cycle = array();
+						
+                        foreach ($prod_attributes_in_request as $attr_slug)
+                        {
+			  //$sub_sub_meta_query=array('relation' => 'AND');
+                            $terms = explode(',', $request[$attr_slug]);
+                            for($i=0;$i<count($terms);$i++){
+
+                                    if (isset($term_in_cycle[$terms[$i]]))
+                                    {
+                                            $t_name = $term_in_cycle[$terms[$i]];
+                                    } else
+                                    {
+                                            $t_name = $term_in_cycle[$terms[$i]] = $wpdb->get_var("SELECT name FROM $wpdb->terms WHERE slug = '{$terms[$i]}'");
+                                    }
+                                    $sub_meta_query[] = array(
+
+                                            'key' => 'attribute_' . $attr_slug,
+                                            'value' =>$terms[$i]
+                                    );
+                                    
+                            }
+                        }
+                        $meta_query[]=array($sub_meta_query);
+
+                        //if there is price range?
+                        //if there is more than 2 meta terms in pa_*
+
+                        $args = array(
+                            'nopaging' => true,
+                            'suppress_filters' => true,
+                            'post_status' => 'publish',
+                            'post_type' => array('product_variation'),
+                            'meta_query' => $meta_query
+                        );
+                        //print_r($meta_query);exit;
+                        //$query = new WP_Query(array_merge($args, array('fields' => 'ids')));
+                        $query = new WP_Query($args);
+                        //print_r($query);exit;
+                        $products = array();
+                        if ($query->have_posts())
+                        {
+                            foreach ($query->posts as $p)
+                            {
+                                $products[$p->post_parent] = $p->post_parent;
+                            }
+                        }
+                        $product_ids = implode(',', $products);
+                        //echo $product_ids;
+                       // exit;
+                        if (!empty($product_ids))
+                        {
+                            $where .= " AND $wpdb->posts.ID NOT IN($product_ids)";
+                        }
+                    }
+                }
+            }
+        }
+  
+        return $where;
+    }
 
 }
 

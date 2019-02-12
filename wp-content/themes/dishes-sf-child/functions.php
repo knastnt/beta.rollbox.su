@@ -18,6 +18,12 @@ add_filter( 'woocommerce_add_message', 'remove_some_notices' );
 add_filter( 'woocommerce_add_notice', 'remove_some_notices' ); //пришлось редактировать шаблон notices\notice.php
 
 
+//Товары в 4 колонки на главной странице для единообразия. Это потому что после применения WOOF фильтра - они делаются в 4.
+add_filter('loop_shop_columns',function($col){
+    return 4 ;
+});
+
+
 // страница настроек rollbox
 require_once( plugin_dir_path(__FILE__ ) . '/options/options-page.php' );
 

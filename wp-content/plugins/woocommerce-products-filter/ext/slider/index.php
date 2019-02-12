@@ -3,9 +3,9 @@
 if (!defined('ABSPATH'))
     die('No direct access allowed');
 
+//29-11-2016
 //need  $orderby = apply_filters('woof_get_terms_orderby', $taxonomy);
-final class WOOF_EXT_SLIDER extends WOOF_EXT
-{
+final class WOOF_EXT_SLIDER extends WOOF_EXT {
 
     public $type = 'html_type';
     public $html_type = 'slider'; //your custom key here
@@ -36,10 +36,29 @@ final class WOOF_EXT_SLIDER extends WOOF_EXT
     public function init()
     {
         add_filter('woof_add_html_types', array($this, 'woof_add_html_types'));
-        add_action('wp_head', array($this, 'wp_head'), 1);
+        add_action('wp_head', array($this, 'wp_head'), 999);
         self::$includes['js']['woof_' . $this->html_type . '_html_items'] = $this->get_ext_link() . 'js/html_types/slider.js';
         self::$includes['css']['woof_' . $this->html_type . '_html_items'] = $this->get_ext_link() . 'css/html_types/slider.css';
         self::$includes['js_init_functions'][$this->html_type] = 'woof_init_sliders';
+
+
+        $this->taxonomy_type_additional_options = array(
+            'slider_dynamic_recount' => array(
+                'title' => __('Enable dynamic recount', 'woocommerce-products-filter'),
+                'tip' => __('Activates dynamic recount for each term in the the range. If you have very long range (a lot of terms) this feature will generate additional MySQL queries which will create additional loading on the server!', 'woocommerce-products-filter'),
+                'type' => 'select',
+                'options' => array(
+                    0 => __('No', 'woocommerce-products-filter'),
+                    1 => __('Yes', 'woocommerce-products-filter')
+                )
+            ),
+            'slider_grid_step' => array(
+                'title' => __('Grig step', 'woocommerce-products-filter'),
+                'tip' => __('Hide each Nth grid label. -1 hide all labels, 1 show all labels, 2n show each second label, 3n show each third label, etc...', 'woocommerce-products-filter'),
+                'type' => 'text',
+
+            )
+        );
     }
 
     public function wp_head()

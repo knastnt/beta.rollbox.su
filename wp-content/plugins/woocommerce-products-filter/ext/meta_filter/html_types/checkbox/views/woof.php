@@ -5,7 +5,13 @@ if (!defined('ABSPATH'))
 global $WOOF;
 $woof_meta_title=WOOF_HELPER::wpml_translate(null,$options['title']);
     //***
-    $_REQUEST['hide_terms_count_txt']=0;
+    if(isset($_REQUEST['hide_terms_count_txt_short']) AND $_REQUEST['hide_terms_count_txt_short']!=-1){
+        if((int)$_REQUEST['hide_terms_count_txt_short']==1){
+            $_REQUEST['hide_terms_count_txt']=1;
+        }else{
+            $_REQUEST['hide_terms_count_txt']=0;
+        }
+    }
     //***
 if (isset($WOOF->settings[$meta_key ]) AND $WOOF->settings[$meta_key ]['show'])
 {
@@ -55,6 +61,10 @@ if (isset($WOOF->settings[$meta_key ]) AND $WOOF->settings[$meta_key ]['show'])
        
     }
 
+    if (isset($_REQUEST['hide_terms_count_txt']) AND $_REQUEST['hide_terms_count_txt'])
+    {
+        $count_string = "";
+    }
     ?>
 <?php if($show):?>
     <div data-css-class="woof_meta_checkbox_container" class="woof_meta_checkbox_container woof_container woof_container_<?php echo "checkbox_".$meta_key ?>">

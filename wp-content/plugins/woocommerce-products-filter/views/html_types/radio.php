@@ -3,8 +3,15 @@
 <?php
 global $WOOF;
 $_REQUEST['additional_taxes'] = $additional_taxes;
-$_REQUEST['hide_terms_count_txt'] = 0;
-
+$_REQUEST['hide_terms_count_txt'] = isset($this->settings['hide_terms_count_txt']) ? $this->settings['hide_terms_count_txt'] : 0;
+//***
+if(isset($_REQUEST['hide_terms_count_txt_short']) AND $_REQUEST['hide_terms_count_txt_short']!=-1){
+    if((int)$_REQUEST['hide_terms_count_txt_short']==1){
+        $_REQUEST['hide_terms_count_txt']=1;
+    }else{
+        $_REQUEST['hide_terms_count_txt']=0;
+    }
+}
 //***
 if (!function_exists('woof_draw_radio_childs'))
 {
@@ -78,6 +85,10 @@ if (!function_exists('woof_draw_radio_childs'))
                         }
                     }
 
+                    if ($_REQUEST['hide_terms_count_txt'])
+                    {
+                        $count_string = "";
+                    }
 
                     //excluding hidden terms
                     if (in_array($term['term_id'], $hidden_terms))
@@ -174,6 +185,10 @@ if (!function_exists('woof_draw_radio_childs'))
                 }
             }
 
+            if ($_REQUEST['hide_terms_count_txt'])
+            {
+                $count_string = "";
+            }
 
 
             //excluding hidden terms

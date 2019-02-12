@@ -2,6 +2,7 @@ var woof_sku_do_submit = false;
 function woof_init_sku() {
     jQuery('.woof_show_sku_search').keyup(function (e) {
         var val = jQuery(this).val();
+        val = val.replace(' ', '');
         var uid = jQuery(this).data('uid');
 
         if (e.keyCode == 13 /*&& val.length > 0*/) {
@@ -25,12 +26,75 @@ function woof_init_sku() {
             jQuery('.woof_sku_search_go.' + uid).hide();
         }
         //}
+
+        //http://easyautocomplete.com/examples
+        if (val.length >= 3 && woof_sku_autocomplete) {
+            var input_id = jQuery(this).attr('id');
+            var options = {
+                url: function (phrase) {
+                    return woof_ajaxurl;
+                },
+                //theme: "square",
+                getValue: function (element) {
+                    return element.name;
+                },
+                ajaxSettings: {
+                    dataType: "json",
+                    method: "POST",
+                    data: {
+                        action: "woof_sku_autocomplete",
+                        dataType: "json"
+                    }
+                },
+                preparePostData: function (data) {
+                    data.phrase = jQuery("#" + input_id).val();
+                    return data;
+                },
+                template: {
+                    type: "description",
+                    fields: {
+                        //iconSrc: "icon",
+                        description: "type"
+                    }
+                },
+                list: {
+                    maxNumberOfElements: woof_sku_autocomplete_items,
+                    onChooseEvent: function () {
+                        woof_sku_do_submit = true;
+                        woof_sku_direct_search('woof_sku', jQuery("#" + input_id).val());
+                        return true;
+                    },
+                    showAnimation: {
+                        type: "fade", //normal|slide|fade
+                        time: 333,
+                        callback: function () {
+                        }
+                    },
+                    hideAnimation: {
+                        type: "slide", //normal|slide|fade
+                        time: 333,
+                        callback: function () {
+                        }
+                    }
+
+                },
+                requestDelay: 400
+            };
+            try {
+                jQuery("#" + input_id).easyAutocomplete(options);
+            } catch (e) {
+                console.log(e);
+            }
+            jQuery("#" + input_id).focus();
+        }
     });
     //+++
     jQuery('.woof_sku_search_go').life('click', function () {
         var uid = jQuery(this).data('uid');
         woof_sku_do_submit = true;
-        woof_sku_direct_search('woof_sku', jQuery('.woof_show_sku_search.' + uid).val());
+        var val = jQuery('.woof_show_sku_search.' + uid).val();
+        val = val.replace(' ', '');
+        woof_sku_direct_search('woof_sku', val);
     });
 }
 

@@ -317,7 +317,7 @@ function woof_init_orderby() {
 }
 
 function woof_init_reset_button() {
-    jQuery('.woof_reset_search_form').life('click', function () {       
+    jQuery('.woof_reset_search_form').on('click', function () {       
 	//var link = jQuery(this).data('link');
 	woof_ajax_page_num = 1;
         woof_ajax_redraw = 0; 
@@ -366,7 +366,6 @@ function woof_init_pagination() {
 		    woof_ajax_page_num = parseInt(res2[1]);
 		}
 	    } else {
-		//tester/page/2/
 		var res = l.split("page/");
 		if (typeof res[1] !== 'undefined') {
 		    woof_ajax_page_num = parseInt(res[1]);
@@ -412,6 +411,7 @@ function woof_init_search_form() {
     jQuery('.woof_submit_search_form').click(function () {
 
 	if (woof_ajax_redraw) {
+	    //[woof redirect="http://test-all/" autosubmit=1 ajax_redraw=1 is_ajax=1 tax_only="locations" by_only="none"]
 	    woof_ajax_redraw = 0;
 	    woof_is_ajax = 0;
 	}
@@ -615,7 +615,7 @@ function woof_get_submit_link() {
 		index = 'paged';//for right pagination if copy/paste this link and send somebody another by email for example
 	    }
 
-	    //http://www.dev.products-filter.com/?swoof=1&woof_author=3&woof_sku&woof_text=single
+	    //http://dev.products-filter.com/?swoof=1&woof_author=3&woof_sku&woof_text=single
 	    //avoid links where values is empty
 	    if (typeof value !== 'undefined') {
 		if ((typeof value && value.length > 0) || typeof value == 'number')

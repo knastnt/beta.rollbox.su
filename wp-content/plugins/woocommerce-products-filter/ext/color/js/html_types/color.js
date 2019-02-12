@@ -7,9 +7,9 @@ function woof_init_colors() {
 
         var bg = '';
         if (img.length > 0) {
-            bg = 'background-image: url(' + img + ')';
+            bg = 'background: url(' + img + ') !important';
         } else {
-            bg = 'background-color:' + color;
+            bg = 'background:' + color + ' !important';
         }
 
         var span = jQuery('<span style="' + bg + '" class="' + jQuery(this).attr('type') + ' ' + jQuery(this).attr('class') + '" title=""></span>').click(woof_color_do_check).mousedown(woof_color_do_down).mouseup(woof_color_do_up);
@@ -46,20 +46,21 @@ function woof_init_colors() {
 function woof_color_process_data(_this, is_checked) {
     var tax = jQuery(_this).find('input[type=checkbox]').data('tax');
     var name = jQuery(_this).find('input[type=checkbox]').attr('name');
-    woof_color_direct_search(name, tax, is_checked);
+    var term_id = jQuery(_this).find('input[type=checkbox]').data('term-id');
+    woof_color_direct_search(term_id, name, tax, is_checked);
 }
 
-function woof_color_direct_search(name, tax, is_checked) {
+function woof_color_direct_search(term_id, name, tax, is_checked) {
 
     var values = '';
-
+    var checked = true;
     if (is_checked) {
         if (tax in woof_current_values) {
             woof_current_values[tax] = woof_current_values[tax] + ',' + name;
         } else {
             woof_current_values[tax] = name;
         }
-        jQuery('.woof_color_term[name=' + name + ']').attr('checked', true);
+        checked = true;
     } else {
         values = woof_current_values[tax];
         values = values.split(',');
@@ -75,9 +76,9 @@ function woof_color_direct_search(name, tax, is_checked) {
         } else {
             delete woof_current_values[tax];
         }
-        jQuery('.woof_color_term[name=' + name + ']').attr('checked', false);
+        checked = false;
     }
-
+    jQuery('.woof_color_term_' + term_id).attr('checked', checked);
     woof_ajax_page_num = 1;
     if (woof_autosubmit) {
         woof_submit_link(woof_get_submit_link());

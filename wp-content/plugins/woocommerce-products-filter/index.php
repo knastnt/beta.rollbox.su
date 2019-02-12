@@ -7,7 +7,7 @@
   Tested up to: WP 4.9.8
   Author: realmag777
   Author URI: https://pluginus.net/
-  Version: 1.2.2.1
+  Version: 2.2.2.1
   Requires PHP: 5.4
   Tags: filter,search,woocommerce,woocommerce filter,woocommerce product filter,woocommerce products filter,products filter,product filter,filter of products,filter for products,filter for woocommerce
   Text Domain: woocommerce-products-filter
@@ -48,7 +48,7 @@ define('WOOF_PATH', plugin_dir_path(__FILE__));
 define('WOOF_LINK', plugin_dir_url(__FILE__));
 define('WOOF_PLUGIN_NAME', plugin_basename(__FILE__));
 define('WOOF_EXT_PATH', WOOF_PATH . 'ext/');
-define('WOOF_VERSION', '1.2.2.1');
+define('WOOF_VERSION', '2.2.2.1');
 define('WOOF_MIN_WOOCOMMERCE_VERSION', '2.6');
 //classes
 include WOOF_PATH . 'classes/storage.php';
@@ -98,7 +98,7 @@ final class WOOF {
     public $storage = null;
     //public $storage_type = 'session'; //transient
     public $storage_type = 'transient'; //session
-    public $is_free_ver = true; //just for notices, do not think that this is hack for free version :)
+    public $is_free_ver = false; //just for notices, do not think that this is hack for free version :)
 
     public function __construct() {
         global $wpdb;
@@ -533,7 +533,13 @@ final class WOOF {
     }
 
     public function get_swoof_search_slug() {
-        return 'swoof';
+        $slug = 'swoof';
+
+        if (isset($this->settings['swoof_search_slug']) AND ! empty($this->settings['swoof_search_slug'])) {
+            $slug = $this->settings['swoof_search_slug'];
+        }
+
+        return $slug;
     }
 
     public function woocommerce_product_query($q) {
@@ -1285,6 +1291,7 @@ final class WOOF {
                 'css' => 'min-width:300px;',
                 'options' => array(
                     0 => __('No', 'woocommerce-products-filter'),
+                    1 => __('Yes', 'woocommerce-products-filter')
                 ),
                 'desc_tip' => true
             ),
@@ -1781,7 +1788,7 @@ final class WOOF {
         if (version_compare(WOOCOMMERCE_VERSION, '3.3', '>=')) {
             $is_wc_shortcode = wc_get_loop_prop('is_shortcode');
             if ($is_wc_shortcode) {//To deactivate the initialization of JS scripts
-                //echo "<span id='is_woo_shortcode'></span>";
+                //echo "<span class='is_woo_native_shortcode'></span>";
             }
         }
         //++++        
@@ -2621,7 +2628,10 @@ final class WOOF {
                 $args['autosubmit'] = get_option('woof_autosubmit', 0);
             }
 
-            $_REQUEST['hide_terms_count_txt_short'] = -1;            
+            $_REQUEST['hide_terms_count_txt_short'] = -1;
+            if (isset($atts['hide_terms_count'])) {
+                $_REQUEST['hide_terms_count_txt_short'] = (int) $atts['hide_terms_count'];
+            }
             
             if (isset($atts['ajax_redraw'])) {
                 $args['ajax_redraw'] = $atts['ajax_redraw'];
@@ -3120,7 +3130,12 @@ final class WOOF {
             return $tax_query;
         }
 
-        public function woof_overide_template($template, $template_name, $template_path) {           
+        public function woof_overide_template($template, $template_name, $template_path) {
+            if ($template_name == 'loop/no-products-found.php') {
+                if (isset($this->settings['override_no_products']) AND ! empty($this->settings['override_no_products'])) {
+                    $template = WOOF_PATH . 'views/no-products-found.php';
+                }
+            }
             return $template;
         }
 

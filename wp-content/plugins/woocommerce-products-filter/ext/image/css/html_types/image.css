@@ -17,7 +17,7 @@ ul.woof_list_image{
 }
 
 ul.woof_list_image li {
-    display: inline-block !important;
+    display: inline-block;
     float: none !important;
     margin: 0 0 0 0 !important;
     padding: 0 !important;

@@ -18,8 +18,15 @@ if (isset($placeholder)) {
 $show_count = get_option('woof_show_count', 0);
 $show_count_dynamic = get_option('woof_show_count_dynamic', 0);
 $hide_dynamic_empty_pos = get_option('woof_hide_dynamic_empty_pos', 0);
-$hide_count_text=0;
-
+$hide_count_text=$this->settings['hide_terms_count_txt'];
+//***
+if(isset($_REQUEST['hide_terms_count_txt_short']) AND $_REQUEST['hide_terms_count_txt_short']!=-1){
+    if((int)$_REQUEST['hide_terms_count_txt_short']==1){
+        $hide_count_text=1;
+    }else{
+        $hide_count_text=0;
+    }
+}
 //***
 ?>
 

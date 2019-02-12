@@ -18,10 +18,6 @@ global $WOOF;
                 <br />
 
                 <h4><?php _e('Meta Fields', 'woocommerce-products-filter') ?></h4>
-                
-                <p style="border: dashed 1px #ddd; padding: 4px; color: red;">
-                    <?php _e('In FREE version it is possible to operate by 2 meta fields only!', 'woocommerce-products-filter') ?>
-                </p>
 
                 <table style="width: 100%;">
                     <tr>
@@ -58,18 +54,11 @@ global $WOOF;
                         //echo '</pre>';
 
                         if (!empty($metas)) {
-                            $counter = 0;
                             foreach ($metas as $m) {
                                 if ($m['meta_key'] == "__META_KEY__") {
                                     continue;
                                 }
-                                
-                                if ($counter >= 2) {
-                                    break;
-                                }
-                                
                                 woof_meta_print_li($m, $meta_types);
-                                $counter++;
                             }
                         }
                         ?>

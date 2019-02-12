@@ -28,7 +28,7 @@ final class WOOF_EXT_SEL_RADIO_CHECK extends WOOF_EXT {
 
     public function woof_add_html_types($types)
     {
-        $types[$this->html_type] = __('Radio in drop-down', 'woocommerce-products-filter');
+        $types[$this->html_type] = __('Radio/Checkbox in drop-down', 'woocommerce-products-filter');
         return $types;
     }
 
@@ -47,7 +47,7 @@ final class WOOF_EXT_SEL_RADIO_CHECK extends WOOF_EXT {
                 'type' => 'select',
                 'options' => array(
                     0 => __('Radio', 'woocommerce-products-filter'),
-                    //1 => __('Checkbox', 'woocommerce-products-filter')
+                    1 => __('Checkbox', 'woocommerce-products-filter')
                 )
             ),
             'select_radio_check_height' => array(

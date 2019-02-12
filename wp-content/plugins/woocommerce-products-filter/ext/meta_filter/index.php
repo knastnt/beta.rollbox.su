@@ -78,25 +78,17 @@ final class WOOF_META_FILTER extends WOOF_EXT {
         $this->meta_filter_types = apply_filters('woof_meta_filter_add_types', $this->meta_filter_types);
         global $WOOF;
         if (isset($this->woof_settings['meta_filter']) AND is_array($this->woof_settings['meta_filter'])) {
-             $counter = 0;
             foreach ($this->woof_settings['meta_filter'] as $key => $val) {
-				
-				if ($key == "__META_KEY__") {
+                if ($key == "__META_KEY__") {
                     continue;
                 }
-                
-                if ($counter >= 2) {
-                    break;
-                }
 
-                //var_dump ($val['meta_key']); = string(7) "_weight" 
                 $this->meta_keys[] = $val['meta_key'];
                 //old code
                 //add_action('woof_print_html_type_options_' . $key,array($this, 'woof_print_html_type_options_meta')); 
                 //add_action('woof_print_html_type_' . $key,array($this, 'woof_print_html_type_meta'));
                 //++++
                 $this->conect_activate_meta_filter($key, $val);
-                $counter++;
             }
         }
         //add meta items to structure
@@ -104,151 +96,140 @@ final class WOOF_META_FILTER extends WOOF_EXT {
     }
 
     public function conect_activate_meta_filter($key, $options) {
-		/*
-		var_dump ($key);
-		echo '<br>';
-		var_dump ($options);
-		
-		$key = string(7) "_weight"
-		$options = array(5) { ["meta_key"]=> string(7) "_weight" ["title"]=> string(6) "Вес" ["search_view"]=> string(6) "slider" ["options"]=> string(0) "" ["type"]=> string(6) "number" } 
-        */
-		
-		//Генерируем имя класса в зависимости от $options['search_view']
-		$class_name = 'WOOF_META_FILTER_' . strtoupper($options['search_view']);
-		//Подключаем нужный файл в зависимости от $options['search_view']
+        //Генерируем имя класса в зависимости от $options['search_view']
+        $class_name = 'WOOF_META_FILTER_' . strtoupper($options['search_view']);
+        //Подключаем нужный файл в зависимости от $options['search_view']
         require_once $this->get_ext_path() . 'html_types/' . $options['search_view'] . '/index.php';
-		//Проверяем существует ли функция со сгенерированным именем
+        //Проверяем существует ли функция со сгенерированным именем
         if (class_exists($class_name)) {
             //Создаем объект класса
-			
-			//range находится сдесь: var_dump($this->woof_settings);
-			/////////////////////////////////////////////////////////////////////////////////////////////
-			/////////////////////////////////////////////////////////////////////////////////////////////
-			/////////////////////////////////////////////////////////////////////////////////////////////
-			if($key == '_weight'){
-				$minmax = $this->get_filtered_weight();
-				$this->woof_settings['_weight']['range'] = $minmax['min_weight'] . '-' . $minmax['max_weight'];
-			}
-			/////////////////////////////////////////////////////////////////////////////////////////////
-			/////////////////////////////////////////////////////////////////////////////////////////////
-			/////////////////////////////////////////////////////////////////////////////////////////////
-			
-			$this->meta_filters_obj[$key] = new $class_name($key, $options, $this->woof_settings);
+
+            //range находится сдесь: var_dump($this->woof_settings);
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            if($key == '_weight'){
+                $minmax = $this->get_filtered_weight();
+                $this->woof_settings['_weight']['range'] = $minmax['min_weight'] . '-' . $minmax['max_weight'];
+            }
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////
+
+            $this->meta_filters_obj[$key] = new $class_name($key, $options, $this->woof_settings);
             self::$includes['js_init_functions']["meta_" . $options['search_view']] = $this->meta_filters_obj[$key]->get_js_func_name();
         }
     }
-	
-	
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
-public function get_filtered_weight() {
-	//Продолжаем только если есть _weight
-	if(!isset($this->woof_settings['_weight'])){
-		return;
-	}
-	
-	//include_once ABSPATH . 'wp-content/plugins/woocommerce/woocommerce.php';
-		
-		
-		global $wpdb;
-		
-		
-		
-		
-		
-		//Если существует элемент tax_query, то возвращаем его, в ином случае возвращаем пустой массив
-		//$tax_query  = isset( $args['tax_query'] ) ? $args['tax_query'] : array();
-		/*
-		["tax_query"]=> array(2) {
-			["relation"]=> string(3) "AND"
-			[0]=> array(4) {
-				["taxonomy"]=> string(18) "product_visibility"
-				["field"]=> string(16) "term_taxonomy_id"
-				["terms"]=> array(1) {
-					[0]=> int(7)
-				}
-				["operator"]=> string(6) "NOT IN"
-			}
-		}
-		*/
-		
-		//Если существует элемент meta_query, то возвращаем его, в ином случае возвращаем пустой массив
-		//$meta_query = isset( $args['meta_query'] ) ? $args['meta_query'] : array();
-		/*
-		["meta_query"]=> array(0) { }
-		*/
+    public function get_filtered_weight() {
+        //Продолжаем только если есть _weight
+        if(!isset($this->woof_settings['_weight'])){
+            return;
+        }
 
-		//Если пользователь находится не на архивной странице записей произвольного типа
-		// и $args['taxonomy'] не пусто
-		// и $args['term'] не пусто
-		/*if ( ! is_post_type_archive( 'product' ) && ! empty( $args['taxonomy'] ) && ! empty( $args['term'] ) ) {
-			$tax_query[] = array(
-				'taxonomy' => $args['taxonomy'],
-				'terms'    => array( $args['term'] ),
-				'field'    => 'slug',
-			);
-		}*/
+        global $wpdb;
 
-		/*foreach ( $meta_query + $tax_query as $key => $query ) {
-			if ( ! empty( $query['price_filter'] ) || ! empty( $query['rating_filter'] ) ) {
-				unset( $meta_query[ $key ] );
-			}
-		}*/
 
-		//Класс создает JOIN и WHERE части SQL запроса, которые в дополнении к основному запросу будут фильтровать результат по указанным ключу и значению метаполя.
-		/*$meta_query = new WP_Meta_Query( $meta_query );
-		//Выбирает записи из базы данных по указанным критериям.
-		$tax_query  = new WP_Tax_Query( $tax_query );
 
-		$meta_query_sql = $meta_query->get_sql( 'post', $wpdb->posts, 'ID' );
-		$tax_query_sql  = $tax_query->get_sql( $wpdb->posts, 'ID' );*/
-		
-		//FLOOR - возвращает наибольшее целое число, которое меньше или равно числовому выражению, являющемуся аргументом функции  FLOOR(6.28)=6 FLOOR(-6.28)=-7
-		//CEILING - возвращает наименьшее целое число, которое больше или равно числовому выражению, являющемуся аргументом функции CEILING(6.28)=7 CEILING(-6.28)=-6
-		//{$wpdb->posts} - имя таблицы с постами (например, rb_posts)
-		//{$wpdb->postmeta} - имя таблицы с метаинформацией постов (например, rb_postmeta). Эта таблица имеет заголовки: meta_id, post_id, meta_key, meta_value
-		/*$sql  = "SELECT min( FLOOR( price_meta.meta_value ) ) as min_price, max( CEILING( price_meta.meta_value ) ) as max_price FROM {$wpdb->posts} ";
-		$sql .= " LEFT JOIN {$wpdb->postmeta} as price_meta ON {$wpdb->posts}.ID = price_meta.post_id " . $tax_query_sql['join'] . $meta_query_sql['join'];
-		$sql .= " 	WHERE {$wpdb->posts}.post_type IN ('" . implode( "','", array_map( 'esc_sql', apply_filters( 'woocommerce_price_filter_post_type', array( 'product' ) ) ) ) . "')
-			AND {$wpdb->posts}.post_status = 'publish'
-			AND price_meta.meta_key IN ('" . implode( "','", array_map( 'esc_sql', apply_filters( 'woocommerce_price_filter_meta_keys', array( '_price' ) ) ) ) . "')
-			AND price_meta.meta_value > '' ";
-		$sql .= $tax_query_sql['where'] . $meta_query_sql['where'];
 
-		$search = WC_Query::get_main_search_query_sql();
-		if ( $search ) {
-			$sql .= ' AND ' . $search;
-		}
 
-		
-		$sql = apply_filters( 'woocommerce_price_filter_sql', $sql, $meta_query_sql, $tax_query_sql );
+        //Если существует элемент tax_query, то возвращаем его, в ином случае возвращаем пустой массив
+        //$tax_query  = isset( $args['tax_query'] ) ? $args['tax_query'] : array();
+        /*
+        ["tax_query"]=> array(2) {
+            ["relation"]=> string(3) "AND"
+            [0]=> array(4) {
+                ["taxonomy"]=> string(18) "product_visibility"
+                ["field"]=> string(16) "term_taxonomy_id"
+                ["terms"]=> array(1) {
+                    [0]=> int(7)
+                }
+                ["operator"]=> string(6) "NOT IN"
+            }
+        }
+        */
 
-		var_dump($sql);
-		return $wpdb->get_row( $sql ); // WPCS: unprepared SQL ok.*/
-		$sql  = "SELECT min( FLOOR( weight_meta.meta_value ) ) as min_weight, max( CEILING( weight_meta.meta_value ) ) as max_weight FROM {$wpdb->posts} ";
-		$sql .= " LEFT JOIN {$wpdb->postmeta} as weight_meta ON {$wpdb->posts}.ID = weight_meta.post_id ";
-		$sql .= " 	WHERE {$wpdb->posts}.post_type IN ('" . implode( "','", array_map( 'esc_sql', apply_filters( 'woocommerce_price_filter_post_type', array( 'product' ) ) ) ) . "')
+        //Если существует элемент meta_query, то возвращаем его, в ином случае возвращаем пустой массив
+        //$meta_query = isset( $args['meta_query'] ) ? $args['meta_query'] : array();
+        /*
+        ["meta_query"]=> array(0) { }
+        */
+
+        //Если пользователь находится не на архивной странице записей произвольного типа
+        // и $args['taxonomy'] не пусто
+        // и $args['term'] не пусто
+        /*if ( ! is_post_type_archive( 'product' ) && ! empty( $args['taxonomy'] ) && ! empty( $args['term'] ) ) {
+            $tax_query[] = array(
+                'taxonomy' => $args['taxonomy'],
+                'terms'    => array( $args['term'] ),
+                'field'    => 'slug',
+            );
+        }*/
+
+        /*foreach ( $meta_query + $tax_query as $key => $query ) {
+            if ( ! empty( $query['price_filter'] ) || ! empty( $query['rating_filter'] ) ) {
+                unset( $meta_query[ $key ] );
+            }
+        }*/
+
+        //Класс создает JOIN и WHERE части SQL запроса, которые в дополнении к основному запросу будут фильтровать результат по указанным ключу и значению метаполя.
+        /*$meta_query = new WP_Meta_Query( $meta_query );
+        //Выбирает записи из базы данных по указанным критериям.
+        $tax_query  = new WP_Tax_Query( $tax_query );
+
+        $meta_query_sql = $meta_query->get_sql( 'post', $wpdb->posts, 'ID' );
+        $tax_query_sql  = $tax_query->get_sql( $wpdb->posts, 'ID' );*/
+
+        //FLOOR - возвращает наибольшее целое число, которое меньше или равно числовому выражению, являющемуся аргументом функции  FLOOR(6.28)=6 FLOOR(-6.28)=-7
+        //CEILING - возвращает наименьшее целое число, которое больше или равно числовому выражению, являющемуся аргументом функции CEILING(6.28)=7 CEILING(-6.28)=-6
+        //{$wpdb->posts} - имя таблицы с постами (например, rb_posts)
+        //{$wpdb->postmeta} - имя таблицы с метаинформацией постов (например, rb_postmeta). Эта таблица имеет заголовки: meta_id, post_id, meta_key, meta_value
+        /*$sql  = "SELECT min( FLOOR( price_meta.meta_value ) ) as min_price, max( CEILING( price_meta.meta_value ) ) as max_price FROM {$wpdb->posts} ";
+        $sql .= " LEFT JOIN {$wpdb->postmeta} as price_meta ON {$wpdb->posts}.ID = price_meta.post_id " . $tax_query_sql['join'] . $meta_query_sql['join'];
+        $sql .= " 	WHERE {$wpdb->posts}.post_type IN ('" . implode( "','", array_map( 'esc_sql', apply_filters( 'woocommerce_price_filter_post_type', array( 'product' ) ) ) ) . "')
+            AND {$wpdb->posts}.post_status = 'publish'
+            AND price_meta.meta_key IN ('" . implode( "','", array_map( 'esc_sql', apply_filters( 'woocommerce_price_filter_meta_keys', array( '_price' ) ) ) ) . "')
+            AND price_meta.meta_value > '' ";
+        $sql .= $tax_query_sql['where'] . $meta_query_sql['where'];
+
+        $search = WC_Query::get_main_search_query_sql();
+        if ( $search ) {
+            $sql .= ' AND ' . $search;
+        }
+
+
+        $sql = apply_filters( 'woocommerce_price_filter_sql', $sql, $meta_query_sql, $tax_query_sql );
+
+        var_dump($sql);
+        return $wpdb->get_row( $sql ); // WPCS: unprepared SQL ok.*/
+        $sql  = "SELECT min( FLOOR( weight_meta.meta_value ) ) as min_weight, max( CEILING( weight_meta.meta_value ) ) as max_weight FROM {$wpdb->posts} ";
+        $sql .= " LEFT JOIN {$wpdb->postmeta} as weight_meta ON {$wpdb->posts}.ID = weight_meta.post_id ";
+        $sql .= " 	WHERE {$wpdb->posts}.post_type IN ('" . implode( "','", array_map( 'esc_sql', apply_filters( 'woocommerce_price_filter_post_type', array( 'product' ) ) ) ) . "')
 			AND {$wpdb->posts}.post_status = 'publish'
 			AND weight_meta.meta_key IN ('" . implode( "','", array_map( 'esc_sql', apply_filters( 'woocommerce_price_filter_meta_keys', array( '_weight' ) ) ) ) . "')
 			AND weight_meta.meta_value > '' ";
 
-		/*$search = WC_Query::get_main_search_query_sql();
-		if ( $search ) {
-			$sql .= ' AND ' . $search;
-		}*/
+        /*$search = WC_Query::get_main_search_query_sql();
+        if ( $search ) {
+            $sql .= ' AND ' . $search;
+        }*/
 
-		
-		//$sql = apply_filters( 'woocommerce_price_filter_sql', $sql );
 
-		//var_dump($sql);
-		return json_decode(json_encode($wpdb->get_results($sql)[0]), True); 
-		//return $wpdb->get_row( $sql ); // WPCS: unprepared SQL ok.
-	}
+        //$sql = apply_filters( 'woocommerce_price_filter_sql', $sql );
+
+        //var_dump($sql);
+        return json_decode(json_encode($wpdb->get_results($sql)[0]), True);
+        //return $wpdb->get_row( $sql ); // WPCS: unprepared SQL ok.
+    }
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
-	
+
+
     public function wp_footer() {
         
     }

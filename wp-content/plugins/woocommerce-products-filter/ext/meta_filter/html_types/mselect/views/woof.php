@@ -47,7 +47,13 @@ if (in_array($show_toggle, array(1, 2))) {
 }
 
 //***
-$_REQUEST['hide_terms_count_txt']=0;
+if(isset($_REQUEST['hide_terms_count_txt_short']) AND $_REQUEST['hide_terms_count_txt_short']!=-1){
+    if((int)$_REQUEST['hide_terms_count_txt_short']==1){
+        $_REQUEST['hide_terms_count_txt']=1;
+    }else{
+        $_REQUEST['hide_terms_count_txt']=0;
+    }
+}
 //***
 ?>
 <div data-css-class="woof_meta_mselect_container" class="woof_meta_mselect_container woof_container woof_container_<?php echo $meta_key ?> woof_container woof_container_<?php echo $meta_key ?>  woof_container_<?php echo "mselect_".$meta_key ?>">
@@ -112,7 +118,10 @@ $_REQUEST['hide_terms_count_txt']=0;
                              }
                          }
 
-                 
+                         if (isset($_REQUEST['hide_terms_count_txt']) AND $_REQUEST['hide_terms_count_txt'])
+                         {
+                             $count_string = "";
+                         }
                          ?>
                          <option <?php if ($show_count AND $count == 0 AND !in_array($key+1,$woof_value)): ?>disabled=""<?php endif; ?> value="<?php echo $key+1 ?>" <?php echo selected(in_array($key+1,$woof_value)) ?>>
                              <?php

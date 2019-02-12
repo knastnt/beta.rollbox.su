@@ -24,9 +24,6 @@ abstract class WOOF_EXT {
     public function __construct()
     {
         $this->woof_settings = get_option('woof_settings', array());
-		
-		//Сдесь и появляется значение range. Но оно берётся из базы данных
-		//var_dump($this->woof_settings);
 
 
         if (!isset(self::$includes['html_type_objects']))
@@ -112,6 +109,9 @@ abstract class WOOF_EXT {
     //new from v.2.1.6
     public static function get_ext_idx($full_path)
     {
+        // это было в оригинале. Всё что ниже - моё
+        //return md5(str_replace(ABSPATH, '', $full_path));
+
         //Вот тут проблема определения активированных расширений при смене файлового пути до расширения. Замена не происходит т.к. в винде слеши в другую сторону
         $full_path_corrected = str_replace('\\', '/', $full_path);
         $ABSPATH_corrected = str_replace('\\', '/', ABSPATH);

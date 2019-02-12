@@ -862,8 +862,9 @@
                                         <div class="woof-control">
 
                                             <?php
+                                            if (!isset($woof_settings['swoof_search_slug'])) {
                                                 $woof_settings['swoof_search_slug'] = '';
-                                            
+                                            }
                                             ?>
 
                                             <input placeholder="swoof" type="text" name="woof_settings[swoof_search_slug]" value="<?php echo $woof_settings['swoof_search_slug'] ?>" id="swoof_search_slug" />
@@ -940,11 +941,12 @@
                                         <div class="woof-control">
 
                                             <?php
+                                            if (!isset($woof_settings['override_no_products'])) {
                                                 $woof_settings['override_no_products'] = '';
-                                            
+                                            }
                                             ?>
 
-                                            <textarea name="woof_settings[override_no_products]" id="override_no_products" ><?php echo $woof_settings['override_no_products'] ?></textarea>
+                                            <textarea   name="woof_settings[override_no_products]" id="override_no_products" ><?php echo $woof_settings['override_no_products'] ?></textarea>
 
                                         </div>
                                         <div class="woof-description">
@@ -1000,14 +1002,19 @@
                                             <?php
                                             $hide_terms_count_txt = array(
                                                 0 => __("No", 'woocommerce-products-filter'),
+                                                1 => __("Yes", 'woocommerce-products-filter')
                                             );
                                             ?>
 
-                                            
+                                            <?php
+                                            if (!isset($woof_settings['hide_terms_count_txt']) OR empty($woof_settings['hide_terms_count_txt'])) {
+                                                $woof_settings['hide_terms_count_txt'] = 0;
+                                            }
+                                            ?>
                                             <div class="select-wrap">
                                                 <select name="woof_settings[hide_terms_count_txt]">
                                                     <?php foreach ($hide_terms_count_txt as $key => $value) : ?>
-                                                        <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                                                        <option value="<?php echo $key; ?>" <?php if ($woof_settings['hide_terms_count_txt'] == $key): ?>selected="selected"<?php endif; ?>><?php echo $value; ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>

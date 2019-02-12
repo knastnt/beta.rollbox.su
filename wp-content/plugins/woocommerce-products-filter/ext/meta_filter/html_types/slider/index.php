@@ -14,24 +14,6 @@ if (!defined('ABSPATH'))
         add_action('woof_print_html_type_options_' . $this->meta_key,array($this, 'draw_meta_filter_structure'));
         add_action('woof_print_html_type_' .$this->meta_key,array($this, 'woof_print_html_type_meta'));
         add_action('wp_footer',array($this, 'wp_footer') ); 
-		
-		/*
-		$this->meta_key = string(7) "_weight" 
-		
-		var_dump ($this->woof_settings[$this->meta_key]);
-		
-		array(8){
-		 ["show"]=> string(1) "1"
-		 ["show_title_label"]=> string(1) "1"
-		 ["show_toggle_button"]=> string(1) "0"
-		 ["tooltip_text"]=> string(0) ""
-		 ["step"]=> string(1) "1"
-		 ["range"]=> string(6) "1-1300"
-		 ["prefix"]=> string(0) ""
-		 ["postfix"]=> string(0) ""
-		} 
-		*/
-		
         if(isset($this->woof_settings[$this->meta_key]['range'])){
             $this->range=$this->woof_settings[$this->meta_key]['range'];
         }else{
