@@ -192,7 +192,7 @@ Text Domain:	dishes-sf-child
 
 /*Sticky menu - прилипающее*/
 #stickey_menu_wrapper {
-    transition: all 200ms ease;
+    transition: all 1000ms ease;
     height: 50px;
     background-color: red;
     width: 100%;
@@ -200,13 +200,15 @@ Text Domain:	dishes-sf-child
     top: 0;
     z-index: 10;
     left: 0;
-    display:none;
+    opacity: 0;
+    visibility: hidden;
 }
 #content{
     /*padding-top: 50px; /* adjust this to match the height of your header */
 }
 #stickey_menu_wrapper.fix-nav {
-    display:block;
+    opacity: 0.9;
+    visibility: visible;
 }
 
 
