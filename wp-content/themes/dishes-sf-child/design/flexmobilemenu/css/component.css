@@ -16,8 +16,12 @@ html, body, .perspective {
 	position: relative;
 	outline: 1px solid rgba(0,0,0,0);
 	z-index: 10;
+	/*___________________________________*/
+	/*Это мы будем назначать скриптом menu.js только тогда когда нужно бужет отобразить меню.
+	  Т.к. с этой хернёй не работает позиционирование position:fixed*/
 	/*-webkit-transform: translateZ(0) translateX(0) rotateY(0deg); /* reset transforms (Chrome bug) *
 	transform: translateZ(0) translateX(0) rotateY(0deg);*/
+	/*___________________________________*/
 }
 
 .container::after {

@@ -47,15 +47,13 @@
             ev.stopPropagation();
             ev.preventDefault();
 
-
-            //alert(0);
-            //container.style.transform = 'translateZ(0) translateX(0) rotateY(0deg)';
+            /*___________________________________*/
+            /*Это вместо CSS свойств в файле component.css строка 19.
+            Назначаем только при открытии меню
+	        Т.к. с этой хернёй в css - не работает позиционирование position:fixed*/
             container.style.transform = 'translateZ(-1500px) translateX(100%) rotateY(-45deg)';
-            /*$('.container').css({
-                'transform': 'translateZ(0) translateX(0) rotateY(0deg)',
-                '-webkit-transform': 'translateZ(0) translateX(0) rotateY(0deg)', /* reset transforms (Chrome bug) *
-            });*/
-            //alert(1);
+            /*___________________________________*/
+
 
 
             document.getElementById( 'flexmobilemainmenu').innerHTML = document.getElementById( 'flexmobile-mainmenu').innerHTML;
@@ -74,9 +72,14 @@
         container.addEventListener( clickevent, function( ev ) {
             if( classie.has( perspectiveWrapper, 'animate') ) {
                 var onEndTransFn = function( ev ) {
-                    /*В конце анимации закрытия меню*/
-                    container.style.transform = ''; //Удаляем к чертям этот transform
+                    /*эта функция вызывается при завершении анимации закрытия меню*/
+
                     if( support && ( ev.target.className !== 'container' || ev.propertyName.indexOf( 'transform' ) == -1 ) ) return;
+
+                    /*___________________________________*/
+                    /* Удаляем к чертям этот transform */
+                    container.style.transform = '';
+                    /*___________________________________*/
                     this.removeEventListener( transEndEventName, onEndTransFn );
                     classie.remove( perspectiveWrapper, 'modalview' );
                     // mac chrome issue:
@@ -86,7 +89,12 @@
 
                 };
                 if( support ) {
+
+                    /*___________________________________*/
+                    /*назначаем transform вместо css*/
                     container.style.transform = 'translateZ(0) translateX(0) rotateY(0deg)';
+                    /*___________________________________*/
+
                     perspectiveWrapper.addEventListener( transEndEventName, onEndTransFn );
                 }
                 else {
