@@ -43,14 +43,16 @@ if ( ! function_exists( 'storefront_header_cart' ) ) {
 
             <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/design/header-cart/header-cart.css" />
 
-            <ul id="site-header-cart" class="site-header-cart menu">
-                <li class="<?php echo esc_attr( $class ); ?>">
-                    <?php storefront_cart_link(); ?>
-                </li>
-                <li>
-                    <?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
-                </li>
-            </ul>
+            <div id="site-header-cart-head-wrapper">
+                <ul id="site-header-cart" class="site-header-cart menu">
+                    <li class="<?php echo esc_attr( $class ); ?>">
+                        <?php storefront_cart_link(); ?>
+                    </li>
+                    <li>
+                        <?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
+                    </li>
+                </ul>
+            </div>
 
             <script src="<?php echo get_stylesheet_directory_uri(); ?>/design/header-cart/header-cart.js"></script>
 
