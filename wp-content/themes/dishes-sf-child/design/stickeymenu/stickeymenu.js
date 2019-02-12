@@ -10,16 +10,16 @@
                 });
             }
 
-            /*переносим меню*/
+            /*не переносим меню*
             $("#storefront-primary-navigation").height(77);
-            $("#site-navigation").appendTo("#menu-stickey-wrapper");
+            $("#site-navigation").appendTo("#menu-stickey-wrapper");*/
             /*переносим корзину*/
             $("#site-header-cart").appendTo("#site-header-cart-stickey-wrapper");
         } else {
             $('#stickey_menu_wrapper').removeClass("fix-nav");
 
-            /*возвращаем меню*/
-            $("#site-navigation").appendTo(".storefront-primary-navigation .col-full");
+            /*не возвращаем меню*
+            $("#site-navigation").appendTo(".storefront-primary-navigation .col-full");*/
             /*возвращаем корзину*/
             $("#site-header-cart").appendTo("#site-header-cart-head-wrapper");
         }
