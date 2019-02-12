@@ -60,7 +60,7 @@ function open_menu_wrapper() {
     <div id="perspective" class="perspective effect-airbnb">
         <div class="container">
             <div class="wrapper"><!-- wrapper needed for scroll -->
-                <p style="display: none;"><button id="showMenu">Show Menu</button></p>
+                <p style="position: fixed;top: 0;left: 0;z-index: 10000000;width: 15px;height: 15px;overflow: hidden;"><button id="showMenu">Show Menu</button></p>
 
                 <?php
 }

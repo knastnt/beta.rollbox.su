@@ -192,12 +192,7 @@ Text Domain:	dishes-sf-child
 
 /*Sticky menu - прилипающее*/
 #stickey_menu_wrapper {
-    /*position: fixed;
-    width: 100%;
-    z-index: 1000;
-    height: 80px;*/
     transition: all 200ms ease;
-    position: fixed;
     height: 50px;
     background-color: red;
     width: 100%;

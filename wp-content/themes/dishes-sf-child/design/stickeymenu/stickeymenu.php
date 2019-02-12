@@ -11,7 +11,7 @@ function stickey_menu_wrapper()
 {
     ?>
 
-    <div id="stickey_menu_wrapper" style="height: 50px;background-color: red;width: 100%;position: fixed;top: 0;z-index: 10;left: 0;">
+    <div id="stickey_menu_wrapper">
         <div id="site-header-cart-stickey-wrapper">
 
         </div>
