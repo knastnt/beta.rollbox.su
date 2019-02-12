@@ -4,8 +4,8 @@
 
 
         $('.container').css({
-            -webkit-transform: 'translateZ(0) translateX(0) rotateY(0deg)', /* reset transforms (Chrome bug) */
-            transform: 'translateZ(0) translateX(0) rotateY(0deg)'',
+            '-webkit-transform': 'translateZ(0) translateX(0) rotateY(0deg)', /* reset transforms (Chrome bug) */
+            'transform': 'translateZ(0) translateX(0) rotateY(0deg)',
         });
 
 

@@ -194,7 +194,7 @@ Text Domain:	dishes-sf-child
 #stickey_menu_wrapper {
     transition: all 1000ms ease;
     height: 50px;
-    background-color: red;
+    background-color: #e62f22;
     width: 100%;
     position: fixed;
     top: 0;
