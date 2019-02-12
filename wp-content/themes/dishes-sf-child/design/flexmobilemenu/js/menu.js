@@ -48,6 +48,16 @@
             ev.preventDefault();
 
 
+            //alert(0);
+            //container.style.transform = 'translateZ(0) translateX(0) rotateY(0deg)';
+            container.style.transform = 'translateZ(-1500px) translateX(100%) rotateY(-45deg)';
+            /*$('.container').css({
+                'transform': 'translateZ(0) translateX(0) rotateY(0deg)',
+                '-webkit-transform': 'translateZ(0) translateX(0) rotateY(0deg)', /* reset transforms (Chrome bug) *
+            });*/
+            //alert(1);
+
+
             document.getElementById( 'flexmobilemainmenu').innerHTML = document.getElementById( 'flexmobile-mainmenu').innerHTML;
 
             docscroll = scrollY();
@@ -64,6 +74,8 @@
         container.addEventListener( clickevent, function( ev ) {
             if( classie.has( perspectiveWrapper, 'animate') ) {
                 var onEndTransFn = function( ev ) {
+                    /*В конце анимации закрытия меню*/
+                    container.style.transform = ''; //Удаляем к чертям этот transform
                     if( support && ( ev.target.className !== 'container' || ev.propertyName.indexOf( 'transform' ) == -1 ) ) return;
                     this.removeEventListener( transEndEventName, onEndTransFn );
                     classie.remove( perspectiveWrapper, 'modalview' );
@@ -71,8 +83,10 @@
                     document.body.scrollTop = document.documentElement.scrollTop = docscroll;
                     // change top of contentWrapper
                     contentWrapper.style.top = '0px';
+
                 };
                 if( support ) {
+                    container.style.transform = 'translateZ(0) translateX(0) rotateY(0deg)';
                     perspectiveWrapper.addEventListener( transEndEventName, onEndTransFn );
                 }
                 else {
