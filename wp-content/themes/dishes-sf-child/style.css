@@ -23,6 +23,8 @@ Text Domain:	dishes-sf-child
     --color-white: #ffffff;
 }
 
+/*Убираем обводку*/
+a, button { outline: none !important;}
 
 /*Ширина контента*/
 .col-full {
