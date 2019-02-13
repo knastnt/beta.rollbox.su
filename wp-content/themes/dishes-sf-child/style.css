@@ -176,6 +176,28 @@ Text Domain:	dishes-sf-child
 
 
 
+/*Строка меню в заголовке*/
+.woocommerce-active .site-header .main-navigation {
+    width: 100%;
+    margin-right: 0;
+}
+.main-navigation ul.menu, .main-navigation ul.nav-menu {
+    margin-left: 0;
+}
+#site-navigation{
+    background-color: var(--color-darkgray);
+    border-radius: 25px 25px 0px 0px;
+
+}
+ul.nav-menu{
+    padding: 0 1.5em;
+}
+.handheld-navigation, .main-navigation div.menu > ul:not(.nav-menu), .nav-menu {
+    -webkit-transition: unset;
+    transition: unset;
+}
+
+
 
 
 
@@ -219,4 +241,5 @@ Text Domain:	dishes-sf-child
         width: 56.739%;
         margin-top: 10px;
     }
+
 }
