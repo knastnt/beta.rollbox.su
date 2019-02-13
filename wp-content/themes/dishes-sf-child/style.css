@@ -181,21 +181,23 @@ Text Domain:	dishes-sf-child
     width: 100%;
     margin-right: 0;
 }
-.main-navigation ul.menu, .main-navigation ul.nav-menu {
-    margin-left: 0;
-}
 #site-navigation{
     background-color: var(--color-darkgray);
     border-radius: 25px 25px 0px 0px;
 
 }
-ul.nav-menu{
+#primary-navigation ul.menu{
     padding: 0 1.5em;
+    margin-left: 0;
 }
-.handheld-navigation, .main-navigation div.menu > ul:not(.nav-menu), .nav-menu {
+/*Цвет текста в меню*/
+#primary-navigation ul.menu li a{
+    color: var(--color-white);
+}
+/*.handheld-navigation, .main-navigation div.menu > ul:not(.nav-menu), .nav-menu {
     -webkit-transition: unset;
     transition: unset;
-}
+}*/
 
 
 
@@ -240,6 +242,10 @@ ul.nav-menu{
         float: left;
         width: 56.739%;
         margin-top: 10px;
+    }
+    /*Высота меню*/
+    .main-navigation ul.nav-menu > li > a {
+        padding: 0.618em 1em;
     }
 
 }

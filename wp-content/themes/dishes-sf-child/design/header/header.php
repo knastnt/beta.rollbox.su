@@ -1,5 +1,62 @@
 <?php
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//отодвинем закрывающий тэг
+
+add_action('storefront_header', 'storefront_header_container_close', 45);
+add_action( 'storefront_header', 'replace_close_tag', 10 );
+function replace_close_tag()
+{
+    /*if( $priority = has_action('storefront_header', 'storefront_header_cart') ){
+        echo "У хука init есть функция storefront_header_cart с приоритетом ". $priority;
+    }else{
+        echo 'нету';
+    }*/
+    remove_action('storefront_header', 'storefront_header_container_close', 41);
+}
+
+// переместить корзину рядом с поиском
+add_action('storefront_header', 'storefront_header_cart', 41);
+add_action( 'storefront_header', 'replace_cart', 10 );
+function replace_cart()
+{
+    /*if( $priority = has_action('storefront_header', 'storefront_header_cart') ){
+        echo "У хука init есть функция storefront_header_cart с приоритетом ". $priority;
+    }else{
+        echo 'нету';
+    }*/
+    remove_action('storefront_header', 'storefront_header_cart', 60);
+}
+
+// переместить навигацию под поиск
+add_action('storefront_header', 'storefront_primary_navigation', 42);
+add_action( 'storefront_header', 'replace_nav', 10 );
+function replace_nav()
+{
+    /*if( $priority = has_action('storefront_header', 'storefront_header_cart') ){
+        echo "У хука init есть функция storefront_header_cart с приоритетом ". $priority;
+    }else{
+        echo 'нету';
+    }*/
+    remove_action('storefront_header', 'storefront_primary_navigation_wrapper', 42);
+    remove_action('storefront_header', 'storefront_primary_navigation', 50);
+    remove_action('storefront_header', 'storefront_primary_navigation_wrapper_close', 68);
+
+    //удаляем стремный скрипт для навигации, потрящий жизнь
+    //wp_enqueue_script( 'storefront-navigation', get_template_directory_uri() . '/assets/js/navigation' . $suffix . '.js', array(), $storefront_version, true );
+    wp_deregister_script('storefront-navigation');
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
 //Нужно подвинуть этот экшн перед ним storefront_header_container с нулевым приоритетом. это оказалось просто: приоритет -1
 add_action( 'storefront_header', 'header_top', -1 );
 function header_top() {
