@@ -184,15 +184,17 @@ Text Domain:	dishes-sf-child
 #site-navigation{
     background-color: var(--color-darkgray);
     border-radius: 25px 25px 0px 0px;
-
+    margin-top: 1em;
 }
-#primary-navigation ul.menu{
+.main-navigation ul {
     padding: 0 1.5em;
-    margin-left: 0;
+    margin-left: 0 !important;
 }
 /*Цвет текста в меню*/
-#primary-navigation ul.menu li a{
-    color: var(--color-white);
+.main-navigation ul li.current-menu-item > a,
+.main-navigation ul li a{
+    color: var(--color-white) !important;
+    padding: .618em 1em !important;
 }
 /*.handheld-navigation, .main-navigation div.menu > ul:not(.nav-menu), .nav-menu {
     -webkit-transition: unset;
