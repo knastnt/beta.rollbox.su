@@ -201,9 +201,16 @@ Text Domain:	dishes-sf-child
 .main-navigation ul li a:hover{
     color: var(--color-lightred) !important;
 }
+/*Высота меню*/
+.main-navigation ul.nav-menu > li > a {
+    padding: 0.618em 1em;
+}
 
-
-
+/*фон меню*/
+.main-navigation ul.menu ul.sub-menu,
+.main-navigation ul.nav-menu ul.children {
+    background-color: #8c8c8c;
+}
 
 
 
@@ -212,7 +219,8 @@ Text Domain:	dishes-sf-child
 #stickey_menu_wrapper {
     transition: all 1000ms ease;
     height: 50px;
-    background-color: #e62f22;
+    /*background-color: #e62f22;*/
+    background-color: rgba(255, 27, 14, 0.8);
     width: 100%;
     position: fixed;
     top: 0;
@@ -225,19 +233,38 @@ Text Domain:	dishes-sf-child
     /*padding-top: 50px; /* adjust this to match the height of your header */
 }
 #stickey_menu_wrapper.fix-nav {
-    opacity: 0.9;
+    opacity: 1;
     visibility: visible;
 }
-/*Высота меню*/
-.main-navigation ul.nav-menu > li > a {
-    padding: 0.618em 1em;
+#stickey_menu_wrapper .site-header-cart .cart-contents {
+    padding: 0;
+}
+#stickey_menu_wrapper .main-navigation {
+    width: 73.9130434783%;
+}
+/*Корзина в прилипающем*/
+#stickey_menu_wrapper .site-header-cart {
+    top: 3px;
+}
+#stickey_menu_wrapper .site-header-cart .cart-contents .ion-android-cart {
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+}
+#stickey_menu_wrapper .site-header-cart .cart-contents .ion-android-cart::before {
+    margin-left: 8px;
+}
+#stickey_menu_wrapper .site-header-cart .number-cart {
+    width: 23px;
+    height: 23px;
+    line-height: 23px;
+    font-size: 12px;
+    left: 30px;
+    background: var(--color-darkgray);
 }
 
-/*фон меню*/
-.main-navigation ul.menu ul.sub-menu,
-.main-navigation ul.nav-menu ul.children {
-    background-color: #8c8c8c;
-}
+
+
 
 
 /*///////////////////////////////////////////////////////////////////////////*/
