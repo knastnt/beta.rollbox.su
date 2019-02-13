@@ -1,0 +1,21 @@
+
+/*мобильное flex меню*/
+.havechilds::after { content: "\f101" } /*развернуть меню*/
+.icon-home::before { content: "\f100"; } /*назад*/
+.icon-169::before { content: "\f002"; } /*поиск*/
+.icon-172::before { content: "\f07a"; }
+.icon-image::before { content: "\e602"; }
+.icon-upload::before { content: "\e603"; }
+.icon-star::before { content: "\e604"; }
+.icon-mail::before { content: "\e605"; }
+.icon-lock::before { content: "\e606"; }
+.icon-chart-pie::before { content: "\e607"; }
+
+
+a.flexmobile{
+    display: inline-block;
+}
+
+a.havechilds{
+    float: right;
+}

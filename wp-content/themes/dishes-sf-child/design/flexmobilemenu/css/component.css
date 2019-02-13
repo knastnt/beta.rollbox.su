@@ -101,8 +101,9 @@ html, body, .perspective {
 	transform: translateX(-50%);
 }
 
+/*+ поменять в mytestscript.js строки 66, 68*/
 .outer-nav.left {
-	left: 15%;
+	left: 12%;
 }
 
 .outer-nav.right {
@@ -133,9 +134,10 @@ html, body, .perspective {
 	color: #ffdccd;
 }
 
-.outer-nav.vertical a {
+/*Чтобы пункты меню были inline-block*/
+/*.outer-nav.vertical a {
 	display: block;
-}
+}*/
 
 .outer-nav.horizontal a {
 	margin: 15px 20px;
@@ -176,7 +178,7 @@ html, body, .perspective {
 	font-size: 0.6em;
 }
 
-.havechilds::after { content: "\f141" }
+
 
 .icon-test::before { content: "\e600" }
 

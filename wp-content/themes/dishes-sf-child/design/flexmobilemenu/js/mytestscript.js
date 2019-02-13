@@ -1,6 +1,6 @@
 (function($) {
 
-    $('a.flexmobile').live('click', function(){
+    $('a.flexmobile').live('click', function(event){
 
 
 
@@ -27,8 +27,11 @@
         //console.log("$link_on_parent_nav_id = " + $link_on_parent_nav_id);
 
         if($link_on_child_id != null){
-            //есть дочерние пункты
+            //есть дочерние пункты или кнопка Назад
             //console.log("есть дочерние пункты");
+
+            //Отменяем обработку браузером
+            event.preventDefault();
 
             $("#flexmobilemainmenu").animate({
                 left: '10%',
@@ -63,9 +66,10 @@
                 $('#flexmobilemainmenu').attr('data-id', $link_on_child_id);
 
                 $("#flexmobilemainmenu a").css({opacity: 0.99});
-                $('#flexmobilemainmenu').css({ left: '16%'});
+                $('#flexmobilemainmenu').css({ left: '13%'});  /* + поменять в component.css строка 106*/
                 $("#flexmobilemainmenu").animate({
-                    left: '15%',
+                    /*+ поменять в component.css строка 106*/
+                    left: '12%',
                 });
 
             }, 500); // время в мс

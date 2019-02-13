@@ -180,10 +180,14 @@ function close_menu_wrapper() {
 
                         if($item->parent_ID == $parent) {
                             if($item->childs_nav_link){
-                                if(NO_LINKS_ON_ITEMS_WITH_CHILDS) $item->link = "#";
-                                echo "<a class=\"flexmobile havechilds icon-" . $item->ID . "\" href=\"" . $item->link . "\" link_on=\"" . $item->childs_nav_link . "\">" . $item->title . "</a>";
+                                //if(NO_LINKS_ON_ITEMS_WITH_CHILDS) $item->link = "#";
+                                echo "<div>";
+                                echo "<a class=\"flexmobile icon-" . $item->ID . "\" href=\"" . $item->link . "\">" . $item->title . "</a>";
+                                echo "<a class=\"flexmobile havechilds icon-" . $item->ID . "\" href=\"" . $item->link . "\" link_on=\"" . $item->childs_nav_link . "\"></a>";
+                                echo "<div style='clear: both;'></div></div>";
                             }else{
                                 echo "<a class=\"flexmobile icon-" . $item->ID . "\" href=\"" . $item->link . "\">" . $item->title . "</a>";
+                                echo "<div style='clear: both;'></div>";
                             }
                         }
 
