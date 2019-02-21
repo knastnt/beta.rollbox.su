@@ -317,7 +317,7 @@ function woof_init_orderby() {
 }
 
 function woof_init_reset_button() {
-    jQuery('.woof_reset_search_form').on('click', function () {       
+    jQuery('.woof_reset_search_form').live('click', function () {
 	//var link = jQuery(this).data('link');
 	woof_ajax_page_num = 1;
         woof_ajax_redraw = 0; 
