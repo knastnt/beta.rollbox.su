@@ -188,10 +188,18 @@ a, button { outline: none !important;}
     border-radius: 25px 25px 0px 0px;
     margin-top: 1em;
 }
-.main-navigation ul {
-    padding: 0 1.5em;
-    margin-left: 0 !important;
+.main-navigation ul.menu, .main-navigation ul.nav-menu {
+    margin-left: 0;
 }
+
+
+/*отступ первого элемента меню*/
+.main-navigation .primary-navigation > ul > li:first-child > a {
+    padding-left: 2em !important;
+    /*margin-left: 0 !important;*/
+}
+
+
 /*Цвет текста в меню*/
 .main-navigation ul li.current-menu-item > a,
 .main-navigation ul li a{
@@ -212,6 +220,21 @@ a, button { outline: none !important;}
 .main-navigation ul.menu ul.sub-menu,
 .main-navigation ul.nav-menu ul.children {
     background-color: #8c8c8c;
+}
+
+
+/*анимация меню*/
+.main-navigation ul li > ul, .main-navigation ul li > ul, .secondary-navigation ul li > ul, .secondary-navigation ul li > ul {
+    opacity: 0;
+    -o-transition: opacity .8s;
+    -ms-transition: opacity .8s;
+    -moz-transition: opacity .8s;
+    -webkit-transition: opacity .8s;
+    transition: opacity .8s;
+}
+.main-navigation ul li.focus > ul, .main-navigation ul li:hover > ul, .secondary-navigation ul li.focus > ul, .secondary-navigation ul li:hover > ul {
+    opacity: 1.0;
+
 }
 
 
