@@ -296,6 +296,30 @@ a, button { outline: none !important;}
     margin: 0;
 }
 
+
+/*Стилизация select orderby*/
+select.orderby{
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cpath fill='%23000' fill-rule='evenodd' class='cls-1' d='M8,0L4.141,6.993,0.012,0.156Z'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    border: 1px solid #a7a7a7;
+    color: #32353a;
+    padding: 7px 30px 7px 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none !important;
+    background-position: right 13px center;
+    font: 1em Arial;
+}
+form.woocommerce-ordering{
+    float: right;
+}
+
+/*Приспустил код-во результатов*/
+.woocommerce-result-count {
+    line-height: 2.5em;
+}
+
 /*///////////////////////////////////////////////////////////////////////////*/
 @media (min-width:768px) {
     /*
