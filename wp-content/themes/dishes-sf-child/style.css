@@ -311,9 +311,6 @@ select.orderby{
     background-position: right 13px center;
     font: 1em Arial;
 }
-form.woocommerce-ordering{
-    float: right;
-}
 
 /*Приспустил код-во результатов*/
 .woocommerce-result-count {
