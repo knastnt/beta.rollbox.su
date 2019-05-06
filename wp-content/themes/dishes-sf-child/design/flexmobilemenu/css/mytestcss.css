@@ -1,6 +1,6 @@
 
 /*мобильное flex меню*/
-.havechilds::after { content: "\f101" } /*развернуть меню*/
+.arrow2childs::after { content: "\f101" } /*развернуть меню*/
 .icon-home::before { content: "\f100"; } /*назад*/
 .icon-169::before { content: "\f002"; } /*поиск*/
 .icon-172::before { content: "\f07a"; }
@@ -16,6 +16,10 @@ a.flexmobile{
     display: inline-block;
 }
 
-a.havechilds{
+a.arrow2childs{
     float: right;
+}
+
+div.havechilds a {
+    display: inline-block;
 }
