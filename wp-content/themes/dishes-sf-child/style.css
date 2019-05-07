@@ -317,8 +317,10 @@ select.orderby{
     line-height: 2.5em;
 }
 
-/*строгая высота изображений товара*/
-ul.products li.product img {
+
+/*там где 4 колонки: строгая высота изображений товара и вписывание*/
+ul.products.columns-4 li.product img {
+    object-fit: contain;
     height: 145px;
 }
 
