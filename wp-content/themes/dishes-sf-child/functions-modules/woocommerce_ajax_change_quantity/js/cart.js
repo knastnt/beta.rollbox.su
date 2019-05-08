@@ -305,9 +305,16 @@ jQuery( function( $ ) {
 
 		/**
 		 * After an input is changed, enable the update cart button.
+		 *
+		 * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		 *  Делаем правки здесь
+		 * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		 */
 		input_changed: function() {
 			$( '.woocommerce-cart-form :input[name="update_cart"]' ).prop( 'disabled', false );
+
+            block( $( 'div.cart_totals' ) );
+
 			//setTimeout(function () {
 			//	$( '.woocommerce-cart-form :input[name="update_cart"]' ).click();
 			//}, 1000); // время в мс
