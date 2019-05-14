@@ -1,0 +1,89 @@
+.page-template-template-homepage:not(.has-post-thumbnail) .site-main {
+    padding-top: 1em;
+}
+
+.site-main {
+    margin-bottom: 1em;
+}
+
+.content-area, .widget-area {
+    margin-bottom: 0;
+}
+
+
+/* - start --------------------- top-section --------------------- */
+
+.top-section {
+    margin-bottom: 1em;
+}
+
+.top-section .slider-wrapper {
+    background-color: #eb3e32;
+    height: 400px;
+    width: 65%;
+    float: left;
+}
+
+.top-section .banner-wrapper {
+    width: 35%;
+    float: right;
+}
+
+.top-section .banner-wrapper .banner1 {
+    background-color: #f5675d;
+    height: 250px;
+}
+
+.top-section .banner-wrapper .banner2 {
+    background-color: #f5b25d;
+    height: 150px;
+}
+
+.top-section .bottom {
+    height: 80px;
+    background-color: #7c7cde;
+}
+
+/* - end --------------------- top-section --------------------- */
+
+
+/* - start --------------------- center-section --------------------- */
+
+.center-section {
+    margin-bottom: 1em;
+}
+
+.center-section .first .content {
+    width: 80%;
+    height: 700px;
+    background-color: #616420;
+    float: left;
+}
+.center-section .first .sidebar {
+    width: 20%;
+    height: 700px;
+    background-color: #0a6412;
+    float: right;
+}
+.center-section .second {
+    height: 70px;
+    background-color: #643b4d;
+}
+.center-section .third {
+    height: 100px;
+    background-color: #640c1f;
+}
+
+/* - end --------------------- center-section --------------------- */
+
+
+/* - start --------------------- last-section --------------------- */
+
+.last-section .product-block {
+    width: 33.3%;
+    height: 100px;
+    background-color: #b05d1f;
+    float: left;
+}
+
+/* - end --------------------- last-section --------------------- */
