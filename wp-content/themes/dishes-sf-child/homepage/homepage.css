@@ -10,6 +10,10 @@
     margin-bottom: 0;
 }
 
+.site-content{
+    background-color: #f0f0f0;
+}
+
 
 /* - start --------------------- top-section --------------------- */
 
@@ -18,30 +22,79 @@
 }
 
 .top-section .slider-wrapper {
-    background-color: #eb3e32;
-    height: 400px;
-    width: 75%;
+    width: 1185px;
     float: left;
 }
 
 .top-section .banner-wrapper {
-    width: 25%;
     float: right;
 }
 
+.top-section .banner-wrapper img {
+    width: 100%;
+    height: 100%;
+}
+
 .top-section .banner-wrapper .banner1 {
-    background-color: #f5675d;
-    height: 250px;
+    width: 315px;
+    height: 405px;
 }
 
 .top-section .banner-wrapper .banner2 {
-    background-color: #f5b25d;
-    height: 150px;
+    margin-top: 15px;
+    width: 315px;
+    height: 138px;
+}
+
+.top-section .top {
+    margin-bottom: 15px;
 }
 
 .top-section .bottom {
-    height: 80px;
-    background-color: #7c7cde;
+    background-color: #ffffff;
+    border-radius: 3px;
+    padding: 20px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.top-section .bottom .iconedtext {
+    width: 25%;
+    float: left;
+    padding: 0px 20px;
+}
+.top-section .bottom .iconedtext:not(:first-child)::after {
+    content: '';
+    height: 47px;
+    width: 1px;
+    background: #ebebeb;
+    position: absolute;
+    right: -15px;
+    top: 4px;
+
+    position: relative;
+    right: 50px;
+    display: block;
+}
+.top-section .bottom .iconedtext img{
+    float: left;
+    margin: 0px 5px;
+}
+
+.top-section .bottom .iconedtext .banner-text{
+    float: left;
+}
+
+.top-section .bottom .iconedtext .banner-text h4{
+    font-size: 1.3em;;
+    color: #363f4d;
+    margin: 0;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.top-section .bottom .iconedtext .banner-text p{
+    font-size: 13px;
+    color: #959595;
+    margin: 0;
 }
 
 /* - end --------------------- top-section --------------------- */
