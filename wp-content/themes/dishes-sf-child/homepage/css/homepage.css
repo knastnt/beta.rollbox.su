@@ -49,6 +49,10 @@
 
 /* - start --------------------- center-section --------------------- */
 
+.center-section::before {
+    content: '';
+}
+
 .center-section {
     margin-bottom: 1em;
 }
