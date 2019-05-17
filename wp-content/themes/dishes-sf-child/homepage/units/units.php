@@ -9,7 +9,7 @@
 
 <div class="iconedtext">
         <a href="#">
-            <img src="http://demo.towerthemes.com/tt_boxstore/image/catalog/cmsblock/icon-home1.png" alt="icon">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/homepage/units/car.png" alt="icon">
             <div class="banner-text">
                 <h4>Доставим заказ до двери</h4>
                 <p>При заказе от 700 руб.<br>При заказе от 1000 руб. - доставка бесплатно</p>
