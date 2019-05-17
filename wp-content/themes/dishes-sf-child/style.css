@@ -330,10 +330,14 @@ ul.products.columns-4 li.product img {
 /*///////////////////////////////////////////////////////////////////////////*/
 /* изображение товара */
 
-.onsale {
+/* лейбл Распродажа! */
+.woocommerce-LoopProduct-link .onsale {
     position: absolute;
     top: 0;
     float: right;
+    right: 0;
+}
+.onsale {
     background-color: var(--color-red);
     color: white;
     border: none;
@@ -362,13 +366,9 @@ ul.products li.product .price > del {
     color: #f9ba48;
 }
 
-/* кнопка */
-ul.products li.product .button {
-}
-ul.products li.product .button:hover {
-}
-.star-rating::before {
-    opacity: .19;
+/* скругление кнопок */
+.added_to_cart, .button, button, input[type="button"], input[type="reset"], input[type="submit"] {
+    border-radius: 5px;
 }
 
 /*///////////////////////////////////////////////////////////////////////////*/
