@@ -80,6 +80,8 @@ get_header(); ?>
                 <div class="first">
                     <div class="content">
 
+                        <?php echo do_shortcode( '[sale_products per_page="12"]' ); ?>
+
                     </div>
                     <div class="sidebar">
 

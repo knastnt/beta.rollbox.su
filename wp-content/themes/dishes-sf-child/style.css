@@ -325,6 +325,53 @@ ul.products.columns-4 li.product img {
 }
 
 /*///////////////////////////////////////////////////////////////////////////*/
+
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* изображение товара */
+
+.onsale {
+    position: absolute;
+    top: 0;
+    float: right;
+    background-color: var(--color-red);
+    color: white;
+    border: none;
+}
+
+/* текст с ценой */
+ul.products li.product .price {
+    color: var(--color-red);
+}
+/* обычный */
+ul.products li.product .price > .amount,
+ul.products li.product .price > ins {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+/* перечеркнутый (при скидке) */
+ul.products li.product .price > del {
+    color: var(--color-darkgray-light);
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+/* рейтинг в звёздах */
+.star-rating span::before,
+.star-rating:before{
+    color: #f9ba48;
+}
+
+/* кнопка */
+ul.products li.product .button {
+}
+ul.products li.product .button:hover {
+}
+.star-rating::before {
+    opacity: .19;
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
 @media (min-width:768px) {
     /*
      *
