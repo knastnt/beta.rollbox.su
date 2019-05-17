@@ -40,6 +40,8 @@ require_once( get_stylesheet_directory() . '/functions-modules/woocommerce_clear
 require_once( get_stylesheet_directory() . '/functions-modules/woocommerce_ajax_change_quantity/woocommerce_ajax_change_quantity.php' );
 
 
+//кастомные надписи к продуктам.
+require_once( get_stylesheet_directory() . '/design/productlables/productlables.php' );
 
 
 /**
