@@ -59,29 +59,18 @@
 
 .top-section .bottom .iconedtext {
     width: 25%;
-    float: left;
     padding: 0px 20px;
+    float: left;
 }
-.top-section .bottom .iconedtext:not(:first-child)::after {
-    content: '';
-    height: 47px;
-    width: 1px;
-    background: #ebebeb;
-    position: absolute;
-    right: -15px;
-    top: 4px;
-
-    position: relative;
-    right: 50px;
-    display: block;
+.top-section .bottom .iconedtext:not(:first-child) {
+    border-left: 1px solid #ebebeb;
 }
 .top-section .bottom .iconedtext img{
-    float: left;
-    margin: 0px 5px;
+    margin: 0px auto;
 }
 
 .top-section .bottom .iconedtext .banner-text{
-    float: left;
+    text-align: center;
 }
 
 .top-section .bottom .iconedtext .banner-text h4{
