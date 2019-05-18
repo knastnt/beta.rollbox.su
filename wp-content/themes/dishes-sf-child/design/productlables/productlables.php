@@ -20,23 +20,23 @@ function add_custom_labels() {
 
     global $post, $product;
 
-    //Определяем есть ли скидка у товара
-    $onsale = '';
-    if ( $product->is_on_sale() ){
-        $onsale = '<div class="onsale">Распродажа!</div>';
-    }
+    $labels = []; //Декларирую массив. Чтобы не глючил implode
 
     //Определяем новый ли товар
-    $isnew = '';
     $created = $product->get_date_created();
     $now = new DateTime("now");
     $diff_days = date_diff($now, $created)->days;
     if ($diff_days < 14) {
-        $isnew = '<div class="new onsale">Новинка!</div>';
+        $labels[] = '<div class="new onsale">Новинка!</div>';
+    }
+
+    //Определяем есть ли скидка у товара
+    if ( $product->is_on_sale() ){
+        $labels[] = '<div class="onsale">Распродажа!</div>';
     }
 
     //Оборачиваем в блок div
-    $result = '<div class="labels">' . $isnew . $onsale . '</div>';
+    $result = '<div class="labels">' . implode("<br>", $labels) . '</div>';
 
     echo $result;
 }

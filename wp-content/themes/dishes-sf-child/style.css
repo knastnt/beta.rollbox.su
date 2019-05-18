@@ -351,10 +351,14 @@ ul.products.columns-4 li.product img {
     position: absolute;
     top: 0;
     right: 0;
+    text-align: right;
 }
 .woocommerce-LoopProduct-link .labels > div {
-    display: block;
     margin-right: 0px;
+}
+/* на странице товара. выравниваем лэйблы в одну строку */
+.product > .labels > br {
+    display: none;
 }
 
        /* текст с ценой */
