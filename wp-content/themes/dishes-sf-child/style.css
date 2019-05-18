@@ -331,26 +331,33 @@ ul.products.columns-4 li.product img {
 /* изображение товара */
 
 /* лейбл Распродажа! */
+.labels {
+    display: inline-block;
+}
+.labels > div {
+    color: white;
+    border: none;
+    margin-bottom: 3px;
+    margin-right: 5px;
+}
+.labels .onsale {
+    background-color: var(--color-red);
+}
+.labels .new {
+    background-color: #00e90a;
+}
+/* на изображении товара */
 .woocommerce-LoopProduct-link .labels {
     position: absolute;
     top: 0;
-    float: right;
     right: 0;
 }
-.woocommerce-LoopProduct-link .labels > span {
-    color: white;
-    border: none;
+.woocommerce-LoopProduct-link .labels > div {
     display: block;
-    margin-bottom: 3px;
-}
-.woocommerce-LoopProduct-link .labels .onsale {
-    background-color: var(--color-red);
-}
-.woocommerce-LoopProduct-link .labels .new {
-    background-color: #00e90a;
+    margin-right: 0px;
 }
 
-/* текст с ценой */
+       /* текст с ценой */
 ul.products li.product .price {
     color: var(--color-red);
 }
