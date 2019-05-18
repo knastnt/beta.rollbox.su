@@ -331,16 +331,23 @@ ul.products.columns-4 li.product img {
 /* изображение товара */
 
 /* лейбл Распродажа! */
-.woocommerce-LoopProduct-link .onsale {
+.woocommerce-LoopProduct-link .labels {
     position: absolute;
     top: 0;
     float: right;
     right: 0;
 }
-.onsale {
-    background-color: var(--color-red);
+.woocommerce-LoopProduct-link .labels > span {
     color: white;
     border: none;
+    display: block;
+    margin-bottom: 3px;
+}
+.woocommerce-LoopProduct-link .labels .onsale {
+    background-color: var(--color-red);
+}
+.woocommerce-LoopProduct-link .labels .new {
+    background-color: #00e90a;
 }
 
 /* текст с ценой */
