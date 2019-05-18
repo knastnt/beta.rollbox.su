@@ -80,7 +80,43 @@ get_header(); ?>
                 <div class="first">
                     <div class="content">
 
-                        <?php echo do_shortcode( '[sale_products per_page="12"]' ); ?>
+                        <script src="<?php echo get_stylesheet_directory_uri(); ?>/design/slick/slick.min.js"></script>
+                        <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/design/slick/slick.css"/>
+                        <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/design/slick/slick-theme.css"/>
+
+                        <?php
+                            $result = do_shortcode( '[sale_products per_page="12"]' );
+                            $result = str_replace('<ul', '<div', $result);
+                            $result = str_replace('</ul', '</div', $result);
+                            $result = str_replace('<li', '<div', $result);
+                            $result = str_replace('</li', '</div', $result);
+                            echo $result;
+                        ?>
+
+                        <script type="text/javascript">
+                            (function() {
+                                jQuery('.center-section .first .content .woocommerce .products').slick({
+                                    infinite: true,
+                                    dots: true,
+                                    slidesToShow: 4,
+                                    slidesToScroll: 1,
+                                    responsive: [
+                                        {
+                                            breakpoint: 1064,
+                                            settings: {
+                                                slidesToShow: 3
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 767,
+                                            settings: {
+                                                slidesToShow: 1
+                                            }
+                                        }
+                                    ]
+                                });
+                            })()
+                        </script>
 
                     </div>
                     <div class="sidebar">
