@@ -3,7 +3,7 @@ if (!empty( $_REQUEST['handle'])) {
     if (!empty($_REQUEST['_wpnonce']) && wp_verify_nonce($_REQUEST['_wpnonce'], 'remove_log')) {
         $log_handler = new WC_Log_Handler_File();
         $log_handler->remove($_REQUEST['handle']);
-        wp_redirect('options-general.php?page=mailchimp-woocommerce&tab=logs');
+        wp_redirect('admin.php?page=mailchimp-woocommerce&tab=logs');
     }
 }
 $files  = defined('WC_LOG_DIR') ? @scandir( WC_LOG_DIR ) : array();
@@ -32,22 +32,23 @@ if (!empty($requested_log_file) && isset($logs[sanitize_title($requested_log_fil
 $handle = !empty($viewed_log) ? substr($viewed_log, 0, strlen($viewed_log) > 37 ? strlen($viewed_log) - 37 : strlen($viewed_log) - 4) : '';
 ?>
 
-<h2 style="padding-top: 1em;">Logging Preference</h2>
+<h2 style="padding-top: 1em;"><?php esc_html_e('Logging Preference', 'mailchimp-woocommerce');?></h2>
 <p>
-    Advanced troubleshooting can be conducted with the logging capability turned on.
-    By default, it’s set to “none” and you may toggle to either “standard” or “debug” as needed.
-    With standard logging, you can see basic information about the data submission to Mailchimp including any errors.
-    “Debug” gives a much deeper insight that is useful to share with support if problems arise.
+    <?php esc_html_e('Advanced troubleshooting can be conducted with the logging capability turned on.
+By default, it’s set to “none” and you may toggle to either “standard” or “debug” as needed.
+With standard logging, you can see basic information about the data submission to Mailchimp including any errors.
+“Debug” gives a much deeper insight that is useful to share with support if problems arise.', 'mailchimp-woocommerce');
+    ?>
 </p>
 <fieldset>
     <legend class="screen-reader-text">
-        <span>Logging Preference</span>
+        <span><?php esc_html_e('Logging Preference', 'mailchimp-woocommerce');?></span>
     </legend>
     <label for="<?php echo $this->plugin_name; ?>-logging">
         <select name="<?php echo $this->plugin_name; ?>[mailchimp_logging]" style="width:30%" required>
             <?php $logging_preference = mailchimp_environment_variables()->logging; ?>
             <?php
-            foreach(array('none' => 'None', 'debug' => 'Debug', 'standard' => 'Standard',) as $log_value => $log_label) {
+            foreach(array('none' => esc_html__('None', 'mailchimp-woocommerce'), 'debug' => esc_html__('Debug', 'mailchimp-woocommerce'), 'standard' => esc_html__('Standard', 'mailchimp-woocommerce')) as $log_value => $log_label) {
                 echo '<option value="'.esc_attr($log_value).'" '.selected($log_value === $logging_preference, true, false ) . '>' . esc_html($log_label) . '</option>';
             }
             ?>
@@ -55,7 +56,7 @@ $handle = !empty($viewed_log) ? substr($viewed_log, 0, strlen($viewed_log) > 37 
     </label>
 </fieldset>
 
-<?php submit_button('Save all changes', 'primary','submit', TRUE);?>
+<?php submit_button(__('Save all changes'), 'primary','submit', TRUE);?>
 
 <?php if (isset($logs) && isset($viewed_log)) : ?>
     <div id="log-viewer-select">
@@ -63,12 +64,12 @@ $handle = !empty($viewed_log) ? substr($viewed_log, 0, strlen($viewed_log) > 37 
             <h2>
                 <?php echo esc_html( $viewed_log ); ?>
                 <?php if ( ! empty( $handle ) ) : ?>
-                    <a class="page-title-action" href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'handle' => $handle ), admin_url( 'options-general.php?page=mailchimp-woocommerce&tab=logs&mc_action=remove_log' ) ), 'remove_log' ) ); ?>" class="button"><?php esc_html_e( 'Delete log', 'woocommerce' );?></a>
+                    <a class="page-title-action" href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'handle' => sanitize_title($viewed_log) ), admin_url( 'admin.php?page=mailchimp-woocommerce&tab=logs&mc_action=remove_log' ) ), 'remove_log' ) ); ?>" class="button"><?php esc_html_e( 'Delete log', 'woocommerce' );?></a>
                 <?php endif; ?>
             </h2>
         </div>
         <div class="alignright">
-            <form action="<?php echo admin_url( 'options-general.php?page=mailchimp-woocommerce&tab=logs&mc_action=view_log' ); ?>" method="post">
+            <form action="<?php echo admin_url( 'admin.php?page=mailchimp-woocommerce&tab=logs&mc_action=view_log' ); ?>" method="post">
                 <input type="hidden" name="<?php echo $this->plugin_name; ?>[mailchimp_active_tab]" value="logs"/>
                 <select name="log_file">
                     <?php foreach ( $logs as $log_key => $log_file ) : ?>

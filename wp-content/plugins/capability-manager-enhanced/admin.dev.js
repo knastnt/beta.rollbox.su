@@ -4,7 +4,7 @@ jQuery(document).ready( function($) {
 	$('td.cap-unreg').attr('title',cmeAdmin.typeCapUnregistered);
 	$('a.normal-cap').attr('title',cmeAdmin.switchableCaption);
 	$('span.cap-x').attr('title',cmeAdmin.capNegated);
-	$('table.cme-checklist input[class!="cme-check-all"]').attr('title',cmeAdmin.chkCaption);
+	$('table.cme-checklist input[class!="cme-check-all"]').not(':disabled').attr('title',cmeAdmin.chkCaption);
 	
 	$('table.cme-checklist a.neg-cap').click( function(e) {
 		$(this).closest('td').removeClass('cap-yes').removeClass('cap-no').addClass('cap-neg');
@@ -65,5 +65,11 @@ jQuery(document).ready( function($) {
 			.prop("checked", check_val);
 		
 		$(this).prop('checked_all',check_val);
+	});
+	
+	$('a.cme-fix-read-cap').click(function(){
+		$('input[name="caps[read]"]').prop('checked', true);
+		$('input[name="SaveRole"]').trigger('click');
+		return false;
 	});
 });

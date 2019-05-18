@@ -7,7 +7,7 @@
 
 ** Description: It is a plugin which provides the customers to get the reward points on the basis of the  purchase of the products or the money spent by them.
 
-** Version: 2.3
+** Version: 2.4
 
 ** Author: phoeniixx
 
@@ -21,7 +21,7 @@
 
 ** WC requires at least: 2.6.0
 
-** WC tested up to: 3.5.2
+** WC tested up to: 3.5.5
 
 **/  
 

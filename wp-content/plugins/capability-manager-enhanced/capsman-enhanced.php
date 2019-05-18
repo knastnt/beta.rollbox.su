@@ -1,31 +1,34 @@
 <?php
 /**
- * Capability Manager. Main Plugin File.
- * Plugin to create and manage Roles and Capabilities.
+ * Plugin Name: Capability Manager Enhanced
+ * Plugin URI: https://publishpress.com
+ * Description: Manage WordPress role definitions, per-site or network-wide. Organizes post capabilities by post type and operation.
+ * Version: 1.7.4
+ * Author: PublishPress
+ * Author URI: https://publishpress.com
+ * Text Domain: capsman-enhanced
+ * Domain Path: /lang/
+ * License: GPLv3
+ *
+ * Copyright (c) 2019 PublishPress
+ *
+ * ------------------------------------------------------------------------------
+ * Based on Capability Manager
+ * Author: Jordi Canals
+ * Copyright (c) 2009, 2010 Jordi Canals
+ * ------------------------------------------------------------------------------
  *
  * @package 	capability-manager-enhanced
- * @author		Jordi Canals, Kevin Behrens
- * @copyright   Copyright (C) 2009, 2010 Jordi Canals; modifications Copyright (C) 2012-2018 Kevin Behrens
+ * @author		PublishPress
+ * @copyright   Copyright (C) 2009, 2010 Jordi Canals; modifications Copyright (C) 2019 PublishPress
  * @license		GNU General Public License version 3
- * @link		http://agapetry.net
- * @version 	1.5.11
+ * @link		https://publishpress.com
+ * @version 	1.7.4
  */
 
-/*
-Plugin Name: Capability Manager Enhanced
-Plugin URI: http://presspermit.com/capability-manager
-Description: Manage WordPress role definitions, per-site or network-wide. Organizes post capabilities by post type and operation.
-Version: 1.5.11
-Author: Jordi Canals, Kevin Behrens
-Author URI: http://agapetry.net
-Text Domain: capsman-enhanced
-Domain Path: /lang/
-License: GPLv3
-*/
-
 if ( ! defined( 'CAPSMAN_VERSION' ) ) {
-	define( 'CAPSMAN_VERSION', '1.5.11' );
-	define( 'CAPSMAN_ENH_VERSION', '1.5.11' );
+	define( 'CAPSMAN_VERSION', '1.7.4' );
+	define( 'CAPSMAN_ENH_VERSION', '1.7.4' );
 }
 
 if ( cme_is_plugin_active( 'capsman.php' ) ) {
@@ -37,8 +40,6 @@ if ( cme_is_plugin_active( 'capsman.php' ) ) {
 	return;
 } else {
 	define ( 'CME_FILE', __FILE__ );
-	define ( 'AK_CMAN_PATH', dirname(__FILE__) );
-	define ( 'AK_CMAN_LIB', AK_CMAN_PATH . '/includes' );
 
 	/**
 	 * Sets an admin warning regarding required PHP version.
@@ -75,9 +76,11 @@ if ( cme_is_plugin_active( 'capsman.php' ) ) {
 			global $capsman;
 			
 			// Run the plugin
-			include_once ( AK_CMAN_PATH . '/framework/loader.php' );
-			include ( AK_CMAN_LIB . '/manager.php' );
-			$capsman = new CapabilityManager(__FILE__, 'capsman');
+			require_once ( dirname(__FILE__) . '/framework/lib/formating.php' );
+			require_once ( dirname(__FILE__) . '/framework/lib/users.php' );
+			
+			require_once ( dirname(__FILE__) . '/includes/manager.php' );
+			$capsman = new CapabilityManager();
 			
 			if ( isset($_REQUEST['page']) && ( 'capsman' == $_REQUEST['page'] ) ) {
 				add_action( 'admin_enqueue_scripts', '_cme_pp_scripts' );
@@ -89,11 +92,53 @@ if ( cme_is_plugin_active( 'capsman.php' ) ) {
 	}
 }
 
+add_action( 'init', '_cme_init' );
 add_action( 'plugins_loaded', '_cme_act_pp_active', 1 );
 
+add_action( 'init', '_cme_cap_helper', 49 );  // Press Permit Cap Helper, registered at 50, will leave caps which we've already defined
+//add_action( 'wp_loaded', '_cme_cap_helper_late_init', 99 );	// now instead adding registered_post_type, registered_taxonomy action handlers for latecomers
+																// @todo: do this in PP Core also
+
 function _cme_act_pp_active() {
-	if ( defined('PP_VERSION') || defined('PPC_VERSION') )
-		define( 'PP_ACTIVE', true );
+	if ( defined('PRESSPERMIT_VERSION') || ( defined('PPC_VERSION') && function_exists( 'pp_init_cap_caster' ) ) ) {
+		define( 'PRESSPERMIT_ACTIVE', true );
+	} else {
+		if ( defined('SCOPER_VERSION') || ( defined('PP_VERSION') && function_exists('pp_init_users_interceptor') ) ) {
+			define( 'OLD_PRESSPERMIT_ACTIVE', true );
+		}
+	}
+}
+
+function _cme_cap_helper() {
+	global $cme_cap_helper;
+	
+	require_once ( dirname(__FILE__) . '/includes/cap-helper.php' );
+	$cme_cap_helper = new CME_Cap_Helper();
+	
+	add_action( 'registered_post_type', '_cme_post_type_late_reg', 5, 2 );
+	add_action( 'registered_taxonomy', '_cme_taxonomy_late_reg', 5, 2 );
+}
+
+function _cme_post_type_late_reg( $post_type, $type_obj ) {
+	global $cme_cap_helper;
+	
+	if ( ! empty( $type_obj->public ) || ! empty( $type_obj->show_ui ) ) {
+		$cme_cap_helper->refresh();
+	}
+}
+
+function _cme_taxonomy_late_reg( $taxonomy, $tx_obj ) {
+	global $cme_cap_helper;
+	
+	if ( ! empty( $tx_obj->public ) ) {
+		$cme_cap_helper->refresh();
+	}
+}
+
+function _cme_init() {
+	require_once ( dirname(__FILE__) . '/includes/filters.php' );
+
+	load_plugin_textdomain('capsman-enhanced', false, dirname(__FILE__) . '/lang');
 }
 
 function _cme_pp_scripts() {
@@ -139,5 +184,9 @@ function _cme_pp_default_pattern_role( $role ) {
 	}
 }
 
+function capsman_get_pp_option( $option_basename ) {
+	return ( function_exists( 'presspermit_get_option') ) ? presspermit_get_option($option_basename) : pp_get_option($option_basename);
+}
+
 if ( is_multisite() )
-	require_once ( AK_CMAN_PATH . '/includes/network.php' );
+	require_once ( dirname(__FILE__) . '/includes/network.php' );

@@ -55,8 +55,8 @@ class Bulk_Document {
 
 		$html = $this->get_html();
 		$pdf_settings = array(
-			'paper_size'		=> apply_filters( 'wpo_wcpdf_paper_format', $this->wrapper_document->get_setting( 'paper_size', 'A4' ), $this->get_type() ),
-			'paper_orientation'	=> apply_filters( 'wpo_wcpdf_paper_orientation', 'portrait', $this->get_type() ),
+			'paper_size'		=> apply_filters( 'wpo_wcpdf_paper_format', $this->wrapper_document->get_setting( 'paper_size', 'A4' ), $this->get_type(), $this ),
+			'paper_orientation'	=> apply_filters( 'wpo_wcpdf_paper_orientation', 'portrait', $this->get_type(), $this ),
 			'font_subsetting'	=> $this->wrapper_document->get_setting( 'font_subsetting', false ),
 		);
 		$pdf_maker = wcpdf_get_pdf_maker( $html, $pdf_settings );
@@ -75,8 +75,9 @@ class Bulk_Document {
 
 			$order = WCX::get_order( $order_id );
 
-			$document = wcpdf_get_document( $this->get_type(), $order, true );
-			$html_content[ $key ] = $document->get_html( array( 'wrap_html_content' => false ) );
+			if ( $document = wcpdf_get_document( $this->get_type(), $order, true ) ) {
+				$html_content[ $key ] = $document->get_html( array( 'wrap_html_content' => false ) );
+			}
 		}
 
 		// get wrapper document & insert body content

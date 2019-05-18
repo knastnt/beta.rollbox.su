@@ -26,17 +26,8 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* =========================================================== SETTINGS */
-
-#icon-capsman-admin {
-	background: transparent url('images/cman32.png') no-repeat;
-	}
 
 /* ====================================================== SIDEBAR ICONS */
-
-td.sidebar a.capsman {
-	background-image: url('images/capsman.png');
-	}
 
 a.cap_type {
 	text-decoration: none;
@@ -142,18 +133,8 @@ td.cap-neg  a.neg-cap {
 display:none;
 }
 
-/*
-span.cme-drop-cap {
-color: #aaa;
-}
-*/
-
 td.cap-metagroup label span {
 color: #080 !important;
-}
-
-td.cap-locked label input {
-display: inline !important;
 }
 
 td.cap-locked a.neg-cap {
@@ -177,8 +158,16 @@ padding-right: 10px;
 margin-top: 5px;
 }
 
+#akmin input.button-primary {
+margin: 5px;
+}
+
 #akmin td.sidebar {
 width: 300px;
+}
+
+#akmin .cme-backup-tool a {
+padding-left:0;
 }
 
 #akmin input.regular-text {
@@ -195,13 +184,13 @@ font-style: italic;
 margin-top:5px;
 }
 
-/*
-#wpbody-content{
-padding-bottom: 30px;
-}
-*/
-
 td.cm-has-via-pp {
 background-color: #7f7;
 }
-/* EOF */
+
+#akmin div.publishpress-headline {line-height:25px}
+#akmin span.publishpress-thanks{margin-left:5px;color:#655997;white-space:nowrap}
+#akmin span.publishpress-thanks,#akmin span.publishpress-thanks a,#akmin span.publishpress-thanks a:visited {color:#655997;font-weight:bold;}
+
+table#akmin td.sidebar li.publishpress-contact{text-align:center}
+table#akmin td.sidebar li.publishpress-contact a{padding:5px 0 5px 0;}

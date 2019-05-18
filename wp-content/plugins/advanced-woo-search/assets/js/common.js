@@ -75,7 +75,8 @@
                     action: 'aws_action',
                     keyword : searchFor,
                     page: 0,
-                    lang: d.lang
+                    lang: d.lang,
+                    pageurl: window.location.href
                 };
 
                 requests.push(
@@ -97,7 +98,9 @@
                             methods.analytics( searchFor );
 
                         },
-                        error: function (data, dummy) {
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log( "Request failed: " + textStatus );
+                            methods.hideLoader();
                         }
                     })
 
@@ -107,42 +110,31 @@
 
             showResults: function( response ) {
 
+                var resultNum = 0;
                 var html = '<ul>';
 
+                if ( typeof response.tax !== 'undefined' ) {
 
-                if ( ( typeof response.cats !== 'undefined' ) && response.cats.length > 0 ) {
+                    $.each(response.tax, function (i, taxes) {
 
-                    $.each(response.cats, function (i, result) {
+                        if ( ( typeof taxes !== 'undefined' ) && taxes.length > 0 ) {
+                            $.each(taxes, function (i, taxitem) {
 
-                        html += '<li class="aws_result_item aws_result_cat">';
-                        html += '<a class="aws_result_link" href="' + result.link + '" >';
-                        html += '<span class="aws_result_content">';
-                        html += '<span class="aws_result_title">';
-                        html += result.name;
-                        html += '<span class="aws_result_count"> (' + result.count + ')</span>';
-                        html += '</span>';
-                        html += '</span>';
-                        html += '</a>';
-                        html += '</li>';
+                                resultNum++;
 
-                    });
+                                html += '<li class="aws_result_item aws_result_tag">';
+                                    html += '<a class="aws_result_link" href="' + taxitem.link + '" >';
+                                        html += '<span class="aws_result_content">';
+                                            html += '<span class="aws_result_title">';
+                                                html += taxitem.name;
+                                                html += '<span class="aws_result_count">&nbsp;(' + taxitem.count + ')</span>';
+                                            html += '</span>';
+                                        html += '</span>';
+                                    html += '</a>';
+                                html += '</li>';
 
-                }
-
-                if ( ( typeof response.tags !== 'undefined' ) && response.tags.length > 0 ) {
-
-                    $.each(response.tags, function (i, result) {
-
-                        html += '<li class="aws_result_item aws_result_tag">';
-                        html += '<a class="aws_result_link" href="' + result.link + '" >';
-                        html += '<span class="aws_result_content">';
-                        html += '<span class="aws_result_title">';
-                        html += result.name;
-                        html += '<span class="aws_result_count"> (' + result.count + ')</span>';
-                        html += '</span>';
-                        html += '</span>';
-                        html += '</a>';
-                        html += '</li>';
+                            });
+                        }
 
                     });
 
@@ -151,6 +143,8 @@
                 if ( ( typeof response.products !== 'undefined' ) && response.products.length > 0 ) {
 
                     $.each(response.products, function (i, result) {
+
+                        resultNum++;
 
                         html += '<li class="aws_result_item">';
                         html += '<a class="aws_result_link" href="' + result.link + '" >';
@@ -210,7 +204,7 @@
 
                 }
 
-                if ( ( typeof response.cats !== 'undefined' ) && response.cats.length <= 0 && ( typeof response.tags !== 'undefined' ) && response.tags.length <= 0 && ( typeof response.products !== 'undefined' ) && response.products.length <= 0 ) {
+                if ( ! resultNum ) {
                     html += '<li class="aws_result_item aws_no_result">' + translate.noresults + '</li>';
                 }
 
@@ -300,7 +294,15 @@
             analytics: function( label ) {
                 if ( d.useAnalytics ) {
                     try {
-                        ga('send', 'event', 'AWS search', 'AWS Search Term', label);
+                        if ( typeof gtag !== 'undefined' ) {
+                            gtag('event', 'AWS search', {
+                                'event_label': label,
+                                'event_category': 'AWS Search Term'
+                            });
+                        }
+                        if ( typeof ga !== 'undefined' ) {
+                            ga('send', 'event', 'AWS search', 'AWS Search Term', label);
+                        }
                     }
                     catch (error) {
                     }
@@ -489,11 +491,37 @@
 
 
     // Call plugin method
-    $(document).ready(function() {
+    $(document).ready( function() {
 
         $(selector).each( function() {
             $(this).aws_search();
         });
+
+        // Enfold header
+        $('[data-avia-search-tooltip]').on( 'click', function() {
+            window.setTimeout(function(){
+                $(selector).aws_search();
+            }, 1000);
+        } );
+
+        // Search results filters fix
+        var $filters_widget = $('.woocommerce.widget_layered_nav_filters');
+        var searchQuery = window.location.search;
+
+        if ( $filters_widget.length > 0 && searchQuery ) {
+            if ( searchQuery.indexOf('type_aws=true') !== -1 ) {
+                var $filterLinks = $filters_widget.find('ul li.chosen a');
+                if ( $filterLinks.length > 0 ) {
+                    var addQuery = '&type_aws=true';
+                    $filterLinks.each( function() {
+                        var filterLink = $(this).attr("href");
+                        if ( filterLink && filterLink.indexOf('post_type=product') !== -1 ) {
+                            $(this).attr( "href", filterLink + addQuery );
+                        }
+                    });
+                }
+            }
+        }
 
     });
 

@@ -1,114 +1,112 @@
 === Capability Manager Enhanced===
-Contributors: txanny, kevinB
-Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JWZVFUDLLYQBA
-Tags: roles, capabilities, manager, editor, rights, role, capability, types, taxonomies, network, multisite, default
-Requires at least: 3.1
-Tested up to: 5.0
-Stable tag: 1.5.11
+Contributors: publishpress, kevinB, stevejburge, andergmartins
+Tags: role, capabilities, post types, taxonomies, editor, network, multisite
+Requires at least: 4.1
+Tested up to: 5.2
+Stable tag: 1.7.4
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 A simple way to manage WordPress roles and capabilities.
 
 == Description ==
 
-Capability Manager Enhanced provides a simple way to manage WordPress role definitions (Subscriber, Editor, etc.). View or change the capabilities of any role, add new roles, copy existing roles into new ones, and add new capabilities to existing roles. Now supports capability negation and role networking.
+Control permissions requirements for your post types, and assign those capabilities to any WordPress role.
 
 = Features: =
 
-* Create roles
-* Manage role capabilities
-* Supports negation: set any capability to granted, not granted, or blocked
-* Copy any role all network sites
-* Mark any role for auto-copy to future network sites
+* Create Roles
+* Manage Role Capabilities
+* Cause type-specific Capabilities to be required and applied for any Post Type
+* Cause distinct edit, delete and assign Capabilities to be required and applied for any Taxonomy
+* Some specialized support for WooCommerce Post Types
+* Supports negation: set any Capability to granted, not granted, or blocked
+* Integration with Press Permit and PublishPress for comprehensive publishing solutions
+* Copy any Role to all network sites
+* Mark any Role for auto-copy to future network sites
 * Backup and restore Roles and Capabilities to revert your last changes.
-* Revert Roles and Capabilities to WordPress defaults. 
- 
+* Revert Roles and Capabilities to WordPress defaults.
+
+Capability Manager Enhanced is professionally developed and supported by the experienced <a href="https://publishpress.com">PublishPress</a> team.
+
+It has been a reliable tool since 2012, when PublishPress team member Kevin Behrens forked it from Jordi Canals' abandoned Capability Manager plugin.
+
+For additional versatility and convenience, enjoy <a href="https://wordpress.org/plugins/press-permit-core">Press Permit</a> plugin integration. Capability Manager Enhanced will show which capabilities have been added indirectly (as a pre-defined subset) by supplemental Type-Specific Roles (Page Contributor, Media Author, Product Editor, etc.)
+
 Role management can also be delegated:
 
-* Only users with 'manage_capabilities' can manage them. This capability is created at install time and assigned to Administrators.
-* Administrator role cannot be deleted.
-* Non-administrators can only manage roles or users with same or lower capabilities.
-
-Enhanced and supported by <a href="http://agapetry.net">Kevin Behrens</a> since July 2012. The original Capability Manager author, Jordi Canals, has not updated the plugin since early 2010. Since he was unreachable by web or email, I decided to take on the project myself.
-
-The main change from the original plugin is an improved UI which organizes capabilities:
-
-* by post type
-* by operation (read/edit/delete)
-* by origin (WP core or plugin)
-
-Capability Manager Enhanced also adds <a href="http://wordpress.org/plugins/press-permit-core">Press Permit</a> plugin integration:
-
-* easily specify which post types require type-specific capability definitions
-* show capabilities which Press Permit adds to the role by supplemental type-specific role assignment
-  
-= Languages included: =
-
-* English
-* Catalan
-* Spanish
-* Belorussian *by <a href="http://antsar.info/" rel="nofollow">Ilyuha</a>*
-* German *by <a href="http://great-solution.de/" rel="nofollow">Carsten Tauber</a>*
-* Italian *by <a href="http://gidibao.net" rel="nofollow">Gianni Diurno</a>*
-* Russian *by <a href="http://www.fatcow.com" rel="nofollow">Marcis Gasuns</a>*
-* Swedish *by <a href="http://jenswedin.com/" rel="nofollow">Jens Wedin</a>
-* POT file for easy translation to other languages included.
-
-== Installation ==
-
-= System Requirements =
-
-* **Requires PHP 5.2**. Older versions of PHP are obsolete and expose your site to security risks.
-* Verify the plugin is compatible with your WordPress Version. If not, plugin will not load.
-
-= Installing the plugin =
-
-1. Unzip the plugin archive.
-1. Upload the plugin's folder to the WordPress plugins directory.
-1. Activate the plugin through the 'Plugins' menu in WordPress.
-1. Manage the capabilities on the 'Capabilities' page on Users menu.
-1. Enjoy your plugin!
+* Only Users with 'manage_capabilities' can manage them. This Capability is created at install time and assigned to Administrators.
+* Administrator Role cannot be deleted.
+* Non-administrators can only manager Roles or Users with same or lower capabilities.
 
 == Screenshots ==
 
-1. Users Menu.
-2. View or Modify capabilities for a role.
-3. Network: copy role to existing or future sites.
-4. Actions on roles.
-5. Permissions Menu (Press Permit integration).
-6. View or Modify capabilities for a role (with Press Permit Pro).
-7. Force type-specific capabilities (Press Permit integration).
-8. Backup/Restore tool.
+1. Users Menu
+2. View or modify Capabilities for any Role
+3. Network: copy Role to existing or future Sites
+4. Role operations
+5. Permissions Menu (Press Permit integration)
+6. Shading of Capabilities granted by supplemental Type-Specific Roles
+7. Enforce Type-Specific Capabilities (Press Permit no longer required)
+8. Backup / Restore tool
 
 == Frequently Asked Questions ==
 
 = How can I grant capabilities for a custom post type =
+
 The custom post type must be defined to impose type-specific capability requirements.  This is normally done by setting the "capability type" property equal to the post type name.
 
 = I have configured a role to edit a custom post type. Why do the users still see "You are not allowed the edit this post?" when they try to save/submit a new post? =
 
-Probably because your custom post type definition not having map_meta_cap set true. If you are calling register_post_type manually, just add this property to the options array. Unfortunately, none of the free CPT plugins deal with this important detail. 
+You may need to adjust your custom post type definition by enabling the map_meta_cap property. If you are calling register_post_type manually, just add this property to the options array.
 
 = Even after I added capabilities, WordPress is not working the way I want =
 
-Keep in mind that this plugin's purpose is to conveniently view and modify the capabilities array stored for each WordPress role.  It is not responsible for the implementation of those capabilities by the WordPress core or other plugins.
+Keep in mind that this plugin's main purpose is to expose switches (defined capabilities). The wiring of those switches is up to the WordPress core or other plugins. If granting or removing a capability does not cause the expected results, your issue is probably with the other package.  With that context in mind, you are still welcome to <a href="https://publishpress.com/contact/">contact us</a> about it.
 
 = Where can I find more information about this plugin, usage and support ? =
 
-* If you need help, <a href="http://wordpress.org/tags/capsman-enhanced">ask in the Support forum</a>.  If your issue pertains to the enforcement of assigned capabilities, I am not the primary support avenue.  In many cases, I will offer a suggestion, but please don't give me negative feedback for not providing free consulting.
-
-== License ==
-
-Copyright 2009, 2010 Jordi Canals
-Copyright 2013-2018, Kevin Behrens
-
-This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
+* Feel free to <a href="https://publishpress.com/contact/">submit a help ticket</a> if you can't find an answer in the documentation or forum here. 
 
 == Changelog ==
 
+= 1.7.4 - 1 May 2019 =
+  * Fixed : On some sites, capabilities added dynamically by other code were forced into stored role definition (and could not be removed).
+  * Fixed : Negative role capabilities could not be directly unset (had to be checked, saved, then unchecked).
+
+= 1.7.3 - 9 Apr 2019 = 
+  * Fixed : Work around WP quirk of completely blocking admin page access for a post type if user lacks create capability for the post type and there are no other accessible items on the menu.
+  * Fixed : PHP Notices on Roles and Capabilities screen for non-Administrator with WooCommerce active
+
+= 1.7.2 - 3 Apr 2019 = 
+  * Compat : WooCommerce integration - Users lacking access to the "Add New Order" submenu could not access Posts, Pages, Products or any other Post Type listing. This occurred if "use create_posts" option enabled and user lacks the create capability for Orders. 
+
+= 1.7.1 - 29 Mar 2019 = 
+  * Fixed : Press Permit integration - cannot load Permissions > Role Capabilities with Press Permit Core < 2.7
+
+= 1.7 - 28 Mar 2019 = 
+  * Feature : New right sidebar setting: "Type-Specific Capabilities" for selected post types (without activating Press Permit Core).
+  * Feature : New right sidebar setting: "Taxonomy-Specific Capabilities" ensures a distinct manage capability for selected taxonomies
+  * Feature : New right sidebar setting: "Detailed Taxonomy Capabilities" causes term assign, edit and deletion capabilities to be required and credited separate from management capability
+  * Feature : WooCommerce - Ensure orders can be edited or added based on edit_shop_orders / create_shop_orders capability
+  * Change : Lockout safeguard (preventing read capability removal) is bypassed if role has no WP admin / edit capabilities, or if it has "dashboard_lockout_ok" capability
+  * Compat : Press Permit: new plugin page slugs in Press Permit Core 2.7
+
+= 1.6.1 =
+  * Feature : Prevent read capability from being removed from a standard role
+  * Feature : If read capability is missing from a standard role, display warning and instant fix link 
+  * Feature : Additional save button at top of Roles and Capabilities screen!
+  * Change : Reinstate Press Permit description link  
+  * Change : Thickbox popups for related plugins
+
+= 1.6 =
+  * Feature : WooCommerce - If current user has duplicate_products capability, make Woo honor it
+  * Feature : Link to Backup Tool from sidebar of Roles and Capabilities screen
+  * Feature : Link to Roles and Capabilities screen from Backup Tool
+  * Change : Minor code cleanup and refactor
+  * Change : Copyrights, onscreen link for PublishPress ownership
+  * Change : Links to Related Permissions Plugins in sidebar on Roles and Capabilities screen
+  
 = 1.5.11 =
   * Feature : Automatically save backup of WP roles on plugin activation or update
   * Feature : When roles are manually backed up, also retain initial role backup

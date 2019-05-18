@@ -439,6 +439,12 @@ if ( ! class_exists( 'AWS_Helpers' ) ) :
             // Diacritical marks
             $string = strtr( $string, AWS_Helpers::get_diacritic_chars() );
 
+            if ( function_exists( 'mb_strtolower' ) ) {
+                $string = mb_strtolower( $string );
+            } else {
+                $string = strtolower( $string );
+            }
+
             /**
              * Filters normalized string
              *
@@ -454,23 +460,29 @@ if ( ! class_exists( 'AWS_Helpers' ) ) :
         static public function filter_stopwords( $str_array ) {
 
             $stopwords = AWS()->get_settings( 'stopwords' );
+            $stopwords_array = array();
+            $new_str_array = array();
 
-            if ( $stopwords && $str_array && ! empty( $str_array ) ) {
+            if ( $stopwords ) {
                 $stopwords_array = explode( ',', $stopwords );
-                if ( $stopwords_array && ! empty( $stopwords_array ) ) {
-
-                    $stopwords_array = array_map( 'trim', $stopwords_array );
-
-                    foreach ( $str_array as $str_word => $str_count ) {
-                        if ( in_array( $str_word, $stopwords_array ) ) {
-                            unset( $str_array[$str_word] );
-                        }
-                    }
-
-                }
             }
 
-            return $str_array;
+            if ( $str_array && is_array( $str_array ) && ! empty( $str_array ) && $stopwords_array && ! empty( $stopwords_array ) ) {
+
+                $stopwords_array = array_map( 'trim', $stopwords_array );
+
+                foreach ( $str_array as $str_word ) {
+                    if ( in_array( $str_word, $stopwords_array ) ) {
+                        continue;
+                    }
+                    $new_str_array[] = $str_word;
+                }
+
+            } else {
+                $new_str_array = $str_array;
+            }
+
+            return $new_str_array;
 
         }
 
@@ -575,6 +587,35 @@ if ( ! class_exists( 'AWS_Helpers' ) ) :
             }
 
             return $current_lang;
+
+        }
+
+        /*
+         * Get string with current product terms names
+         *
+         * @return string List of terms names
+         */
+        static public function get_terms_array( $id, $taxonomy ) {
+
+            $terms = wp_get_object_terms( $id, $taxonomy );
+
+            if ( is_wp_error( $terms ) ) {
+                return '';
+            }
+
+            if ( empty( $terms ) ) {
+                return '';
+            }
+
+            $tax_array_temp = array();
+            $source_name = AWS_Helpers::get_source_name( $taxonomy );
+
+            foreach ( $terms as $term ) {
+                $source = $source_name . '%' . $term->term_id . '%';
+                $tax_array_temp[$source] = $term->name;
+            }
+
+            return $tax_array_temp;
 
         }
 

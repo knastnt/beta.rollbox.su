@@ -1,104 +1,122 @@
 <?php return array (
-  'sans-serif' => array(
-    'normal' => $fontDir . '/Helvetica',
-    'bold' => $fontDir . '/Helvetica-Bold',
-    'italic' => $fontDir . '/Helvetica-Oblique',
-    'bold_italic' => $fontDir . '/Helvetica-BoldOblique',
+  'sans-serif' => 
+  array (
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Helvetica',
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Helvetica-Bold',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Helvetica-Oblique',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Helvetica-BoldOblique',
   ),
-  'times' => array(
-    'normal' => $fontDir . '/Times-Roman',
-    'bold' => $fontDir . '/Times-Bold',
-    'italic' => $fontDir . '/Times-Italic',
-    'bold_italic' => $fontDir . '/Times-BoldItalic',
+  'times' => 
+  array (
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Times-Roman',
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Times-Bold',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Times-Italic',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Times-BoldItalic',
   ),
-  'times-roman' => array(
-    'normal' => $fontDir . '/Times-Roman',
-    'bold' => $fontDir . '/Times-Bold',
-    'italic' => $fontDir . '/Times-Italic',
-    'bold_italic' => $fontDir . '/Times-BoldItalic',
+  'times-roman' => 
+  array (
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Times-Roman',
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Times-Bold',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Times-Italic',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Times-BoldItalic',
   ),
-  'courier' => array(
-    'normal' => $fontDir . '/Courier',
-    'bold' => $fontDir . '/Courier-Bold',
-    'italic' => $fontDir . '/Courier-Oblique',
-    'bold_italic' => $fontDir . '/Courier-BoldOblique',
+  'courier' => 
+  array (
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Courier',
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Courier-Bold',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Courier-Oblique',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Courier-BoldOblique',
   ),
-  'helvetica' => array(
-    'normal' => $fontDir . '/Helvetica',
-    'bold' => $fontDir . '/Helvetica-Bold',
-    'italic' => $fontDir . '/Helvetica-Oblique',
-    'bold_italic' => $fontDir . '/Helvetica-BoldOblique',
+  'helvetica' => 
+  array (
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Helvetica',
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Helvetica-Bold',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Helvetica-Oblique',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Helvetica-BoldOblique',
   ),
-  'zapfdingbats' => array(
-    'normal' => $fontDir . '/ZapfDingbats',
-    'bold' => $fontDir . '/ZapfDingbats',
-    'italic' => $fontDir . '/ZapfDingbats',
-    'bold_italic' => $fontDir . '/ZapfDingbats',
+  'zapfdingbats' => 
+  array (
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/ZapfDingbats',
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/ZapfDingbats',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/ZapfDingbats',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/ZapfDingbats',
   ),
-  'symbol' => array(
-    'normal' => $fontDir . '/Symbol',
-    'bold' => $fontDir . '/Symbol',
-    'italic' => $fontDir . '/Symbol',
-    'bold_italic' => $fontDir . '/Symbol',
+  'symbol' => 
+  array (
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Symbol',
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Symbol',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Symbol',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Symbol',
   ),
-  'serif' => array(
-    'normal' => $fontDir . '/Times-Roman',
-    'bold' => $fontDir . '/Times-Bold',
-    'italic' => $fontDir . '/Times-Italic',
-    'bold_italic' => $fontDir . '/Times-BoldItalic',
+  'serif' => 
+  array (
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Times-Roman',
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Times-Bold',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Times-Italic',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Times-BoldItalic',
   ),
-  'monospace' => array(
-    'normal' => $fontDir . '/Courier',
-    'bold' => $fontDir . '/Courier-Bold',
-    'italic' => $fontDir . '/Courier-Oblique',
-    'bold_italic' => $fontDir . '/Courier-BoldOblique',
+  'monospace' => 
+  array (
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Courier',
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Courier-Bold',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Courier-Oblique',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Courier-BoldOblique',
   ),
-  'fixed' => array(
-    'normal' => $fontDir . '/Courier',
-    'bold' => $fontDir . '/Courier-Bold',
-    'italic' => $fontDir . '/Courier-Oblique',
-    'bold_italic' => $fontDir . '/Courier-BoldOblique',
+  'fixed' => 
+  array (
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Courier',
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Courier-Bold',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Courier-Oblique',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Courier-BoldOblique',
   ),
-  'dejavu sans' => array(
-    'bold' => $fontDir . '/DejaVuSans-Bold',
-    'bold_italic' => $fontDir . '/DejaVuSans-BoldOblique',
-    'italic' => $fontDir . '/DejaVuSans-Oblique',
-    'normal' => $fontDir . '/DejaVuSans',
+  'dejavu sans' => 
+  array (
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/DejaVuSans-Bold',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/DejaVuSans-BoldOblique',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/DejaVuSans-Oblique',
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/DejaVuSans',
   ),
-  'dejavu sans mono' => array(
-    'bold' => $fontDir . '/DejaVuSansMono-Bold',
-    'bold_italic' => $fontDir . '/DejaVuSansMono-BoldOblique',
-    'italic' => $fontDir . '/DejaVuSansMono-Oblique',
-    'normal' => $fontDir . '/DejaVuSansMono',
+  'dejavu sans mono' => 
+  array (
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/DejaVuSansMono-Bold',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/DejaVuSansMono-BoldOblique',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/DejaVuSansMono-Oblique',
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/DejaVuSansMono',
   ),
-  'dejavu serif' => array(
-    'bold' => $fontDir . '/DejaVuSerif-Bold',
-    'bold_italic' => $fontDir . '/DejaVuSerif-BoldItalic',
-    'italic' => $fontDir . '/DejaVuSerif-Italic',
-    'normal' => $fontDir . '/DejaVuSerif',
+  'dejavu serif' => 
+  array (
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/DejaVuSerif-Bold',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/DejaVuSerif-BoldItalic',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/DejaVuSerif-Italic',
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/DejaVuSerif',
   ),
-  'open sans' => array(
-    'normal' => $fontDir . '/OpenSans-Normal',
-    'bold' => $fontDir . '/OpenSans-Bold',
-    'italic' => $fontDir . '/OpenSans-Italic',
-    'bold_italic' => $fontDir . '/OpenSans-BoldItalic',
+  'open sans' => 
+  array (
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/OpenSans-Normal',
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/OpenSans-Bold',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/OpenSans-Italic',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/OpenSans-BoldItalic',
   ),
-  'segoe' => array(
-    'normal' => $fontDir . '/Segoe-Normal',
-    'bold' => $fontDir . '/Segoe-Bold',
-    'italic' => $fontDir . '/Segoe-Italic',
-    'bold_italic' => $fontDir . '/Segoe-BoldItalic',
+  'segoe' => 
+  array (
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Segoe-Normal',
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Segoe-Bold',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Segoe-Italic',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/Segoe-BoldItalic',
   ),
-  'roboto slab' => array(
-    'normal' => $fontDir . '/RobotoSlab-Normal',
-    'bold' => $fontDir . '/RobotoSlab-Bold',
-    'italic' => $fontDir . '/RobotoSlab-Italic',
-    'bold_italic' => $fontDir . '/RobotoSlab-BoldItalic',
+  'roboto slab' => 
+  array (
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/RobotoSlab-Normal',
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/RobotoSlab-Bold',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/RobotoSlab-Italic',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/RobotoSlab-BoldItalic',
   ),
-  'currencies' => array(
-    'normal' => $fontDir . '/currencies',
-    'bold' => $fontDir . '/currencies',
-    'italic' => $fontDir . '/currencies',
-    'bold_italic' => $fontDir . '/currencies',
+  'currencies' => 
+  array (
+    'normal' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/currencies',
+    'bold' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/currencies',
+    'italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/currencies',
+    'bold_italic' => 'G:\\OpenServer\\domains\\beta.rollbox.su/wp-content/uploads/wpo_wcpdf/fonts/currencies',
   ),
-) ?>
+);
+?>

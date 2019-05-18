@@ -17,6 +17,11 @@ if ( ! class_exists( 'AWS_Table' ) ) :
         private $table_name;
 
         /**
+         * @var AWS_Table Data
+         */
+        private $data;
+
+        /**
          * Constructor
          */
         public function __construct() {
@@ -43,10 +48,18 @@ if ( ! class_exists( 'AWS_Table' ) ) :
 
             add_action( 'updated_postmeta', array( $this, 'updated_custom_tabs' ), 10, 4 );
 
-            add_action( 'wp_ajax_aws-reindex', array( $this, 'reindex_table' ) );
+            add_action( 'wp_ajax_aws-reindex', array( $this, 'reindex_table_ajax' ) );
 
             add_action( 'aws_reindex_table', array( $this, 'reindex_table_job' ) );
 
+        }
+
+        /*
+         * Reindex plugin table ajax hook
+         */
+        public function reindex_table_ajax() {
+            check_ajax_referer( 'aws_admin_ajax_nonce' );
+            $this->reindex_table();
         }
 
         /*
@@ -98,6 +111,7 @@ if ( ! class_exists( 'AWS_Table' ) ) :
                 'no_found_rows'       => 1,
                 'orderby'             => 'ID',
                 'order'               => 'DESC',
+                'lang'                => ''
             );
 
 
@@ -228,6 +242,7 @@ if ( ! class_exists( 'AWS_Table' ) ) :
                 'no_found_rows'       => 1,
                 'orderby'             => 'ID',
                 'order'               => 'DESC',
+                'lang'                => ''
             );
 
 
@@ -305,9 +320,9 @@ if ( ! class_exists( 'AWS_Table' ) ) :
                 }
 
 
-                $data['in_stock'] = method_exists( $product, 'get_stock_status' ) ? ( ( $product->get_stock_status() === 'outofstock' ) ? 0 : 1 ) : ( method_exists( $product, 'is_in_stock' ) ? $product->is_in_stock() : 1 );
+                $data['in_stock'] = $this->get_stock_status( $product );
                 $data['on_sale'] = $product->is_on_sale();
-                $data['visibility'] = method_exists( $product, 'get_catalog_visibility' ) ? $product->get_catalog_visibility() : ( method_exists( $product, 'get_visibility' ) ? $product->get_visibility() : 'visible' );
+                $data['visibility'] = $this->get_visibility( $product );
                 $data['lang'] = $lang ? $lang : '';
 
                 $sku = $product->get_sku();
@@ -316,8 +331,8 @@ if ( ! class_exists( 'AWS_Table' ) ) :
 
                 $content = apply_filters( 'the_content', get_post_field( 'post_content', $data['id'] ), $data['id'] );
                 $excerpt = get_post_field( 'post_excerpt', $data['id'] );
-                $cat_array = $this->get_terms_array( $data['id'], 'product_cat' );
-                $tag_array = $this->get_terms_array( $data['id'], 'product_tag' );
+                $cat_array = AWS_Helpers::get_terms_array( $data['id'], 'product_cat' );
+                $tag_array = AWS_Helpers::get_terms_array( $data['id'], 'product_tag' );
 
 
                 // Get all child products if exists
@@ -525,10 +540,19 @@ if ( ! class_exists( 'AWS_Table' ) ) :
 
                 }
 
+                /**
+                 * Filters product data array before it will be added to index table.
+                 *
+                 * @since 1.62
+                 *
+                 * @param array $data Product data array.
+                 * @param int $data['id'] Product id.
+                 * @param object $product Current product object.
+                 */
+                $data = apply_filters( 'aws_indexed_data', $data, $data['id'], $product );
 
                 //Insert data into table
                 $this->insert_into_table( $data );
-
 
             }
 
@@ -636,6 +660,10 @@ if ( ! class_exists( 'AWS_Table' ) ) :
                 return;
             }
 
+            if ( wp_is_post_revision( $post_id ) ) {
+                return;
+            }
+
             $this->update_table( $post_id );
 
         }
@@ -694,12 +722,14 @@ if ( ! class_exists( 'AWS_Table' ) ) :
                 'fields'           => 'ids',
                 'post_type'        => 'product',
                 'post_status'      => 'publish',
-                'suppress_filters' => false,
                 'no_found_rows'    => 1,
-                'include'          => $product_id
+                'include'          => $product_id,
+                'lang'             => ''
             ) );
 
-            $this->fill_table( $posts );
+            if ( $posts ) {
+                $this->fill_table( $posts );
+            }
 
             do_action('aws_cache_clear');
 
@@ -729,6 +759,7 @@ if ( ! class_exists( 'AWS_Table' ) ) :
 
             // Avoid single A-Z.
             //$str = preg_replace( '/\b\w{1}\b/i', " ", $str );
+            //if ( ! $term || ( 1 === strlen( $term ) && preg_match( '/^[a-z]$/i', $term ) ) )
 
             $str = AWS_Helpers::normalize_string( $str );
 
@@ -757,12 +788,6 @@ if ( ! class_exists( 'AWS_Table' ) ) :
 
             $str = str_replace( 'Ăź', 'ss', $str );
 
-            if ( function_exists( 'mb_strtolower' ) ) {
-                $str = mb_strtolower( $str );
-            } else {
-                $str = strtolower( $str );
-            }
-
             $str = preg_replace( '/^[a-z]$/i', "", $str );
 
             $str = preg_replace( '/\s+/', ' ', $str );
@@ -776,8 +801,9 @@ if ( ! class_exists( 'AWS_Table' ) ) :
              */
             $str = apply_filters( 'aws_extracted_string', $str );
 
-            $str_array = array_count_values( explode( ' ', $str ) );
+            $str_array = explode( ' ', $str );
             $str_array = AWS_Helpers::filter_stopwords( $str_array );
+            $str_array = array_count_values( $str_array );
 
             /**
              * Filters extracted terms before adding to index table
@@ -815,31 +841,40 @@ if ( ! class_exists( 'AWS_Table' ) ) :
         }
 
         /*
-         * Get string with current product terms names
+         * Get product stock status
          *
-         * @return string List of terms names
+         * @return bool
          */
-        private function get_terms_array( $id, $taxonomy ) {
+        private function get_stock_status( $product ) {
 
-            $terms = wp_get_object_terms( $id, $taxonomy );
+            $stock_status = 1;
 
-            if ( is_wp_error( $terms ) ) {
-                return '';
+            if ( method_exists( $product, 'get_stock_status' ) ) {
+                $stock_status = $product->get_stock_status() === 'outofstock' ? 0 : 1;
+            } elseif ( method_exists( $product, 'is_in_stock' ) ) {
+                $stock_status = $product->is_in_stock();
             }
 
-            if ( empty( $terms ) ) {
-                return '';
+            return $stock_status;
+
+        }
+
+        /*
+         * Get product visibility
+         *
+         * @return bool
+         */
+        private function get_visibility( $product ) {
+
+            $visibility = 'visible';
+
+            if ( method_exists( $product, 'get_catalog_visibility' ) ) {
+                $visibility = $product->get_catalog_visibility();
+            } elseif ( method_exists( $product, 'get_visibility' ) ) {
+                $visibility = $product->get_visibility();
             }
 
-            $tax_array_temp = array();
-            $source_name = AWS_Helpers::get_source_name( $taxonomy );
-
-            foreach ( $terms as $term ) {
-                $source = $source_name . '%' . $term->term_id . '%';
-                $tax_array_temp[$source] = $term->name;
-            }
-
-            return $tax_array_temp;
+            return $visibility;
 
         }
 

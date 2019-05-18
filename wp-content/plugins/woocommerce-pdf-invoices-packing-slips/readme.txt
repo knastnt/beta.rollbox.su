@@ -3,9 +3,9 @@ Contributors: pomegranate
 Donate link: https://wpovernight.com/downloads/woocommerce-pdf-invoices-packing-slips-bundle/
 Tags: woocommerce, pdf, invoices, packing slips, print, delivery notes, invoice, packing slip, export, email, bulk, automatic
 Requires at least: 3.5
-Tested up to: 5.0
+Tested up to: 5.1
 Requires PHP: 5.3
-Stable tag: 2.2.5
+Stable tag: 2.2.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,47 @@ There's a setting on the Status tab of the settings page that allows you to togg
 6. Set shop name, address, header logo, etc.
 
 == Changelog ==
+
+= 2.2.12 =
+* Tested up to WC3.6
+* Fix: Prevent infinite loop on temporary folder creation for partially migrated sites or write permission issues
+* Tweak: Removed height & width attributes from logo image (+filter `wpo_wcpdf_header_logo_img_element`)
+* Dev: Enable guest access to PDF with order key in URL 
+
+= 2.2.11 =
+* Fix: Fatal error on orders with multiple refunds
+
+= 2.2.10 =
+* Fix: Possible conflict with latest Subscriptions
+* Fix: Load correct translations when admin user profile language is set to different locale
+* Fix: Use file lock to prevent parallel processes creating the same attachment file
+* Fix: Prevent notices for incorrectly loaded email classes
+* Feature: Allow different invoice number column sorting methods by filter
+* Feature: Filter for global prevention of creating specific document (`wpo_wcpdf_document_is_allowed`)
+
+= 2.2.9 =
+* Feature: Added customer note email to attachment options
+* Fix: Prevent empty invoice dates from being saved as 1970 (fallback to current date/time)
+
+= 2.2.8 =
+* Tested up to WP5.1
+* Tweak: Re-use attachment file if not older than 60 seconds (tentative fix for parallel read & write issues)
+* Dev: Added URL overrides to switch between output mode (`&output=html`) and debug (`&debug=true`)
+
+= 2.2.7 =
+* Fix: Hardened permissions & security checks on several admin actions (audit by pluginvulnerabilities.com)
+* Feature: Show checkmarks for existing documents on order details page buttons too
+* Tweak: Product Bundles compatibility, hide items by default, following bundle settings (Simple Template)
+* Tweak: Fallback to billing address on packing slip for orders without shipping address
+
+= 2.2.6 =
+* Fix: ship to different address check for empty shipping addresses
+* Fix: Fix notice when using invoice number by plugin
+* Fix: Underline position
+* Fix: PHP 7.3 compatibility
+* Tweak: Updated dompdf to 0.8.3
+* Tweak: move admin menu item to the end of WooCommerce menu
+* Tweak: pass document object to paper format & orientation filters
 
 = 2.2.5 =
 * Feature: Check marks to indicate whether a document exists

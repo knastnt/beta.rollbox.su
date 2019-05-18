@@ -1,11 +1,13 @@
-export default {
-	/**
-	 * Alignment of product grid
-	 */
-	align: {
-		type: 'string',
-	},
 
+export const sharedAttributeBlockTypes = [
+	'woocommerce/product-best-sellers',
+	'woocommerce/product-category',
+	'woocommerce/product-new',
+	'woocommerce/product-on-sale',
+	'woocommerce/product-top-rated',
+];
+
+export default {
 	/**
 	 * Number of columns.
 	 */
@@ -23,10 +25,31 @@ export default {
 	},
 
 	/**
-	 * How to order the products: 'date', 'popularity', 'price_asc', 'price_desc' 'rating', 'title'.
+	 * Product category, used to display only products in the given categories.
 	 */
-	orderby: {
+	categories: {
+		type: 'array',
+		default: [],
+	},
+
+	/**
+	 * Product category operator, used to restrict to products in all or any selected categories.
+	 */
+	catOperator: {
 		type: 'string',
-		default: 'date',
+		default: 'any',
+	},
+
+	/**
+	 * Content visibility setting
+	 */
+	contentVisibility: {
+		type: 'object',
+		default: {
+			title: true,
+			price: true,
+			rating: true,
+			button: true,
+		},
 	},
 };

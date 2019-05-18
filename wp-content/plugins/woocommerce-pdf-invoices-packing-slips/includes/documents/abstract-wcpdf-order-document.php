@@ -278,6 +278,10 @@ abstract class Order_Document {
 		do_action( 'wpo_wcpdf_delete_document', $this );
 	}
 
+	public function is_allowed() {
+		return apply_filters( 'wpo_wcpdf_document_is_allowed', true, $this );
+	}
+
 	public function exists() {
 		return !empty( $this->data['date'] );
 	}
@@ -483,7 +487,9 @@ abstract class Order_Document {
 					$src = $attachment_src;
 				}
 				
-				printf('<img src="%1$s" width="%2$d" height="%3$d" alt="%4$s" />', $src, $attachment_width, $attachment_height, esc_attr( $company ) );
+				$img_element = sprintf('<img src="%1$s" alt="%4$s" />', $src, $attachment_width, $attachment_height, esc_attr( $company ) );
+				
+				echo apply_filters( 'wpo_wcpdf_header_logo_img_element', $img_element, $attachment, $this );
 			}
 		}
 	}
@@ -577,8 +583,8 @@ abstract class Order_Document {
 		do_action( 'wpo_wcpdf_before_pdf', $this->get_type(), $this );
 		
 		$pdf_settings = array(
-			'paper_size'		=> apply_filters( 'wpo_wcpdf_paper_format', $this->get_setting( 'paper_size', 'A4' ), $this->get_type() ),
-			'paper_orientation'	=> apply_filters( 'wpo_wcpdf_paper_orientation', 'portrait', $this->get_type() ),
+			'paper_size'		=> apply_filters( 'wpo_wcpdf_paper_format', $this->get_setting( 'paper_size', 'A4' ), $this->get_type(), $this ),
+			'paper_orientation'	=> apply_filters( 'wpo_wcpdf_paper_orientation', 'portrait', $this->get_type(), $this ),
 			'font_subsetting'	=> $this->get_setting( 'font_subsetting', false ),
 		);
 		$pdf_maker = wcpdf_get_pdf_maker( $this->get_html(), $pdf_settings );
@@ -718,13 +724,15 @@ abstract class Order_Document {
 		$wc_emails = $mailer->get_emails();
 
 		$non_order_emails = array(
-			'customer_note',
 			'customer_reset_password',
 			'customer_new_account'
 		);
 
 		$emails = array();
 		foreach ($wc_emails as $class => $email) {
+			if ( !is_object( $email ) ) {
+				continue;
+			}
 			if ( !in_array( $email->id, $non_order_emails ) ) {
 				switch ($email->id) {
 					case 'new_order':

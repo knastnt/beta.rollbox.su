@@ -3,8 +3,8 @@
 Contributors: phoeniixx
 Tags: phoeniixx, woocommerce, woocommerce Reward, points, Reward points, woocommerce reward points, get points, get rewards, discount, woocommerce points, wc rewards, woocommerce plugin,  wc points, sign up points , review points , first order points , payment gateway points , redemption value , points expiry , product based points , category based points , validity date , phoenix , phoenixx
 Requires at least: 4.0
-Tested up to: 5.0
-Stable tag: 2.3
+Tested up to: 5.1
+Stable tag: 2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,14 +13,6 @@ It is a plugin which provides the customers to get the reward points on the basi
 == Description ==
 
 [FREE VERSION DEMO LINK](http://rewardpointsfree.phoeniixxdemo.com/wp-admin) | [FREE VERSION DOCUMENTATION LINK](http://rewardpointsfree.phoeniixxdemo.com/wp-content/uploads/2018/04/reward-points1.pdf)
-
-<blockquote>
-<h4>NEW</h4>
-<ul>
-<li>  Our plugin is compatible with the latest version of Woocommerce</li>
-</ul>
-<p></p>
-</blockquote>
 
 = Overview =
 It is a plugin which provides the customers to get the reward points on the basis of the  purchase of the products or the money spent by them.
@@ -105,6 +97,9 @@ Here is our premium wordpress theme
 5. Dispalys the details your order. 
 
 == Changelog ==
+
+= 2.4 - 27/02/2019 =
+* Compatible with latest version of woocommerce and wordpress 
 
 = 2.3 - 26/12/2018 =
 * added premium features image file

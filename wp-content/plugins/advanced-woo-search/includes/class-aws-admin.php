@@ -56,7 +56,7 @@ class AWS_Admin {
      * Add options page
      */
     public function add_admin_page() {
-        add_menu_page( __( 'Adv. Woo Search', 'aws' ), __( 'Adv. Woo Search', 'aws' ), 'manage_options', 'aws-options', array( &$this, 'display_admin_page' ), 'dashicons-search' );
+        add_menu_page( esc_html__( 'Adv. Woo Search', 'aws' ), esc_html__( 'Adv. Woo Search', 'aws' ), 'manage_options', 'aws-options', array( &$this, 'display_admin_page' ), 'dashicons-search' );
     }
 
     /**
@@ -65,14 +65,15 @@ class AWS_Admin {
     public function display_admin_page() {
 
         $options = $this->options_array();
+        $nonce = wp_create_nonce( 'plugin-settings' );
 
         $tabs = array(
-            'general' => __( 'General', 'aws' ),
-            'form'    => __( 'Search Form', 'aws' ),
-            'results' => __( 'Search Results', 'aws' )
+            'general' => esc_html__( 'General', 'aws' ),
+            'form'    => esc_html__( 'Search Form', 'aws' ),
+            'results' => esc_html__( 'Search Results', 'aws' )
         );
 
-        $current_tab = empty( $_GET['tab'] ) ? 'general' : sanitize_title( $_GET['tab'] );
+        $current_tab = empty( $_GET['tab'] ) ? 'general' : sanitize_text_field( $_GET['tab'] );
 
         $tabs_html = '';
 
@@ -81,11 +82,13 @@ class AWS_Admin {
 
         }
 
-        $tabs_html .= '<a href="https://advanced-woo-search.com/?utm_source=plugin&utm_medium=settings-tab&utm_campaign=aws-pro-plugin" class="nav-tab premium-tab" target="_blank">' . __( 'Get Premium', 'aws' ) . '</a>';
+        $tabs_html .= '<a href="https://advanced-woo-search.com/?utm_source=plugin&utm_medium=settings-tab&utm_campaign=aws-pro-plugin" class="nav-tab premium-tab" target="_blank">' . esc_html__( 'Get Premium', 'aws' ) . '</a>';
 
         $tabs_html = '<h2 class="nav-tab-wrapper woo-nav-tab-wrapper">'.$tabs_html.'</h2>';
 
-        if( isset( $_POST["Submit"] ) ) {
+
+        if ( isset( $_POST["Submit"] ) && current_user_can( 'manage_options' ) && isset( $_POST["_wpnonce"] ) && wp_verify_nonce( $_POST["_wpnonce"], 'plugin-settings' ) ) {
+
             $update_settings = $this->get_settings();
 
             foreach ( $options[$current_tab] as $values ) {
@@ -100,7 +103,7 @@ class AWS_Admin {
 
                     foreach ( $values['choices'] as $key => $value ) {
                         $new_value = isset( $_POST[ $values['id'] ][$key] ) ? '1' : '0';
-                        $checkbox_array[$key] = $new_value;
+                        $checkbox_array[$key] = (string) sanitize_text_field( $new_value );
                     }
 
                     $update_settings[ $values['id'] ] = $checkbox_array;
@@ -109,11 +112,11 @@ class AWS_Admin {
                 }
 
                 $new_value = isset( $_POST[ $values['id'] ] ) ? $_POST[ $values['id'] ] : '';
-                $update_settings[ $values['id'] ] = $new_value;
+                $update_settings[ $values['id'] ] = (string) sanitize_text_field( $new_value );
 
                 if ( isset( $values['sub_option'] ) ) {
                     $new_value = isset( $_POST[ $values['sub_option']['id'] ] ) ? $_POST[ $values['sub_option']['id'] ] : '';
-                    $update_settings[ $values['sub_option']['id'] ] = $new_value;
+                    $update_settings[ $values['sub_option']['id'] ] = (string) sanitize_text_field( $new_value );
                 }
             }
 
@@ -137,257 +140,23 @@ class AWS_Admin {
 
         echo '<form action="" name="aws_form" id="aws_form" method="post">';
 
-        echo '<table class="form-table">';
-        echo '<tbody>';
-
         switch ($current_tab) {
             case('form'):
-                $this->generate_options( $options['form'] );
+                new AWS_Admin_Fields( $options['form'] );
                 break;
             case('results'):
-                $this->generate_options( $options['results'] );
+                new AWS_Admin_Fields( $options['results'] );
                 break;
             default:
                 $this->update_table();
-                $this->generate_options( $options['general'] );
+                new AWS_Admin_Fields( $options['general'] );
         }
 
-        echo '</tbody>';
-        echo '</table>';
-
-        echo '<p class="submit"><input name="Submit" type="submit" class="button-primary" value="' . __( 'Save Changes', 'aws' ) . '" /></p>';
+        echo '<input type="hidden" name="_wpnonce" value="' . esc_attr( $nonce ) . '">';
 
         echo '</form>';
 
         echo '</div>';
-
-    }
-
-    /**
-     * Generate options
-     */
-    public function generate_options( $options ) {
-
-        $plugin_options = get_option( 'aws_settings' );
-
-        if ( empty( $options ) ) {
-            return;
-        }
-
-        foreach ( $options as $k => $value ) {
-            switch ( $value['type'] ) {
-
-                case 'text': ?>
-                    <tr valign="top">
-                        <th scope="row"><?php echo $value['name']; ?></th>
-                        <td>
-                            <input type="text" name="<?php echo $value['id']; ?>" class="regular-text" value="<?php echo isset( $plugin_options[ $value['id'] ] ) ? stripslashes( $plugin_options[ $value['id'] ] ) : ''; ?>">
-                            <br><span class="description"><?php echo $value['desc']; ?></span>
-                        </td>
-                    </tr>
-                    <?php break;
-
-                case 'image': ?>
-                    <tr valign="top">
-                        <th scope="row"><?php echo $value['name']; ?></th>
-                        <td>
-                            <input type="text" name="<?php echo $value['id']; ?>" class="regular-text" value="<?php echo stripslashes( $plugin_options[ $value['id'] ] ); ?>">
-                            <br><span class="description"><?php echo $value['desc']; ?></span>
-                            <img style="display: block;max-width: 100px;margin-top: 20px;" src="<?php echo stripslashes( $plugin_options[ $value['id'] ] ); ?>">
-                        </td>
-                    </tr>
-                    <?php break;
-
-                case 'number': ?>
-                    <tr valign="top">
-                        <th scope="row"><?php echo $value['name']; ?></th>
-                        <td>
-                            <input type="number" name="<?php echo $value['id']; ?>" class="regular-text" value="<?php echo stripslashes( $plugin_options[ $value['id'] ] ); ?>">
-                            <br><span class="description"><?php echo $value['desc']; ?></span>
-                        </td>
-                    </tr>
-                    <?php break;
-
-                case 'textarea': ?>
-                    <tr valign="top">
-                        <th scope="row"><?php echo $value['name']; ?></th>
-                        <td>
-                            <textarea id="<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>" cols="65" rows="4"><?php print stripslashes( $plugin_options[ $value['id'] ] ); ?></textarea>
-                            <br><span class="description"><?php echo $value['desc']; ?></span>
-                        </td>
-                    </tr>
-                    <?php break;
-
-                case 'checkbox': ?>
-                    <tr valign="top">
-                        <th scope="row"><?php echo $value['name']; ?></th>
-                        <td>
-                            <?php $checkbox_options = $plugin_options[ $value['id'] ]; ?>
-                            <?php foreach ( $value['choices'] as $val => $label ) { ?>
-                                <input type="checkbox" name="<?php echo $value['id'] . '[' . $val . ']'; ?>" id="<?php echo $value['id'] . '_' . $val; ?>" value="1" <?php checked( $checkbox_options[$val], '1' ); ?>> <label for="<?php echo $value['id'] . '_' . $val; ?>"><?php echo $label; ?></label><br>
-                            <?php } ?>
-                            <br><span class="description"><?php echo $value['desc']; ?></span>
-                        </td>
-                    </tr>
-                    <?php break;
-
-                case 'radio': ?>
-                    <tr valign="top">
-                        <th scope="row"><?php echo $value['name']; ?></th>
-                        <td>
-                            <?php foreach ( $value['choices'] as $val => $label ) { ?>
-                                <input class="radio" type="radio" name="<?php echo $value['id']; ?>" id="<?php echo $value['id'].$val; ?>" value="<?php echo $val; ?>" <?php checked( $plugin_options[ $value['id'] ], $val ); ?>> <label for="<?php echo $value['id'].$val; ?>"><?php echo $label; ?></label><br>
-                            <?php } ?>
-                            <br><span class="description"><?php echo $value['desc']; ?></span>
-                        </td>
-                    </tr>
-                    <?php break;
-
-                case 'select': ?>
-                    <tr valign="top">
-                        <th scope="row"><?php echo $value['name']; ?></th>
-                        <td>
-                            <select name="<?php echo $value['id']; ?>">
-                                <?php foreach ( $value['choices'] as $val => $label ) { ?>
-                                    <option value="<?php echo $val; ?>" <?php selected( $plugin_options[ $value['id'] ], $val ); ?>><?php echo $label; ?></option>
-                                <?php } ?>
-                            </select>
-                            <br><span class="description"><?php echo $value['desc']; ?></span>
-                        </td>
-                    </tr>
-                    <?php break;
-
-                case 'select_advanced': ?>
-                    <tr valign="top">
-                        <th scope="row"><?php echo $value['name']; ?></th>
-                        <td>
-                            <select name="<?php echo $value['id'].'[]'; ?>" multiple class="chosen-select">
-                                <?php $values = $plugin_options[ $value['id'] ]; ?>
-                                <?php foreach ( $value['choices'] as $val => $label ) {  ?>
-                                    <?php $selected = ( is_array( $values ) && in_array( $val, $values ) ) ? ' selected="selected" ' : ''; ?>
-                                    <option value="<?php echo $val; ?>"<?php echo $selected; ?>><?php echo $label; ?></option>
-                                <?php } ?>
-                            </select>
-                            <br><span class="description"><?php echo $value['desc']; ?></span>
-
-                            <?php if ( $value['sub_option'] ): ?>
-                                <?php $sub_options = $value['sub_option']; ?>
-                                <br><br>
-                                <p>
-                                    <label for="<?php echo $sub_options['id']; ?>">
-                                        <input type="checkbox" value="1" id="<?php echo $sub_options['id']; ?>" name="<?php echo $sub_options['id']; ?>" <?php checked( $plugin_options[ $sub_options['id'] ], '1' ); ?>>
-                                        <?php echo $sub_options['desc']; ?>
-                                    </label>
-                                </p>
-                            <?php endif; ?>
-
-                        </td>
-                    </tr>
-                    <?php break;
-
-                case 'radio-image': ?>
-                    <tr valign="top">
-                        <th scope="row"><?php echo $value['name']; ?></th>
-                        <td>
-                            <ul class="img-select">
-                                <?php foreach ( $value['choices'] as $val => $img ) { ?>
-                                    <li class="option">
-                                        <input class="radio" type="radio" name="<?php echo $value['id']; ?>" id="<?php echo $value['id'].$val; ?>" value="<?php echo $val; ?>" <?php checked( $plugin_options[ $value['id'] ], $val ); ?>>
-                                        <span class="ico" style="background: url('<?php echo AWS_URL . '/assets/img/' . $img; ?>') no-repeat 50% 50%;"></span>
-                                    </li>
-                                <?php } ?>
-                            </ul>
-                            <br><span class="description"><?php echo $value['desc']; ?></span>
-                        </td>
-                    </tr>
-                    <?php break;
-
-                case 'sortable': ?>
-                    <tr valign="top">
-                        <th scope="row"><?php echo $value['name']; ?></th>
-                        <td>
-
-                            <script>
-                                jQuery(document).ready(function() {
-
-                                    jQuery( "#sti-sortable1, #sti-sortable2" ).sortable({
-                                        connectWith: ".connectedSortable",
-                                        placeholder: "highlight",
-                                        update: function(event, ui){
-                                            var serviceList = '';
-                                            jQuery("#sti-sortable2 li").each(function(){
-
-                                                serviceList = serviceList + ',' + jQuery(this).attr('id');
-
-                                            });
-                                            var serviceListOut = serviceList.substring(1);
-                                            jQuery('#<?php echo $value['id']; ?>').attr('value', serviceListOut);
-                                        }
-                                    }).disableSelection();
-
-                                });
-                            </script>
-
-                            <span class="description"><?php echo $value['desc']; ?></span><br><br>
-
-                            <?php
-                            $all_buttons = $value['choices'];
-                            $active_buttons = explode( ',', $plugin_options[ $value['id'] ] );
-                            $inactive_buttons = array_diff($all_buttons, $active_buttons);
-                            ?>
-
-                            <div class="sortable-container">
-
-                                <div class="sortable-title">
-                                    <?php _e( 'Active sources', 'aws' ) ?><br>
-                                    <?php _e( 'Change order by drag&drop', 'aws' ) ?>
-                                </div>
-
-                                <ul id="sti-sortable2" class="sti-sortable enabled connectedSortable">
-                                    <?php
-                                    if ( count( $active_buttons ) > 0 ) {
-                                        foreach ($active_buttons as $button) {
-                                            if ( ! $button ) continue;
-                                            echo '<li id="' . $button . '" class="sti-btn sti-' . $button . '-btn">' . $button . '</li>';
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-
-                            </div>
-
-                            <div class="sortable-container">
-
-                                <div class="sortable-title">
-                                    <?php _e( 'Deactivated sources', 'aws' ) ?><br>
-                                    <?php _e( 'Excluded from search results', 'aws' ) ?>
-                                </div>
-
-                                <ul id="sti-sortable1" class="sti-sortable disabled connectedSortable">
-                                    <?php
-                                    if ( count( $inactive_buttons ) > 0 ) {
-                                        foreach ($inactive_buttons as $button) {
-                                            echo '<li id="' . $button . '" class="sti-btn sti-' . $button . '-btn">' . $button . '</li>';
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-
-                            </div>
-
-                            <input type="hidden" id="<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>" value="<?php echo $plugin_options[ $value['id'] ]; ?>" />
-
-                        </td>
-                    </tr>
-                    <?php break;
-
-                case 'heading': ?>
-                    <tr valign="top">
-                        <th scope="row"><h3><?php echo $value['name']; ?></h3></th>
-                    </tr>
-                    <?php break;
-            }
-        }
 
     }
 
@@ -396,36 +165,35 @@ class AWS_Admin {
      */
     private function update_table() {
 
+        echo '<table class="form-table">';
+        echo '<tbody>';
 
         echo '<tr>';
 
-            echo '<th>' . __( 'Activation', 'aws' ) . '</th>';
+            echo '<th>' . esc_html__( 'Activation', 'aws' ) . '</th>';
             echo '<td>';
                 echo '<div class="description activation">';
-                    echo __( 'In case you need to add plugin search form on your website, you can do it in several ways:', 'aws' ) . '<br>';
+                    echo esc_html__( 'In case you need to add plugin search form on your website, you can do it in several ways:', 'aws' ) . '<br>';
                     echo '<div class="list">';
-                        echo '1. ' . __( 'Enable a "Seamless integration" option ( may not work with some themes )', 'aws' ) . '<br>';
-                        echo '2. ' . sprintf( __( 'Add search form using shortcode %s', 'aws' ), "<code>[aws_search_form]</code>" ) . '<br>';
-                        echo '3. ' . __( 'Add search form as widget for one of your theme widget areas. Go to Appearance -> Widgets and drag&drop AWS Widget to one of your widget areas', 'aws' ) . '<br>';
-                        echo '4. ' . sprintf( __( 'Add PHP code to the necessary files of your theme: %s', 'aws' ), "<code>&lt;?php if ( function_exists( 'aws_get_search_form' ) ) { aws_get_search_form(); } ?&gt;</code>" ) . '<br>';
+                        echo '1. ' . esc_html__( 'Enable a "Seamless integration" option ( may not work with some themes )', 'aws' ) . '<br>';
+                        echo '2. ' . sprintf( esc_html__( 'Add search form using shortcode %s', 'aws' ), "<code>[aws_search_form]</code>" ) . '<br>';
+                        echo '3. ' . esc_html__( 'Add search form as widget for one of your theme widget areas. Go to Appearance -> Widgets and drag&drop AWS Widget to one of your widget areas', 'aws' ) . '<br>';
+                        echo '4. ' . sprintf( esc_html__( 'Add PHP code to the necessary files of your theme: %s', 'aws' ), "<code>&lt;?php if ( function_exists( 'aws_get_search_form' ) ) { aws_get_search_form(); } ?&gt;</code>" ) . '<br>';
                     echo '</div>';
                 echo '</div>';
             echo '</td>';
 
         echo '</tr>';
 
-
-
-
         echo '<tr>';
 
-            echo '<th>' . __( 'Reindex table', 'aws' ) . '</th>';
+            echo '<th>' . esc_html__( 'Reindex table', 'aws' ) . '</th>';
             echo '<td>';
-                echo '<div id="aws-reindex"><input class="button" type="button" value="' . __( 'Reindex table', 'aws' ) . '"><span class="loader"></span><span class="reindex-progress">0%</span></div><br><br>';
+                echo '<div id="aws-reindex"><input class="button" type="button" value="' . esc_attr__( 'Reindex table', 'aws' ) . '"><span class="loader"></span><span class="reindex-progress">0%</span></div><br><br>';
                 echo '<span class="description">' .
-                    sprintf( __( 'This action only need for %s one time %s - after you activate this plugin. After this all products changes will be re-indexed automatically.', 'aws' ), '<strong>', '</strong>' ) . '<br>' .
+                    sprintf( esc_html__( 'This action only need for %s one time %s - after you activate this plugin. After this all products changes will be re-indexed automatically.', 'aws' ), '<strong>', '</strong>' ) . '<br>' .
                     __( 'Update all data in plugins index table. Index table - table with products data where plugin is searching all typed terms.<br>Use this button if you think that plugin not shows last actual data in its search results.<br><strong>CAUTION:</strong> this can take large amount of time.', 'aws' ) . '<br><br>' .
-                    __( 'Products in index:', 'aws' ) . '<span id="aws-reindex-count"> <strong>' . AWS_Helpers::get_indexed_products_count() . '</strong></span>';
+                    esc_html__( 'Products in index:', 'aws' ) . '<span id="aws-reindex-count"> <strong>' . AWS_Helpers::get_indexed_products_count() . '</strong></span>';
                 echo '</span>';
             echo '</td>';
 
@@ -434,14 +202,16 @@ class AWS_Admin {
 
         echo '<tr>';
 
-            echo '<th>' . __( 'Clear cache', 'aws' ) . '</th>';
+            echo '<th>' . esc_html__( 'Clear cache', 'aws' ) . '</th>';
             echo '<td>';
-                echo '<div id="aws-clear-cache"><input class="button" type="button" value="' . __( 'Clear cache', 'aws' ) . '"><span class="loader"></span></div><br>';
-                echo '<span class="description">' . __( 'Clear cache for all search results.', 'aws' ) . '</span>';
+                echo '<div id="aws-clear-cache"><input class="button" type="button" value="' . esc_attr__( 'Clear cache', 'aws' ) . '"><span class="loader"></span></div><br>';
+                echo '<span class="description">' . esc_html__( 'Clear cache for all search results.', 'aws' ) . '</span>';
             echo '</td>';
 
         echo '</tr>';
 
+        echo '</tbody>';
+        echo '</table>';
 
     }
 
@@ -484,10 +254,10 @@ class AWS_Admin {
                     continue;
                 }
 
-                $default_settings[$values['id']] = $values['value'];
+                $default_settings[$values['id']] = (string) sanitize_text_field( $values['value'] );
 
                 if (isset( $values['sub_option'])) {
-                    $default_settings[$values['sub_option']['id']] = $values['sub_option']['value'];
+                    $default_settings[$values['sub_option']['id']] = (string) sanitize_text_field( $values['sub_option']['value'] );
                 }
             }
         }
@@ -505,7 +275,10 @@ class AWS_Admin {
             wp_enqueue_script( 'jquery' );
             wp_enqueue_script( 'jquery-ui-sortable' );
             wp_enqueue_script( 'plugin-admin-scripts', AWS_URL . '/assets/js/admin.js', array('jquery'), AWS_VERSION );
-            wp_localize_script( 'plugin-admin-scripts', 'aws_vars', array( 'ajaxurl' => admin_url('admin-ajax.php' ) ) );
+            wp_localize_script( 'plugin-admin-scripts', 'aws_vars', array(
+                'ajaxurl' => admin_url('admin-ajax.php' ),
+                'ajax_nonce' => wp_create_nonce( 'aws_admin_ajax_nonce' ),
+            ) );
         }
 
     }

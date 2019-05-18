@@ -99,7 +99,7 @@ class MailChimp_WooCommerce_Order
      */
     public function setId($id)
     {
-        $this->id = $id;
+        $this->id = preg_replace('/[^0-9]/i','', $id);
 
         return $this;
     }
@@ -208,10 +208,12 @@ class MailChimp_WooCommerce_Order
      * @param null $campaign_id
      * @return MailChimp_WooCommerce_Order
      */
-    public function setCampaignId($campaign_id)
+    public function setCampaignId($id)
     {
-        $this->campaign_id = $campaign_id;
-
+        $api = MailChimp_WooCommerce_MailChimpApi::getInstance();
+        $cid = trim($id);
+        $campaign = $api->getCampaign($cid);
+        $this->campaign_id = $campaign['id'];
         return $this;
     }
 
@@ -424,6 +426,17 @@ class MailChimp_WooCommerce_Order
     public function getUpdatedAt()
     {
         return $this->updated_at_foreign;
+    }
+
+    /**
+     * @return Array lines_ids
+     */
+    public function getLinesIds()
+    {
+        foreach ($this->lines as $line) {
+            $lines_ids[] = $line->getId();
+        }
+        return $lines_ids;
     }
 
     /**

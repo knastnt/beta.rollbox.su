@@ -41,7 +41,22 @@ class MailChimp_WooCommerce_Cart_Update extends WP_Job
             $this->campaign_id = $campaign_id;
         }
 
+        $this->assignIP();
+    }
+
+    /**
+     * @return null
+     */
+    public function assignIP()
+    {
         $this->ip_address = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : null;
+
+        if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && !empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $forwarded_address = explode(',',$_SERVER['HTTP_X_FORWARDED_FOR']);
+            $this->ip_address = $forwarded_address[0];
+        }
+
+        return $this->ip_address;
     }
 
     /**
@@ -96,7 +111,17 @@ class MailChimp_WooCommerce_Cart_Update extends WP_Job
 
             $cart = new MailChimp_WooCommerce_Cart();
             $cart->setId($this->unique_id);
-            $cart->setCampaignID($this->campaign_id);
+
+            // if we have a campaign id let's set it now.
+            if (!empty($this->campaign_id)) {
+                try {
+                    $cart->setCampaignID($this->campaign_id);
+                }
+                catch (\Exception $e) {
+                    mailchimp_log('cart_set_campaign_id.error', 'No campaign added to abandoned cart, with provided ID: '. $this->campaign_id. ' :: '. $e->getMessage(). ' :: in '.$e->getFile().' :: on '.$e->getLine());
+                }
+            }
+
             $cart->setCheckoutUrl($checkout_url);
             $cart->setCurrencyCode(isset($options['store_currency_code']) ? $options['store_currency_code'] : 'USD');
 
@@ -146,6 +171,10 @@ class MailChimp_WooCommerce_Cart_Update extends WP_Job
                 mailchimp_log('abandoned_cart.success', "email: {$customer->getEmailAddress()}");
             }
 
+        } catch (MailChimp_WooCommerce_RateLimitError $e) {
+            sleep(3);
+            $this->release();
+            mailchimp_error('cart.error', mailchimp_error_trace($e, "RateLimited :: email {$this->email}"));
         } catch (\Exception $e) {
             update_option('mailchimp-woocommerce-cart-error', $e->getMessage());
             mailchimp_error('abandoned_cart.error', $e);
