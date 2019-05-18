@@ -341,7 +341,7 @@ ul.products.columns-4 li.product img {
     margin-right: 5px;
 }
 .labels .onsale {
-    background-color: var(--color-red);
+    background-color: #f00;
 }
 .labels .new {
     background-color: #00e90a;
