@@ -70,6 +70,13 @@ a, button { outline: none !important;}
     content: "\f107";
 }
 
+
+/* скрываем кнопку в корзину если товар уже в корзине */
+div.products div.product .button.added,
+ul.products li.product .button.added {
+    display: none;
+}
+
 /*///////////////////////////////////////////////////////////////////////////*/
 /* Хэадер */
 
