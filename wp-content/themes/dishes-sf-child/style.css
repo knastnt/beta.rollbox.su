@@ -383,11 +383,73 @@ ul.products li.product .price > del {
 .star-rating:before{
     color: #f9ba48;
 }
+.star-rating{
+    margin: 0 auto;
+}
 
 /* скругление кнопок */
 .added_to_cart, .button, button, input[type="button"], input[type="reset"], input[type="submit"] {
     border-radius: 5px;
 }
+
+
+
+
+
+/* ПОВТОРЯЮЩИЕСЯ ЭЛЕМЕНТЫ */
+/* - start --------------------- product-slider --------------------- */
+.products-slick-slider .slick-slide {
+    margin-right: 20px;
+    font-size: .875em;
+    text-align: center;
+}
+.products-slick-slider .slick-slide .woocommerce-LoopProduct-link {
+    clear: both;
+    display: block;
+}
+
+.products-slick-slider .slick-slide .woocommerce-LoopProduct-link img {
+    display: block;
+    margin: 0 auto 1.618em;
+    object-fit: contain;
+    height: 145px;
+}
+
+.products-slick-slider .slick-slide .woocommerce-LoopProduct-link .labels {
+    right: auto;
+}
+
+.products-slick-slider .slick-slide .woocommerce-LoopProduct-link h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: .5407911001em;
+}
+
+.products-slick-slider .slick-slide .woocommerce-LoopProduct-link .star-rating {
+    font-size: .875em;
+    margin: 0 auto .5407911001em;
+}
+
+/* текст с ценой */
+.products-slick-slider .slick-slide .woocommerce-LoopProduct-link .price {
+    color: var(--color-red);
+    display: block;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+/* обычный */
+.products-slick-slider .slick-slide .woocommerce-LoopProduct-link .price > .amount,
+.products-slick-slider .slick-slide .woocommerce-LoopProduct-link .price > ins {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+/* перечеркнутый (при скидке) */
+.products-slick-slider .slick-slide .woocommerce-LoopProduct-link .price > del {
+    color: var(--color-darkgray-light);
+    font-weight: 500;
+    font-size: 1.3em;
+}
+/* - end --------------------- product-slider --------------------- */
 
 /*///////////////////////////////////////////////////////////////////////////*/
 @media (min-width:768px) {

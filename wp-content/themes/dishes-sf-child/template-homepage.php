@@ -84,14 +84,16 @@ get_header(); ?>
                         <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/design/slick/slick.css"/>
                         <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/design/slick/slick-theme.css"/>
 
-                        <?php
-                            $result = do_shortcode( '[sale_products per_page="12"]' );
-                            $result = str_replace('<ul', '<div', $result);
-                            $result = str_replace('</ul', '</div', $result);
-                            $result = str_replace('<li', '<div', $result);
-                            $result = str_replace('</li', '</div', $result);
-                            echo $result;
-                        ?>
+                        <div class="products-slick-slider">
+                            <?php
+                                $result = do_shortcode( '[sale_products per_page="12"]' );
+                                $result = str_replace('<ul', '<div', $result);
+                                $result = str_replace('</ul', '</div', $result);
+                                $result = str_replace('<li', '<div', $result);
+                                $result = str_replace('</li', '</div', $result);
+                                echo $result;
+                            ?>
+                        </div>
 
                         <script type="text/javascript">
                             (function() {
