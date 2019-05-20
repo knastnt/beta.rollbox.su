@@ -140,6 +140,12 @@ get_header(); ?>
                             <img src="http://demo.towerthemes.com/tt_boxstore/image/cache/catalog/category/img-category-870x125.jpg" alt="">
                         </div>
 
+                        <div class="main-categiries">
+
+
+
+                        </div>
+
 
                     </div>
                     <div class="sidebar">
@@ -157,17 +163,50 @@ get_header(); ?>
                                 </div>
                             </div>
                             <?php
-                            $result = do_shortcode( '[sale_products per_page="12"]' );
-                            $result = str_replace('<ul', '<div', $result);
-                            $result = str_replace('</ul', '</div', $result);
-                            $result = str_replace('<li', '<div', $result);
-                            $result = str_replace('</li', '</div', $result);
-                            echo $result;
+
+
+                                // Выводим новинки
+                            //////////////////////////////////////////////////////////////
+                                $args = array(
+                                    'post_type' => 'product', // тип товара
+                                    'date_query' => array(
+                                        array(
+                                            'after'  => '14 day ago',
+                                        )
+                                    )
+                                );
+
+                                $loop = new WP_Query( $args );
+
+                                ob_start();
+
+                                woocommerce_product_loop_start();
+
+                                while ( $loop->have_posts() ) {
+                                    $loop->the_post();
+                                    wc_get_template_part( 'content', 'product' );
+                                }
+
+                                woocommerce_product_loop_end();
+
+                                $result = ob_get_clean();
+                            //////////////////////////////////////////////////////////////
+
+                            //////////////////////////////////////////////////////////////
+                                //$result = do_shortcode( '[recent_products per_page="12"]' );
+                            //////////////////////////////////////////////////////////////
+
+                                $result = str_replace('<ul', '<div', $result);
+                                $result = str_replace('</ul', '</div', $result);
+                                $result = str_replace('<li', '<div', $result);
+                                $result = str_replace('</li', '</div', $result);
+                                echo $result;
+
                             ?>
 
                             <script type="text/javascript">
                                 (function() {
-                                    jQuery('.center-section .first .sidebar .num2 .woocommerce .products').slick({
+                                    jQuery('.center-section .first .sidebar .num2 .products').slick({
                                         swipeToSlide: true,
                                         infinite: true,
                                         dots: false,
@@ -197,7 +236,7 @@ get_header(); ?>
                         <div class="products-slick-slider num3">
                             <div class="title">
                                 <h4>
-                                    Акции
+                                    Товары со скидкой
                                 </h4>
                                 <div class="nav">
                                     <div class="nav-prev">
