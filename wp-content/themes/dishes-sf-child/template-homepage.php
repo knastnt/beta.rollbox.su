@@ -111,7 +111,7 @@ get_header(); ?>
                             (function() {
                                 jQuery('.center-section .first .content .woocommerce .products').slick({
                                     infinite: true,
-                                    dots: true,
+                                    dots: false,
                                     slidesToShow: 4,
                                     slidesToScroll: 1,
                                     responsive: [
