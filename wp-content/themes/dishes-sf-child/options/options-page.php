@@ -48,11 +48,12 @@ function theme_settings(){
     add_settings_field('primer_field2', 'Другая опция', 'fill_primer_field2', 'rollbox_page', 'section_id_1' );*/
 
 
-    // Отправка корзины
-    add_settings_section( 'section_id_2', 'Санитарный день', '', 'rollbox_page' );
+    // Регистрируем раздел
+    add_settings_section( 'section_id_2', 'Общие настройки', '', 'rollbox_page' );
 
-    // URL для отправки POST
-    add_settings_field('sanitary_day', 'Дата санитарного дня (31.01.2019)', 'fill_sanitary_day', 'rollbox_page', 'section_id_2' );
+    // Регистрируем поля ввода
+    add_settings_field('sanitary_day', 'Дата санитарного дня (Например, 31.01.2019)', 'fill_sanitary_day', 'rollbox_page', 'section_id_2' );
+    add_settings_field('new_product_duration', 'Сколько дней после публикации продукт считается новым (Например, 14)', 'fill_new_product_duration', 'rollbox_page', 'section_id_2' );
 }
 
 /*## Заполняем опцию 1
@@ -75,12 +76,20 @@ function fill_primer_field2(){
 
 
 
-## Заполняем опцию Адрес для отправки POST
+## Заполняем опцию Дата санитарного дня
 function fill_sanitary_day(){
     $val = get_option('rollbox_options_array');
-    $val = isset($val['sanitary_day']) ? $val['sanitary_day'] : '31.01.2019';
+    $val = isset($val['sanitary_day']) ? $val['sanitary_day'] : '31-01-2019';
     ?>
-    <input type="text" name="rollbox_options_array[sanitary_day]" value="<?php echo esc_attr( $val ) ?>" style="width: 30%;" />
+    <input type="date" name="rollbox_options_array[sanitary_day]" value="<?php echo str_replace(".", "-", esc_attr( $val )) ?>" style="width: 30%;" />
+    <?php
+}
+## Заполняем опцию Сколько дней после публикации продукт считается новым
+function fill_new_product_duration(){
+    $val = get_option('rollbox_options_array');
+    $val = isset($val['new_product_duration']) ? $val['new_product_duration'] : '14';
+    ?>
+    <input type="number" name="rollbox_options_array[new_product_duration]" value="<?php echo esc_attr( $val ) ?>" style="width: 30%;" />
     <?php
 }
 
@@ -97,7 +106,10 @@ function sanitize_callback( $options ){
 
 
             if( $key == 'sanitary_day' ){
-                $options[ $key ]  = str_replace(",", ".", $value );
+                $options[ $key ]  = str_replace("-", ".", $value );
+            }
+            if( $key == 'new_product_duration' ){
+                $options[ $key ]  = intval( $value );
             }
 
 
