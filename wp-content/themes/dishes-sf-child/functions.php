@@ -30,6 +30,9 @@ require_once( plugin_dir_path(__FILE__ ) . '/options/options-page.php' );
 // изменение дизайна
 require_once( get_stylesheet_directory() . '/design/design.php' );
 
+// логика для санитарного дня
+require_once( get_stylesheet_directory() . '/functions-modules/sanitary_day_notices.php' );
+
 // превью заказа при нажатии на глаз
 require_once( get_stylesheet_directory() . '/functions-modules/woocommerce_admin_order_preview-functions.php' );
 
