@@ -432,6 +432,7 @@ ul.products li.product:hover img {
 .products-slick-slider .slick-slide .woocommerce-LoopProduct-link {
     clear: both;
     display: block;
+    position: relative;
 }
 
 .products-slick-slider .slick-slide .woocommerce-LoopProduct-link img {
@@ -442,7 +443,7 @@ ul.products li.product:hover img {
 }
 
 .products-slick-slider .slick-slide .woocommerce-LoopProduct-link .labels {
-    right: auto;
+    right: 15px;
 }
 
 .products-slick-slider .slick-slide .woocommerce-LoopProduct-link h2 {
