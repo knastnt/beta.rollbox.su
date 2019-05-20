@@ -456,6 +456,62 @@ ul.products li.product .price > del {
     font-weight: 500;
     font-size: 1.3em;
 }
+
+/* заголовок */
+.products-slick-slider .title {
+    margin: 0 0 30px;
+    display: inline-block;
+    width: 100%;
+    border-bottom: 2px solid var(--color-red);
+}
+.products-slick-slider .title h4 {
+    float: left;
+    font-size: .9em;
+    color: var(--color-white);
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0 30px;
+    height: 44px;
+    line-height: 48px;
+    background: var(--color-red);
+    border-radius: 3px 3px 0 0;
+    margin-bottom: 0;
+}
+
+.products-slick-slider .title .nav {
+    font-family: "Font Awesome 5 Free";
+    float: right;
+    margin: 10px;
+    margin-bottom: 0;
+    position: relative;
+}
+.products-slick-slider .title .nav i {
+    font-style: normal;
+}
+.products-slick-slider .title .nav > div {
+    display: inline-block;
+    padding: 0 15px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+.products-slick-slider .title .nav .nav-break {
+    height: 13px;
+    width: 1px;
+    background: #e1e1e1;
+    padding: 0;
+    cursor: none;
+    margin: 0 5px;
+}
+.products-slick-slider .title .nav > div:hover {
+    color: var(--color-red);
+    background-color: #f0f0f0;
+}
+.products-slick-slider .title .nav .nav-prev i::before {
+    content: "\f053";
+}
+.products-slick-slider .title .nav .nav-next i::before {
+    content: "\f054";
+}
 /* - end --------------------- product-slider --------------------- */
 
 /*///////////////////////////////////////////////////////////////////////////*/

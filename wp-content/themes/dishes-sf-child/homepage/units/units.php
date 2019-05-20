@@ -7,7 +7,7 @@
  */
 ?>
 
-<div class="iconedtext">
+<div class="iconedtext iconedtext1">
         <a href="#">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/homepage/units/car.png" alt="icon">
             <div class="banner-text">
@@ -16,7 +16,7 @@
             </div>
         </a>
 </div>
-<div class="iconedtext">
+<div class="iconedtext iconedtext2">
         <a href="#">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/homepage/units/fish.png" alt="icon">
             <div class="banner-text">
@@ -25,7 +25,7 @@
             </div>
         </a>
 </div>
-<div class="iconedtext">
+<div class="iconedtext iconedtext3">
         <a href="#">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/homepage/units/vo2.png" alt="icon">
             <div class="banner-text">
@@ -34,7 +34,7 @@
             </div>
         </a>
 </div>
-<div class="iconedtext">
+<div class="iconedtext iconedtext4">
         <a href="#">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/homepage/units/percent.png" alt="icon">
             <div class="banner-text">

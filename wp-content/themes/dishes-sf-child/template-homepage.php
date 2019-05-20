@@ -84,7 +84,19 @@ get_header(); ?>
                         <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/design/slick/slick.css"/>
                         <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/design/slick/slick-theme.css"/>
 
-                        <div class="products-slick-slider">
+                        <div class="products-slick-slider num1">
+                            <div class="title">
+                                <h4>
+                                    Товары со скидками
+                                </h4>
+                                <div class="nav">
+                                    <div class="nav-prev">
+                                        <i class="arrow-back"></i>
+                                    </div><div class="nav-break"></div><div class="nav-next">
+                                        <i class="arrow-forward"></i>
+                                    </div>
+                                </div>
+                            </div>
                             <?php
                                 $result = do_shortcode( '[sale_products per_page="12"]' );
                                 $result = str_replace('<ul', '<div', $result);
@@ -115,7 +127,10 @@ get_header(); ?>
                                                 slidesToShow: 1
                                             }
                                         }
-                                    ]
+                                    ],
+                                    arrows: true,
+                                    nextArrow: jQuery('.products-slick-slider.num1 .nav-next'),
+                                    prevArrow: jQuery('.products-slick-slider.num1 .nav-prev')
                                 });
                             })()
                         </script>
