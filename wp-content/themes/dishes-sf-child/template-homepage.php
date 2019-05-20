@@ -143,7 +143,108 @@ get_header(); ?>
 
                     </div>
                     <div class="sidebar">
+                        <div class="products-slick-slider num2">
+                            <div class="title">
+                                <h4>
+                                    Новинки
+                                </h4>
+                                <div class="nav">
+                                    <div class="nav-prev">
+                                        <i class="arrow-back"></i>
+                                    </div><div class="nav-break"></div><div class="nav-next">
+                                        <i class="arrow-forward"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                            $result = do_shortcode( '[sale_products per_page="12"]' );
+                            $result = str_replace('<ul', '<div', $result);
+                            $result = str_replace('</ul', '</div', $result);
+                            $result = str_replace('<li', '<div', $result);
+                            $result = str_replace('</li', '</div', $result);
+                            echo $result;
+                            ?>
 
+                            <script type="text/javascript">
+                                (function() {
+                                    jQuery('.center-section .first .sidebar .num2 .woocommerce .products').slick({
+                                        swipeToSlide: true,
+                                        infinite: true,
+                                        dots: false,
+                                        slidesToShow: 1,
+                                        slidesToScroll: 1,
+                                        responsive: [
+                                            {
+                                                breakpoint: 1064,
+                                                settings: {
+                                                    slidesToShow: 1
+                                                }
+                                            },
+                                            {
+                                                breakpoint: 767,
+                                                settings: {
+                                                    slidesToShow: 1
+                                                }
+                                            }
+                                        ],
+                                        arrows: true,
+                                        nextArrow: jQuery('.products-slick-slider.num2 .nav-next'),
+                                        prevArrow: jQuery('.products-slick-slider.num2 .nav-prev')
+                                    });
+                                })()
+                            </script>
+                        </div>
+                        <div class="products-slick-slider num3">
+                            <div class="title">
+                                <h4>
+                                    Акции
+                                </h4>
+                                <div class="nav">
+                                    <div class="nav-prev">
+                                        <i class="arrow-back"></i>
+                                    </div><div class="nav-break"></div><div class="nav-next">
+                                        <i class="arrow-forward"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                            $result = do_shortcode( '[sale_products per_page="12"]' );
+                            $result = str_replace('<ul', '<div', $result);
+                            $result = str_replace('</ul', '</div', $result);
+                            $result = str_replace('<li', '<div', $result);
+                            $result = str_replace('</li', '</div', $result);
+                            echo $result;
+                            ?>
+
+                            <script type="text/javascript">
+                                (function() {
+                                    jQuery('.center-section .first .sidebar .num3 .woocommerce .products').slick({
+                                        swipeToSlide: true,
+                                        infinite: true,
+                                        dots: false,
+                                        slidesToShow: 1,
+                                        slidesToScroll: 1,
+                                        responsive: [
+                                            {
+                                                breakpoint: 1064,
+                                                settings: {
+                                                    slidesToShow: 1
+                                                }
+                                            },
+                                            {
+                                                breakpoint: 767,
+                                                settings: {
+                                                    slidesToShow: 1
+                                                }
+                                            }
+                                        ],
+                                        arrows: true,
+                                        nextArrow: jQuery('.products-slick-slider.num3 .nav-next'),
+                                        prevArrow: jQuery('.products-slick-slider.num3 .nav-prev')
+                                    });
+                                })()
+                            </script>
+                        </div>
                     </div>
                     <div style="clear: both"></div>
                 </div>

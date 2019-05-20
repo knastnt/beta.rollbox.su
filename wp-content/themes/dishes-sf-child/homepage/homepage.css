@@ -134,12 +134,35 @@
     background-color: #fff;
     float: left;
 }
+
+/* сайдбар */
 .center-section .first .sidebar {
     width: 25%;
-    height: 700px;
-    background-color: #0a6412;
+    background-color: #fff;
     float: right;
+    padding-left: 40px;
 }
+
+/* продуктслайдер */
+.products-slick-slider.num2,
+.products-slick-slider.num3 {
+    border: 1px solid #d2d2d2;
+    border-radius: 5px;
+}
+.products-slick-slider.num2 .title,
+.products-slick-slider.num3 .title {
+    background: var(--color-red);
+    border-radius: 5px 5px 0 0;
+}
+.products-slick-slider.num2 .title .nav,
+.products-slick-slider.num3 .title .nav {
+    color: #fff;
+}
+.products-slick-slider.num2 .slick-slide,
+.products-slick-slider.num3 .slick-slide {
+    border-right: none;
+}
+
 
 .center-section .second {
     height: 70px;

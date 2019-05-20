@@ -415,13 +415,14 @@ ul.products li.product:hover img {
 /* ПОВТОРЯЮЩИЕСЯ ЭЛЕМЕНТЫ */
 /* - start --------------------- product-slider --------------------- */
 .products-slick-slider {
-    margin-bottom: 3em;
+    margin-bottom: 2em;
 }
 .products-slick-slider .slick-slide {
     padding: 0 20px;
     font-size: .875em;
     text-align: center;
     border-right: 1px solid #f0f0f0;
+    margin-bottom: 1em;
 }
 /* я сделал правый border у элементов и в итоке справа всего слайдера остался виден крайний border. рисуем поверх него border с цветом фона */
 .products-slick-slider .slick-list {
