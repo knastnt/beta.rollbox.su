@@ -87,7 +87,7 @@ get_header(); ?>
                         <div class="products-slick-slider num1">
                             <div class="title">
                                 <h4>
-                                    Товары со скидками
+                                    Самые популярные
                                 </h4>
                                 <div class="nav">
                                     <div class="nav-prev">
@@ -98,7 +98,7 @@ get_header(); ?>
                                 </div>
                             </div>
                             <?php
-                                $result = do_shortcode( '[sale_products per_page="12"]' );
+                                $result = do_shortcode( '[best_selling_products per_page="12"]' );
                                 $result = str_replace('<ul', '<div', $result);
                                 $result = str_replace('</ul', '</div', $result);
                                 $result = str_replace('<li', '<div', $result);
@@ -110,6 +110,7 @@ get_header(); ?>
                         <script type="text/javascript">
                             (function() {
                                 jQuery('.center-section .first .content .woocommerce .products').slick({
+                                    swipeToSlide: true,
                                     infinite: true,
                                     dots: false,
                                     slidesToShow: 4,
