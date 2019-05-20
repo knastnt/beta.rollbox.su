@@ -22,11 +22,14 @@ function add_custom_labels() {
 
     $labels = []; //Декларирую массив. Чтобы не глючил implode
 
+    //Узнаем сколько дней товар считается новым
+    $new_product_duration = isset(get_option( 'rollbox_options_array' ) ['new_product_duration']) ? get_option( 'rollbox_options_array' ) ['new_product_duration'] : 14;
+
     //Определяем новый ли товар
     $created = $product->get_date_created();
     $now = new DateTime("now");
     $diff_days = date_diff($now, $created)->days;
-    if ($diff_days < 14) {
+    if ($diff_days < $new_product_duration) {
         $labels[] = '<div class="new onsale">Новинка!</div>';
     }
 

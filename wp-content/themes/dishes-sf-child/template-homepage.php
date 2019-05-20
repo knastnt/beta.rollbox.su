@@ -167,11 +167,15 @@ get_header(); ?>
 
                                 // Выводим новинки
                             //////////////////////////////////////////////////////////////
+
+                                //Узнаем сколько дней товар считается новым
+                                $new_product_duration = isset(get_option( 'rollbox_options_array' ) ['new_product_duration']) ? get_option( 'rollbox_options_array' ) ['new_product_duration'] : 14;
+
                                 $args = array(
                                     'post_type' => 'product', // тип товара
                                     'date_query' => array(
                                         array(
-                                            'after'  => '14 day ago',
+                                            'after'  => $new_product_duration . ' day ago',
                                         )
                                     )
                                 );
