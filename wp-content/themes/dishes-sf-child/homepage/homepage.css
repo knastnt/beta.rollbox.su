@@ -15,6 +15,33 @@
 }
 
 
+.module-image {
+    position: relative;
+    cursor: pointer;
+}
+.module-image img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 0px;
+}
+.module-image:hover::before {
+    box-shadow: 0 0 0 15px rgba(0,0,0,0.2) inset;
+}
+.module-image::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    pointer-events: none;
+    -webkit-transition: ease .3s all;
+    -moz-transition: ease .3s all;
+    transition: ease .3s all;
+}
+
+
 /* - start --------------------- top-section --------------------- */
 
 .top-section {

@@ -105,36 +105,41 @@ get_header(); ?>
                                 $result = str_replace('</li', '</div', $result);
                                 echo $result;
                             ?>
+
+                            <script type="text/javascript">
+                                (function() {
+                                    jQuery('.center-section .first .content .woocommerce .products').slick({
+                                        swipeToSlide: true,
+                                        infinite: true,
+                                        dots: false,
+                                        slidesToShow: 4,
+                                        slidesToScroll: 1,
+                                        responsive: [
+                                            {
+                                                breakpoint: 1064,
+                                                settings: {
+                                                    slidesToShow: 3
+                                                }
+                                            },
+                                            {
+                                                breakpoint: 767,
+                                                settings: {
+                                                    slidesToShow: 1
+                                                }
+                                            }
+                                        ],
+                                        arrows: true,
+                                        nextArrow: jQuery('.products-slick-slider.num1 .nav-next'),
+                                        prevArrow: jQuery('.products-slick-slider.num1 .nav-prev')
+                                    });
+                                })()
+                            </script>
                         </div>
 
-                        <script type="text/javascript">
-                            (function() {
-                                jQuery('.center-section .first .content .woocommerce .products').slick({
-                                    swipeToSlide: true,
-                                    infinite: true,
-                                    dots: false,
-                                    slidesToShow: 4,
-                                    slidesToScroll: 1,
-                                    responsive: [
-                                        {
-                                            breakpoint: 1064,
-                                            settings: {
-                                                slidesToShow: 3
-                                            }
-                                        },
-                                        {
-                                            breakpoint: 767,
-                                            settings: {
-                                                slidesToShow: 1
-                                            }
-                                        }
-                                    ],
-                                    arrows: true,
-                                    nextArrow: jQuery('.products-slick-slider.num1 .nav-next'),
-                                    prevArrow: jQuery('.products-slick-slider.num1 .nav-prev')
-                                });
-                            })()
-                        </script>
+                        <div class="module-image">
+                            <img src="http://demo.towerthemes.com/tt_boxstore/image/cache/catalog/category/img-category-870x125.jpg" alt="">
+                        </div>
+
 
                     </div>
                     <div class="sidebar">
