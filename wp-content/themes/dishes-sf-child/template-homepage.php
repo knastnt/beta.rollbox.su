@@ -156,7 +156,7 @@ get_header(); ?>
                                     </div>
                                 </div>
                                 <?php
-                                $result = do_shortcode( '[product_categories parent="0" orderby="slug"]' );
+                                $result = do_shortcode( '[product_categories orderby="slug"]' );
                                 $result = str_replace('<ul', '<div', $result);
                                 $result = str_replace('</ul', '</div', $result);
                                 $result = str_replace('<li', '<div', $result);
@@ -167,8 +167,9 @@ get_header(); ?>
                                 <script type="text/javascript">
                                     (function() {
                                         jQuery('.center-section .first .content .num4 .woocommerce .products').slick({
+                                            rows: 2,
                                             swipeToSlide: true,
-                                            infinite: true,
+                                            infinite: false,
                                             dots: false,
                                             slidesToShow: 4,
                                             slidesToScroll: 1,

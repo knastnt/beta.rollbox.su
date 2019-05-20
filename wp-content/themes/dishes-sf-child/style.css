@@ -514,6 +514,10 @@ ul.products li.product:hover img {
     cursor: pointer;
     transition: .3s ease;
 }
+.products-slick-slider .title .nav .slick-disabled,
+.products-slick-slider .title .nav .slick-disabled > div:hover {
+    color: #d2d2d2 !important;
+}
 .products-slick-slider .title .nav .nav-break {
     height: 13px;
     width: 1px;
