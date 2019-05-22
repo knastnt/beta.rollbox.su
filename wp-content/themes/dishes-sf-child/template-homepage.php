@@ -176,23 +176,36 @@ get_header(); ?>
 
                                 $count = count($product_categories);
                                 if ( $count > 0 ){
-                                    echo "<ul>";
+                                    echo '<div class="products">';
                                     foreach ( $product_categories as $product_category ) {
-                                        echo '<li><a href="' . get_term_link( $product_category ) . '">' . $product_category->name . '</li>';
+                                        //echo '<li><a href="' . get_term_link( $product_category ) . '">' . $product_category->name . '</li>';
+
+                                        //Получаем ссылку на изображение
+                                        $thumbnail_id = get_term_meta( $product_category->term_id, 'thumbnail_id', true );
+                                        if ($thumbnail_id == 0) {
+                                            $image_url = wc_placeholder_img_src();
+                                        }else{
+                                            $image_url = wp_get_attachment_url( $thumbnail_id );
+                                        }
+
+
+                                        echo '<div class="product-category product">';
+                                            //echo '<a href="' . get_term_link( $product_category ) . '">';
+                                            echo '<a href="/shop/?swoof=1&product_cat=' . $product_category->slug . '">';
+                                                echo '<img src="' . $image_url . '" alt="' . $product_category->name . '" width="324" height="">';
+                                                echo '<h4 class="woocommerce-loop-category__title">' . $product_category->name . '</h4>';
+                                            echo '</a>';
+                                        echo '</div>';
 
                                     }
-                                    echo "</ul>";
+                                    echo '</div>';
                                 }
-
-
-
-
 
                                 ?>
 
                                 <script type="text/javascript">
                                     (function() {
-                                        jQuery('.center-section .first .content .num4 .woocommerce .products').slick({
+                                        jQuery('.center-section .first .content .num4 .products').slick({
                                             rows: 2,
                                             swipeToSlide: true,
                                             infinite: false,
