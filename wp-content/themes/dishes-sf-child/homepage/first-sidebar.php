@@ -172,6 +172,14 @@ if ( isset($shortcode->get_query_args()['post__in']) && count($shortcode->get_qu
         </h4>
     </div>
     <div class="wrapper">
-        <?php echo do_shortcode('[insta-gallery id="2"]'); ?>
+        <?php
+            //Узнаем какой ID шорткода вставлять
+            $shortcode_id = isset(get_option( 'rollbox_options_array' ) ['sidebar_instagram_shortcode_id']) ? get_option( 'rollbox_options_array' ) ['sidebar_instagram_shortcode_id'] : 0;
+            if ($shortcode_id < 1) {
+                echo 'Неверно указан ID шорткода галереи';
+            }else {
+                echo do_shortcode('[insta-gallery id="'. $shortcode_id . '"]');
+            }
+        ?>
     </div>
 </div>
