@@ -421,8 +421,10 @@ ul.products li.product:hover img {
     padding: 0 20px;
     font-size: .875em;
     text-align: center;
-    border-right: 1px solid #f0f0f0;
     margin-bottom: 1em;
+}
+.products-slick-slider .slick-slide:not(:last-child) {
+    border-right: 1px solid #f0f0f0;
 }
 /* я сделал правый border у элементов и в итоке справа всего слайдера остался виден крайний border. рисуем поверх него border с цветом фона */
 .products-slick-slider .slick-list {
@@ -542,6 +544,8 @@ ul.products li.product:hover img {
     -moz-transition: all .3s ease-out;
     -o-transition: all .3s ease-out;
     -webkit-transition: all .3s ease-out;
+    object-fit: contain;
+    height: 145px;
 }
 .products-slick-slider .product:hover img{
     -webkit-transform: scale(1.1);

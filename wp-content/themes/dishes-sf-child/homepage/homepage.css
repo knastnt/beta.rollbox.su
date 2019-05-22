@@ -23,6 +23,7 @@
     width: 100%;
     object-fit: contain;
     border-radius: 0px;
+    margin-bottom: 3em;
 }
 .module-image:hover::before {
     box-shadow: 0 0 0 15px rgba(0,0,0,0.2) inset;
@@ -160,6 +161,23 @@
 .products-slick-slider.num2 .slick-slide,
 .products-slick-slider.num3 .slick-slide {
     border-right: none;
+}
+
+/* слайдер категорий */
+.products-slick-slider.num4 {
+}
+
+.products-slick-slider.num4 .slick-slide  {
+    padding: 0;
+}
+.products-slick-slider.num4 .product img {
+    margin: 10px 0;
+}
+.products-slick-slider.num4 .slick-slide > div {
+    padding: 10px 15px;
+}
+.products-slick-slider.num4 .slick-slide > div:first-child {
+    border-bottom: 1px solid #f0f0f0;
 }
 
 
