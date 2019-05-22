@@ -156,12 +156,38 @@ get_header(); ?>
                                     </div>
                                 </div>
                                 <?php
-                                $result = do_shortcode( '[product_categories orderby="slug"]' );
+                                /*$result = do_shortcode( '[product_categories orderby="slug"]' );
                                 $result = str_replace('<ul', '<div', $result);
                                 $result = str_replace('</ul', '</div', $result);
                                 $result = str_replace('<li', '<div', $result);
                                 $result = str_replace('</li', '</div', $result);
-                                echo $result;
+                                echo $result;*/
+
+
+
+                                //Вывести список категорий товаров woocommerce
+                                $args = array(
+                                    'orderby'    => 'slug',
+                                    'hide_empty' => true,
+                                    'exclude'       => array(43), //Скрываем родительскую категорию "роллы"
+                                );
+
+                                $product_categories = get_terms( 'product_cat', $args );
+
+                                $count = count($product_categories);
+                                if ( $count > 0 ){
+                                    echo "<ul>";
+                                    foreach ( $product_categories as $product_category ) {
+                                        echo '<li><a href="' . get_term_link( $product_category ) . '">' . $product_category->name . '</li>';
+
+                                    }
+                                    echo "</ul>";
+                                }
+
+
+
+
+
                                 ?>
 
                                 <script type="text/javascript">
