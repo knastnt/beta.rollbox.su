@@ -121,12 +121,13 @@
 
 /* - start --------------------- center-section --------------------- */
 
-.center-section::before {
-    content: '';
-}
-
 .center-section {
     margin-bottom: 1em;
+}
+
+.center-section .white-wrapper {
+    box-shadow: 500px 0 0px 0px #fff, -500px 0 0px 0px #fff;
+    background-color: #fff;
 }
 
 .center-section .first .content {
