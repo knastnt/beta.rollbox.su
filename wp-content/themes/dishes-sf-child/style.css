@@ -538,12 +538,12 @@ ul.products li.product:hover img {
 }
 
 /* Увеличение картинки при наведении */
-.products-slick-slider .slick-slide img {
+.products-slick-slider .product img {
     -moz-transition: all .3s ease-out;
     -o-transition: all .3s ease-out;
     -webkit-transition: all .3s ease-out;
 }
-.products-slick-slider .slick-slide:hover img{
+.products-slick-slider .product:hover img{
     -webkit-transform: scale(1.1);
     -moz-transform: scale(1.1);
     -o-transform: scale(1.1);
