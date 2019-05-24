@@ -101,68 +101,7 @@
 
 ?>
 
-<?php
-// Блок Товары со скидкой
-$shortcode = new WC_Shortcode_Products( array(),'sale_products' );
-if ( isset($shortcode->get_query_args()['post__in']) && count($shortcode->get_query_args()['post__in']) > 1 ) {
-    ?>
 
-    <div class="products-slick-slider num3">
-        <div class="title">
-            <h4>
-                Товары со скидкой
-            </h4>
-            <div class="nav">
-                <div class="nav-prev">
-                    <i class="arrow-back"></i>
-                </div>
-                <div class="nav-break"></div>
-                <div class="nav-next">
-                    <i class="arrow-forward"></i>
-                </div>
-            </div>
-        </div>
-        <?php
-        $result = $shortcode->get_content();
-        $result = str_replace('<ul', '<div', $result);
-        $result = str_replace('</ul', '</div', $result);
-        $result = str_replace('<li', '<div', $result);
-        $result = str_replace('</li', '</div', $result);
-        echo $result;
-        ?>
-
-        <script type="text/javascript">
-            (function () {
-                jQuery('.center-section .first .sidebar .num3 .woocommerce .products').slick({
-                    swipeToSlide: true,
-                    infinite: true,
-                    dots: false,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    responsive: [
-                        {
-                            breakpoint: 1064,
-                            settings: {
-                                slidesToShow: 1
-                            }
-                        },
-                        {
-                            breakpoint: 767,
-                            settings: {
-                                slidesToShow: 1
-                            }
-                        }
-                    ],
-                    arrows: true,
-                    nextArrow: jQuery('.products-slick-slider.num3 .nav-next'),
-                    prevArrow: jQuery('.products-slick-slider.num3 .nav-prev')
-                });
-            })()
-        </script>
-    </div>
-    <?php
-}
-?>
 
 
 <div class="insta-sidebar">
