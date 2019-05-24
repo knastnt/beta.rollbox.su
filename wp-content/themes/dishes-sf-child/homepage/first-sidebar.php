@@ -128,3 +128,123 @@
         ?>
     </div>
 </div>
+
+
+
+
+
+<?php
+// Блок Недавно просмотренные
+
+/////////////////////////////////////////////////////
+/// скопировано отсюда: wp-content/plugins/woocommerce/includes/widgets/class-wc-widget-recently-viewed.php
+
+$viewed_products = ! empty( $_COOKIE['woocommerce_recently_viewed'] ) ? (array) explode( '|', wp_unslash( $_COOKIE['woocommerce_recently_viewed'] ) ) : array(); // @codingStandardsIgnoreLine
+$viewed_products = array_reverse( array_filter( array_map( 'absint', $viewed_products ) ) );
+
+if ( empty( $viewed_products ) ) {
+    return;
+}
+
+
+
+$query_args = array(
+    'posts_per_page' => 12,
+    'no_found_rows'  => 1,
+    'post_status'    => 'publish',
+    'post_type'      => 'product',
+    'post__in'       => $viewed_products,
+    'orderby'        => 'post__in',
+);
+
+if ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) ) {
+    $query_args['tax_query'] = array(
+        array(
+            'taxonomy' => 'product_visibility',
+            'field'    => 'name',
+            'terms'    => 'outofstock',
+            'operator' => 'NOT IN',
+        ),
+    ); // WPCS: slow query ok.
+}
+
+$loop = new WP_Query( apply_filters( 'woocommerce_recently_viewed_products_widget_query_args', $query_args ) );
+
+/// /////////////////////////////////////////////////
+
+ob_start();
+
+woocommerce_product_loop_start();
+
+while ( $loop->have_posts() ) {
+    $loop->the_post();
+    wc_get_template_part( 'content', 'product' );
+}
+
+woocommerce_product_loop_end();
+
+$result = ob_get_clean();
+//////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////
+//$result = do_shortcode( '[recent_products per_page="12"]' );
+//////////////////////////////////////////////////////////////
+
+$result = str_replace('<ul', '<div', $result);
+$result = str_replace('</ul', '</div', $result);
+$result = str_replace('<li', '<div', $result);
+$result = str_replace('</li', '</div', $result);
+
+if (strlen($result) > 50){
+
+    ?>
+    <div class="products-slick-slider num3">
+        <div class="title">
+            <h4>
+                Просмотренные
+            </h4>
+            <div class="nav">
+                <div class="nav-prev">
+                    <i class="arrow-back"></i>
+                </div><div class="nav-break"></div><div class="nav-next">
+                    <i class="arrow-forward"></i>
+                </div>
+            </div>
+        </div>
+
+        <?php echo $result; ?>
+
+        <script type="text/javascript">
+            (function() {
+                jQuery('.center-section .first .sidebar .num3 .products').slick({
+                    rows: 2,
+                    swipeToSlide: true,
+                    infinite: false,
+                    dots: false,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    responsive: [
+                        {
+                            breakpoint: 1064,
+                            settings: {
+                                slidesToShow: 1
+                            }
+                        },
+                        {
+                            breakpoint: 767,
+                            settings: {
+                                slidesToShow: 1
+                            }
+                        }
+                    ],
+                    arrows: true,
+                    nextArrow: jQuery('.products-slick-slider.num3 .nav-next'),
+                    prevArrow: jQuery('.products-slick-slider.num3 .nav-prev')
+                });
+            })()
+        </script>
+    </div>
+    <?php
+}
+
+?>

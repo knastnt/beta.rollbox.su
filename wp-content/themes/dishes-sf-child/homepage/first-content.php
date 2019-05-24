@@ -167,7 +167,7 @@
     if ( isset($shortcode->get_query_args()['post__in']) && count($shortcode->get_query_args()['post__in']) > 1 ) {
         ?>
 
-        <div class="products-slick-slider num3">
+        <div class="products-slick-slider num5">
             <div class="title">
                 <h4>
                     Товары со скидкой
@@ -193,7 +193,7 @@
 
             <script type="text/javascript">
                 (function () {
-                    jQuery('.center-section .first .content .num3 .woocommerce .products').slick({
+                    jQuery('.center-section .first .content .num5 .woocommerce .products').slick({
                         swipeToSlide: true,
                         infinite: false,
                         dots: false,
@@ -214,8 +214,8 @@
                             }
                         ],
                         arrows: true,
-                        nextArrow: jQuery('.products-slick-slider.num3 .nav-next'),
-                        prevArrow: jQuery('.products-slick-slider.num3 .nav-prev')
+                        nextArrow: jQuery('.products-slick-slider.num5 .nav-next'),
+                        prevArrow: jQuery('.products-slick-slider.num5 .nav-prev')
                     });
                 })()
             </script>
