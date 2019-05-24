@@ -54,7 +54,12 @@ function theme_settings(){
     // Регистрируем поля ввода
     add_settings_field('sanitary_day', 'Дата санитарного дня (Например, 31.01.2019)', 'fill_sanitary_day', 'rollbox_page', 'section_id_2' );
     add_settings_field('new_product_duration', 'Сколько дней после публикации продукт считается новым (Например, 14)', 'fill_new_product_duration', 'rollbox_page', 'section_id_2' );
-    add_settings_field('sidebar_instagram_shortcode_id', 'ID шорткода галереи инстаграм плагина. Размещение в сайдбаре (Например, для шорткода [insta-gallery id="3"] - нужно ввести 3)', 'fill_sidebar_instagram_shortcode_id', 'rollbox_page', 'section_id_2' );
+
+
+    // Регистрируем раздел
+    add_settings_section( 'section_id_3', 'Инстаграм', '', 'rollbox_page' );
+    add_settings_field('sidebar_instagram_title', 'Заголовок инстаграм виджета', 'fill_sidebar_instagram_title', 'rollbox_page', 'section_id_3' );
+    add_settings_field('sidebar_instagram_shortcode_id', 'ID шорткода галереи инстаграм плагина. Размещение в сайдбаре (Например, для шорткода [insta-gallery id="3"] - нужно ввести 3)', 'fill_sidebar_instagram_shortcode_id', 'rollbox_page', 'section_id_3' );
 }
 
 /*## Заполняем опцию 1
@@ -93,6 +98,15 @@ function fill_new_product_duration(){
     <input type="number" name="rollbox_options_array[new_product_duration]" value="<?php echo esc_attr( $val ) ?>" style="width: 30%;" />
     <?php
 }
+
+## Заполняем опцию заголовок инстаграм виджета
+function fill_sidebar_instagram_title(){
+    $val = get_option('rollbox_options_array');
+    $val = isset($val['sidebar_instagram_title']) ? $val['sidebar_instagram_title'] : 'Instagram';
+    ?>
+    <input name="rollbox_options_array[sidebar_instagram_title]" value="<?php echo esc_attr( $val ) ?>" style="width: 30%;" />
+    <?php
+}
 ## Заполняем опцию ID шорткода галереи инстаграм плагина
 function fill_sidebar_instagram_shortcode_id(){
     $val = get_option('rollbox_options_array');
@@ -119,6 +133,10 @@ function sanitize_callback( $options ){
             }
             if( $key == 'new_product_duration' ){
                 $options[ $key ]  = intval( $value );
+            }
+
+            if( $key == 'sidebar_instagram_title' ){
+                $options[ $key ]  = $value;
             }
             if( $key == 'sidebar_instagram_shortcode_id' ){
                 $options[ $key ]  = intval( $value );

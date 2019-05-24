@@ -168,8 +168,14 @@ if ( isset($shortcode->get_query_args()['post__in']) && count($shortcode->get_qu
 <div class="insta-sidebar">
     <div class="title">
         <h4>
-            Instagram
+            <?php
+                //Узнаем что отображать в заголовке
+                $title = isset(get_option( 'rollbox_options_array' ) ['sidebar_instagram_title']) ? get_option( 'rollbox_options_array' ) ['sidebar_instagram_title'] : 'Instagram';
+                echo $title;
+            ?>
         </h4>
+        <img src="<?php echo get_stylesheet_directory_uri() . '/img/insta_logo_32x32.png'; ?>">
+        <div style="clear: both"></div>
     </div>
     <div class="wrapper">
         <?php

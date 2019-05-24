@@ -191,6 +191,13 @@
     margin-top: 0.5em;
     padding: 0px 15px;
 }
+.insta-sidebar .title h4 {
+    float: left;
+}
+.insta-sidebar .title img {
+    float: right;
+    margin: 5px 0;
+}
 .insta-sidebar .wrapper {
     padding: 9px 15px 0px 15px;
 }
