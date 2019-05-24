@@ -21,9 +21,10 @@
 }
 .module-image img {
     width: 100%;
-    object-fit: contain;
+    object-fit: fill;
     border-radius: 0px;
     margin-bottom: 3em;
+    height: 143px;
 }
 .module-image:hover::before {
     box-shadow: 0 0 0 15px rgba(0,0,0,0.2) inset;
