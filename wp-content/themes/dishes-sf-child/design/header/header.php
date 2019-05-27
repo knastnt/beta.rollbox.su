@@ -73,8 +73,8 @@ function header_top() {
                 <?php if(is_user_logged_in()) { ?>
                     <div class="info4"><a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Личный кабинет</a></div>
                 <?php } else { ?>
-                    <div class="info5"><a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Регистрация</a></div>
-                    <div class="info6"><a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Войти</a></div>
+                    <div class="info5"><a href="/wp-login.php?action=register">Регистрация</a></div>
+                    <div class="info6"><a href="/wp-login.php">Войти</a></div>
                 <?php } ?>
             </div>
 
