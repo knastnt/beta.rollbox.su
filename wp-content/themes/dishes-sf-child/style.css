@@ -554,6 +554,13 @@ ul.products li.product:hover img {
 }
 /* - end --------------------- product-slider --------------------- */
 
+
+/* ФУТЕР */
+.footer-widgets {
+    padding-top: 0;
+}
+
+
 /*///////////////////////////////////////////////////////////////////////////*/
 @media (min-width:768px) {
     /*

@@ -214,10 +214,12 @@
 .center-section .second {
     height: 70px;
     background-color: #643b4d;
+    display: none;
 }
 .center-section .third {
     height: 100px;
     background-color: #640c1f;
+    display: none;
 }
 
 /* - end --------------------- center-section --------------------- */
@@ -230,6 +232,7 @@
     height: 100px;
     background-color: #b05d1f;
     float: left;
+    display: none;
 }
 
 /* - end --------------------- last-section --------------------- */
