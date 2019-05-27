@@ -556,7 +556,14 @@ ul.products li.product:hover img {
 
 
 /* ФУТЕР */
-
+.site-footer .footer-block {
+    width: 33.3%;
+    float: left;
+}
+.site-footer .footer-block.menu-block .column {
+    width: 50%;
+    float: left;
+}
 
 
 /*///////////////////////////////////////////////////////////////////////////*/

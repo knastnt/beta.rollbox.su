@@ -27,6 +27,37 @@
 			do_action( 'storefront_footer' );*/
 			?>
 
+            <div class="footer-block logo-address-block">
+                <h3>Title</h3>
+                <p></p>
+            </div>
+            <div class="footer-block menu-block">
+                <div class="column first">
+                    <h3>Title</h3>
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                    </ul>
+                </div>
+                <div class="column second">
+                    <h3>Title</h3>
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-block links-block">
+                <div class="row first">
+                    <h3>Title</h3>
+                    <p></p>
+                </div>
+                <div class="row second">
+                    <h3>Title</h3>
+                    <p></p>
+                </div>
+            </div>
+
 		</div><!-- .col-full -->
 	</footer><!-- #colophon -->
 
