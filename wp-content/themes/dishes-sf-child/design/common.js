@@ -43,4 +43,98 @@
     });
 
 
+    /* Функция для выбора чекбоксов фильтра товаров */
+    /**
+     * Если установили родителя, то устанавливаются все чайлды.
+     * Если снимается родитель, то все чайлды снимаются тоже
+     *
+     * Если снимается какой-то чайлд, до снимается родитель
+     */
+
+    /*
+
+    //this script should be, because another way wrong way of working if to click on the label
+    jQuery('.woof_checkbox_label').unbind();
+    jQuery('label.woof_checkbox_label').click(function () {
+        alert (1);
+        if(jQuery(this).prev().find('.woof_checkbox_term').is(':disabled')){
+            alert (2);
+            return false;
+        }
+        if (jQuery(this).prev().find('.woof_checkbox_term').is(':checked')) {
+            alert (1);
+            jQuery(this).prev().find('.woof_checkbox_term').trigger('ifUnchecked');
+            jQuery(this).prev().removeClass('checked');
+        } else {
+            jQuery(this).prev().find('.woof_checkbox_term').trigger('ifChecked');
+            jQuery(this).prev().addClass('checked');
+        }
+
+
+    });
+
+     */
+
+    /*$("input[name='400_noodles']").change(function() {
+        alert ("fff");
+        /*if ($("input[value='kn1']").prop("checked")) {
+            $('.block').css("display", "block");  // Этот код сработает
+        } else {
+            $('.block').css("display", "none");  // И этот тоже
+        }*-/
+    });*/
+    $('input.woof_checkbox_term').live('ifChecked', function(event){
+        alert(event.type + ' callback');
+    });
+
+
+    $(function filterClickCheckboxes()
+    {
+
+        parent = '.woof_list_checkbox li.woof_childs_list_li';
+
+        //$('#input-1, #input-3').iCheck('check');
+
+        childs =  '.woof_list_checkbox li.woof_childs_list_li > ul >li1';
+
+
+        $(parent).live('click', function(e){
+            alert (this);
+            /*e.stopPropagation();
+            var subUl = $(this).next(elSlide);
+            if(subUl.is(':hidden'))
+            {
+
+                /-*Сворачиваем корзину*-/
+                $('#site-header-cart .widget_shopping_cart_content').slideUp();
+                $('#site-header-cart a.cart-contents').removeClass(activeClass);
+
+
+                subUl.slideDown();
+                $(this).addClass(activitedClass);
+            }
+            else
+            {
+                subUl.slideUp();
+                $(this).removeClass(activitedClass);
+            }
+            $(elClick).not(this).next(elSlide).slideUp();
+            $(elClick).not(this).removeClass(activitedClass);
+            e.preventDefault();*/
+        });
+
+        $(childs).on('click', function(e){
+            /*e.stopPropagation();*/
+            alert (this);
+        });
+
+        /*$(document).on('click', function(e){
+            e.stopPropagation();
+            var elementHide = $(elClick).next(elSlide);
+            $(elementHide).slideUp();
+            $(elClick).removeClass('active');
+        });*/
+    });
+
+
 })(jQuery);
