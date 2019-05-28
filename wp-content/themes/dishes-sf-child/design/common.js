@@ -86,10 +86,16 @@
 
 
 
+    //Работает на лэйбле
+    //$('.woof_list_checkbox li.woof_childs_list_li').live('click', function(event){
+
     // http://icheck.fronteed.com
-    $('input.woof_checkbox_term').live('ifChanged', function(event){
+
+    //На работает на лэйбле
+    //Точное выделение только элементов с чайлдами. Чтобы не срабатывали события по нескольку раз
+    $('.woof_childs_list_li > div > input.woof_checkbox_term').live('ifChanged', function(event){
         //alert(event.type + ' callback');
-        //console.log (event.type + ' callback');
+        console.log (event.type + ' callback');
 
         parentChecked = jQuery(this).is(':checked');
 
