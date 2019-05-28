@@ -6,6 +6,9 @@
  *
  * @package storefront
  */
+//Это замена файла footer.php в родительской теме
+
+// Регистрируем меню для футера в functions.php
 
 ?>
 
@@ -17,35 +20,15 @@
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="col-full">
 
-			<?php
-			/**
-			 * Functions hooked in to storefront_footer action
-			 *
-			 * @hooked storefront_footer_widgets - 10
-			 * @hooked storefront_credit         - 20
-			 *-/
-			do_action( 'storefront_footer' );*/
-			?>
-
-            <div class="footer-block logo-address-block">
+			<div class="footer-block logo-address-block">
                 <h3>Title</h3>
                 <p></p>
             </div>
             <div class="footer-block menu-block">
-                <div class="column first">
-                    <h3>Title</h3>
-                    <ul>
-                        <li>1</li>
-                        <li>2</li>
-                    </ul>
-                </div>
-                <div class="column second">
-                    <h3>Title</h3>
-                    <ul>
-                        <li>1</li>
-                        <li>2</li>
-                    </ul>
-                </div>
+                <?php
+                    // подгружаем элементы меню
+                    require_once( get_stylesheet_directory() . '/design/footermenu/footermenu.php' );
+                ?>
             </div>
             <div class="footer-block links-block">
                 <div class="row first">

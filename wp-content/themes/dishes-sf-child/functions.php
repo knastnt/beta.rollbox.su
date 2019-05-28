@@ -24,6 +24,15 @@ add_filter('loop_shop_columns',function($col){
 });
 
 
+
+// Регистрируем меню для футера
+register_nav_menus(
+    array(
+        'footer_menu' => 'Меню в футере'
+    )
+);
+
+
 // страница настроек rollbox
 require_once( plugin_dir_path(__FILE__ ) . '/options/options-page.php' );
 
