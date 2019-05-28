@@ -334,6 +334,13 @@ ul.products.columns-4 li.product img {
 /*///////////////////////////////////////////////////////////////////////////*/
 
 
+/* стиль фильтра товаров */
+/* кнопки фильтра */
+.woof_submit_search_form_container button {
+    margin-right: 10px;
+}
+
+
 /*///////////////////////////////////////////////////////////////////////////*/
 /* изображение товара */
 
@@ -409,6 +416,42 @@ ul.products li.product:hover img {
     -webkit-transform: scale(1.1);
     -moz-transform: scale(1.1);
     -o-transform: scale(1.1);
+}
+
+
+
+
+/* ФУТЕР */
+.footer-wrapper {
+    font-weight: 300;
+    border-top: 1px solid #d7d7d7;
+    padding-top: 4em;
+    margin-top: 1em;
+}
+.footer-wrapper b {
+    font-weight: 500;
+}
+.site-footer .footer-block.logo-address-block {
+    width: 33.3%;
+    float: left;
+}
+.site-footer .footer-block.logo-address-block img {
+    border-radius: 0;
+    margin-bottom: 2em;
+}
+.site-footer .footer-block.logo-address-block p {
+    margin-bottom: .8em;
+}
+.site-footer .footer-block.menu-block {
+    width: 66.7%;
+    float: left;
+}
+.site-footer .footer-block.menu-block ul {
+    list-style: none;
+}
+.site-footer .footer-block.menu-block .column {
+    width: 33.3%;
+    float: left;
 }
 
 
@@ -553,40 +596,7 @@ ul.products li.product:hover img {
     -o-transform: scale(1.1);
 }
 /* - end --------------------- product-slider --------------------- */
-
-
-/* ФУТЕР */
-.footer-wrapper {
-    font-weight: 300;
-    border-top: 1px solid #d7d7d7;
-    padding-top: 4em;
-    margin-top: 1em;
-}
-.footer-wrapper b {
-    font-weight: 500;
-}
-.site-footer .footer-block.logo-address-block {
-    width: 33.3%;
-    float: left;
-}
-.site-footer .footer-block.logo-address-block img {
-    border-radius: 0;
-    margin-bottom: 2em;
-}
-.site-footer .footer-block.logo-address-block p {
-    margin-bottom: .8em;
-}
-.site-footer .footer-block.menu-block {
-    width: 66.7%;
-    float: left;
-}
-.site-footer .footer-block.menu-block ul {
-    list-style: none;
-}
-.site-footer .footer-block.menu-block .column {
-    width: 33.3%;
-    float: left;
-}
+/* ПОВТОРЯЮЩИЕСЯ ЭЛЕМЕНТЫ - конец */
 
 
 /*///////////////////////////////////////////////////////////////////////////*/
