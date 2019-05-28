@@ -89,7 +89,9 @@
     // http://icheck.fronteed.com
     $('input.woof_checkbox_term').live('ifChanged', function(event){
         //alert(event.type + ' callback');
-        console.log (event.type + ' callback');
+        //console.log (event.type + ' callback');
+
+        parentChecked = jQuery(this).is(':checked');
 
         //Находим ul у этого чекбокса
         //childs = jQuery(this).parent().siblings("ul");
@@ -101,9 +103,20 @@
 
             //childs.css("background-color","red");
 
+            // Перебор всех чайлдов
             childs.each(function(i,elem) {
                 //jQuery(elem).css("background-color","red");
-                jQuery(elem).iCheck('check');
+
+                if (parentChecked) {
+                    //Устанавливаем в положение Выбрано
+                    jQuery(elem).iCheck('check');
+                }else{
+                    //Устанавливаем в положение Снято
+                    jQuery(elem).iCheck('uncheck');
+                }
+
+
+
                 /*if ($(this).hasClass("stop")) {
                     alert("Остановлено на " + i + "-м пункте списка.");
                     return false;
