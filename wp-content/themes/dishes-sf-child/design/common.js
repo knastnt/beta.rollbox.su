@@ -83,12 +83,48 @@
             $('.block').css("display", "none");  // И этот тоже
         }*-/
     });*/
-    $('input.woof_checkbox_term').live('ifChecked', function(event){
-        alert(event.type + ' callback');
+
+
+
+    // http://icheck.fronteed.com
+    $('input.woof_checkbox_term').live('ifChanged', function(event){
+        //alert(event.type + ' callback');
+        console.log (event.type + ' callback');
+
+        //Находим ul у этого чекбокса
+        //childs = jQuery(this).parent().siblings("ul");
+        childs = jQuery(this).parent().siblings("ul").find('input.woof_checkbox_term');
+
+        //console.log (childs.length);
+        if (childs.length > 0) {
+            // есть чайлды
+
+            //childs.css("background-color","red");
+
+            childs.each(function(i,elem) {
+                //jQuery(elem).css("background-color","red");
+                jQuery(elem).iCheck('check');
+                /*if ($(this).hasClass("stop")) {
+                    alert("Остановлено на " + i + "-м пункте списка.");
+                    return false;
+                } else {
+                    alert(i + ': ' + $(elem).text());
+                }*/
+            });
+        }
+
+        /*alert(jQuery(this).prev().className);
+        alert(jQuery(this).prev().find('.woof_checkbox_term').className);
+        alert(jQuery(this).prev().find('.woof_checkbox_term').is(':disabled'));
+        if(jQuery(this).prev().find('.woof_checkbox_term').is(':disabled')){
+            alert (2);
+        }else{
+            alert (3);
+        }*/
     });
 
 
-    $(function filterClickCheckboxes()
+    /*$(function filterClickCheckboxes()
     {
 
         parent = '.woof_list_checkbox li.woof_childs_list_li';
@@ -120,11 +156,11 @@
             }
             $(elClick).not(this).next(elSlide).slideUp();
             $(elClick).not(this).removeClass(activitedClass);
-            e.preventDefault();*/
+            e.preventDefault();*-/
         });
 
         $(childs).on('click', function(e){
-            /*e.stopPropagation();*/
+            /*e.stopPropagation();*-/
             alert (this);
         });
 
@@ -133,8 +169,8 @@
             var elementHide = $(elClick).next(elSlide);
             $(elementHide).slideUp();
             $(elClick).removeClass('active');
-        });*/
-    });
+        });*-/
+    });*/
 
 
 })(jQuery);
