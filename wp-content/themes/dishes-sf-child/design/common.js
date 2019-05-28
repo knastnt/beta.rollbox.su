@@ -51,29 +51,25 @@
      * Если снимается какой-то чайлд, до снимается родитель
      */
 
-    /*
-
-    //this script should be, because another way wrong way of working if to click on the label
+    // Совершенно необходимо в файле wp-content/plugins/woocommerce-products-filter/js/html_types/checkbox.js убрать это:
+    /*//this script should be, because another way wrong way of working if to click on the label
     jQuery('.woof_checkbox_label').unbind();
     jQuery('label.woof_checkbox_label').click(function () {
-        alert (1);
         if(jQuery(this).prev().find('.woof_checkbox_term').is(':disabled')){
-            alert (2);
             return false;
         }
         if (jQuery(this).prev().find('.woof_checkbox_term').is(':checked')) {
-            alert (1);
             jQuery(this).prev().find('.woof_checkbox_term').trigger('ifUnchecked');
             jQuery(this).prev().removeClass('checked');
         } else {
             jQuery(this).prev().find('.woof_checkbox_term').trigger('ifChecked');
             jQuery(this).prev().addClass('checked');
         }
-
-
     });
+    */
+    //Иначе при клике на Label около чекбокса, событие не отловится. Х.З. зачем вообще сделали эту хрень
 
-     */
+
 
     /*$("input[name='400_noodles']").change(function() {
         alert ("fff");

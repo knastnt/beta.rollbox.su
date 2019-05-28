@@ -21,7 +21,7 @@ function woof_init_checkboxes() {
             woof_checkbox_process_data(this, false);
         });
 
-        //this script should be, because another way wrong way of working if to click on the label
+        /*//this script should be, because another way wrong way of working if to click on the label
         jQuery('.woof_checkbox_label').unbind();
         jQuery('label.woof_checkbox_label').click(function () {
             if(jQuery(this).prev().find('.woof_checkbox_term').is(':disabled')){
@@ -36,7 +36,7 @@ function woof_init_checkboxes() {
             }
             
             
-        });
+        });*/
         //***
 
     } else {
