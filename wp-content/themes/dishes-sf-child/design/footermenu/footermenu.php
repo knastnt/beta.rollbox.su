@@ -39,7 +39,7 @@ if (has_nav_menu('footer_menu')) {
         if ($item->to_array()['menu_item_parent'] == 0) {
             //Корневой элемент
             $count++;
-            if ($count > 2) break;
+            if ($count > 3) break;
             $parent = $item->ID;
             ?>
             <div class="column column<?php echo $count; ?>">

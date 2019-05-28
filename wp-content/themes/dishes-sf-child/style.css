@@ -556,12 +556,35 @@ ul.products li.product:hover img {
 
 
 /* ФУТЕР */
-.site-footer .footer-block {
+.footer-wrapper {
+    font-weight: 300;
+    border-top: 1px solid #d7d7d7;
+    padding-top: 4em;
+    margin-top: 1em;
+}
+.footer-wrapper b {
+    font-weight: 500;
+}
+.site-footer .footer-block.logo-address-block {
     width: 33.3%;
     float: left;
 }
+.site-footer .footer-block.logo-address-block img {
+    border-radius: 0;
+    margin-bottom: 2em;
+}
+.site-footer .footer-block.logo-address-block p {
+    margin-bottom: .8em;
+}
+.site-footer .footer-block.menu-block {
+    width: 66.7%;
+    float: left;
+}
+.site-footer .footer-block.menu-block ul {
+    list-style: none;
+}
 .site-footer .footer-block.menu-block .column {
-    width: 50%;
+    width: 33.3%;
     float: left;
 }
 
