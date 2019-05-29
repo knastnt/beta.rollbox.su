@@ -48,7 +48,7 @@
      * Если установили родителя, то устанавливаются все чайлды.
      * Если снимается родитель, то все чайлды снимаются тоже
      *
-     * Если снимается какой-то чайлд, до снимается родитель
+     * При изменении какого-то чайлда смотреть, если кто-то из них не выбран - снимается родитель
      */
 
     // Совершенно необходимо в файле wp-content/plugins/woocommerce-products-filter/js/html_types/checkbox.js убрать это:
@@ -127,6 +127,88 @@
                 }*/
             });
         }
+
+        /*alert(jQuery(this).prev().className);
+        alert(jQuery(this).prev().find('.woof_checkbox_term').className);
+        alert(jQuery(this).prev().find('.woof_checkbox_term').is(':disabled'));
+        if(jQuery(this).prev().find('.woof_checkbox_term').is(':disabled')){
+            alert (2);
+        }else{
+            alert (3);
+        }*/
+    });
+
+
+    // Теперь отслеживаем нажатия чайлдов
+    $('.woof_childs_list > li > div > input.woof_checkbox_term').live('ifChanged', function(event){
+    //$('.woof_childs_list > li > div > input.woof_checkbox_term').live('ifClicked', function(event){
+        //alert(event.type + ' callback');
+
+        //isThisChecked = !jQuery(this).is(':checked');
+        //console.log (isThisChecked);
+
+        //Находим ближайший родительский ul
+        parent_ul = jQuery(this).closest("ul");
+        //jQuery(parent_ul).css("background-color","green");
+
+        //А теперь все его чайлды первого уровня
+        //childs = jQuery(parent_ul).children("li > div > input.woof_checkbox_term");
+        childs = jQuery(parent_ul).find('> li > div > input.woof_checkbox_term');
+        //jQuery(childs).css("background-color","black");
+
+
+        //Находим родительский input
+        parent_input = jQuery(parent_ul).closest(".woof_childs_list_li").find('> div > input.woof_checkbox_term');
+        //jQuery(parent_input).css("background-color","blue");
+
+
+        //console.log (childs.length);
+
+        isAllSelected = true;
+        childs.each(function(i,elem) {
+            isAllSelected = isAllSelected && jQuery(elem).is(':checked');
+        });
+        console.log (jQuery(parent_input).is(':checked'));
+
+
+        if (jQuery(parent_input).is(':checked') && !isAllSelected) {
+            //снимаем родителя
+            console.log ('снимаем родителя');
+            jQuery(parent_input).iCheck('check');
+        }
+        if (!jQuery(parent_input).is(':checked') && isAllSelected) {
+            //ставим родителя
+            console.log ('ставим родителя');
+            jQuery(parent_input).iCheck('uncheck');
+        }
+
+        /*if (childs.length > 0) {
+            // есть чайлды
+
+            //childs.css("background-color","red");
+
+            // Перебор всех чайлдов
+            childs.each(function(i,elem) {
+                //jQuery(elem).css("background-color","red");
+
+                if (parentChecked) {
+                    //Устанавливаем в положение Выбрано
+                    jQuery(elem).iCheck('check');
+                }else{
+                    //Устанавливаем в положение Снято
+                    jQuery(elem).iCheck('uncheck');
+                }
+
+
+
+                /*if ($(this).hasClass("stop")) {
+                    alert("Остановлено на " + i + "-м пункте списка.");
+                    return false;
+                } else {
+                    alert(i + ': ' + $(elem).text());
+                }*-/
+            });
+        }*/
 
         /*alert(jQuery(this).prev().className);
         alert(jQuery(this).prev().find('.woof_checkbox_term').className);
