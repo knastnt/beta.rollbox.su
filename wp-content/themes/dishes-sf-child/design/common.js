@@ -89,11 +89,12 @@
 
     //На работает на лэйбле
     //Точное выделение только элементов с чайлдами. Чтобы не срабатывали события по нескольку раз
-    $('.woof_childs_list_li > div > input.woof_checkbox_term').live('ifChanged', function(event){
+    //$('.woof_childs_list_li > div > input.woof_checkbox_term').live('ifChanged', function(event){
+    $('.woof_childs_list_li > div > input.woof_checkbox_term').live('ifClicked', function(event){
         //alert(event.type + ' callback');
         console.log (event.type + ' callback');
 
-        parentChecked = jQuery(this).is(':checked');
+        parentChecked = !jQuery(this).is(':checked');
 
         //Находим ul у этого чекбокса
         //childs = jQuery(this).parent().siblings("ul");
@@ -168,18 +169,18 @@
         childs.each(function(i,elem) {
             isAllSelected = isAllSelected && jQuery(elem).is(':checked');
         });
-        console.log (jQuery(parent_input).is(':checked'));
+        //console.log (jQuery(parent_input).is(':checked'));
 
 
         if (jQuery(parent_input).is(':checked') && !isAllSelected) {
             //снимаем родителя
             console.log ('снимаем родителя');
-            jQuery(parent_input).iCheck('check');
+            jQuery(parent_input).iCheck('uncheck');
         }
         if (!jQuery(parent_input).is(':checked') && isAllSelected) {
             //ставим родителя
             console.log ('ставим родителя');
-            jQuery(parent_input).iCheck('uncheck');
+            jQuery(parent_input).iCheck('check');
         }
 
         /*if (childs.length > 0) {
