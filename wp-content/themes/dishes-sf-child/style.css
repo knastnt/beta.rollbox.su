@@ -340,6 +340,16 @@ ul.products.columns-4 li.product img {
     margin-right: 10px;
 }
 
+.woof_redraw_zone .woof_container:not(:first-child) .woof_container_inner h4 {
+    background-color: #f9f9f9;
+    padding: 3px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.woof_redraw_zone .woof_container:not(:first-child) .woof_container_inner h4:hover {
+    background-color: #f2f2f2;
+}
+
 
 /*///////////////////////////////////////////////////////////////////////////*/
 /* изображение товара */

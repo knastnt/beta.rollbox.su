@@ -271,4 +271,14 @@
     });*/
 
 
+    //Отслеживаем нажатия на заголовках фильтра
+    jQuery('.woof_redraw_zone .woof_container .woof_container_inner h4').click(function (e) {
+        if (e.target.nodeName == 'H4') {
+            toggle = jQuery(this).children('a');
+            if (toggle.length == 1) {
+                jQuery(toggle).trigger('click');
+            }
+        }
+    });
+
 })(jQuery);
