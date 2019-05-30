@@ -92,7 +92,7 @@
     //$('.woof_childs_list_li > div > input.woof_checkbox_term').live('ifChanged', function(event){
     $('.woof_childs_list_li > div > input.woof_checkbox_term').live('ifClicked', function(event){
         //alert(event.type + ' callback');
-        console.log (event.type + ' callback');
+        //console.log (event.type + ' callback');
 
         parentChecked = !jQuery(this).is(':checked');
 
@@ -174,12 +174,12 @@
 
         if (jQuery(parent_input).is(':checked') && !isAllSelected) {
             //снимаем родителя
-            console.log ('снимаем родителя');
+            //console.log ('снимаем родителя');
             jQuery(parent_input).iCheck('uncheck');
         }
         if (!jQuery(parent_input).is(':checked') && isAllSelected) {
             //ставим родителя
-            console.log ('ставим родителя');
+            //console.log ('ставим родителя');
             jQuery(parent_input).iCheck('check');
         }
 
