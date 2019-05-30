@@ -31,6 +31,11 @@ a, button { outline: none !important;}
     max-width: 95em;
 }
 
+/* Цвет нотисов */
+.woocommerce-info, .woocommerce-noreviews, p.no-comments {
+    background-color: #eb3e32;
+}
+
 /*Кнопка - ссылкой*/
 .btn-link,
 .btn-link:hover {
@@ -462,6 +467,20 @@ ul.products li.product:hover img {
 .site-footer .footer-block.menu-block .column {
     width: 33.3%;
     float: left;
+}
+
+
+
+/* оформление заказа */
+table.cart td.product-quantity .qty {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* Скрываем кнопку Обновить */
+.woocommerce-cart-form button[name=update_cart] {
+    visibility: hidden;
 }
 
 
