@@ -39,7 +39,7 @@ final class mycredLoyaltyAddon_Core
         // страница настроек плагина
         require_once( plugin_dir_path(__FILE__ ) . '/options/options-page.php' );
 
-        mycredLoyaltyAddon_Options::load();
+        mycredLoyaltyAddon_Options::instance();
 
     }
 

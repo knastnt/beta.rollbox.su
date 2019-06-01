@@ -5,8 +5,19 @@
 class mycredLoyaltyAddon_Options
 {
 
+    // Instnace
+    protected static $_instance = NULL;
 
-    public function load()
+    public static function instance()
+    {
+        if (is_null(self::$_instance)) {
+            self::$_instance = new self();
+        }
+        return self::$_instance;
+    }
+
+
+    public function __construct()
     {
 
         /**
@@ -19,18 +30,18 @@ class mycredLoyaltyAddon_Options
          * Регистрируем настройки.
          * Настройки будут храниться в массиве, а не одна настройка = одна опция.
          */
-        //add_action('admin_init', 'plugin_settings');
+        add_action('admin_init', array( $this, 'plugin_settings'));
 
     }
 
 
 
-    private function add_plugin_page()
+    public function add_plugin_page()
     {
-        add_options_page('MyCred Loyalty Addon. Настройки.', 'MyCred Loyalty Addon', 'manage_options', 'mycred_loyalty_addon', 'mycred_loyalty_addon_options_page_output');
+        add_options_page('MyCred Loyalty Addon. Настройки.', 'MyCred Loyalty Addon', 'manage_options', 'mycred_loyalty_addon', array ($this, 'mycred_loyalty_addon_options_page_output') );
     }
 
-    private function mycred_loyalty_addon_options_page_output()
+    public function mycred_loyalty_addon_options_page_output()
     {
         ?>
         <div class="wrap">
@@ -53,7 +64,7 @@ class mycredLoyaltyAddon_Options
     }
 
 
-    private function plugin_settings()
+    public function plugin_settings()
     {
         // параметры: $option_group, $kristall_options_array, $sanitize_callback
         register_setting('option_group', 'mycred_loyalty_addon_options_array', 'sanitize_callback');
@@ -62,39 +73,39 @@ class mycredLoyaltyAddon_Options
         add_settings_section( 'section_id_1', 'Основные настройки', '', 'mycred_loyalty_addon_page' );
 
         // параметры: $id, $title, $callback, $page, $section, $args
-        add_settings_field('primer_field1', 'Название опции', 'fill_primer_field1', 'mycred_loyalty_addon_page', 'section_id_1' );
-        add_settings_field('primer_field2', 'Другая опция', 'fill_primer_field2', 'mycred_loyalty_addon_page', 'section_id_1' );*/
+        add_settings_field('primer_field1', 'Название опции', array( $this, 'fill_primer_field1'), 'mycred_loyalty_addon_page', 'section_id_1' );
+        add_settings_field('primer_field2', 'Другая опция', array( $this, 'fill_primer_field2'), 'mycred_loyalty_addon_page', 'section_id_1' );*/
 
 
         // Раздел ID магазина
         add_settings_section('section_id_1', 'Идентификатор магазина', '', 'mycred_loyalty_addon_page');
         // ID магазина
-        add_settings_field('shopId', 'Идентификатор магазина', 'fill_shopId', 'mycred_loyalty_addon_page', 'section_id_1');
+        add_settings_field('shopId', 'Идентификатор магазина', array( $this, 'fill_shopId'), 'mycred_loyalty_addon_page', 'section_id_1');
 
 
         // Раздел
         add_settings_section('section_id_2', 'Отправка новых заказов в кристалл', '', 'mycred_loyalty_addon_page');
 
         // Чекбокс отправлять корзину
-        add_settings_field('send_new_orders_to_kristall', 'Отправлять новые заказы в кристалл', 'fill_send_new_orders_to_kristall', 'mycred_loyalty_addon_page', 'section_id_2');
+        add_settings_field('send_new_orders_to_kristall', 'Отправлять новые заказы в кристалл', array( $this, 'fill_send_new_orders_to_kristall'), 'mycred_loyalty_addon_page', 'section_id_2');
 
         // URL для отправки POST
-        add_settings_field('send_new_orders_to_kristall_url', 'Адрес для отправки POST', 'fill_send_new_orders_to_kristall_url', 'mycred_loyalty_addon_page', 'section_id_2');
+        add_settings_field('send_new_orders_to_kristall_url', 'Адрес для отправки POST', array( $this, 'fill_send_new_orders_to_kristall_url'), 'mycred_loyalty_addon_page', 'section_id_2');
 
 
         // Раздел Настройка checkuot
         add_settings_section('section_id_3', 'Настройка checkuot', '', 'mycred_loyalty_addon_page');
 
         // Чекбокс скрыть div class=woocommerce-additional-fields в checkuot
-        add_settings_field('hide_woocommerce_additional_fields_in_checkout', 'Скрыть контейнер Детали (woocommerce-additional-fields) и скрытие выбора способа оплаты (#payment.woocommerce-checkout-payment ul)', 'fill_hide_woocommerce_additional_fields_in_checkout', 'mycred_loyalty_addon_page', 'section_id_3');
+        add_settings_field('hide_woocommerce_additional_fields_in_checkout', 'Скрыть контейнер Детали (woocommerce-additional-fields) и скрытие выбора способа оплаты (#payment.woocommerce-checkout-payment ul)', array( $this, 'fill_hide_woocommerce_additional_fields_in_checkout'), 'mycred_loyalty_addon_page', 'section_id_3');
 
         // URL для отправки GET и перенаправления пользователя в кристалл
-        add_settings_field('redirect_user_to_kristall_url', 'Адрес для отправки GET и перенаправления пользователя (%ID% - номер заказа; %ShopID% - Идентификатор магазина)', 'fill_redirect_user_to_kristall_url', 'mycred_loyalty_addon_page', 'section_id_3');
+        add_settings_field('redirect_user_to_kristall_url', 'Адрес для отправки GET и перенаправления пользователя (%ID% - номер заказа; %ShopID% - Идентификатор магазина)', array( $this, 'fill_redirect_user_to_kristall_url'), 'mycred_loyalty_addon_page', 'section_id_3');
 
     }
 
     /*## Заполняем опцию 1
-    private function fill_primer_field1(){
+    public function fill_primer_field1(){
         $val = get_option('mycred_loyalty_addon_options_array');
         $val = isset($val['input']) ? $val['input'] : null;
         ?>
@@ -103,7 +114,7 @@ class mycredLoyaltyAddon_Options
     }
 
     ## Заполняем опцию 2
-    private function fill_primer_field2(){
+    public function fill_primer_field2(){
         $val = get_option('mycred_loyalty_addon_options_array');
         $val = isset($val['checkbox']) ? $val['checkbox'] : null;
         ?>
@@ -112,7 +123,7 @@ class mycredLoyaltyAddon_Options
     }*/
 
 ## Заполняем опцию ID магазина
-    private function fill_shopId()
+    public function fill_shopId()
     {
         $val = get_option('mycred_loyalty_addon_options_array');
         $val = isset($val['shopId']) ? $val['shopId'] : '0';
@@ -124,7 +135,7 @@ class mycredLoyaltyAddon_Options
 
 
 ## Заполняем опцию Отправлять новые заказы в кристалл
-    private function fill_send_new_orders_to_kristall()
+    public function fill_send_new_orders_to_kristall()
     {
         $val = get_option('mycred_loyalty_addon_options_array');
         $val = isset($val['send_new_orders_to_kristall']) ? $val['send_new_orders_to_kristall'] : 0;
@@ -135,7 +146,7 @@ class mycredLoyaltyAddon_Options
     }
 
 ## Заполняем опцию Адрес для отправки POST
-    private function fill_send_new_orders_to_kristall_url()
+    public function fill_send_new_orders_to_kristall_url()
     {
         $val = get_option('mycred_loyalty_addon_options_array');
         $val = isset($val['send_new_orders_to_kristall_url']) ? $val['send_new_orders_to_kristall_url'] : 'http://kristal-online.ru/wordpress-integration.php';
@@ -147,7 +158,7 @@ class mycredLoyaltyAddon_Options
 
 
 ## Заполняем опцию скрыть div class=woocommerce-additional-fields в checkuot
-    private function fill_hide_woocommerce_additional_fields_in_checkout()
+    public function fill_hide_woocommerce_additional_fields_in_checkout()
     {
         $val = get_option('mycred_loyalty_addon_options_array');
         $val = isset($val['hide_woocommerce_additional_fields_in_checkout']) ? $val['hide_woocommerce_additional_fields_in_checkout'] : 0;
@@ -159,7 +170,7 @@ class mycredLoyaltyAddon_Options
     }
 
 ## Заполняем опцию Адрес для отправки GET и перенаправления пользователя
-    private function fill_redirect_user_to_kristall_url()
+    public function fill_redirect_user_to_kristall_url()
     {
         $val = get_option('mycred_loyalty_addon_options_array');
         $val = isset($val['redirect_user_to_kristall_url']) ? $val['redirect_user_to_kristall_url'] : 'http://www.kristal-online.ru/api/api.php?data=aplyOrderWc&order_id=%ID%&shopId=%ShopID%';
@@ -171,7 +182,7 @@ class mycredLoyaltyAddon_Options
 
 
 ## Очистка данных
-    private function sanitize_callback($options)
+    public function sanitize_callback($options)
     {
         // очищаем
         foreach ($options as $name => & $val) {
