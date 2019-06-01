@@ -66,117 +66,65 @@ class mycredLoyaltyAddon_Options
 
     public function plugin_settings()
     {
-        // параметры: $option_group, $kristall_options_array, $sanitize_callback
-        register_setting('option_group', 'mycred_loyalty_addon_options_array', 'sanitize_callback');
 
-        /*// параметры: $id, $title, $callback, $page
-        add_settings_section( 'section_id_1', 'Основные настройки', '', 'mycred_loyalty_addon_page' );
-
-        // параметры: $id, $title, $callback, $page, $section, $args
-        add_settings_field('primer_field1', 'Название опции', array( $this, 'fill_primer_field1'), 'mycred_loyalty_addon_page', 'section_id_1' );
-        add_settings_field('primer_field2', 'Другая опция', array( $this, 'fill_primer_field2'), 'mycred_loyalty_addon_page', 'section_id_1' );*/
+        register_setting('option_group', 'mycred_loyalty_addon_options_array', array ( $this, 'sanitize_callback'));
 
 
-        // Раздел ID магазина
-        add_settings_section('section_id_1', 'Идентификатор магазина', '', 'mycred_loyalty_addon_page');
-        // ID магазина
-        add_settings_field('shopId', 'Идентификатор магазина', array( $this, 'fill_shopId'), 'mycred_loyalty_addon_page', 'section_id_1');
-
-
-        // Раздел
-        add_settings_section('section_id_2', 'Отправка новых заказов в кристалл', '', 'mycred_loyalty_addon_page');
-
-        // Чекбокс отправлять корзину
-        add_settings_field('send_new_orders_to_kristall', 'Отправлять новые заказы в кристалл', array( $this, 'fill_send_new_orders_to_kristall'), 'mycred_loyalty_addon_page', 'section_id_2');
-
-        // URL для отправки POST
-        add_settings_field('send_new_orders_to_kristall_url', 'Адрес для отправки POST', array( $this, 'fill_send_new_orders_to_kristall_url'), 'mycred_loyalty_addon_page', 'section_id_2');
-
-
-        // Раздел Настройка checkuot
-        add_settings_section('section_id_3', 'Настройка checkuot', '', 'mycred_loyalty_addon_page');
-
-        // Чекбокс скрыть div class=woocommerce-additional-fields в checkuot
-        add_settings_field('hide_woocommerce_additional_fields_in_checkout', 'Скрыть контейнер Детали (woocommerce-additional-fields) и скрытие выбора способа оплаты (#payment.woocommerce-checkout-payment ul)', array( $this, 'fill_hide_woocommerce_additional_fields_in_checkout'), 'mycred_loyalty_addon_page', 'section_id_3');
-
-        // URL для отправки GET и перенаправления пользователя в кристалл
-        add_settings_field('redirect_user_to_kristall_url', 'Адрес для отправки GET и перенаправления пользователя (%ID% - номер заказа; %ShopID% - Идентификатор магазина)', array( $this, 'fill_redirect_user_to_kristall_url'), 'mycred_loyalty_addon_page', 'section_id_3');
+        // Регистрируем раздел
+        add_settings_section( 'section_id_1', 'Программа лояльности', '', 'rollbox_page' );
+        // Регистрируем поля ввода
+        add_settings_field('sumOfPointsUnfreeze', 'Сумма, на которую клиент должен набрать товаров, чтобы разморозить свои баллы', array ( $this, 'fill_sumOfPointsUnfreeze'), 'rollbox_page', 'section_id_1' );
+        add_settings_field('percentOfPointReturning', 'Процент от суммы заказа, который будет возвращаться баллами', array ( $this, 'fill_percentOfPointReturning'), 'rollbox_page', 'section_id_1' );
+        add_settings_field('pointsForRegistration', 'Баллы за регистрацию', array ( $this, 'fill_pointsForRegistration'), 'rollbox_page', 'section_id_1' );
+        add_settings_field('pointsForReview', 'Баллы за отзыв о товаре (можно получить только если ты купил этот товар и для каждого товара только однажды)', array ( $this, 'fill_pointsForReview'), 'rollbox_page', 'section_id_1' );
 
     }
 
-    /*## Заполняем опцию 1
-    public function fill_primer_field1(){
-        $val = get_option('mycred_loyalty_addon_options_array');
-        $val = isset($val['input']) ? $val['input'] : null;
-        ?>
-        <input type="text" name="mycred_loyalty_addon_options_array[input]" value="<?php echo esc_attr( $val ) ?>" />
-        <?php
-    }
 
-    ## Заполняем опцию 2
-    public function fill_primer_field2(){
-        $val = get_option('mycred_loyalty_addon_options_array');
-        $val = isset($val['checkbox']) ? $val['checkbox'] : null;
-        ?>
-        <label><input type="checkbox" name="mycred_loyalty_addon_options_array[checkbox]" value="1" <?php checked( 1, $val ) ?> /> отметить</label>
-        <?php
-    }*/
-
-## Заполняем опцию ID магазина
-    public function fill_shopId()
+## Заполняем опцию Сумма, на которую клиент должен набрать товаров, чтобы разморозить свои баллы
+    public function fill_sumOfPointsUnfreeze()
     {
         $val = get_option('mycred_loyalty_addon_options_array');
-        $val = isset($val['shopId']) ? $val['shopId'] : '0';
+        $val = isset($val['sumOfPointsUnfreeze']) ? $val['sumOfPointsUnfreeze'] : '500';
         ?>
-        <input type="text" name="mycred_loyalty_addon_options_array[shopId]" value="<?php echo esc_attr($val) ?>"
+        <input type="number" name="mycred_loyalty_addon_options_array[sumOfPointsUnfreeze]" value="<?php echo esc_attr($val) ?>"
                style="width: 30%;"/>
         <?php
     }
 
 
-## Заполняем опцию Отправлять новые заказы в кристалл
-    public function fill_send_new_orders_to_kristall()
+## Заполняем опцию Процент от суммы заказа, который будет возвращаться баллами
+    public function fill_percentOfPointReturning()
     {
         $val = get_option('mycred_loyalty_addon_options_array');
-        $val = isset($val['send_new_orders_to_kristall']) ? $val['send_new_orders_to_kristall'] : 0;
+        $val = isset($val['percentOfPointReturning']) ? $val['percentOfPointReturning'] : 15;
         ?>
-        <label><input type="checkbox" name="mycred_loyalty_addon_options_array[send_new_orders_to_kristall]"
-                      value="1" <?php checked(1, $val) ?> /> отправлять</label>
+        <input type="number" name="mycred_loyalty_addon_options_array[percentOfPointReturning]" value="<?php echo esc_attr($val) ?>"
+               style="width: 30%;"/>
         <?php
     }
 
-## Заполняем опцию Адрес для отправки POST
-    public function fill_send_new_orders_to_kristall_url()
+## Заполняем опцию Баллы за регистрацию
+    public function fill_pointsForRegistration()
     {
         $val = get_option('mycred_loyalty_addon_options_array');
-        $val = isset($val['send_new_orders_to_kristall_url']) ? $val['send_new_orders_to_kristall_url'] : 'http://kristal-online.ru/wordpress-integration.php';
+        $val = isset($val['pointsForRegistration']) ? $val['pointsForRegistration'] : 200;
         ?>
-        <input type="text" name="mycred_loyalty_addon_options_array[send_new_orders_to_kristall_url]"
-               value="<?php echo esc_attr($val) ?>" style="width: 30%;"/>
+        <input type="number" name="mycred_loyalty_addon_options_array[pointsForRegistration]" value="<?php echo esc_attr($val) ?>"
+               style="width: 30%;"/>
         <?php
     }
 
 
-## Заполняем опцию скрыть div class=woocommerce-additional-fields в checkuot
-    public function fill_hide_woocommerce_additional_fields_in_checkout()
-    {
-        $val = get_option('mycred_loyalty_addon_options_array');
-        $val = isset($val['hide_woocommerce_additional_fields_in_checkout']) ? $val['hide_woocommerce_additional_fields_in_checkout'] : 0;
-        ?>
-        <label><input type="checkbox"
-                      name="mycred_loyalty_addon_options_array[hide_woocommerce_additional_fields_in_checkout]"
-                      value="1" <?php checked(1, $val) ?> /> скрыть</label>
-        <?php
-    }
 
-## Заполняем опцию Адрес для отправки GET и перенаправления пользователя
-    public function fill_redirect_user_to_kristall_url()
+## Заполняем опцию Баллы за отзыв о товаре
+    public function fill_pointsForReview()
     {
         $val = get_option('mycred_loyalty_addon_options_array');
-        $val = isset($val['redirect_user_to_kristall_url']) ? $val['redirect_user_to_kristall_url'] : 'http://www.kristal-online.ru/api/api.php?data=aplyOrderWc&order_id=%ID%&shopId=%ShopID%';
+        $val = isset($val['pointsForReview']) ? $val['pointsForReview'] : 30;
         ?>
-        <input type="text" name="mycred_loyalty_addon_options_array[redirect_user_to_kristall_url]"
-               value="<?php echo esc_attr($val) ?>" style="width: 30%;"/>
+        <input type="number" name="mycred_loyalty_addon_options_array[pointsForReview]" value="<?php echo esc_attr($val) ?>"
+               style="width: 30%;"/>
         <?php
     }
 
@@ -186,33 +134,28 @@ class mycredLoyaltyAddon_Options
     {
         // очищаем
         foreach ($options as $name => & $val) {
-            /*if( $name == 'input' )
-                $val = strip_tags( $val );
 
-            if( $name == 'checkbox' )
-                $val = intval( $val );*/
-
-            if ($name == 'shopId') {
+            if ($name == 'sumOfPointsUnfreeze') {
                 $val = intval($val);
             }
 
-
-            if ($name == 'send_new_orders_to_kristall') {
+            if ($name == 'percentOfPointReturning') {
                 $val = intval($val);
             }
 
-            if ($name == 'send_new_orders_to_kristall_url') {
+            if ($name == 'pointsForRegistration') {
+                $val = intval($val);
+            }
+
+            if ($name == 'pointsForReview') {
+                $val = intval($val);
+            }
+
+            /*if ($name == 'send_new_orders_to_kristall_url') {
                 $val = sanitize_text_field($val);
-            }
-
-            if ($name == 'fill_redirect_user_to_kristall_url') {
-                $val = sanitize_text_field($val);
-            }
+            }*/
 
 
-            if ($name == 'hide_woocommerce_additional_fields_in_checkout') {
-                $val = intval($val);
-            }
         }
 
         //die(print_r( $options )); // Array ( [input] => aaaa [checkbox] => 1 )
