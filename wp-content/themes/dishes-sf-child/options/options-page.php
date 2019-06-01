@@ -50,7 +50,6 @@ function theme_settings(){
 
     // Регистрируем раздел
     add_settings_section( 'section_id_2', 'Общие настройки', '', 'rollbox_page' );
-
     // Регистрируем поля ввода
     add_settings_field('sanitary_day', 'Дата санитарного дня (Например, 31.01.2019)', 'fill_sanitary_day', 'rollbox_page', 'section_id_2' );
     add_settings_field('new_product_duration', 'Сколько дней после публикации продукт считается новым (Например, 14)', 'fill_new_product_duration', 'rollbox_page', 'section_id_2' );
@@ -58,8 +57,20 @@ function theme_settings(){
 
     // Регистрируем раздел
     add_settings_section( 'section_id_3', 'Инстаграм', '', 'rollbox_page' );
+    // Регистрируем поля ввода
     add_settings_field('sidebar_instagram_title', 'Заголовок инстаграм виджета', 'fill_sidebar_instagram_title', 'rollbox_page', 'section_id_3' );
     add_settings_field('sidebar_instagram_shortcode_id', 'ID шорткода галереи инстаграм плагина. Размещение в сайдбаре (Например, для шорткода [insta-gallery id="3"] - нужно ввести 3)', 'fill_sidebar_instagram_shortcode_id', 'rollbox_page', 'section_id_3' );
+
+    /*
+    // Регистрируем раздел
+    add_settings_section( 'section_id_4', 'Программа лояльности', '', 'rollbox_page' );
+    // Регистрируем поля ввода
+    add_settings_field('sumOfPointsUnfreeze', 'Сумма, на которую клиент должен набрать товаров, чтобы разморозить свои баллы', 'fill_sumOfPointsUnfreeze', 'rollbox_page', 'section_id_4' );
+    add_settings_field('percentOfPointReturning', 'Процент от суммы заказа, который будет возвращаться баллами', 'fill_percentOfPointReturning', 'rollbox_page', 'section_id_4' );
+    add_settings_field('pointsForRegistration', 'Баллы за регистрацию', 'fill_pointsForRegistration', 'rollbox_page', 'section_id_4' );
+    add_settings_field('pointsForReview', 'Баллы за отзыв о товаре (можно получить только если ты купил этот товар и для каждого товара только однажды)', 'fill_pointsForReview', 'rollbox_page', 'section_id_4' );
+    */
+
 }
 
 /*## Заполняем опцию 1
