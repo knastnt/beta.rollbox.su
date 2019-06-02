@@ -18,6 +18,7 @@ class WC_Loy_UserMeta
     private $protected_user_meta = array(
         "points" => 0,  //Баллы
         "points_history" => array(), //История изменений баллов
+        "rating" => 0, //Рейтинг пользователя
     );
 
 
@@ -83,10 +84,36 @@ class WC_Loy_UserMeta
         $temp["points"] = $temp["points"] + $count;
         $temp["points_history"][] = array ( "time" => (int) current_time('timestamp'), "change" => $count, "description" => $description);
 
+        //Если $count > 0, то и рейтинг увеличиваем
+        if ($count>0) {
+            $temp["rating"] = $temp["rating"] + $count;
+        }
+
         $result = update_user_meta($this->user_id, self::META_NAME, $temp);
         if ($result) {
             $this->protected_user_meta = $temp;
         }
         return $result;
+    }
+
+
+
+    public function addRating ( $count ) {
+        $count = intval($count);
+        if ($count <= 0) { return false; }
+
+        $temp = (new ArrayObject($this->protected_user_meta))->getArrayCopy();
+
+        $temp["rating"] = $temp["rating"] + $count;
+
+        $result = update_user_meta($this->user_id, self::META_NAME, $temp);
+        if ($result) {
+            $this->protected_user_meta = $temp;
+        }
+        return $result;
+    }
+
+    public function getRating() {
+        return $this->protected_user_meta["rating"];
     }
 }
