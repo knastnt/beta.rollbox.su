@@ -72,4 +72,7 @@ class woocommerce_loyalty_defaults
         ),
     );
 
+
+
+
 }

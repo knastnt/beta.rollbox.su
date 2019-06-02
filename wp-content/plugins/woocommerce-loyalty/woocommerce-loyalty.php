@@ -6,8 +6,7 @@
  */
 
 
-
-
+//add_action( 'plugins_loaded', 'woocommerce_loyalty_core' );
 
 woocommerce_loyalty_core();
 
@@ -44,6 +43,10 @@ final class woocommerceLoyalty_Core
         require_once( plugin_dir_path(__FILE__ ) . '/options/woocommerce_loyalty_options.php' );
         woocommerceLoyalty_Options::instance();
 
+        //Класс метаданных пользователя
+        require_once( plugin_dir_path(__FILE__ ) . '/WC_Loy_UserMeta.php' );
+
+        new WC_Loy_UserMeta(1);
     }
 
 
