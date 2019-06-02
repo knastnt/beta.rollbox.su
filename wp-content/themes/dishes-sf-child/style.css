@@ -111,7 +111,7 @@ ul.products li.product .button.added {
 }
 .top-info div{
     color: var(--color-white);
-    font-size: 0.8em;
+    font-size: 14px;
     display: inline-block;
     padding: 0 2em 0 0;
     margin: 0.5em 1.5em 0.5em 0;
@@ -139,10 +139,10 @@ ul.products li.product .button.added {
 .top-info div.info6::before {
     content: "\f2f6";
 }
+
 .top-info div.info4,
 .top-info div.info5,
 .top-info div.info6 {
-    float: right;
     padding: 0 0 0 2em;
     margin: 0.5em 0 0.5em 1.5em;
 }
@@ -173,6 +173,31 @@ ul.products li.product .button.added {
     padding: 0 1.2em;
 }
 
+
+
+.top-info div.right-info-wrapper {
+    float: right;
+    padding: 0 0 0 2em;
+    margin: 0;
+}
+.top-info div.right-info-wrapper div {
+    padding: 0;
+    margin: 0.5em 0 0.5em 2.5em;
+}
+
+/* Рейтинг пользователя */
+.top-info div.right-info-wrapper .rating {
+    padding: 0;
+}
+.top-info div.right-info-wrapper .rating::before {
+    position: absolute;
+    left: -23px;
+    width: 16px;
+    height: 16px;
+    background: url('img/star_32.png') round center;
+    content: "";
+    margin: 3px;
+}
 
 
 /* Выпадающее меню аккаунта */

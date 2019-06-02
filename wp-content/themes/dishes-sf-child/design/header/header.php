@@ -70,12 +70,17 @@ function header_top() {
                 <div class="info2"><?php get_phone(); ?></div>
                 <div class="info3">г.Комсомольск-на-Амуре, проспект Мира 29</div>
 
+                <div class="right-info-wrapper">
                 <?php if(is_user_logged_in()) { ?>
+                    <div class="rating">
+                        Ваш рейтинг: <?php echo do_shortcode('[WC_Loy_Get_Current_User_Rating]'); ?>
+                    </div>
                     <div class="info4"><?php get_account_menu(); ?></div>
                 <?php } else { ?>
                     <div class="info5"><a href="/wp-login.php?action=register">Регистрация</a></div>
                     <div class="info6"><a href="/wp-login.php">Войти</a></div>
                 <?php } ?>
+                </div>
             </div>
 
         </div>
@@ -153,6 +158,7 @@ function get_account_menu() {
     $logout_link = wp_logout_url();
     /*<a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Личный кабинет</a>*/
     ?>
+
     <button class="btn-link dropdown-toggle">
         <?php echo strtoupper ($username); ?>
         <i class="ion-chevron-down"></i>
