@@ -6,9 +6,9 @@
  */
 
 
-//add_action( 'plugins_loaded', 'woocommerce_loyalty_core' );
+add_action( 'plugins_loaded', 'woocommerce_loyalty_core' );
 
-woocommerce_loyalty_core();
+//woocommerce_loyalty_core();
 
 function woocommerce_loyalty_core() {
     return woocommerceLoyalty_Core::instance();
