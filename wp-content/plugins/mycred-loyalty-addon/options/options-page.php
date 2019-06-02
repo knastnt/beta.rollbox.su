@@ -66,22 +66,24 @@ class mycredLoyaltyAddon_Options
 
     public function plugin_settings()
     {
+        // параметры: $option_group, $kristall_options_array, $sanitize_callback
+        register_setting('option_group', 'mycred_loyalty_addon_options_array', 'sanitize_callback');
 
-        register_setting('option_group', 'mycred_loyalty_addon_options_array', array ( $this, 'sanitize_callback'));
+        // Раздел Программа лояльности
+        add_settings_section('section_id_1', 'Программа лояльности', '', 'mycred_loyalty_addon_page');
+
+        add_settings_field('sumOfPointsUnfreeze', 'Сумма, на которую клиент должен набрать товаров, чтобы разморозить свои баллы', array( $this, 'fill_sumOfPointsUnfreeze'), 'mycred_loyalty_addon_page', 'section_id_1');
+        add_settings_field('percentOfPointReturning', 'Процент от суммы заказа, который будет возвращаться баллами', array ( $this, 'fill_percentOfPointReturning'), 'mycred_loyalty_addon_page', 'section_id_1' );
+        add_settings_field('pointsForRegistration', 'Баллы за регистрацию', array ( $this, 'fill_pointsForRegistration'), 'mycred_loyalty_addon_page', 'section_id_1' );
+        add_settings_field('pointsForReview', 'Баллы за отзыв о товаре (можно получить только если ты купил этот товар и для каждого товара только однажды)', array ( $this, 'fill_pointsForReview'), 'mycred_loyalty_addon_page', 'section_id_1' );
 
 
-        // Регистрируем раздел
-        add_settings_section( 'section_id_1', 'Программа лояльности', '', 'rollbox_page' );
-        // Регистрируем поля ввода
-        add_settings_field('sumOfPointsUnfreeze', 'Сумма, на которую клиент должен набрать товаров, чтобы разморозить свои баллы', array ( $this, 'fill_sumOfPointsUnfreeze'), 'rollbox_page', 'section_id_1' );
-        add_settings_field('percentOfPointReturning', 'Процент от суммы заказа, который будет возвращаться баллами', array ( $this, 'fill_percentOfPointReturning'), 'rollbox_page', 'section_id_1' );
-        add_settings_field('pointsForRegistration', 'Баллы за регистрацию', array ( $this, 'fill_pointsForRegistration'), 'rollbox_page', 'section_id_1' );
-        add_settings_field('pointsForReview', 'Баллы за отзыв о товаре (можно получить только если ты купил этот товар и для каждого товара только однажды)', array ( $this, 'fill_pointsForReview'), 'rollbox_page', 'section_id_1' );
 
     }
 
 
-## Заполняем опцию Сумма, на которую клиент должен набрать товаров, чтобы разморозить свои баллы
+
+## Заполняем опцию ID магазина
     public function fill_sumOfPointsUnfreeze()
     {
         $val = get_option('mycred_loyalty_addon_options_array');
@@ -129,6 +131,7 @@ class mycredLoyaltyAddon_Options
     }
 
 
+
 ## Очистка данных
     public function sanitize_callback($options)
     {
@@ -151,14 +154,8 @@ class mycredLoyaltyAddon_Options
                 $val = intval($val);
             }
 
-            /*if ($name == 'send_new_orders_to_kristall_url') {
-                $val = sanitize_text_field($val);
-            }*/
-
 
         }
-
-        //die(print_r( $options )); // Array ( [input] => aaaa [checkbox] => 1 )
 
         return $options;
     }
