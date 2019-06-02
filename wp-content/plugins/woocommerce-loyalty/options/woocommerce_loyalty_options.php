@@ -81,10 +81,9 @@ class woocommerceLoyalty_Options
         // Раздел Цены скидочных купонов в баллах
         add_settings_section('section_id_2', 'Цены скидочных купонов в баллах. (0 - не использовать такой купон)', '', 'woocommerce_loyalty_page');
 
-        $numinals = woocommerce_loyalty_defaults::$coupons_numinals;
-        $numinals_default_points = woocommerce_loyalty_defaults::$coupons_numinals_default_points;
-        for($i = 0; $i < count($numinals); $i++){
-            add_settings_field("rub_$numinals[$i]", "Скидка $numinals[$i] рублей", array( $this, 'fill_rub_numinals'), 'woocommerce_loyalty_page', 'section_id_2', array( $numinals[$i], $numinals_default_points[$i] ));
+        $coupons_numinals_defaults = woocommerce_loyalty_defaults::$coupons_numinals_defaults;
+        foreach ( $coupons_numinals_defaults as $entry) {
+            add_settings_field("rub_$entry[coupon_rub]", "Скидка $entry[coupon_rub] рублей", array( $this, 'fill_rub_numinals'), 'woocommerce_loyalty_page', 'section_id_2', $entry);
         }
 
 
@@ -111,8 +110,8 @@ class woocommerceLoyalty_Options
     ## Заполняем опции скидочных купонов
     public function fill_rub_numinals( $args )
     {
-        $numinal = $args[0];
-        $default_points = $args[1];
+        $numinal = $args['coupon_rub'];
+        $default_points = $args['coupun_price_in_points'];
         $val = get_option('woocommerce_loyalty_options_array');
         $val = isset($val["rub_$numinal"]) ? $val["rub_$numinal"] : $default_points;
         ?>
