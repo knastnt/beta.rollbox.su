@@ -80,8 +80,8 @@ class woocommerceLoyalty_Options
         // Раздел Цены скидочных купонов в баллах
         add_settings_section('section_id_2', 'Цены скидочных купонов в баллах. (0 - не использовать такой купон)', '', 'woocommerce_loyalty_page');
 
-        $numinals =                array (10, 50,  100, 200, 500,  1000, 1500, 2000);
-        $numinals_default_points = array (0,  250, 450, 800, 1750, 3000, 0,    5000);
+        $numinals = woocommerce_loyalty_defaults::$coupons_numinals;
+        $numinals_default_points = woocommerce_loyalty_defaults::$coupons_numinals_default_points;
         for($i = 0; $i < count($numinals); $i++){
             add_settings_field("rub_$numinals[$i]", "Скидка $numinals[$i] рублей", array( $this, 'fill_rub_numinals'), 'woocommerce_loyalty_page', 'section_id_2', array( $numinals[$i], $numinals_default_points[$i] ));
         }

@@ -36,9 +36,12 @@ final class woocommerceLoyalty_Core
     public function __construct()
     {
 
-        // страница настроек плагина
-        require_once( plugin_dir_path(__FILE__ ) . '/options/options-page.php' );
+        // значения по умолчанию
+        require_once( plugin_dir_path(__FILE__ ) . '/options/woocommerce_loyalty_defaults.php' );
 
+
+        // страница настроек плагина
+        require_once( plugin_dir_path(__FILE__ ) . '/options/woocommerce_loyalty_options.php' );
         woocommerceLoyalty_Options::instance();
 
     }
