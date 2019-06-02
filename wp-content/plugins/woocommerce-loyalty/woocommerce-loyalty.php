@@ -1,7 +1,7 @@
 <?php
 /*
- * Plugin Name: MyCred Loyalty Addon. Программа лояльности
- * Description: Дополнение к MyCred, позволяющее гибко настраивать программу лояльности и вознаграждения
+ * Plugin Name: Woocommerce Loyalty. Программа лояльности
+ * Description: Позволяет гибко настраивать программу лояльности и вознаграждения
  * Version:     0.1
  */
 
@@ -9,14 +9,14 @@
 
 
 
-mycred_loyalty_addon_core();
+woocommerce_loyalty_core();
 
-function mycred_loyalty_addon_core() {
-    return mycredLoyaltyAddon_Core::instance();
+function woocommerce_loyalty_core() {
+    return woocommerceLoyalty_Core::instance();
 }
 
 
-final class mycredLoyaltyAddon_Core
+final class woocommerceLoyalty_Core
 {
 
     // Instnace
@@ -39,7 +39,7 @@ final class mycredLoyaltyAddon_Core
         // страница настроек плагина
         require_once( plugin_dir_path(__FILE__ ) . '/options/options-page.php' );
 
-        mycredLoyaltyAddon_Options::instance();
+        woocommerceLoyalty_Options::instance();
 
     }
 
