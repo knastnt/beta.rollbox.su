@@ -69,13 +69,14 @@ class woocommerceLoyalty_Options
         // параметры: $option_group, $kristall_options_array, $sanitize_callback
         register_setting('option_group', 'woocommerce_loyalty_options_array', array( $this, 'sanitize_callback'));
 
-        // Раздел Программа лояльности
-        add_settings_section('section_id_1', 'Программа лояльности', '', 'woocommerce_loyalty_page');
+        // Раздел Основные параметры программы лояльности
+        add_settings_section('section_id_1', 'Основные параметры программы лояльности', '', 'woocommerce_loyalty_page');
 
-        add_settings_field('sumOfPointsUnfreeze', 'Сумма, на которую клиент должен набрать товаров, чтобы разморозить свои баллы', array( $this, 'fill_sumOfPointsUnfreeze'), 'woocommerce_loyalty_page', 'section_id_1');
-        add_settings_field('percentOfPointReturning', 'Процент от суммы заказа, который будет возвращаться баллами', array ( $this, 'fill_percentOfPointReturning'), 'woocommerce_loyalty_page', 'section_id_1' );
-        add_settings_field('pointsForRegistration', 'Баллы за регистрацию', array ( $this, 'fill_pointsForRegistration'), 'woocommerce_loyalty_page', 'section_id_1' );
-        add_settings_field('pointsForReview', 'Баллы за отзыв о товаре (можно получить только если ты купил этот товар и для каждого товара только однажды)', array ( $this, 'fill_pointsForReview'), 'woocommerce_loyalty_page', 'section_id_1' );
+        $main_defaults = woocommerce_loyalty_defaults::$main_defaults;
+        foreach ( $main_defaults as $entry) {
+            add_settings_field($entry['name'], $entry['title'], array( $this, 'fill_main_defaults'), 'woocommerce_loyalty_page', 'section_id_1', $entry);
+        }
+
 
         // Раздел Цены скидочных купонов в баллах
         add_settings_section('section_id_2', 'Цены скидочных купонов в баллах. (0 - не использовать такой купон)', '', 'woocommerce_loyalty_page');
@@ -91,46 +92,13 @@ class woocommerceLoyalty_Options
 
 
 
-## Заполняем опцию ID магазина
-    public function fill_sumOfPointsUnfreeze()
+    ## Заполняем основные опции
+    public function fill_main_defaults( $args )
     {
         $val = get_option('woocommerce_loyalty_options_array');
-        $val = isset($val['sumOfPointsUnfreeze']) ? $val['sumOfPointsUnfreeze'] : '500';
+        $val = isset($val[$args['name']]) ? $val[$args['name']] : $args['default'];
         ?>
-        <input type="number" name="woocommerce_loyalty_options_array[sumOfPointsUnfreeze]" value="<?php echo esc_attr($val) ?>"
-               style="width: 30%;"/>
-        <?php
-    }
-
-    ## Заполняем опцию Процент от суммы заказа, который будет возвращаться баллами
-    public function fill_percentOfPointReturning()
-    {
-        $val = get_option('woocommerce_loyalty_options_array');
-        $val = isset($val['percentOfPointReturning']) ? $val['percentOfPointReturning'] : 15;
-        ?>
-        <input type="number" name="woocommerce_loyalty_options_array[percentOfPointReturning]" value="<?php echo esc_attr($val) ?>"
-               style="width: 30%;"/>
-        <?php
-    }
-
-## Заполняем опцию Баллы за регистрацию
-    public function fill_pointsForRegistration()
-    {
-        $val = get_option('woocommerce_loyalty_options_array');
-        $val = isset($val['pointsForRegistration']) ? $val['pointsForRegistration'] : 200;
-        ?>
-        <input type="number" name="woocommerce_loyalty_options_array[pointsForRegistration]" value="<?php echo esc_attr($val) ?>"
-               style="width: 30%;"/>
-        <?php
-    }
-
-## Заполняем опцию Баллы за отзыв о товаре
-    public function fill_pointsForReview()
-    {
-        $val = get_option('woocommerce_loyalty_options_array');
-        $val = isset($val['pointsForReview']) ? $val['pointsForReview'] : 30;
-        ?>
-        <input type="number" name="woocommerce_loyalty_options_array[pointsForReview]" value="<?php echo esc_attr($val) ?>"
+        <input type="<?php echo $args['type']; ?>" name="woocommerce_loyalty_options_array[<?php echo $args['name']; ?>]" value="<?php echo esc_attr($val) ?>"
                style="width: 30%;"/>
         <?php
     }
@@ -139,7 +107,8 @@ class woocommerceLoyalty_Options
 
 
 
-## Заполняем опцию Баллы за отзыв о товаре
+
+    ## Заполняем опции скидочных купонов
     public function fill_rub_numinals( $args )
     {
         $numinal = $args[0];
@@ -160,22 +129,12 @@ class woocommerceLoyalty_Options
         // очищаем
         foreach ($options as $name => & $val) {
 
-            if ($name == 'sumOfPointsUnfreeze') {
+            // Числа из основных параметров
+            if ( in_array($name, array ('sumOfPointsUnfreeze', 'percentOfPointReturning', 'pointsForRegistration', 'pointsForReview')) ) {
                 $val = intval($val);
             }
 
-            if ($name == 'percentOfPointReturning') {
-                $val = intval($val);
-            }
-
-            if ($name == 'pointsForRegistration') {
-                $val = intval($val);
-            }
-
-            if ($name == 'pointsForReview') {
-                $val = intval($val);
-            }
-
+           // Скидочные купоны
             if (preg_match("/^rub_\\d+$/", $name)) {
                 $val = intval($val);
             }
