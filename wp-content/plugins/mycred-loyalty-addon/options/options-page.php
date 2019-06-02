@@ -67,7 +67,7 @@ class mycredLoyaltyAddon_Options
     public function plugin_settings()
     {
         // параметры: $option_group, $kristall_options_array, $sanitize_callback
-        register_setting('option_group', 'mycred_loyalty_addon_options_array', 'sanitize_callback');
+        register_setting('option_group', 'mycred_loyalty_addon_options_array', array( $this, 'sanitize_callback'));
 
         // Раздел Программа лояльности
         add_settings_section('section_id_1', 'Программа лояльности', '', 'mycred_loyalty_addon_page');
@@ -77,6 +77,14 @@ class mycredLoyaltyAddon_Options
         add_settings_field('pointsForRegistration', 'Баллы за регистрацию', array ( $this, 'fill_pointsForRegistration'), 'mycred_loyalty_addon_page', 'section_id_1' );
         add_settings_field('pointsForReview', 'Баллы за отзыв о товаре (можно получить только если ты купил этот товар и для каждого товара только однажды)', array ( $this, 'fill_pointsForReview'), 'mycred_loyalty_addon_page', 'section_id_1' );
 
+        // Раздел Цены скидочных купонов в баллах
+        add_settings_section('section_id_2', 'Цены скидочных купонов в баллах. (0 - не использовать такой купон)', '', 'mycred_loyalty_addon_page');
+
+        $numinals =                array (10, 50,  100, 200, 500,  1000, 1500, 2000);
+        $numinals_default_points = array (0,  250, 450, 800, 1750, 3000, 0,    5000);
+        for($i = 0; $i < count($numinals); $i++){
+            add_settings_field("rub_$numinals[$i]", "Скидка $numinals[$i] рублей", array( $this, 'fill_rub_numinals'), 'mycred_loyalty_addon_page', 'section_id_2', array( $numinals[$i], $numinals_default_points[$i] ));
+        }
 
 
     }
@@ -94,8 +102,7 @@ class mycredLoyaltyAddon_Options
         <?php
     }
 
-
-## Заполняем опцию Процент от суммы заказа, который будет возвращаться баллами
+    ## Заполняем опцию Процент от суммы заказа, который будет возвращаться баллами
     public function fill_percentOfPointReturning()
     {
         $val = get_option('mycred_loyalty_addon_options_array');
@@ -117,8 +124,6 @@ class mycredLoyaltyAddon_Options
         <?php
     }
 
-
-
 ## Заполняем опцию Баллы за отзыв о товаре
     public function fill_pointsForReview()
     {
@@ -126,6 +131,23 @@ class mycredLoyaltyAddon_Options
         $val = isset($val['pointsForReview']) ? $val['pointsForReview'] : 30;
         ?>
         <input type="number" name="mycred_loyalty_addon_options_array[pointsForReview]" value="<?php echo esc_attr($val) ?>"
+               style="width: 30%;"/>
+        <?php
+    }
+
+
+
+
+
+## Заполняем опцию Баллы за отзыв о товаре
+    public function fill_rub_numinals( $args )
+    {
+        $numinal = $args[0];
+        $default_points = $args[1];
+        $val = get_option('mycred_loyalty_addon_options_array');
+        $val = isset($val["rub_$numinal"]) ? $val["rub_$numinal"] : $default_points;
+        ?>
+        <input type="number" name="mycred_loyalty_addon_options_array[rub_<?php echo $numinal; ?>]" value="<?php echo esc_attr($val) ?>"
                style="width: 30%;"/>
         <?php
     }
@@ -151,6 +173,10 @@ class mycredLoyaltyAddon_Options
             }
 
             if ($name == 'pointsForReview') {
+                $val = intval($val);
+            }
+
+            if (preg_match("/^rub_\\d+$/", $name)) {
                 $val = intval($val);
             }
 
