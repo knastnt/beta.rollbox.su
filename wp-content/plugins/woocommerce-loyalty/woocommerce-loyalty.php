@@ -6,9 +6,9 @@
  */
 
 
-add_action( 'plugins_loaded', 'woocommerce_loyalty_core' );
+//add_action( 'plugins_loaded', 'woocommerce_loyalty_core' );
 
-//woocommerce_loyalty_core();
+woocommerce_loyalty_core();
 
 function woocommerce_loyalty_core() {
     return woocommerceLoyalty_Core::instance();
@@ -46,7 +46,10 @@ final class woocommerceLoyalty_Core
         //Класс метаданных пользователя
         require_once( plugin_dir_path(__FILE__ ) . '/WC_Loy_UserMeta.php' );
 
-        new WC_Loy_UserMeta(1);
+        //Класс шорткодов
+        require_once( plugin_dir_path(__FILE__ ) . '/WC_Loy_Shortcodes.php' );
+
+        //new WC_Loy_UserMeta(1);
     }
 
 
