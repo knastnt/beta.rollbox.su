@@ -71,7 +71,7 @@ function header_top() {
                 <div class="info3">г.Комсомольск-на-Амуре, проспект Мира 29</div>
 
                 <?php if(is_user_logged_in()) { ?>
-                    <div class="info4"><a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Личный кабинет</a></div>
+                    <div class="info4"><?php get_account_menu(); ?></div>
                 <?php } else { ?>
                     <div class="info5"><a href="/wp-login.php?action=register">Регистрация</a></div>
                     <div class="info6"><a href="/wp-login.php">Войти</a></div>
@@ -138,6 +138,32 @@ function get_info1_text() {
                     <td>Воскресенье</td>
                 </tr>
             </table>
+        </li>
+    </ul>
+    <?php
+}
+
+
+
+
+function get_account_menu() {
+    global $current_user;
+    $username = $current_user->user_nicename;
+    $account_link = get_permalink( wc_get_page_id( 'myaccount' ) );
+    $logout_link = wp_logout_url();
+    /*<a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Личный кабинет</a>*/
+    ?>
+    <button class="btn-link dropdown-toggle">
+        <?php echo strtoupper ($username); ?>
+        <i class="ion-chevron-down"></i>
+    </button>
+    <ul class="dropdown-site-menu account-menu" style="">
+        <li>
+            <a href="<?php echo $account_link; ?>">Личный кабинет</a>
+        </li>
+        <li class="line"></li>
+        <li>
+            <a href="<?php echo $logout_link; ?>">Выйти</a>
         </li>
     </ul>
     <?php

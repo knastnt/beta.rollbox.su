@@ -47,6 +47,10 @@ a, button { outline: none !important;}
     line-height: normal;
     padding: 0;
     font-weight: unset;
+    transition: .3s ease;
+}
+.btn-link:hover {
+    color: var(--color-darkgray);
 }
 
 /*Выпадающие меню*/
@@ -97,9 +101,13 @@ ul.products li.product .button.added {
     margin-bottom: 2em;
     border-bottom: 1px solid var(--color-orange);
 }
-.header-top a,
-.header-top button{
-    color: var(--color-lightred);
+
+.header-top a {
+    color: white;
+    transition: .3s ease;
+}
+.header-top a:hover {
+    color: var(--color-darkgray);
 }
 .top-info div{
     color: var(--color-white);
@@ -163,6 +171,25 @@ ul.products li.product .button.added {
 .top-info .info1 .dropdown-site-menu table td {
     background-color: unset;
     padding: 0 1.2em;
+}
+
+
+
+/* Выпадающее меню аккаунта */
+.dropdown-site-menu.account-menu {
+    right: 0;
+    min-width: 200px;
+}
+.dropdown-site-menu.account-menu li.line {
+    border-bottom: 1px solid #dbdbdb;
+}
+.dropdown-site-menu.account-menu a {
+    color: var(--color-darkgray);
+    display: block;
+    padding: 8px 5px;
+}
+.dropdown-site-menu.account-menu a:hover {
+    color: var(--color-red);
 }
 
 
