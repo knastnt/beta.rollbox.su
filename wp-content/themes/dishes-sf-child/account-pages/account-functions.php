@@ -47,6 +47,33 @@ add_filter( 'woocommerce_save_account_details_required_fields', 'last_name_not_r
 
 
 
+// Обрабатываем сохранение добавленного в Детали учетной записи телефон
+//wp-content/themes/dishes-sf-child/woocommerce/myaccount/form-edit-account.php
+
+//Для начала сделаем поле телефон - обязательным
+function billing_phone_requered($items) {
+    $items[] = 'billing_phone'  => 'Телефон';
+    return $items;
+}
+add_filter( 'woocommerce_save_account_details_required_fields', 'billing_phone_requered' );
+
+//Логика обработки и сохранения из взята файла
+//wp-content/plugins/woocommerce/includes/class-wc-form-handler.php
+function saving_billing_phone( $user_id ) {
+    //Получаем телефон из $_POST
+    $billing_phone   = ! empty( $_POST['billing_phone'] ) ? wc_clean( wp_unslash( $_POST['billing_phone'] ) ) : '';
+
+    //Проверяем правильность ввода телефона
+    if ( !true ) {
+        wc_add_notice( __( 'Номер телефона введен неверно', 'woocommerce' ), 'error' );
+    }
+}
+add_action( 'woocommerce_save_account_details', 'saving_billing_phone' );
+
+
+
+
+
 // Добавляем новый пункт меню
 /*
  * Step 1. Add Link to My Account menu

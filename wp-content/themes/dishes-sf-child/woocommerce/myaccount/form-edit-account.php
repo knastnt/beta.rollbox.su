@@ -41,6 +41,7 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
 	</p>
     <div class="clear"></div>
 
+    <!-- Added billing_phone -->
     <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
         <label for="billing_phone" class="">Телефон&nbsp;<abbr class="required" title="обязательно">*</abbr></label>
         <input type="tel" class="woocommerce-Input woocommerce-Input--billing_phone input-text" name="billing_phone" id="billing_phone" placeholder="" value="<?php echo get_user_meta( $user->ID, 'billing_phone', true ) ?>" autocomplete="tel">
