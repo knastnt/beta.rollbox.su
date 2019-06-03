@@ -4,7 +4,7 @@
 add_filter ( 'woocommerce_account_menu_items', 'misha_remove_my_account_links' );
 function misha_remove_my_account_links( $menu_links ){
 
-    //unset( $menu_links['edit-address'] ); // Addresses
+    unset( $menu_links['edit-address'] ); // Addresses
     //unset( $menu_links['dashboard'] ); // Dashboard
     //unset( $menu_links['payment-methods'] ); // Payment Methods
     //unset( $menu_links['orders'] ); // Orders
@@ -14,6 +14,34 @@ function misha_remove_my_account_links( $menu_links ){
 
     return $menu_links;
 }
+
+
+
+
+
+
+// Изменим пункты меню
+function my_woocommerce_account_menu_items($items) {
+    $items['dashboard'] = "Начальная страница";
+    return $items;
+}
+add_filter( 'woocommerce_account_menu_items', 'my_woocommerce_account_menu_items', 10 );
+
+
+/*<?php echo esc_url( wc_get_endpoint_url( 'edit-address', $name ) ); ?>*/
+
+
+
+
+
+// Фамилия в Деталях учетной записи будет не обязательна
+// переменная $required_fields в файле wp-content/plugins/woocommerce/includes/class-wc-form-handler.php
+function last_name_not_requered($items) {
+    unset($items['account_last_name']);
+    unset($items['account_display_name']);
+    return $items;
+}
+add_filter( 'woocommerce_save_account_details_required_fields', 'last_name_not_requered' );
 
 
 
