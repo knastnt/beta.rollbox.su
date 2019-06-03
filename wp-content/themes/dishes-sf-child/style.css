@@ -32,7 +32,7 @@ a, button { outline: none !important;}
 }
 
 /* Цвет нотисов */
-.woocommerce-info, .woocommerce-noreviews, p.no-comments {
+.woocommerce-error, .woocommerce-info, .woocommerce-message, .woocommerce-noreviews, p.no-comments {
     background-color: #eb3e32;
 }
 
