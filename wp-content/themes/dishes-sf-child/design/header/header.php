@@ -193,10 +193,20 @@ add_action('storefront_header', 'points_after_header_cart', 42);
 function points_after_header_cart() {
 ?>
     <div class="user-points">
-        <a class="link" href="#" title="Ваши бонусы">
+        <button class="btn-link dropdown-toggle" title="Ваши бонусы">
             <i class="ion-user-points"></i>
             <span id="points-total"><?php echo do_shortcode('[WC_Loy_Get_Current_User_Points]'); ?></span>
-        </a>
+            <i class="ion-chevron-down"></i>
+        </button>
+        <ul class="dropdown-site-menu user-points-menu" style="">
+            <li>
+                <a href="#">Личный кабинет</a>
+            </li>
+            <li class="line"></li>
+            <li>
+                <a href="#">Выйти</a>
+            </li>
+        </ul>
     </div>
 <?php
 }
