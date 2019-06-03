@@ -73,7 +73,7 @@ function header_top() {
                 <div class="right-info-wrapper">
                 <?php if(is_user_logged_in()) { ?>
                     <div class="rating">
-                        Ваш рейтинг: <?php echo do_shortcode('[WC_Loy_Get_Current_User_Rating]'); ?>
+                        <a href="#">Ваш рейтинг: <?php echo do_shortcode('[WC_Loy_Get_Current_User_Rating]'); ?></a>
                     </div>
                     <div class="info4"><?php get_account_menu(); ?></div>
                 <?php } else { ?>
@@ -200,10 +200,26 @@ function points_after_header_cart() {
         </button>
 
         <ul class="dropdown-site-menu user-points-menu" style="">
-            <?php echo do_shortcode('[WC_Loy_Get_Current_User_Points_History limit=6]'); ?>
-            <div class="footer">
-                <a href="#">Показать полностью</a>
-            </div>
+            <?php
+                if(is_user_logged_in()) {
+                    $history_output = do_shortcode('[WC_Loy_Get_Current_User_Points_History limit=6]');
+
+                    if ($history_output != '') {
+                        echo $history_output;
+                        ?>
+                            <div class="footer">
+                                <a href="#">Показать полностью</a>
+                            </div>
+                        <?php
+                    }else {
+                        echo '<li class="info">У вас ещё нет бонусов</li>';
+                    }
+                }else{
+                    echo '<li class="info">Для того чтобы копить бонусы и получать скидки, необходимо <a href="/wp-login.php?action=register">зарегистрироваться</a></li>';
+                }
+
+
+            ?>
         </ul>
     </div>
 <?php

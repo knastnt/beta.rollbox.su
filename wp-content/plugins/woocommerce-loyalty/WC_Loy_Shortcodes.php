@@ -30,6 +30,7 @@ class WC_Loy_Shortcodes
 
         $history = $WCLoyUserMeta->getPointsHistory();
 
+        $toReturn = '';
         //echo '<ul class="' . $atts['class'] . '">';
         $displayed = 0;
         foreach ($history as $entry) {
@@ -44,9 +45,11 @@ class WC_Loy_Shortcodes
             $changeClass = $change > 0 ? 'plus' : 'minus';
             $descr = $entry["description"];
 
-            echo '<li><div class="time">' . $time . '</div><div class="change ' . $changeClass . '">' . $change . '</div><div class="descr">' . $descr . '</div><div style="clear: both"></div> </li>';
+            $toReturn = $toReturn . '<li><div class="time">' . $time . '</div><div class="change ' . $changeClass . '">' . $change . '</div><div class="descr">' . $descr . '</div><div style="clear: both"></div> </li>';
         }
         //echo '</ul>';
+
+        return $toReturn;
     }
 
     static function WC_Loy_User_Rating() {
