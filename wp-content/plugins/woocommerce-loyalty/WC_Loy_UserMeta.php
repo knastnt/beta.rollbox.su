@@ -38,11 +38,11 @@ class WC_Loy_UserMeta
         $this->protected_user_meta = $test[0];
         unset($test);
 
-        /*$res = $this->addPoints(15, "тест");
+        /*$res = $this->addPoints(15, "Вознаграждение за регистрацию, например");
         $res = $this->addPoints(-10, "тест");
         $res = $this->removePoints(-10, "тест");
         $res = $this->removePoints(600, "тест");
-        $res = $this->removePoints(5, "тест");
+        $res = $this->removePoints(5, "Обмен баллов на купон со скидкой");
 
         var_dump($res);
         delete_user_meta($user_id, self::META_NAME);*/
