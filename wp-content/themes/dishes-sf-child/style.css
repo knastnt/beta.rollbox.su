@@ -241,6 +241,37 @@ ul.products li.product .button.added {
 
 
 
+/* Ваши баллы */
+.site-header .user-points {
+    display: block;
+    float: right;
+    margin-right: 40px;
+}
+.site-header .user-points a {
+    display: block;
+}
+.site-header .user-points a span {
+    margin-left: 6px;
+    position: relative;
+    top: -18px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+}
+.site-header .user-points .ion-user-points {
+    display: inline-block;
+    margin-top: 3px;
+}
+.site-header .user-points .ion-user-points:before {
+    width: 54px;
+    height: 54px;
+    background: url('img/coinstatic_64.png') round center;
+    content: "";
+    display: block;
+}
+
+
+
 /*Строка меню в заголовке*/
 .woocommerce-active .site-header .main-navigation {
     width: 100%;
@@ -694,7 +725,7 @@ table.cart td.product-quantity .qty {
     }
     .woocommerce-active .site-header .site-search {
         float: left;
-        width: 56.739%;
+        width: 52.739%;
         margin-top: 10px;
     }
 

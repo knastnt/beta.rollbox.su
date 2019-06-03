@@ -30,7 +30,7 @@ function replace_cart()
 }
 
 // переместить навигацию под поиск
-add_action('storefront_header', 'storefront_primary_navigation', 42);
+add_action('storefront_header', 'storefront_primary_navigation', 43);
 add_action( 'storefront_header', 'replace_nav', 10 );
 function replace_nav()
 {
@@ -187,3 +187,16 @@ function get_phone() {
     <?php
 }
 
+
+// Значек баллов около корзины
+add_action('storefront_header', 'points_after_header_cart', 42);
+function points_after_header_cart() {
+?>
+    <div class="user-points">
+        <a class="link" href="#" title="Ваши бонусы">
+            <i class="ion-user-points"></i>
+            <span id="points-total"><?php echo do_shortcode('[WC_Loy_Get_Current_User_Points]'); ?></span>
+        </a>
+    </div>
+<?php
+}
