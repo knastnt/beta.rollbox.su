@@ -198,16 +198,13 @@ function points_after_header_cart() {
             <span id="points-total"><?php echo do_shortcode('[WC_Loy_Get_Current_User_Points]'); ?></span>
             <i class="ion-chevron-down"></i>
         </button>
-        <?php echo do_shortcode('[WC_Loy_Get_Current_User_Points_History class="dropdown-site-menu user-points-menu"]'); ?>
-        <!--ul class="dropdown-site-menu user-points-menu" style="">
-            <li>
-                <a href="#">Личный кабинет</a>
-            </li>
-            <li class="line"></li>
-            <li>
-                <a href="#">Выйти</a>
-            </li>
-        </ul-->
+
+        <ul class="dropdown-site-menu user-points-menu" style="">
+            <?php echo do_shortcode('[WC_Loy_Get_Current_User_Points_History limit=6]'); ?>
+            <div class="footer">
+                <a href="#">Показать полностью</a>
+            </div>
+        </ul>
     </div>
 <?php
 }

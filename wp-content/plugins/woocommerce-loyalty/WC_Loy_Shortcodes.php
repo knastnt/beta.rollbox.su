@@ -19,7 +19,8 @@ class WC_Loy_Shortcodes
     static function WC_Loy_User_Points_History( $atts ) {
         // белый список параметров и значения по умолчанию
         $atts = shortcode_atts( array(
-            'class' => '',
+            //'class' => '',
+            'limit' => '',
         ), $atts );
 
         $cur_user_id = get_current_user_id();
@@ -29,8 +30,14 @@ class WC_Loy_Shortcodes
 
         $history = $WCLoyUserMeta->getPointsHistory();
 
-        echo '<ul class="' . $atts['class'] . '">';
+        //echo '<ul class="' . $atts['class'] . '">';
+        $displayed = 0;
         foreach ($history as $entry) {
+            $displayed++;
+            if ($atts['limit']) {
+                if ($displayed > $atts['limit']) break;
+            }
+
             $timestamp = $entry["time"];
             $time = date("d.m.Y h:i",$timestamp);
             $change = $entry["change"];
@@ -39,7 +46,7 @@ class WC_Loy_Shortcodes
 
             echo '<li><div class="time">' . $time . '</div><div class="change ' . $changeClass . '">' . $change . '</div><div class="descr">' . $descr . '</div><div style="clear: both"></div> </li>';
         }
-        echo '</ul>';
+        //echo '</ul>';
     }
 
     static function WC_Loy_User_Rating() {
