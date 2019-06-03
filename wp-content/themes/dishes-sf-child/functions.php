@@ -55,6 +55,9 @@ require_once( get_stylesheet_directory() . '/functions-modules/woocommerce_ajax_
 //кастомные надписи к продуктам.
 require_once( get_stylesheet_directory() . '/design/productlables/productlables.php' );
 
+//настройки личного кабинета
+require_once( get_stylesheet_directory() . '/account-pages/account-functions.php' );
+
 
 /**
  * Convert myCRED Points into WooCommerce Coupon
