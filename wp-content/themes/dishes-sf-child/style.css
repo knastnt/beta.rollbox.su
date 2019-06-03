@@ -304,6 +304,14 @@ ul.products li.product .button.added {
 }
 .site-header .user-points .user-points-menu .change {
     width: 50px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.site-header .user-points .user-points-menu .change.plus {
+    color: #33c233;
+}
+.site-header .user-points .user-points-menu .change.minus {
+    color: #f63737;
 }
 .site-header .user-points .user-points-menu .descr {
     width: 315px;
