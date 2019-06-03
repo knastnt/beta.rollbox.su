@@ -113,8 +113,7 @@
                 echo $title;
             ?>
         </h4>
-        <!--img src="<?php echo get_stylesheet_directory_uri() . '/img/insta_logo_32x32.png'; ?>"-->
-        <img src="<?php echo get_stylesheet_directory_uri() . '/img/coin54.gif'; ?>">
+        <img src="<?php echo get_stylesheet_directory_uri() . '/img/insta_logo_32x32.png'; ?>">
         <div style="clear: both"></div>
     </div>
     <div class="wrapper">
