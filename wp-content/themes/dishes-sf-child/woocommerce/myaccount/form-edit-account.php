@@ -39,6 +39,12 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
 		<label for="account_email"><?php esc_html_e( 'Email address', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
 		<input type="email" class="woocommerce-Input woocommerce-Input--email input-text" name="account_email" id="account_email" autocomplete="email" value="<?php echo esc_attr( $user->user_email ); ?>" />
 	</p>
+    <div class="clear"></div>
+
+    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+        <label for="billing_phone" class="">Телефон&nbsp;<abbr class="required" title="обязательно">*</abbr></label>
+        <input type="tel" class="woocommerce-Input woocommerce-Input--billing_phone input-text" name="billing_phone" id="billing_phone" placeholder="" value="<?php echo get_user_meta( $user->ID, 'billing_phone', true ) ?>" autocomplete="tel">
+    </p>
 
 	<fieldset>
 		<legend><?php esc_html_e( 'Password change', 'woocommerce' ); ?></legend>
