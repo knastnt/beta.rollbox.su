@@ -31,6 +31,14 @@ function custom_override_checkout_fields( $fields ) {
     if ( is_user_logged_in() )
         unset($fields['billing']['billing_email']);
 
+
+    //Убираем поле Адрес, если самовывоз
+    $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+    if (preg_match('/^local_pickup:\d+$/', $chosen_methods[0])) {
+        unset($fields['billing']['billing_address_1']);
+    }
+
+
     return $fields;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
