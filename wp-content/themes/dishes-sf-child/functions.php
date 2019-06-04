@@ -59,6 +59,10 @@ require_once( get_stylesheet_directory() . '/design/productlables/productlables.
 require_once( get_stylesheet_directory() . '/account-pages/account-functions.php' );
 
 
+// Проверка ввода телефона
+require_once( get_stylesheet_directory() . '/functions-modules/validate_billing_phone_number/validate_billing_phone_number.php' );
+
+
 /**
  * Convert myCRED Points into WooCommerce Coupon
  * Requires myCRED 1.4 or higher!

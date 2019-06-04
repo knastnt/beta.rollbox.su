@@ -71,10 +71,15 @@ function billing_phone_requered($items) {
     //Получаем телефон из $_POST
     $billing_phone   = ! empty( $_POST['billing_phone'] ) ? wc_clean( wp_unslash( $_POST['billing_phone'] ) ) : '';
     if ($billing_phone != '') {
-        //Проверка
-        if ( !true ) {
+        //Проверка. Просто нужно выполнить
+        // wc_add_notice( __( 'Номер телефона введен неверно', 'woocommerce' ), 'error' );
+        //в случае неудачи.
+
+        /*if ( !true ) {
             wc_add_notice( __( 'Номер телефона введен неверно', 'woocommerce' ), 'error' );
-        }
+        }*/
+        //Лучше сделаем это хуком, чтобы из validate_billing_phone_number.php могло работать
+        do_action( 'edit_account_validate_billing_phone' );
     }
     return $items;
 }

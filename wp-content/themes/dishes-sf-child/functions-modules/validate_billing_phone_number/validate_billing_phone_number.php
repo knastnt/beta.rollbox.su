@@ -11,7 +11,8 @@ function cbpf_plugin_scripts()
 }
 
 //Validate  phone number
-add_action('woocommerce_checkout_process', 'cbpf_validate_billing_phone_number');
+add_action('woocommerce_checkout_process', 'cbpf_validate_billing_phone_number');   //Валидация при оформлении заказа
+add_action('edit_account_validate_billing_phone', 'cbpf_validate_billing_phone_number');    //Валидация в Деталях аккаунта в личном кабинете
 function cbpf_validate_billing_phone_number()
 {
     $is_correct = preg_match('/^(\+7[\(]{1}[0-9]{3}[\)]{1}[ |\-]{0,1}|^[0-9]{3}[\-| ])?[0-9]{3}(\-| ){1}[0-9]{4}$/', $_POST['billing_phone']);
