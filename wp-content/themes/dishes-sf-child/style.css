@@ -627,7 +627,7 @@ ul.products li.product:hover img {
 }
 
 
-
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /* оформление заказа */
 table.cart td.product-quantity .qty {
     -webkit-appearance: textfield;
@@ -638,6 +638,45 @@ table.cart td.product-quantity .qty {
 /* Скрываем кнопку Обновить */
 .woocommerce-cart-form button[name=update_cart] {
     visibility: hidden;
+}
+
+/* Расширяем поле Имя */
+.woocommerce-checkout #billing_first_name_field {
+    width: 100%;
+}
+
+/* Изменение расположений блоков при оформлении заказа */
+.woocommerce-checkout #customer_details {
+    width: 100%;
+}
+.woocommerce-checkout #customer_details .col-1 {
+    width: 50%;
+    float: left;
+    padding-right: 10px;
+}
+.woocommerce-checkout #customer_details .col-2 {
+    float: right;
+    width: 50%;
+    padding-left: 10px;
+}
+#order_review, #order_review_heading {
+    width: 100%;
+}
+
+/* Скрываем ненужные блоки */
+.woocommerce-checkout .woocommerce-checkout-review-order .woocommerce-checkout-review-order-table,
+.woocommerce-checkout h3#order_review_heading,
+.woocommerce-checkout .woocommerce-checkout-review-order .woocommerce-checkout-payment .wc_payment_methods{
+    display: none;
+}
+.woocommerce-checkout .woocommerce-checkout-review-order .woocommerce-checkout-payment .place-order{
+    margin-top: 0 !important;
+}
+
+
+/* Скрываем Страну */
+.woocommerce-checkout #billing_country_field {
+    display: none;
 }
 
 

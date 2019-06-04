@@ -33,3 +33,20 @@ function custom_override_checkout_fields( $fields ) {
 
     return $fields;
 }
+
+
+
+//Переименовываем некоторый текст
+add_filter( 'gettext' , 'rename_some_fields', 10, 3 );
+function rename_some_fields( $translation, $text, $domain ) {
+    if ($text == 'House number and street name' && $domain == 'woocommerce') {
+        $translation = 'Улица, Номер дома и Квартира';
+    }
+    if ($text == 'Notes about your order, e.g. special notes for delivery.' && $domain == 'woocommerce') {
+        $translation = 'Примечания к вашему заказу, например, особые пожелания.';
+    }
+    if ($text == 'Billing &amp; Shipping' && $domain == 'woocommerce') {
+        $translation = 'Основная информация';
+    }
+    return $translation;
+}
