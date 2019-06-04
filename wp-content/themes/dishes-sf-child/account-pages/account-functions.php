@@ -1,6 +1,7 @@
 <?php
 
-// Убираем лишние пункты меню в аккаунте
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Убираем лишние пункты меню в личном кабинете
 add_filter ( 'woocommerce_account_menu_items', 'misha_remove_my_account_links' );
 function misha_remove_my_account_links( $menu_links ){
 
@@ -14,26 +15,32 @@ function misha_remove_my_account_links( $menu_links ){
 
     return $menu_links;
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
 
 
-// Изменим пункты меню
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Изменим имена пунктов меню в личном кабинете
 function my_woocommerce_account_menu_items($items) {
     $items['dashboard'] = "Начальная страница";
     return $items;
 }
 add_filter( 'woocommerce_account_menu_items', 'my_woocommerce_account_menu_items', 10 );
-
-
-/*<?php echo esc_url( wc_get_endpoint_url( 'edit-address', $name ) ); ?>*/
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Фамилия в Деталях учетной записи будет не обязательна
 // переменная $required_fields в файле wp-content/plugins/woocommerce/includes/class-wc-form-handler.php
 function last_name_not_requered($items) {
@@ -42,15 +49,20 @@ function last_name_not_requered($items) {
     return $items;
 }
 add_filter( 'woocommerce_save_account_details_required_fields', 'last_name_not_requered' );
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
 
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Обрабатываем сохранение добавленного в Детали учетной записи телефон
 //wp-content/themes/dishes-sf-child/woocommerce/myaccount/form-edit-account.php
 
-//Для начала сделаем поле телефон - обязательным
+//Для начала сделаем поле телефон - обязательным. Тут эе выполним проверку правильности ввода, т.к. если будет создан error, то сохранения не будет
 function billing_phone_requered($items) {
     $items['billing_phone'] = 'Телефон';
 
@@ -64,7 +76,6 @@ function billing_phone_requered($items) {
             wc_add_notice( __( 'Номер телефона введен неверно', 'woocommerce' ), 'error' );
         }
     }
-
     return $items;
 }
 add_filter( 'woocommerce_save_account_details_required_fields', 'billing_phone_requered' );
@@ -72,30 +83,30 @@ add_filter( 'woocommerce_save_account_details_required_fields', 'billing_phone_r
 //Логика сохранения из взята файла
 //wp-content/plugins/woocommerce/includes/class-wc-form-handler.php
 function saving_billing_phone( $user_id ) {
-
     //wp_update_user( $user ); //х.з. что это
 
     // Update customer object to keep data in sync.
     $customer = new WC_Customer( $user_id );
     $billing_phone   = ! empty( $_POST['billing_phone'] ) ? wc_clean( wp_unslash( $_POST['billing_phone'] ) ) : '';
-
     if ( $customer ) {
         // Keep billing data in sync if data changed.
-
         if ( $billing_phone !== $customer->get_billing_phone() ) {
             $customer->set_billing_phone($billing_phone);
         }
-
         $customer->save();
     }
-
 }
 add_action( 'woocommerce_save_account_details', 'saving_billing_phone' );
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
 
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Добавляем новый пункт меню
 /*
  * Step 1. Add Link to My Account menu
@@ -153,3 +164,4 @@ function my_account_rewards_endpoint_content() {
  * Step 4
  */
 // Go to Settings > Permalinks and just push "Save Changes" button.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
