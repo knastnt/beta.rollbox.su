@@ -48,5 +48,8 @@ function rename_some_fields( $translation, $text, $domain ) {
     if ($text == 'Billing &amp; Shipping' && $domain == 'woocommerce') {
         $translation = 'Основная информация';
     }
+    if ($text == 'Billing address' && $domain == 'woocommerce') {
+        $translation = 'Контакты клиента';
+    }
     return $translation;
 }

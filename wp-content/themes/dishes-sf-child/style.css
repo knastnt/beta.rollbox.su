@@ -680,6 +680,24 @@ table.cart td.product-quantity .qty {
 }
 
 
+/* Скрываем абзац и адресом доставки на английском - в корзине*/
+.cart-collaterals .woocommerce-shipping-totals p.woocommerce-shipping-destination {
+    display: none;
+}
+
+
+
+/* Скрываем безымянный абзац между первым и вторым блоком в чеке */
+.woocommerce-order  > p:not(.woocommerce-notice) {
+    display: none;
+}
+
+/* Увеличиваем промежуток под вторым блоком в чеке */
+.woocommerce-order section.woocommerce-order-details {
+    margin: 3em 0;
+}
+
+
 /* ПОВТОРЯЮЩИЕСЯ ЭЛЕМЕНТЫ */
 /* - start --------------------- product-slider --------------------- */
 .products-slick-slider {
