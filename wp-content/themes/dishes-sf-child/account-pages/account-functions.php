@@ -52,21 +52,43 @@ add_filter( 'woocommerce_save_account_details_required_fields', 'last_name_not_r
 
 //Для начала сделаем поле телефон - обязательным
 function billing_phone_requered($items) {
-    $items[] = 'billing_phone'  => 'Телефон';
+    $items['billing_phone'] = 'Телефон';
+
+    //Проверка правильности ввода телефона
+    //Не проверяем если пусто, т.к. на пустоту проверка будет выполнена после этого экшена
+    //Получаем телефон из $_POST
+    $billing_phone   = ! empty( $_POST['billing_phone'] ) ? wc_clean( wp_unslash( $_POST['billing_phone'] ) ) : '';
+    if ($billing_phone != '') {
+        //Проверка
+        if ( !true ) {
+            wc_add_notice( __( 'Номер телефона введен неверно', 'woocommerce' ), 'error' );
+        }
+    }
+
     return $items;
 }
 add_filter( 'woocommerce_save_account_details_required_fields', 'billing_phone_requered' );
 
-//Логика обработки и сохранения из взята файла
+//Логика сохранения из взята файла
 //wp-content/plugins/woocommerce/includes/class-wc-form-handler.php
 function saving_billing_phone( $user_id ) {
-    //Получаем телефон из $_POST
+
+    //wp_update_user( $user ); //х.з. что это
+
+    // Update customer object to keep data in sync.
+    $customer = new WC_Customer( $user_id );
     $billing_phone   = ! empty( $_POST['billing_phone'] ) ? wc_clean( wp_unslash( $_POST['billing_phone'] ) ) : '';
 
-    //Проверяем правильность ввода телефона
-    if ( !true ) {
-        wc_add_notice( __( 'Номер телефона введен неверно', 'woocommerce' ), 'error' );
+    if ( $customer ) {
+        // Keep billing data in sync if data changed.
+
+        if ( $billing_phone !== $customer->get_billing_phone() ) {
+            $customer->set_billing_phone($billing_phone);
+        }
+
+        $customer->save();
     }
+
 }
 add_action( 'woocommerce_save_account_details', 'saving_billing_phone' );
 
