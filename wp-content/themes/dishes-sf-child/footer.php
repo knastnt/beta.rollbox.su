@@ -36,8 +36,7 @@
                 </script>
                 <div class="footer-block menu-block">
                     <?php
-                        // подгружаем элементы меню
-                        require_once( get_stylesheet_directory() . '/design/footermenu/footermenu.php' );
+                        do_shortcode('[WC_Loy_Get_Footer_Menu]');
                     ?>
                 </div>
                 <!--div class="footer-block links-block">

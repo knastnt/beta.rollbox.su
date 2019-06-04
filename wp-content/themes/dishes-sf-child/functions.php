@@ -1,37 +1,5 @@
 <?php
 
-//Константы настроек
-define("SHOW_MSG_IF_NOT_LOGGINED", false);
-define("DEBUG_MODE", false);
-
-
- //Не показываем некоторые сообщения
-function remove_some_notices($content){
-
-    // Удаляем следующие сообщения
-    if ($content == 'Корзина обновлена.') return '';
-    if ($content == "У вас есть купон? <a href=\"#\" class=\"showcoupon\">Нажмите здесь для введения кода</a>") return ''; //пришлось редактировать шаблон notices\notice.php
-
-    return $content;
-}
-add_filter( 'woocommerce_add_message', 'remove_some_notices' );
-add_filter( 'woocommerce_add_notice', 'remove_some_notices' ); //пришлось редактировать шаблон notices\notice.php
-
-
-//Товары в 4 колонки на главной странице для единообразия. Это потому что после применения WOOF фильтра - они делаются в 4.
-add_filter('loop_shop_columns',function($col){
-    return 4 ;
-});
-
-
-
-// Регистрируем меню для футера
-register_nav_menus(
-    array(
-        'footer_menu' => 'Меню в футере'
-    )
-);
-
 
 // страница настроек rollbox
 require_once( plugin_dir_path(__FILE__ ) . '/options/options-page.php' );
@@ -380,18 +348,13 @@ function mycred_display_customer_coupons_function( $atts, $content = NULL ) {
   
   https://gist.github.com/riotxoa/f4f1a895052c195394ba4841085a0e83
 */
-
 add_filter( 'woocommerce_coupon_is_valid', 'wc_riotxoa_coupon_is_valid', 10, 2 );
+function wc_riotxoa_coupon_is_valid( $result, $coupon ) {
+    $user = wp_get_current_user();
 
-if ( ! function_exists( 'wc_riotxoa_coupon_is_valid' ) ) {
+    $restricted_emails = $coupon->get_email_restrictions();
 
-	function wc_riotxoa_coupon_is_valid( $result, $coupon ) {
-		$user = wp_get_current_user();
-
-		$restricted_emails = $coupon->get_email_restrictions();
-
-		return ( in_array( $user->user_email, $restricted_emails ) ? $result : false );
-	}
+    return ( in_array( $user->user_email, $restricted_emails ) ? $result : false );
 }
 
 
