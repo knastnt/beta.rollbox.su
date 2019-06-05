@@ -3,7 +3,9 @@
 
 function is_today_sanitary_day() {
     // Достаем санитарный день из настроек
-    $sanitaryDay = explode(".", get_option( 'rollbox_options_array' ) ['sanitary_day']);
+    $sanitaryDay = get_option('rollbox_options_array');
+    $sanitaryDay = isset($sanitaryDay['sanitary_day']) ? $sanitaryDay['sanitary_day'] : '';
+    $sanitaryDay = explode(".", $sanitaryDay);
     $nowDay = explode(".", current_time('Y.m.d'));
 
 
