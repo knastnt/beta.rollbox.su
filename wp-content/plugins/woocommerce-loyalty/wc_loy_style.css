@@ -1,0 +1,38 @@
+.wc-loy-beforeCart {
+    background-color: #fdfdfd;
+    margin-bottom: 3em;
+}
+.wc-loy-beforeCart h3 {
+    background-color: #f8f8f8;
+    padding: 5px 15px;
+}
+.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper {
+    background-color: #eb3e32;
+    border-radius: 15px;
+    width: 300px;
+    padding: 2px;
+    margin: 15px;
+}
+.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper .coupon {
+    border-radius: 15px;
+    border: 2px dashed white;
+    padding: 7px;
+    color: white;
+    font-weight: 100;
+    text-align: center;
+}
+
+.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper .coupon .code {
+    text-align: left;
+}
+.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper .coupon .title {
+    font-size: 25px;
+    font-weight: 700;
+}
+.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper .coupon .description {
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper .coupon .time {
+    text-align: right;
+}
