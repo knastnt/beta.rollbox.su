@@ -37,8 +37,8 @@ function rollbox_options_page_output(){
  */
 add_action('admin_init', 'theme_settings');
 function theme_settings(){
-    // параметры: $option_group, $rollbox_options_array, $sanitize_callback
-    register_setting( 'option_group', 'rollbox_options_array', 'sanitize_callback' );
+    // параметры: $rollbox_options_option_group, $rollbox_options_array, $sanitize_callback
+    register_setting( 'rollbox_options_option_group', 'rollbox_options_array', 'sanitize_callback' );
 
     /*// параметры: $id, $title, $callback, $page
     add_settings_section( 'section_id_1', 'Основные настройки', '', 'rollbox_page' ); 

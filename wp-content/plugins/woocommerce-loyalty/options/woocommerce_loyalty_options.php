@@ -68,8 +68,8 @@ class woocommerceLoyalty_Options
 
     public function plugin_settings()
     {
-        // параметры: $option_group, $kristall_options_array, $sanitize_callback
-        register_setting('option_group', 'woocommerce_loyalty_options_array', array( $this, 'sanitize_callback'));
+        // параметры: $woocommerce_loyalty_option_group, $kristall_options_array, $sanitize_callback
+        register_setting('woocommerce_loyalty_option_group', 'woocommerce_loyalty_options_array', array( $this, 'sanitize_callback'));
 
         // Раздел Основные параметры программы лояльности
         add_settings_section('section_id_1', 'Основные параметры программы лояльности', '', 'woocommerce_loyalty_page');
