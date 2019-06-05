@@ -96,7 +96,7 @@ function get_info1_text() {
 
     if (is_today_sanitary_day()) {
         $beforeButtonText = "Сегодня санитарный день.";
-        $buttonText = "Посмотреть Расписание.";
+        $buttonText = "Режим работы";
     }else{
         //echo current_time('N');
         $os = array(5, 6, 7); //Пятница, Суббота и Воскресенье
