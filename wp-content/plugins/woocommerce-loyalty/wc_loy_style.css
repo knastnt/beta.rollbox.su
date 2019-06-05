@@ -19,10 +19,10 @@
     align-self: flex-start;
 }
 .wc-loy-beforeCart .coupons-wrapper .coupon-wrapper.buy-coupon {
-    background-color: #b0b0b0;
+    background-color: var(--color-lightgray);
 }
 .wc-loy-beforeCart .coupons-wrapper .coupon-wrapper.buy-coupon.disable {
-    background-color: #545454;
+    background-color: var(--color-darkgray-light);
 }
 .wc-loy-beforeCart .coupons-wrapper .coupon-wrapper .coupon {
     border-radius: 15px;
