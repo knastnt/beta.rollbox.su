@@ -17,6 +17,14 @@ function wc_loy_before_cart_block() {
                         <div class="time">Действует до: 01.07.2019</div>
                     </div>
                 </div>
+                <div class="coupon-wrapper buy-coupon">
+                    <div class="coupon">
+                        <div class="code"></div>
+                        <div class="title">Обмен баллов на купоны</div>
+                        <div class="description">Вы сможете обменять баллы на купоны только после того как сделаете заказов на сумму не менее 000 рублей</div>
+                        <div class="time"></div>
+                    </div>
+                </div>
             </div>
 
         </div>

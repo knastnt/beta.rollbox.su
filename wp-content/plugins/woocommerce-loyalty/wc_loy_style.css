@@ -6,12 +6,20 @@
     background-color: #f8f8f8;
     padding: 5px 15px;
 }
+.wc-loy-beforeCart .coupons-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
 .wc-loy-beforeCart .coupons-wrapper .coupon-wrapper {
     background-color: #eb3e32;
     border-radius: 15px;
     width: 300px;
     padding: 2px;
     margin: 15px;
+    align-self: flex-start;
+}
+.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper.buy-coupon {
+    background-color: #ebb301;
 }
 .wc-loy-beforeCart .coupons-wrapper .coupon-wrapper .coupon {
     border-radius: 15px;
@@ -20,6 +28,7 @@
     color: white;
     font-weight: 100;
     text-align: center;
+    cursor: pointer;
 }
 
 .wc-loy-beforeCart .coupons-wrapper .coupon-wrapper .coupon .code {
