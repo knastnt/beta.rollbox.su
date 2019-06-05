@@ -14,7 +14,7 @@ class woocommerce_loyalty_defaults
         "sumOfPointsUnfreeze" => array(
             "type" => "number",
             "default" => "500",
-            "title" => "Сумма, на которую клиент должен набрать товаров, чтобы разморозить свои баллы"
+            "title" => "Сумма, на которую клиент должен сделать заказов, чтобы разморозить свои баллы"
         ),
         "percentOfPointReturning" => array(
             "type" => "number",

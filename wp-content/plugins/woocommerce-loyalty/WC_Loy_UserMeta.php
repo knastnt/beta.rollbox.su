@@ -22,6 +22,7 @@ class WC_Loy_UserMeta
     );
 
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * WC_Loy_UserMeta constructor.
      */
@@ -47,8 +48,13 @@ class WC_Loy_UserMeta
         var_dump($res);
         delete_user_meta($user_id, self::META_NAME);*/
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public function addPoints ( $count, $description ) {
         $count = intval($count);
         if ($count <= 0) { return false; }
@@ -95,9 +101,13 @@ class WC_Loy_UserMeta
         }
         return $result;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public function addRating ( $count ) {
         $count = intval($count);
         if ($count <= 0) { return false; }
@@ -116,4 +126,43 @@ class WC_Loy_UserMeta
     public function getRating() {
         return $this->protected_user_meta["rating"];
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public function isPointsUnfreeze(){
+        $toReturn = false;
+
+        $optionsArray = get_option('woocommerce_loyalty_options_array');
+        $defaultValue = woocommerce_loyalty_defaults::$main_defaults['sumOfPointsUnfreeze']['default'];
+
+        // Из настроек. Сумма, на которую нужно набрать заказов, чтобы разморозить баллы
+        $sumOfPointsUnfreeze = isset($optionsArray['sumOfPointsUnfreeze']) ? $optionsArray['sumOfPointsUnfreeze'] : $defaultValue;
+
+
+        $customer_orders = get_posts( apply_filters( 'woocommerce_my_account_my_orders_query', array(
+            'meta_key'    => '_customer_user',
+            'meta_value'  => get_current_user_id(),
+            'post_type'   => wc_get_order_types( 'view-orders' ),
+            'post_status' => 'wc-completed',
+            //'post_status' => array_keys( wc_get_order_statuses() ),
+        ) ) );
+
+        $totals = 0; //Сумма всех выполненных заказов у клиента (с учетом стоимости доставки)
+        if ( $customer_orders ) {
+            foreach ( $customer_orders as $customer_order ) {
+                $orderTotal = floatval(wc_get_order($customer_order)->get_total());
+                $totals = $totals + $orderTotal;
+            }
+        }
+
+        $toReturn = $sumOfPointsUnfreeze <= $totals;
+
+        return $toReturn;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
