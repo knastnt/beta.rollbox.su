@@ -72,7 +72,7 @@ class WC_Loy_UserMeta
     }
 
     public function getPoints() {
-        return $this->protected_user_meta["points"];
+        return intval($this->protected_user_meta["points"]);
     }
     public function getPointsHistory() {
         return $this->protected_user_meta["points_history"];
@@ -124,7 +124,7 @@ class WC_Loy_UserMeta
     }
 
     public function getRating() {
-        return $this->protected_user_meta["rating"];
+        return intval($this->protected_user_meta["rating"]);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -136,16 +136,14 @@ class WC_Loy_UserMeta
     public function isPointsUnfreeze(){
         $toReturn = false;
 
-        $optionsArray = get_option('woocommerce_loyalty_options_array');
-        $defaultValue = woocommerce_loyalty_defaults::$main_defaults['sumOfPointsUnfreeze']['default'];
 
         // Из настроек. Сумма, на которую нужно набрать заказов, чтобы разморозить баллы
-        $sumOfPointsUnfreeze = isset($optionsArray['sumOfPointsUnfreeze']) ? $optionsArray['sumOfPointsUnfreeze'] : $defaultValue;
+        $sumOfPointsUnfreeze = woocommerceLoyalty_Options::instance()->getSumOfPointsUnfreeze();
 
 
         $customer_orders = get_posts( apply_filters( 'woocommerce_my_account_my_orders_query', array(
             'meta_key'    => '_customer_user',
-            'meta_value'  => get_current_user_id(),
+            'meta_value'  => $this->user_id,
             'post_type'   => wc_get_order_types( 'view-orders' ),
             'post_status' => 'wc-completed',
             //'post_status' => array_keys( wc_get_order_statuses() ),

@@ -147,4 +147,19 @@ class woocommerceLoyalty_Options
         return $options;
     }
 
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Геттеры опций
+    public function getSumOfPointsUnfreeze()
+    {
+        $optionsArray = get_option('woocommerce_loyalty_options_array');
+        $defaultValue = woocommerce_loyalty_defaults::$main_defaults['sumOfPointsUnfreeze']['default'];
+
+        // Из настроек. Сумма, на которую нужно набрать заказов, чтобы разморозить баллы
+        $sumOfPointsUnfreeze = isset($optionsArray['sumOfPointsUnfreeze']) ? $optionsArray['sumOfPointsUnfreeze'] : $defaultValue;
+
+        return $sumOfPointsUnfreeze;
+    }
+
 }

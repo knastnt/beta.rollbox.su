@@ -21,6 +21,9 @@
 .wc-loy-beforeCart .coupons-wrapper .coupon-wrapper.buy-coupon {
     background-color: #ebb301;
 }
+.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper.buy-coupon.disable {
+    background-color: #bdbdbd;
+}
 .wc-loy-beforeCart .coupons-wrapper .coupon-wrapper .coupon {
     border-radius: 15px;
     border: 2px dashed white;
