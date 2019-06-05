@@ -19,10 +19,10 @@
     align-self: flex-start;
 }
 .wc-loy-beforeCart .coupons-wrapper .coupon-wrapper.buy-coupon {
-    background-color: #ebb301;
+    background-color: #b0b0b0;
 }
 .wc-loy-beforeCart .coupons-wrapper .coupon-wrapper.buy-coupon.disable {
-    background-color: #bdbdbd;
+    background-color: #545454;
 }
 .wc-loy-beforeCart .coupons-wrapper .coupon-wrapper .coupon {
     border-radius: 15px;
@@ -31,6 +31,8 @@
     color: white;
     font-weight: 100;
     text-align: center;
+}
+.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper:not(.disable) .coupon {
     cursor: pointer;
 }
 
