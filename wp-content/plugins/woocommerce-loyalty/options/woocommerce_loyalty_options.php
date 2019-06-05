@@ -16,6 +16,8 @@ class woocommerceLoyalty_Options
         return self::$_instance;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     public function __construct()
     {
@@ -73,8 +75,9 @@ class woocommerceLoyalty_Options
         add_settings_section('section_id_1', 'Основные параметры программы лояльности', '', 'woocommerce_loyalty_page');
 
         $main_defaults = woocommerce_loyalty_defaults::$main_defaults;
-        foreach ( $main_defaults as $entry) {
-            add_settings_field($entry['name'], $entry['title'], array( $this, 'fill_main_defaults'), 'woocommerce_loyalty_page', 'section_id_1', $entry);
+        foreach ( $main_defaults as $key => $param) {
+            $param['name'] = $key;
+            add_settings_field($param['name'], $param['title'], array( $this, 'fill_main_defaults'), 'woocommerce_loyalty_page', 'section_id_1', $param);
         }
 
 

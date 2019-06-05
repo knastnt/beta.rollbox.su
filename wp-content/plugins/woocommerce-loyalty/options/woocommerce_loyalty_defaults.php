@@ -11,26 +11,22 @@ class woocommerce_loyalty_defaults
 
     //Основные константы по-умолчанию
     public static $main_defaults = array(
-        array(
-            "name" => "sumOfPointsUnfreeze",
+        "sumOfPointsUnfreeze" => array(
             "type" => "number",
             "default" => "500",
             "title" => "Сумма, на которую клиент должен набрать товаров, чтобы разморозить свои баллы"
         ),
-        array(
-            "name" => "percentOfPointReturning",
+        "percentOfPointReturning" => array(
             "type" => "number",
             "default" => "15",
             "title" => "Процент от суммы заказа, который будет возвращаться баллами"
         ),
-        array(
-            "name" => "pointsForRegistration",
+        "pointsForRegistration" => array(
             "type" => "number",
             "default" => "200",
             "title" => "Баллы за регистрацию"
         ),
-        array(
-            "name" => "pointsForReview",
+        "pointsForReview" => array(
             "type" => "number",
             "default" => "30",
             "title" => "Баллы за отзыв о товаре (можно получить только если ты купил этот товар и для каждого товара только однажды)"
