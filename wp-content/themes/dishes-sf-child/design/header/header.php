@@ -205,10 +205,26 @@ function points_after_header_cart() {
                     $history_output = do_shortcode('[WC_Loy_Get_Current_User_Points_History limit=6]');
 
                     if ($history_output != '') {
+                        ?>
+                            <div class="header" style="font-size: 20px;font-weight: 300;margin: 5px;">
+                                Ваш бонусный счет
+                            </div>
+                            <div class="header-buttons" style="border-bottom: 1px solid #dbdbdb;padding-bottom: 10px;">
+                                <div class="header-button-wrapper" style="">
+                                    <a class="button" href="#">Как накопить</a>
+                                </div>
+                                <div class="header-button-wrapper">
+                                    <a class="button" href="#">На что потратить</a>
+                                </div>
+                                <div style="clear: both;">
+
+                                </div>
+                            </div>
+                        <?php
                         echo $history_output;
                         ?>
                             <div class="footer">
-                                <a href="#">Показать полностью</a>
+                                <a class="button button-gray" href="#">Показать полностью</a>
                             </div>
                         <?php
                     }else {

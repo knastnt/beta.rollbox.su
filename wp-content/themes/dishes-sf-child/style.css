@@ -317,24 +317,37 @@ ul.products li.product .button.added {
     width: 315px;
 }
 
+.site-header .user-points .header {
+    font-size: 20px;
+    font-weight: 300;
+    margin: 5px;
+}
+.site-header .user-points .header-buttons {
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 10px;
+}
+.site-header .user-points .header-buttons .header-button-wrapper {
+    width: 50%;
+    float: left;
+    padding: 0 5px;
+}
 
-.site-header .user-points .footer a {
+
+.site-header .user-points a.button {
     width: 100%;
-    display: block;
     text-align: center;
-    padding: 10px 0;
+}
+
+.site-header .user-points a.button-gray {
+    padding: 7px 0;
     background-color: #f0f0f0;
-    border-radius: 5px;
     margin-top: 5px;
     color: var(--color-darkgray);
-    text-transform: uppercase;
-    font-size: 1.1em;
     -webkit-transition: ease-in-out .3s all;
     -moz-transition: ease-in-out .3s all;
     transition: ease-in-out .3s all;
-
 }
-.site-header .user-points .footer a:hover {
+.site-header .user-points a.button-gray:hover {
     background-color: var(--color-darkgray-light);
     color: white;
 }
@@ -576,6 +589,9 @@ ul.products li.product .price > del {
 /* скругление кнопок */
 .added_to_cart, .button, button, input[type="button"], input[type="reset"], input[type="submit"] {
     border-radius: 5px;
+    -webkit-transition: ease-in-out .3s all;
+    -moz-transition: ease-in-out .3s all;
+    transition: ease-in-out .3s all;
 }
 
 /*Увеличение картинки при наведении*/
