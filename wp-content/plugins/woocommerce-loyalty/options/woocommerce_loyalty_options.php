@@ -52,7 +52,7 @@ class woocommerceLoyalty_Options
             <form action="options.php" method="POST">
                 <?php
                 // скрытые защитные поля
-                settings_fields('option_group');
+                settings_fields('woocommerce_loyalty_option_group');
 
                 // Секции с настройками (опциями). (section_id_1, ...)
                 do_settings_sections('woocommerce_loyalty_page');

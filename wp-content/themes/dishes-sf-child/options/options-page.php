@@ -18,7 +18,7 @@ function rollbox_options_page_output(){
         <form action="options.php" method="POST">
             <?php
             // скрытые защитные поля
-            settings_fields( 'option_group' );
+            settings_fields( 'rollbox_options_option_group' );
 
             // Секции с настройками (опциями). (section_id_1, ...)
             do_settings_sections( 'rollbox_page' );
