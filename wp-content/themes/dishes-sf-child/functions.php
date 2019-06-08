@@ -88,16 +88,6 @@ function my_wc_order_is_editable($res, $order) {
 
 
 
-function add_coupon_revenue_dropdown_checkbox() {
-    woocommerce_wp_checkbox( array( 'id' => 'include_stats', 'label' => __( 'Coupon check list', 'woocommerce' ), 'description' => sprintf( __( 'Includes the coupon in coupon check drop-down list', 'woocommerce' ) ) ) );
-}
-add_action( 'woocommerce_coupon_options', 'add_coupon_revenue_dropdown_checkbox', 10, 0 );
-
-function save_coupon_revenue_dropdown_checkbox( $post_id ) {
-    $include_stats = isset( $_POST['include_stats'] ) ? 'yes' : 'no';
-    update_post_meta( $post_id, 'include_stats', $include_stats );
-}
-add_action( 'woocommerce_coupon_options_save', 'save_coupon_revenue_dropdown_checkbox');
 
 
 

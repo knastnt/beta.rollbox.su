@@ -55,6 +55,11 @@ final class woocommerceLoyalty_Core
         //Блок над корзиной
         require_once( plugin_dir_path(__FILE__ ) . '/beforeCartBlock.php' );
 
+
+        // Настройки купонов
+        require_once( plugin_dir_path(__FILE__ ) . '/coupons/coupons.php' );
+
+
         //new WC_Loy_UserMeta(1);
     }
 
