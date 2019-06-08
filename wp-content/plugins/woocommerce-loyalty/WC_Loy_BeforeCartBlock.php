@@ -1,14 +1,17 @@
 <?php
 
 
-add_action( 'woocommerce_before_cart', 'wc_loy_before_cart_block', 20 );
+add_action( 'woocommerce_before_cart', array( 'WC_Loy_BeforeCartBlock', 'wc_loy_before_cart_block'), 20 );
 
-function wc_loy_before_cart_block() {
+class WC_Loy_BeforeCartBlock
+{
+    static function wc_loy_before_cart_block()
+    {
 
-    $wc_loy_UserMeta = new WC_Loy_UserMeta(get_current_user_id());
-    $is_freeze = !$wc_loy_UserMeta->isPointsUnfreeze();
+        $wc_loy_UserMeta = new WC_Loy_UserMeta(get_current_user_id());
+        $is_freeze = !$wc_loy_UserMeta->isPointsUnfreeze();
 
-    ?>
+        ?>
         <div class="wc-loy-beforeCart">
             <h3>Вы можете использовать свои купоны чтобы получить скидку к заказу</h3>
             <div class="coupons-wrapper">
@@ -20,15 +23,17 @@ function wc_loy_before_cart_block() {
                         <div class="time">Действует до: 01.07.2019</div>
                     </div>
                 </div>
-                <div class="coupon-wrapper buy-coupon <?php if($is_freeze) { echo 'disable'; } ?>">
+                <div class="coupon-wrapper buy-coupon <?php if ($is_freeze) {
+                    echo 'disable';
+                } ?>">
                     <div class="coupon">
                         <div class="code"></div>
                         <div class="title">Обмен бонусов на купоны</div>
                         <div class="description">
-                            <?php if($is_freeze) {  ?>
-                            Вы можете обменять бонусы на купоны только после выполнения заказов на сумму <?php echo woocommerceLoyalty_Options::instance()->getSumOfPointsUnfreeze(); ?> рублей
-                            <?php } else {  ?>
-                            Ваш бонусный счёт: <?php echo $wc_loy_UserMeta->getPoints(); ?> б.
+                            <?php if ($is_freeze) { ?>
+                                Вы можете обменять бонусы на купоны только после выполнения заказов на сумму <?php echo woocommerceLoyalty_Options::instance()->getSumOfPointsUnfreeze(); ?> рублей
+                            <?php } else { ?>
+                                Ваш бонусный счёт: <?php echo $wc_loy_UserMeta->getPoints(); ?> б.
                             <?php } ?>
                         </div>
                         <div class="time"></div>
@@ -37,6 +42,6 @@ function wc_loy_before_cart_block() {
             </div>
 
         </div>
-    <?php
-
+        <?php
+    }
 }

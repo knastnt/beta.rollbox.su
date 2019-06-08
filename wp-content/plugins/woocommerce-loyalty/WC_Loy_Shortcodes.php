@@ -4,6 +4,7 @@
 add_shortcode( 'WC_Loy_Get_Current_User_Points', array( 'WC_Loy_Shortcodes', 'WC_Loy_User_Points' ) );
 add_shortcode( 'WC_Loy_Get_Current_User_Points_History', array( 'WC_Loy_Shortcodes', 'WC_Loy_User_Points_History' ) );
 add_shortcode( 'WC_Loy_Get_Current_User_Rating', array( 'WC_Loy_Shortcodes', 'WC_Loy_User_Rating' ) );
+add_shortcode( 'WC_Loy_Bonus_to_Coupons_Exchange', array( 'WC_Loy_Shortcodes', 'WC_Loy_Bonus_to_Coupons_Exchange' ) );
 
 
 class WC_Loy_Shortcodes
@@ -59,5 +60,9 @@ class WC_Loy_Shortcodes
         $WCLoyUserMeta = new WC_Loy_UserMeta($cur_user_id);
 
         return $WCLoyUserMeta->getRating();
+    }
+
+    static function WC_Loy_Bonus_to_Coupons_Exchange() {
+        echo 'exchange';
     }
 }

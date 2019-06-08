@@ -53,11 +53,16 @@ final class woocommerceLoyalty_Core
         require_once( plugin_dir_path(__FILE__ ) . '/WC_Loy_Shortcodes.php' );
 
         //Блок над корзиной
-        require_once( plugin_dir_path(__FILE__ ) . '/beforeCartBlock.php' );
+        require_once( plugin_dir_path(__FILE__ ) . '/WC_Loy_BeforeCartBlock.php' );
+
+        //Страница бонусов в личном кабинете
+        require_once( plugin_dir_path(__FILE__ ) . '/WC_Loy_AccountBonusPage.php' );
 
 
         // Настройки купонов
         require_once( plugin_dir_path(__FILE__ ) . '/coupons/coupons.php' );
+
+
 
 
         //new WC_Loy_UserMeta(1);
@@ -65,7 +70,7 @@ final class woocommerceLoyalty_Core
 
 
     public function true_include_styles() {
-        wp_enqueue_style( 'wc-loy-style', plugins_url('/wc_loy_style.css', __FILE__) );
+        wp_enqueue_style( 'wc-loy-style', plugins_url('/css/wc_loy_style.css', __FILE__) );
     }
 
 }
