@@ -99,10 +99,12 @@ class WC_Loy_AccountBonusPage
 
             // Make sure amounts are always positive
             if (isset( $_POST['coupon-fixed'])) {
-                $neededAmount = $_POST['coupon-fixed'];
-                //if (isset()){
-
-                //}
+                $neededAmount = intval($_POST['coupon-fixed']);
+                if (isset($coupons_numinals_defaults['fixed-' . $neededAmount])){
+                    //Запрошенный размер купона существует
+                    $price = $coupons_numinals_defaults['fixed-' . $neededAmount]['coupun_price_in_points'];
+                    
+                }
             }
             $amount = abs($_POST['points_to_coupons']['amount']);
 
