@@ -162,4 +162,19 @@ class woocommerceLoyalty_Options
         return $sumOfPointsUnfreeze;
     }
 
+    public function getPriceOfCoupon($name)
+    {
+        $optionsArray = get_option('woocommerce_loyalty_options_array');
+
+        if(!isset(woocommerce_loyalty_defaults::$coupons_numinals_defaults[$name]))
+            return 0;
+
+        $defaultValue = woocommerce_loyalty_defaults::$coupons_numinals_defaults[$name]['coupun_price_in_points'];
+
+
+        $sumOfPointsUnfreeze = isset($optionsArray['sumOfPointsUnfreeze']) ? $optionsArray['sumOfPointsUnfreeze'] : $defaultValue;
+
+        return $sumOfPointsUnfreeze;
+    }
+
 }
