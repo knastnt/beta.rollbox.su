@@ -91,13 +91,18 @@ class WC_Loy_AccountBonusPage
 
         $balance = $wc_loy_usermeta->getPoints();
 
+        $coupons_numinals_defaults = woocommerce_loyalty_defaults::$coupons_numinals_defaults;
+
 
         // Form submission
         if ( isset( $_POST['points_to_coupons'] ) && wp_verify_nonce( $_POST['points_to_coupons']['token'], 'points-to-woo-coupon' ) ) {
 
             // Make sure amounts are always positive
             if (isset( $_POST['coupon-fixed'])) {
-                
+                $neededAmount = $_POST['coupon-fixed'];
+                //if (isset()){
+
+                //}
             }
             $amount = abs($_POST['points_to_coupons']['amount']);
 
@@ -211,16 +216,16 @@ class WC_Loy_AccountBonusPage
          name="contact" value="mail">
         <label for="contactChoice3">Mail</label>*/
 
-        $coupons_numinals_defaults = woocommerce_loyalty_defaults::$coupons_numinals_defaults;
 
         foreach ( $coupons_numinals_defaults as $entry) {
             if ($entry['coupun_price_in_points'] > 0) {
                 $name = 'coupon-fixed[' . $entry['coupon_rub'] . ']';
-                $output .= '<input type="radio" id="' . $name . '" name="' . $name . '"><label for="' . $name . '">Купон на ' . $entry['coupon_rub'] . ' руб. = ' . $entry['coupun_price_in_points'] . ' бонусов</label>';
+                $output .= '<input type="radio" id="' . $name . '" name="coupon-fixed" value="' . $entry['coupon_rub'] . '"><label for="' . $name . '">Купон на ' . $entry['coupon_rub'] . ' руб. = ' . $entry['coupun_price_in_points'] . ' бонусов</label>';
             }
         }
 
         $output .= '</div>
+
 	<input type="submit" name="submit" value="Обменять" />
 </form>';
 
