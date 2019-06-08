@@ -23,10 +23,10 @@ function wc_loy_before_cart_block() {
                 <div class="coupon-wrapper buy-coupon <?php if($is_freeze) { echo 'disable'; } ?>">
                     <div class="coupon">
                         <div class="code"></div>
-                        <div class="title">Обмен баллов на купоны</div>
+                        <div class="title">Обмен бонусов на купоны</div>
                         <div class="description">
                             <?php if($is_freeze) {  ?>
-                            Вы можете обменять баллы на купоны только после выполнения заказов на сумму <?php echo woocommerceLoyalty_Options::instance()->getSumOfPointsUnfreeze(); ?> рублей
+                            Вы можете обменять бонусы на купоны только после выполнения заказов на сумму <?php echo woocommerceLoyalty_Options::instance()->getSumOfPointsUnfreeze(); ?> рублей
                             <?php } else {  ?>
                             Ваш бонусный счёт: <?php echo $wc_loy_UserMeta->getPoints(); ?> б.
                             <?php } ?>
