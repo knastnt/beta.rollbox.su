@@ -133,13 +133,14 @@ class WC_Loy_AccountBonusPage
                 ));
 
                 // Вычитаем баллы у пользователя
-                $price = $coupons_numinals_defaults['fixed-' . $neededAmount]['coupun_price_in_points'];
-                $result = $wc_loy_usermeta->removePoints($price, 'Покупка купона на сумму ' . $neededAmount . ' руб.');
+                $price = woocommerceLoyalty_Options::instance()->getPriceOfCoupon($neededCoupon);
+                $amount = woocommerce_loyalty_defaults::$coupons_numinals_defaults[$neededCoupon]['coupon_rub'];
+                $result = $wc_loy_usermeta->removePoints($price, 'Покупка купона на сумму ' . $amount . ' руб.');
 
                 if ($result) {
                     // Update Coupon details
                     update_post_meta($new_coupon_id, 'discount_type', 'fixed_cart');
-                    update_post_meta($new_coupon_id, 'coupon_amount', $neededAmount);
+                    update_post_meta($new_coupon_id, 'coupon_amount', $amount);
                     /*update_post_meta($new_coupon_id, 'individual_use', 'no');
                     update_post_meta($new_coupon_id, 'product_ids', '');
                     update_post_meta($new_coupon_id, 'exclude_product_ids', '');*/
@@ -161,10 +162,13 @@ class WC_Loy_AccountBonusPage
                     update_post_meta($new_coupon_id, 'only_for_user_id', $user_id);
                 }
 
-
+                //Перезагружаем страницу
+                //header("Refresh:0");
             }else{
-                wc_add_notice( $error, 'error' );
+                //не канает wc_add_notice( $error, 'error' ); - слишком поздно вызывается, все сообщения сформированы
+                echo $error;
             }
+
         }
 
 
@@ -262,7 +266,7 @@ class WC_Loy_AccountBonusPage
                 return 'Не хватает баллов для приобретения этого купона';
 
 
-            return '';
+            return false;
 
         }
 
