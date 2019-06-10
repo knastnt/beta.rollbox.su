@@ -174,7 +174,14 @@ class WC_Loy_Shortcodes
                     <div class="code"><?php echo $coupon_obj->get_code(); ?></div>
                     <div class="title">Скидка <?php echo $coupon_obj->get_amount(); ?> рублей</div>
                     <div class="description"><?php echo $coupon_obj->get_description(); ?></div>
-                    <div class="time">Действует до: <?php echo $coupon_obj->get_date_expires()->date("d.m.Y"); ?></div>
+                    <div class="time">
+                    <?php
+                    $expires = $coupon_obj->get_date_expires();
+                    if (isset($expires) ){
+                        echo "Действует до: " . $coupon_obj->get_date_expires()->date("d.m.Y");
+                    }
+                    ?>
+                    </div>
                 </div>
             </div>
 
