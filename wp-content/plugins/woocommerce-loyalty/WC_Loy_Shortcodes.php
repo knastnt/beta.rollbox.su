@@ -63,6 +63,44 @@ class WC_Loy_Shortcodes
     }
 
     static function WC_Loy_Bonus_to_Coupons_Exchange() {
-        echo 'exchange';
+        $output = '';
+
+        $user_id = get_current_user_id();
+        if ($user_id == 0) return;
+
+        $wc_loy_usermeta = new WC_Loy_UserMeta($user_id);
+
+        $balance = $wc_loy_usermeta->getPoints();
+
+
+        // Show users current balance
+        $output .= '
+<p>Выш текущий бонусный счёт: ' . $balance . '</p>';
+
+
+        $output .= '
+<form action="" method="post">
+	<input type="hidden" name="points_to_coupons[token]" value="' . wp_create_nonce( 'points-to-woo-coupon' ) . '" />
+	<input type="hidden" name="points_to_coupons[balance]" value="' . $balance . '" />
+	<div>';
+
+        $coupons_numinals_defaults = woocommerce_loyalty_defaults::$coupons_numinals_defaults;
+        foreach ( $coupons_numinals_defaults as $key => $entry) {
+            $htmlName = 'coupon[' . $key . ']';
+            $coupon = $key;
+            $amount = $entry['coupon_rub'];
+            $price = woocommerceLoyalty_Options::instance()->getPriceOfCoupon($key);
+            if ($price > 0) {
+                $output .= '<input type="radio" id="' . $htmlName . '" name="coupon" value="' . $coupon . '"><label for="' . $htmlName . '">Купон на ' . $amount . ' руб. = ' . $price . ' бонусов</label>';
+            }
+        }
+
+        $output .= '</div>
+	<input type="submit" name="submit" value="Обменять" />
+</form>';
+
+
+
+        echo $output;
     }
 }

@@ -79,7 +79,7 @@ class WC_Loy_AccountBonusPage
 
 
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static function process_post() {
 
         if ( isset( $_POST['points_to_coupons'] ) && wp_verify_nonce( $_POST['points_to_coupons']['token'], 'points-to-woo-coupon' ) ) {
@@ -160,75 +160,15 @@ class WC_Loy_AccountBonusPage
 
         }
     }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static function getContent() {
         $output = 'Last time you logged in: yesterday from Terrano...';
 
-        $user_id = get_current_user_id();
-        if ($user_id == 0) return;
-
-        $wc_loy_usermeta = new WC_Loy_UserMeta($user_id);
-
-        $balance = $wc_loy_usermeta->getPoints();
-
-
-
-
-            // Show users current balance
-            $output .= '
-<p>Your current balance is: ' . $balance . '</p>';
-
-            /*/ Error
-            if ( $error !== false )
-                $output .= '<p style="color:red;">' . $error . '</p>';
-
-            // Success
-            elseif ( $code !== false )
-                $output .= '<p>Your coupon code is: <strong>' . $code . '</strong></p>';*/
-
-                $output .= '
-<form action="" method="post">
-	<input type="hidden" name="points_to_coupons[token]" value="' . wp_create_nonce( 'points-to-woo-coupon' ) . '" />
-	<input type="hidden" name="points_to_coupons[balance]" value="' . $balance . '" />
-	<!--label>Amount</label>
-	<input type="text" size="5" name="points_to_coupons[amount]" value="" /-->
-	<div>';
-
-        /*<input type="radio" id="contactChoice1"
-         name="contact" value="email">
-        <label for="contactChoice1">Email</label>
-    
-        <input type="radio" id="contactChoice2"
-         name="contact" value="phone">
-        <label for="contactChoice2">Phone</label>
-    
-        <input type="radio" id="contactChoice3"
-         name="contact" value="mail">
-        <label for="contactChoice3">Mail</label>*/
-
-
-        $coupons_numinals_defaults = woocommerce_loyalty_defaults::$coupons_numinals_defaults;
-        foreach ( $coupons_numinals_defaults as $key => $entry) {
-            $htmlName = 'coupon[' . $key . ']';
-            $coupon = $key;
-            $amount = $entry['coupon_rub'];
-            $price = woocommerceLoyalty_Options::instance()->getPriceOfCoupon($key);
-            if ($price > 0) {
-                $output .= '<input type="radio" id="' . $htmlName . '" name="coupon" value="' . $coupon . '"><label for="' . $htmlName . '">Купон на ' . $amount . ' руб. = ' . $price . ' бонусов</label>';
-            }
-        }
-
-        $output .= '</div>
-
-	<input type="submit" name="submit" value="Обменять" />
-</form>';
-
-
-
-            return $output;
-
+        do_shortcode('[WC_Loy_Bonus_to_Coupons_Exchange]');
         }
 
 
