@@ -5,10 +5,12 @@ add_shortcode( 'WC_Loy_Get_Current_User_Points', array( 'WC_Loy_Shortcodes', 'WC
 add_shortcode( 'WC_Loy_Get_Current_User_Points_History', array( 'WC_Loy_Shortcodes', 'WC_Loy_User_Points_History' ) );
 add_shortcode( 'WC_Loy_Get_Current_User_Rating', array( 'WC_Loy_Shortcodes', 'WC_Loy_User_Rating' ) );
 add_shortcode( 'WC_Loy_Bonus_to_Coupons_Exchange', array( 'WC_Loy_Shortcodes', 'WC_Loy_Bonus_to_Coupons_Exchange' ) );
+add_shortcode( 'WC_Loy_My_Coupons', array( 'WC_Loy_Shortcodes', 'WC_Loy_My_Coupons' ) );
 
 
 class WC_Loy_Shortcodes
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static function WC_Loy_User_Points() {
         $cur_user_id = get_current_user_id();
         if ($cur_user_id == 0) { return ""; }
@@ -17,6 +19,8 @@ class WC_Loy_Shortcodes
 
         return $WCLoyUserMeta->getPoints();
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static function WC_Loy_User_Points_History( $atts ) {
         // белый список параметров и значения по умолчанию
         $atts = shortcode_atts( array(
@@ -53,6 +57,7 @@ class WC_Loy_Shortcodes
         return $toReturn;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static function WC_Loy_User_Rating() {
         $cur_user_id = get_current_user_id();
         if ($cur_user_id == 0) { return ""; }
@@ -62,6 +67,7 @@ class WC_Loy_Shortcodes
         return $WCLoyUserMeta->getRating();
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static function WC_Loy_Bonus_to_Coupons_Exchange() {
         $output = '';
 
@@ -99,8 +105,42 @@ class WC_Loy_Shortcodes
 	<input type="submit" name="submit" value="Обменять" />
 </form>';
 
-
-
         echo $output;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    static function WC_Loy_My_Coupons() {
+
+        $wc_loy_UserMeta = new WC_Loy_UserMeta(get_current_user_id());
+        $is_freeze = !$wc_loy_UserMeta->isPointsUnfreeze();
+        ?>
+
+        <div class="coupons-wrapper">
+            <div class="coupon-wrapper">
+                <div class="coupon">
+                    <div class="code">bwe8o7rewt</div>
+                    <div class="title">Скидка 50 рублей</div>
+                    <div class="description">Получите скидку на только вот это</div>
+                    <div class="time">Действует до: 01.07.2019</div>
+                </div>
+            </div>
+            <div class="coupon-wrapper buy-coupon <?php if ($is_freeze) {
+                echo 'disable';
+            } ?>">
+                <div class="coupon">
+                    <div class="code"></div>
+                    <div class="title">Обмен бонусов на купоны</div>
+                    <div class="description">
+                        <?php if ($is_freeze) { ?>
+                            Вы можете обменять бонусы на купоны только после выполнения заказов на сумму <?php echo woocommerceLoyalty_Options::instance()->getSumOfPointsUnfreeze(); ?> рублей
+                        <?php } else { ?>
+                            Ваш бонусный счёт: <?php echo $wc_loy_UserMeta->getPoints(); ?> б.
+                        <?php } ?>
+                    </div>
+                    <div class="time"></div>
+                </div>
+            </div>
+        </div>
+        <?php
     }
 }
