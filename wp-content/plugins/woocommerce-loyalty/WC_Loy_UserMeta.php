@@ -16,8 +16,8 @@ class WC_Loy_UserMeta
 
     //Данные защищенного метаполя у пользователей
     private $protected_user_meta = array(
-        "points" => 0,  //Баллы
-        "points_history" => array(), //История изменений баллов
+        "points" => 0,  //Бонусы
+        "points_history" => array(), //История изменений бонусов
         "rating" => 0, //Рейтинг пользователя
     );
 
@@ -43,7 +43,7 @@ class WC_Loy_UserMeta
         $res = $this->addPoints(-10, "тест");
         $res = $this->removePoints(-10, "тест");
         $res = $this->removePoints(600, "тест");
-        $res = $this->removePoints(5, "Обмен баллов на купон со скидкой");
+        $res = $this->removePoints(5, "Обмен бонусов на купон со скидкой");
 
         var_dump($res);
         delete_user_meta($user_id, self::META_NAME);*/
@@ -137,7 +137,7 @@ class WC_Loy_UserMeta
         $toReturn = false;
 
 
-        // Из настроек. Сумма, на которую нужно набрать заказов, чтобы разморозить баллы
+        // Из настроек. Сумма, на которую нужно набрать заказов, чтобы разморозить бонусы
         $sumOfPointsUnfreeze = woocommerceLoyalty_Options::instance()->getSumOfPointsUnfreeze();
 
 

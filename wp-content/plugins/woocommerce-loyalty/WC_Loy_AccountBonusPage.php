@@ -122,7 +122,7 @@ class WC_Loy_AccountBonusPage
                     'post_type' => 'shop_coupon'
                 ));
 
-                // Вычитаем баллы у пользователя
+                // Вычитаем бонусы у пользователя
                 $price = woocommerceLoyalty_Options::instance()->getPriceOfCoupon($neededCoupon);
                 $amount = woocommerce_loyalty_defaults::$coupons_numinals_defaults[$neededCoupon]['coupon_rub'];
                 $result = $wc_loy_usermeta->removePoints($price, 'Покупка купона на сумму ' . $amount . ' руб.');
@@ -210,7 +210,7 @@ class WC_Loy_AccountBonusPage
 
             //Убеждаемся что на балансе достаточно бонусов
             if ($balance < $price)
-                return 'Не хватает баллов для приобретения этого купона';
+                return 'Не хватает бонусов для приобретения этого купона';
 
 
             return false;

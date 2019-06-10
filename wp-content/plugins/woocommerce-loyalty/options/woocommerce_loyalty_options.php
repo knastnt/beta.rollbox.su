@@ -81,8 +81,8 @@ class woocommerceLoyalty_Options
         }
 
 
-        // Раздел Цены скидочных купонов в баллах
-        add_settings_section('section_id_2', 'Цены скидочных купонов в баллах. (0 - не использовать такой купон)', '', 'woocommerce_loyalty_page');
+        // Раздел Цены скидочных купонов в бонусах
+        add_settings_section('section_id_2', 'Цены скидочных купонов в бонусах. (0 - не использовать такой купон)', '', 'woocommerce_loyalty_page');
 
         $coupons_numinals_defaults = woocommerce_loyalty_defaults::$coupons_numinals_defaults;
         foreach ( $coupons_numinals_defaults as $entry) {
@@ -156,7 +156,7 @@ class woocommerceLoyalty_Options
         $optionsArray = get_option('woocommerce_loyalty_options_array');
         $defaultValue = woocommerce_loyalty_defaults::$main_defaults['sumOfPointsUnfreeze']['default'];
 
-        // Из настроек. Сумма, на которую нужно набрать заказов, чтобы разморозить баллы
+        // Из настроек. Сумма, на которую нужно набрать заказов, чтобы разморозить бонусы
         $sumOfPointsUnfreeze = isset($optionsArray['sumOfPointsUnfreeze']) ? $optionsArray['sumOfPointsUnfreeze'] : $defaultValue;
 
         return $sumOfPointsUnfreeze;
