@@ -210,7 +210,11 @@ class WC_Loy_Shortcodes
                         </div>
                         </a>
                     </div>
-            <?php } ?>
+            <?php } else {
+                if (!$posts_array) {
+                    echo '<p class="no-coupons">У Вас пока нет купонов.</p>';
+                }
+            } ?>
         </div>
         </div>
         <?php
