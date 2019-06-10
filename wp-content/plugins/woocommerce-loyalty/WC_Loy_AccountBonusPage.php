@@ -91,20 +91,21 @@ class WC_Loy_AccountBonusPage
 
         $balance = $wc_loy_usermeta->getPoints();
 
-        $coupons_numinals_defaults = woocommerce_loyalty_defaults::$coupons_numinals_defaults;
+
 
 
         // Form submission
         if ( isset( $_POST['points_to_coupons'] ) && wp_verify_nonce( $_POST['points_to_coupons']['token'], 'points-to-woo-coupon' ) ) {
 
 
-            $neededAmount = 0;
-            if (isset( $_POST['coupon-fixed'])) {
-                $neededAmount = intval($_POST['coupon-fixed']);
-            }
+            /*$neededAmount = 0;
+            if (isset( $_POST['coupon'])) {
+                $neededAmount = intval($_POST['coupon']);
+            }*/
+            $neededCoupon = isset($_POST['coupon']) ? $_POST['coupon'] : '';
 
 
-            $error = self::checkAbility($neededAmount, $balance, $wc_loy_usermeta, $coupons_numinals_defaults);
+            $error = self::checkAbility($neededCoupon, $balance, $wc_loy_usermeta);
 
 
             // If no errors
@@ -202,10 +203,14 @@ class WC_Loy_AccountBonusPage
         <label for="contactChoice3">Mail</label>*/
 
 
-        foreach ( $coupons_numinals_defaults as $entry) {
-            $name = 'coupon-fixed[' . $entry['coupon_rub'] . ']';
-            if (getPriceOfCoupon($name) > 0) {
-                $output .= '<input type="radio" id="' . $name . '" name="coupon-fixed" value="' . $entry['coupon_rub'] . '"><label for="' . $name . '">Купон на ' . $entry['coupon_rub'] . ' руб. = ' . getPriceOfCoupon($name) . ' бонусов</label>';
+        $coupons_numinals_defaults = woocommerce_loyalty_defaults::$coupons_numinals_defaults;
+        foreach ( $coupons_numinals_defaults as $key => $entry) {
+            $htmlName = 'coupon[' . $key . ']';
+            $coupon = $key;
+            $amount = $entry['coupon_rub'];
+            $price = woocommerceLoyalty_Options::instance()->getPriceOfCoupon($key);
+            if ($price > 0) {
+                $output .= '<input type="radio" id="' . $htmlName . '" name="coupon" value="' . $coupon . '"><label for="' . $htmlName . '">Купон на ' . $amount . ' руб. = ' . $price . ' бонусов</label>';
             }
         }
 
@@ -228,19 +233,22 @@ class WC_Loy_AccountBonusPage
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    static function checkAbility($neededAmount, $balance, $wc_loy_usermeta, $coupons_numinals_defaults) {
+    static function checkAbility($neededCoupon, $balance, $wc_loy_usermeta) {
+
+            $coupons_numinals_defaults = woocommerce_loyalty_defaults::$coupons_numinals_defaults;
+
 
             // Убеждаемся что это не повторная отравка POST при обновлении страницы
             if ($balance != $_POST['points_to_coupons']['balance'])
                 return 'Эта операция уже выполнена ранее';
 
             // Убеждаемся что купон выбран
-            if ($neededAmount <= 0)
+            if ($neededCoupon == '')
                 return 'Неверный номинал купона';
 
-            // Убеждаемся что купон такого размера существует
-            if (!isset($coupons_numinals_defaults['fixed-' . $neededAmount]))
-                return 'Купон запрошенного размера не существует';
+            // Убеждаемся что такой купон существует
+            if (!isset($coupons_numinals_defaults[$neededCoupon]))
+                return 'Такой купон не существует';
 
 
             //Убеждаемся что бонусы не заморожены
@@ -248,7 +256,8 @@ class WC_Loy_AccountBonusPage
                 return 'Ваши бонусы ещё не разморожены';
 
             //Убеждаемся что на балансе достаточно бонусов
-            $price = $coupons_numinals_defaults['fixed-' . $neededAmount]['coupun_price_in_points'];
+            //$price = $coupons_numinals_defaults['fixed-' . $neededAmount]['coupun_price_in_points'];
+            $price = woocommerceLoyalty_Options::instance()->getPriceOfCoupon($neededCoupon);
             if ($balance < $price)
                 return 'Не хватает баллов для приобретения этого купона';
 
