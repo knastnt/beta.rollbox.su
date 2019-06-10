@@ -122,6 +122,7 @@ class WC_Loy_Shortcodes
 
         //Извлекаем параметры, переданные в шорткоде
         extract( shortcode_atts( array(
+            'title' => '',
             'link_to_exchange' => '',
         ), $atts ) );
 
@@ -152,6 +153,8 @@ class WC_Loy_Shortcodes
         $posts_array = get_posts( $args );
 
         ?>
+        <div class="wc-loy-myCoupons">
+        <h3><?php echo isset($atts['title']) ? $atts['title'] : 'Ваши купоны' ?></h3>
         <div class="coupons-wrapper">
         <?php
 
@@ -201,6 +204,7 @@ class WC_Loy_Shortcodes
                         </a>
                     </div>
             <?php } ?>
+        </div>
         </div>
         <?php
     }

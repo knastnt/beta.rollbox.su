@@ -1,16 +1,18 @@
-.wc-loy-beforeCart {
+.wc-loy-myCoupons {
     background-color: #fdfdfd;
     margin-bottom: 3em;
 }
-.wc-loy-beforeCart h3 {
+.wc-loy-myCoupons h3 {
     background-color: #f8f8f8;
     padding: 5px 15px;
 }
-.wc-loy-beforeCart .coupons-wrapper {
+
+
+.wc-loy-myCoupons .coupons-wrapper {
     display: flex;
     flex-wrap: wrap;
 }
-.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper {
+.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper {
     background-color: #eb3e32;
     border-radius: 15px;
     width: 300px;
@@ -18,13 +20,13 @@
     margin: 15px;
     align-self: flex-start;
 }
-.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper.buy-coupon {
+.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper.buy-coupon {
     background-color: var(--color-lightgray);
 }
-.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper.buy-coupon.disable {
+.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper.buy-coupon.disable {
     background-color: var(--color-darkgray-light);
 }
-.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper .coupon {
+.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper .coupon {
     border-radius: 15px;
     border: 2px dashed white;
     padding: 7px;
@@ -32,21 +34,27 @@
     font-weight: 100;
     text-align: center;
 }
-.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper:not(.disable) .coupon {
-    cursor: pointer;
+.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper:not(.disable) .coupon {
+    /*cursor: pointer;*/
 }
 
-.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper .coupon .code {
+.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper .coupon .code {
     text-align: left;
 }
-.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper .coupon .title {
+.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper .coupon .title {
     font-size: 25px;
     font-weight: 700;
 }
-.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper .coupon .description {
+.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper .coupon .description {
     margin-bottom: 5px;
     font-size: 15px;
 }
-.wc-loy-beforeCart .coupons-wrapper .coupon-wrapper .coupon .time {
+.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper .coupon .time {
     text-align: right;
 }
+
+
+
+
+
+
