@@ -15,8 +15,7 @@ add_action( 'init', array('WC_Loy_AccountBonusPage', 'add_more_hook_endpoint') )
 //Step 3. Content for the new page in My Account, woocommerce_account_{ENDPOINT NAME}_endpoint
 add_action( 'woocommerce_account_rewards_endpoint', array('WC_Loy_AccountBonusPage', 'my_account_rewards_endpoint_content') );
 
-//
-
+//Обработка POST-запроса
 add_action( 'init', array('WC_Loy_AccountBonusPage', 'process_post') );
 
 
@@ -83,8 +82,6 @@ class WC_Loy_AccountBonusPage
 
     static function process_post() {
 
-
-        // Form submission
         if ( isset( $_POST['points_to_coupons'] ) && wp_verify_nonce( $_POST['points_to_coupons']['token'], 'points-to-woo-coupon' ) ) {
 
             $user_id = get_current_user_id();
@@ -95,11 +92,6 @@ class WC_Loy_AccountBonusPage
             $balance = $wc_loy_usermeta->getPoints();
 
 
-
-            /*$neededAmount = 0;
-            if (isset( $_POST['coupon'])) {
-                $neededAmount = intval($_POST['coupon']);
-            }*/
             $neededCoupon = isset($_POST['coupon']) ? $_POST['coupon'] : '';
 
 
@@ -269,9 +261,13 @@ class WC_Loy_AccountBonusPage
             if (!$wc_loy_usermeta->isPointsUnfreeze())
                 return 'Ваши бонусы ещё не разморожены';
 
-            //Убеждаемся что на балансе достаточно бонусов
-            //$price = $coupons_numinals_defaults['fixed-' . $neededAmount]['coupun_price_in_points'];
             $price = woocommerceLoyalty_Options::instance()->getPriceOfCoupon($neededCoupon);
+
+            //Убеждаемся что стоимость купона > 0
+            if ($price <= 0)
+                return 'Неверный номинал купона';
+
+            //Убеждаемся что на балансе достаточно бонусов
             if ($balance < $price)
                 return 'Не хватает баллов для приобретения этого купона';
 
