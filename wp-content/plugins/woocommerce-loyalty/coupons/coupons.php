@@ -32,7 +32,7 @@ class Coupons
 
     static function check_user_id_when_coupon_apply( $true_p, $coupon_p, $this_p ) {
         $user_id = get_post_meta( $coupon_p->get_id(), 'only_for_user_id' );
-        $user_id = isset( $user_id[0] ) ? $user_id[0] : 0;
+        $user_id = isset( $user_id[0] ) ? intval($user_id[0]) : 0;
 
         if ($user_id > 0) {
             if ($user_id != get_current_user_id()) {
@@ -40,6 +40,6 @@ class Coupons
             }
         }
 
-        return true;
+        return $true_p;
     }
 }
