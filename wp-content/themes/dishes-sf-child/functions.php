@@ -56,7 +56,11 @@ function wc_riotxoa_coupon_is_valid( $result, $coupon ) {
 
     $restricted_emails = $coupon->get_email_restrictions();
 
-    return ( in_array( $user->user_email, $restricted_emails ) ? $result : false );
+    if (count($restricted_emails)>0) {
+        return (in_array($user->user_email, $restricted_emails) ? $result : false);
+    }else{
+        return $result;
+    }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
