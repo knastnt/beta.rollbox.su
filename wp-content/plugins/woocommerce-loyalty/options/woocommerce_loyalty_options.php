@@ -86,7 +86,7 @@ class woocommerceLoyalty_Options
 
         $coupons_numinals_defaults = woocommerce_loyalty_defaults::$coupons_numinals_defaults;
         foreach ( $coupons_numinals_defaults as $entry) {
-            add_settings_field("rub_$entry[coupon_rub]", "Скидка $entry[coupon_rub] рублей", array( $this, 'fill_rub_numinals'), 'woocommerce_loyalty_page', 'section_id_2', $entry);
+            add_settings_field("fixed_$entry[coupon_rub]", "Скидка $entry[coupon_rub] рублей", array( $this, 'fill_fixed_numinals'), 'woocommerce_loyalty_page', 'section_id_2', $entry);
         }
 
 
@@ -111,14 +111,14 @@ class woocommerceLoyalty_Options
 
 
     ## Заполняем опции скидочных купонов
-    public function fill_rub_numinals( $args )
+    public function fill_fixed_numinals( $args )
     {
         $numinal = $args['coupon_rub'];
         $default_points = $args['coupun_price_in_points'];
         $val = get_option('woocommerce_loyalty_options_array');
-        $val = isset($val["rub_$numinal"]) ? $val["rub_$numinal"] : $default_points;
+        $val = isset($val["fixed_$numinal"]) ? $val["fixed_$numinal"] : $default_points;
         ?>
-        <input type="number" name="woocommerce_loyalty_options_array[rub_<?php echo $numinal; ?>]" value="<?php echo esc_attr($val) ?>"
+        <input type="number" name="woocommerce_loyalty_options_array[fixed_<?php echo $numinal; ?>]" value="<?php echo esc_attr($val) ?>"
                style="width: 30%;"/>
         <?php
     }
@@ -137,7 +137,7 @@ class woocommerceLoyalty_Options
             }
 
            // Скидочные купоны
-            if (preg_match("/^rub_\\d+$/", $name)) {
+            if (preg_match("/^fixed_\\d+$/", $name)) {
                 $val = intval($val);
             }
 
@@ -164,6 +164,7 @@ class woocommerceLoyalty_Options
 
     public function getPriceOfCoupon($name)
     {
+        //Получаем массив опций плагина
         $optionsArray = get_option('woocommerce_loyalty_options_array');
 
         if(!isset(woocommerce_loyalty_defaults::$coupons_numinals_defaults[$name]))
@@ -172,9 +173,9 @@ class woocommerceLoyalty_Options
         $defaultValue = woocommerce_loyalty_defaults::$coupons_numinals_defaults[$name]['coupun_price_in_points'];
 
 
-        $sumOfPointsUnfreeze = isset($optionsArray['sumOfPointsUnfreeze']) ? $optionsArray['sumOfPointsUnfreeze'] : $defaultValue;
+        $toReturn = isset($optionsArray[$name]) ? $optionsArray[$name] : $defaultValue;
 
-        return $sumOfPointsUnfreeze;
+        return $toReturn;
     }
 
 }

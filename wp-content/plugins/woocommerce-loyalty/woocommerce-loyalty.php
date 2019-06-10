@@ -66,6 +66,8 @@ final class woocommerceLoyalty_Core
 
 
         //new WC_Loy_UserMeta(1);
+        woocommerceLoyalty_Options::instance()->getPriceOfCoupon('fixed_100');
+
     }
 
 

@@ -38,31 +38,31 @@ class woocommerce_loyalty_defaults
 
     // Перечень скидочных купонов и их стоимости в баллах
     public static $coupons_numinals_defaults = array(
-        'fixed-10' => array(
+        'fixed_10' => array(
             "coupon_rub" => "10",  //Купоны в рублях
             "coupun_price_in_points" => "0", //Соответственные цены в баллах
         ),
-        'fixed-50' => array(
+        'fixed_50' => array(
             "coupon_rub" => "50",
             "coupun_price_in_points" => "250",
         ),
-        'fixed-100' => array(
+        'fixed_100' => array(
             "coupon_rub" => "100",
             "coupun_price_in_points" => "450",
         ),
-        'fixed-200' => array(
+        'fixed_200' => array(
             "coupon_rub" => "200",
             "coupun_price_in_points" => "800",
         ),
-        'fixed-500' => array(
+        'fixed_500' => array(
             "coupon_rub" => "500",
             "coupun_price_in_points" => "1750",
         ),
-        'fixed-1000' => array(
+        'fixed_1000' => array(
             "coupon_rub" => "1000",
             "coupun_price_in_points" => "3000",
         ),
-        'fixed-2000' => array(
+        'fixed_2000' => array(
             "coupon_rub" => "2000",
             "coupun_price_in_points" => "5000",
         ),
