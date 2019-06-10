@@ -17,6 +17,8 @@ add_action( 'woocommerce_account_rewards_endpoint', array('WC_Loy_AccountBonusPa
 
 //
 
+add_action( 'init', array('WC_Loy_AccountBonusPage', 'process_post') );
+
 
 class WC_Loy_AccountBonusPage
 {
@@ -79,23 +81,19 @@ class WC_Loy_AccountBonusPage
 
 
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    static function getContent() {
-        $output = 'Last time you logged in: yesterday from Terrano...';
-
-        $user_id = get_current_user_id();
-        if ($user_id == 0) return;
-
-        $wc_loy_usermeta = new WC_Loy_UserMeta($user_id);
-
-        $balance = $wc_loy_usermeta->getPoints();
-
-
+    static function process_post() {
 
 
         // Form submission
         if ( isset( $_POST['points_to_coupons'] ) && wp_verify_nonce( $_POST['points_to_coupons']['token'], 'points-to-woo-coupon' ) ) {
+
+            $user_id = get_current_user_id();
+            if ($user_id == 0) return;
+
+            $wc_loy_usermeta = new WC_Loy_UserMeta($user_id);
+
+            $balance = $wc_loy_usermeta->getPoints();
+
 
 
             /*$neededAmount = 0;
@@ -165,11 +163,23 @@ class WC_Loy_AccountBonusPage
                 //Перезагружаем страницу
                 //header("Refresh:0");
             }else{
-                //не канает wc_add_notice( $error, 'error' ); - слишком поздно вызывается, все сообщения сформированы
-                echo $error;
+                wc_add_notice( $error, 'error' );
             }
 
         }
+    }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    static function getContent() {
+        $output = 'Last time you logged in: yesterday from Terrano...';
+
+        $user_id = get_current_user_id();
+        if ($user_id == 0) return;
+
+        $wc_loy_usermeta = new WC_Loy_UserMeta($user_id);
+
+        $balance = $wc_loy_usermeta->getPoints();
 
 
 
