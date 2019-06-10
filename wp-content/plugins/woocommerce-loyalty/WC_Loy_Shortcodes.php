@@ -81,7 +81,7 @@ class WC_Loy_Shortcodes
 
         // Show users current balance
         $output .= '
-<p>Выш текущий бонусный счёт: ' . $balance . '</p>';
+<p>Ваш бонусный счёт: ' . $balance . '</p>';
 
 
         $output .= '
@@ -109,37 +109,98 @@ class WC_Loy_Shortcodes
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    static function WC_Loy_My_Coupons() {
+    static function WC_Loy_My_Coupons($atts) {
 
-        $wc_loy_UserMeta = new WC_Loy_UserMeta(get_current_user_id());
+        // User must be logged in
+        if ( ! is_user_logged_in() ){
+            return;
+        }
+
+        $user_id = get_current_user_id();
+        $wc_loy_UserMeta = new WC_Loy_UserMeta($user_id);
         $is_freeze = !$wc_loy_UserMeta->isPointsUnfreeze();
-        ?>
 
+        //Извлекаем параметры, переданные в шорткоде
+        extract( shortcode_atts( array(
+            'link_to_exchange' => '',
+        ), $atts ) );
+
+
+        //показываем только купоны у которых only_for_user_id == user_ID
+        $args = array(
+            'posts_per_page' => -1,
+            'orderby'          => 'date',
+            'post_type'        => 'shop_coupon',
+            //'author'	   => $user_id,
+            'post_status'      => 'publish',
+
+            //'meta_key'    => 'only_for_user_id',
+            //'meta_value'  => $user_id,
+
+            'meta_query' => array(
+                // meta query takes an array of arrays, watch out for this!
+                array(
+                    'key'     => 'only_for_user_id',
+                    'value'   => $user_id,
+                    //'value'   => array('anOption', 'anotherOption', 'thirdOption'),
+                    //'compare' => 'IN'
+                )
+            )
+
+        );
+
+        $posts_array = get_posts( $args );
+
+        ?>
         <div class="coupons-wrapper">
+        <?php
+
+        foreach ( $posts_array as $coupon ) {
+
+            // Get the name for each coupon post
+            //$coupon_name = $coupon->post_title;
+            $coupon_obj = new WC_Coupon( $coupon->ID);
+            //https://docs.woocommerce.com/wc-apidocs/class-WC_Coupon.html
+            if($coupon_obj->get_usage_count() > 0) continue;
+
+            //echo $coupon_obj->get_code() . '  (скидка ' . $coupon_obj->get_amount() . ' руб.)<br>';
+            ?>
+
             <div class="coupon-wrapper">
                 <div class="coupon">
-                    <div class="code">bwe8o7rewt</div>
-                    <div class="title">Скидка 50 рублей</div>
-                    <div class="description">Получите скидку на только вот это</div>
-                    <div class="time">Действует до: 01.07.2019</div>
+                    <div class="code"><?php echo $coupon_obj->get_code(); ?></div>
+                    <div class="title">Скидка <?php echo $coupon_obj->get_amount(); ?> рублей</div>
+                    <div class="description"><?php echo $coupon_obj->get_description(); ?></div>
+                    <div class="time">Действует до: --.--.----</div>
                 </div>
             </div>
-            <div class="coupon-wrapper buy-coupon <?php if ($is_freeze) {
-                echo 'disable';
-            } ?>">
-                <div class="coupon">
-                    <div class="code"></div>
-                    <div class="title">Обмен бонусов на купоны</div>
-                    <div class="description">
-                        <?php if ($is_freeze) { ?>
-                            Вы можете обменять бонусы на купоны только после выполнения заказов на сумму <?php echo woocommerceLoyalty_Options::instance()->getSumOfPointsUnfreeze(); ?> рублей
-                        <?php } else { ?>
-                            Ваш бонусный счёт: <?php echo $wc_loy_UserMeta->getPoints(); ?> б.
-                        <?php } ?>
+
+            <?php
+
+        }
+
+
+        ?>
+
+
+            <?php if ( isset($atts['link_to_exchange']) && $atts['link_to_exchange'] != '' ) { ?>
+                    <div class="coupon-wrapper buy-coupon <?php if ($is_freeze) { echo 'disable'; } ?>">
+                        <a href="<?php echo $atts['link_to_exchange']; ?>">
+                        <div class="coupon">
+                            <div class="code"></div>
+                            <div class="title">Обмен бонусов на купоны</div>
+                            <div class="description">
+                                <?php if ($is_freeze) { ?>
+                                    Вы можете обменять бонусы на купоны только после выполнения заказов на сумму <?php echo woocommerceLoyalty_Options::instance()->getSumOfPointsUnfreeze(); ?> рублей
+                                <?php } else { ?>
+                                    Ваш бонусный счёт: <?php echo $wc_loy_UserMeta->getPoints(); ?> б.
+                                <?php } ?>
+                            </div>
+                            <div class="time"></div>
+                        </div>
+                        </a>
                     </div>
-                    <div class="time"></div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
         <?php
     }
