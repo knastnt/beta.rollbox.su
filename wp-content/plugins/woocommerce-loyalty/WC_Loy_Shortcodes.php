@@ -158,6 +158,8 @@ class WC_Loy_Shortcodes
         <div class="coupons-wrapper">
         <?php
 
+        $couponCount = 0;
+
         foreach ( $posts_array as $coupon ) {
 
             // Get the name for each coupon post
@@ -166,6 +168,7 @@ class WC_Loy_Shortcodes
             //https://docs.woocommerce.com/wc-apidocs/class-WC_Coupon.html
             if($coupon_obj->get_usage_count() > 0) continue;
 
+            $couponCount++;
             //echo $coupon_obj->get_code() . '  (скидка ' . $coupon_obj->get_amount() . ' руб.)<br>';
             ?>
 
@@ -211,7 +214,7 @@ class WC_Loy_Shortcodes
                         </a>
                     </div>
             <?php } else {
-                if (!$posts_array) {
+                if ($couponCount == 0) {
                     echo '<p class="no-coupons">У Вас пока нет купонов.</p>';
                 }
             } ?>
