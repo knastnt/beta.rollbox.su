@@ -38,8 +38,11 @@
     font-weight: 100;
     text-align: center;
 }
-.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper:not(.disable) .coupon {
-    /*cursor: pointer;*/
+.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper:not(.disable) .coupon.enabled {
+    cursor: pointer;
+}
+.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper:not(.disable) .coupon.disabled {
+    background-color: #fcb0b0;
 }
 
 .wc-loy-myCoupons .coupons-wrapper .coupon-wrapper .coupon .code {

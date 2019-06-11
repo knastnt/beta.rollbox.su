@@ -180,7 +180,7 @@ class WC_Loy_Shortcodes
             ?>
 
             <div class="coupon-wrapper">
-                <div class="coupon">
+                <div class="coupon enabled">
                     <div class="code"><?php echo $coupon_obj->get_code(); ?></div>
                     <div class="title">Скидка <?php echo $coupon_obj->get_amount(); ?> рублей</div>
                     <div class="description"><?php echo $coupon_obj->get_description(); ?></div>

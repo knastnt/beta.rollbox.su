@@ -171,7 +171,7 @@ class WC_Loy_AccountBonusPage
 
         do_shortcode('[WC_Loy_My_Coupons]');
         do_shortcode('[WC_Loy_Bonus_to_Coupons_Exchange]');
-        }
+    }
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
