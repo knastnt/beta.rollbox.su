@@ -131,6 +131,7 @@ class WC_Loy_Shortcodes
         extract( shortcode_atts( array(
             'title' => '',
             'link_to_exchange' => '',
+            'make_disabled_applied_in_cart_coupons' => '',
         ), $atts ) );
 
 
@@ -159,6 +160,16 @@ class WC_Loy_Shortcodes
 
         $posts_array = get_posts( $args );
 
+
+        //Если в параметре указано мол, делать disabled примененные в корзине купоны, то:
+        $couponsAppledInCart = array();
+        if ( isset($atts['make_disabled_applied_in_cart_coupons']) && $atts['make_disabled_applied_in_cart_coupons'] == "true" ) {
+            foreach (WC()->cart->get_coupons() as $code => $coupon) {
+                $couponsAppledInCart[] = $code;
+            }
+        }
+
+
         ?>
         <div class="wc-loy-myCoupons wc-loy-block">
         <h3><?php echo isset($atts['title']) ? $atts['title'] : 'Ваши купоны' ?></h3>
@@ -177,10 +188,17 @@ class WC_Loy_Shortcodes
 
             $couponCount++;
             //echo $coupon_obj->get_code() . '  (скидка ' . $coupon_obj->get_amount() . ' руб.)<br>';
+            $enabledOrNot = "enabled";
+            if ( isset($atts['make_disabled_applied_in_cart_coupons']) && $atts['make_disabled_applied_in_cart_coupons'] == "true" ) {
+                $currentCode = $coupon_obj->get_code();
+                if (in_array($currentCode, $couponsAppledInCart)) {
+                    $enabledOrNot = "disabled";
+                }
+            }
             ?>
 
             <div class="coupon-wrapper">
-                <div class="coupon enabled">
+                <div class="coupon <?php echo $enabledOrNot; ?>">
                     <div class="code"><?php echo $coupon_obj->get_code(); ?></div>
                     <div class="title">Скидка <?php echo $coupon_obj->get_amount(); ?> рублей</div>
                     <div class="description"><?php echo $coupon_obj->get_description(); ?></div>
