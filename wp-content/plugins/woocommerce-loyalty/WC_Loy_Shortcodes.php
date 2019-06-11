@@ -78,9 +78,14 @@ class WC_Loy_Shortcodes
 
         $balance = $wc_loy_usermeta->getPoints();
 
+        $is_freeze = !$wc_loy_usermeta->isPointsUnfreeze();
+
 
         // Show users current balance
         $output .= '
+<div class="wc-loy-exchange wc-loy-block">
+<h3>Обмен бонусов на купоны</h3>
+<div class="exchange-wrapper wc-loy-block-content">
 <p>Ваш бонусный счёт: ' . $balance . '</p>';
 
 
@@ -88,7 +93,7 @@ class WC_Loy_Shortcodes
 <form action="" method="post">
 	<input type="hidden" name="points_to_coupons[token]" value="' . wp_create_nonce( 'points-to-woo-coupon' ) . '" />
 	<input type="hidden" name="points_to_coupons[balance]" value="' . $balance . '" />
-	<div>';
+	<div class="radio-inputs">';
 
         $coupons_numinals_defaults = woocommerce_loyalty_defaults::$coupons_numinals_defaults;
         foreach ( $coupons_numinals_defaults as $key => $entry) {
@@ -97,13 +102,15 @@ class WC_Loy_Shortcodes
             $amount = $entry['coupon_rub'];
             $price = woocommerceLoyalty_Options::instance()->getPriceOfCoupon($key);
             if ($price > 0) {
-                $output .= '<input type="radio" id="' . $htmlName . '" name="coupon" value="' . $coupon . '"><label for="' . $htmlName . '">Купон на ' . $amount . ' руб. = ' . $price . ' бонусов</label>';
+                $disabled = ($is_freeze || $price > $balance) ? 'disabled="disabled"' : '';
+                $output .= '<input type="radio" ' . $disabled . ' id="' . $htmlName . '" name="coupon" value="' . $coupon . '"><label for="' . $htmlName . '">Скидка ' . $amount . ' руб = ' . $price . ' бонусов</label>';
+                $output .= '<div style="clear:both;"></div>';
             }
         }
 
         $output .= '</div>
 	<input type="submit" name="submit" value="Обменять" />
-</form>';
+</form></div></div>';
 
         echo $output;
     }
@@ -153,9 +160,9 @@ class WC_Loy_Shortcodes
         $posts_array = get_posts( $args );
 
         ?>
-        <div class="wc-loy-myCoupons">
+        <div class="wc-loy-myCoupons wc-loy-block">
         <h3><?php echo isset($atts['title']) ? $atts['title'] : 'Ваши купоны' ?></h3>
-        <div class="coupons-wrapper">
+        <div class="coupons-wrapper wc-loy-block-content">
         <?php
 
         $couponCount = 0;

@@ -1,11 +1,15 @@
-.wc-loy-myCoupons {
-    background-color: #fdfdfd;
+.wc-loy-block {
+    background-color: #f6f6f6;
     margin-bottom: 3em;
 }
-.wc-loy-myCoupons h3 {
-    background-color: #f8f8f8;
+.wc-loy-block h3 {
+    background-color: #f0f0f0;
     padding: 5px 15px;
 }
+
+
+
+
 
 
 .wc-loy-myCoupons .coupons-wrapper {
@@ -15,7 +19,7 @@
 .wc-loy-myCoupons .coupons-wrapper .coupon-wrapper {
     background-color: #eb3e32;
     border-radius: 15px;
-    width: 300px;
+    width: 250px;
     padding: 2px;
     margin: 15px;
     align-self: flex-start;
@@ -65,3 +69,18 @@
 
 
 
+
+.exchange-wrapper {
+    padding: 0px 18px 15px;
+}
+.exchange-wrapper p {
+    font-size: 1.3em;
+    font-weight: 200;
+    margin-bottom: 10px;
+}
+.exchange-wrapper .radio-inputs {
+    margin-bottom: 10px;
+}
+.exchange-wrapper form {
+    margin-bottom: 0;
+}
