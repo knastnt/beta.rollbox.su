@@ -24,10 +24,10 @@
     margin: 15px;
     align-self: flex-start;
 }
-.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper.buy-coupon {
+.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper.buy-coupon-wrapper {
     background-color: var(--color-lightgray);
 }
-.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper.buy-coupon.disable {
+.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper.buy-coupon-wrapper.disable {
     background-color: var(--color-darkgray-light);
 }
 .wc-loy-myCoupons .coupons-wrapper .coupon-wrapper .coupon {

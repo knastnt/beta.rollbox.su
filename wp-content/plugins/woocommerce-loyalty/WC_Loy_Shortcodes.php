@@ -204,9 +204,9 @@ class WC_Loy_Shortcodes
 
 
             <?php if ( isset($atts['link_to_exchange']) && $atts['link_to_exchange'] != '' ) { ?>
-                    <div class="coupon-wrapper buy-coupon <?php if ($is_freeze) { echo 'disable'; } ?>">
+                    <div class="coupon-wrapper buy-coupon-wrapper <?php if ($is_freeze) { echo 'disable'; } ?>">
                         <a href="<?php echo $atts['link_to_exchange']; ?>">
-                        <div class="coupon">
+                        <div class="coupon buy-coupon">
                             <div class="code"></div>
                             <div class="title">Обмен бонусов на купоны</div>
                             <div class="description">

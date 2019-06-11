@@ -1,7 +1,7 @@
 (function($) {
 
 
-    couponClick = '.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper:not(.disable) .coupon';
+    couponClick = '.wc-loy-myCoupons .coupons-wrapper .coupon-wrapper:not(.disable) .coupon:not(.buy-coupon)';
     couponInputText =  'table.cart td.actions .coupon #coupon_code';
     couponInputButton =  'table.cart td.actions .coupon .button';
 
@@ -27,8 +27,38 @@
         }else{
             //Типа закончено обновление
             //console.log(0);
-            discounts = $(".cart_totals .shop_table tbody .cart-discount");
-            console.log(discounts.length);
+            discounts = $(".cart_totals .shop_table tbody .cart-discount > th");
+
+            // Получаем все примененные купоны
+            var codes = [];
+            discounts.each(function (index, el){
+                //это код купона, который нужно сделать disable
+                var couponCode = $(el).text().substr(7);
+                //console.log(couponCode);
+                codes.push(couponCode);
+
+            });
+
+            //Перебираем все купоны и меняем их классы на enabled
+            $(".wc-loy-myCoupons .coupons-wrapper .coupon-wrapper .coupon:not(.buy-coupon)").each(function (index, el){
+                //var v  = $(el).val();
+                //if (v) personsIdsArray.push(v);
+                var currentCode = $(el).children(".code").text();
+
+                if(jQuery.inArray(currentCode, codes) !== -1) {
+                    $(el).removeClass('enabled');
+                    $(el).addClass('disabled');
+                }else{
+                    $(el).removeClass('disabled');
+                    $(el).addClass('enabled');
+                }
+
+
+            });
+
+            /*if(discounts.length > 0) {
+                //отмечаем нужные как disabled
+            }*/
         }
     });
 
