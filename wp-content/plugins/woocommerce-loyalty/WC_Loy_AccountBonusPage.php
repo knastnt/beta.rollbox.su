@@ -192,7 +192,7 @@ class WC_Loy_AccountBonusPage
 
             // Убеждаемся что купон выбран
             if ($neededCoupon == '')
-                return 'Неверный номинал купона';
+                return 'Купон не выбран';
 
             // Убеждаемся что такой купон существует
             if (!isset($coupons_numinals_defaults[$neededCoupon]))
