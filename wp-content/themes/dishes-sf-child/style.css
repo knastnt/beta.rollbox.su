@@ -645,7 +645,7 @@ ul.products li.product:hover img {
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /* оформление заказа */
-table.cart td.product-quantity .qty {
+.quantity .qty {
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
     appearance: textfield;
