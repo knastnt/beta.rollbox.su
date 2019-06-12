@@ -69,7 +69,6 @@ class WC_Loy_Shortcodes
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static function WC_Loy_Bonus_to_Coupons_Exchange() {
-        $output = '';
 
         $user_id = get_current_user_id();
         if ($user_id == 0) return;
@@ -80,45 +79,48 @@ class WC_Loy_Shortcodes
 
         $is_freeze = !$wc_loy_usermeta->isPointsUnfreeze();
 
+        ?>
+        <div class="wc-loy-exchange wc-loy-block">
+            <h3>Обмен бонусов на купоны</h3>
+            <div class="exchange-wrapper wc-loy-block-content">
 
-        // Show users current balance
-        $output .= '
-<div class="wc-loy-exchange wc-loy-block">
-<h3>Обмен бонусов на купоны</h3>
-<div class="exchange-wrapper wc-loy-block-content">';
+            <?php if ($is_freeze) { ?>
+                <p>Вы можете обменять бонусы на купоны только после выполнения заказов на сумму <?php echo woocommerceLoyalty_Options::instance()->getSumOfPointsUnfreeze(); ?> рублей</p>
+            <?php } else { ?>
+                <p>Ваш бонусный счёт: <?php echo $balance; ?></p>
 
-        if ($is_freeze) {
-            $output .= '<p>Вы можете обменять бонусы на купоны только после выполнения заказов на сумму ' . woocommerceLoyalty_Options::instance()->getSumOfPointsUnfreeze() . ' рублей</p>';
-        } else {
-            $output .= '<p>Ваш бонусный счёт: ' . $balance . '</p>';
-            $output .= '
-<form action="" method="post">
-	<input type="hidden" name="points_to_coupons[token]" value="' . wp_create_nonce( 'points-to-woo-coupon' ) . '" />
-	<input type="hidden" name="points_to_coupons[balance]" value="' . $balance . '" />
-	<div class="radio-inputs">';
+                <form action="" method="post">
+                    <input type="hidden" name="points_to_coupons[token]" value="<?php echo wp_create_nonce( 'points-to-woo-coupon' ); ?>" />
+                    <input type="hidden" name="points_to_coupons[balance]" value="<?php echo $balance; ?>" />
+                    <div class="radio-inputs">
 
-            $coupons_numinals_defaults = woocommerce_loyalty_defaults::$coupons_numinals_defaults;
-            foreach ( $coupons_numinals_defaults as $key => $entry) {
-                $htmlName = 'coupon[' . $key . ']';
-                $coupon = $key;
-                $amount = $entry['coupon_rub'];
-                $price = woocommerceLoyalty_Options::instance()->getPriceOfCoupon($key);
-                if ($price > 0) {
-                    $disabled = ($is_freeze || $price > $balance) ? 'disabled="disabled"' : '';
-                    $output .= '<input type="radio" ' . $disabled . ' id="' . $htmlName . '" name="coupon" value="' . $coupon . '"><label for="' . $htmlName . '">Скидка ' . $amount . ' руб = ' . $price . ' бонусов</label>';
-                    $output .= '<div style="clear:both;"></div>';
-                }
-            }
+                        <?php
+                        $coupons_numinals_defaults = woocommerce_loyalty_defaults::$coupons_numinals_defaults;
+                        $output = '';
+                        foreach ( $coupons_numinals_defaults as $key => $entry) {
+                            $htmlName = 'coupon[' . $key . ']';
+                            $coupon = $key;
+                            $amount = $entry['coupon_rub'];
+                            $price = woocommerceLoyalty_Options::instance()->getPriceOfCoupon($key);
+                            if ($price > 0) {
+                                $disabled = ($is_freeze || $price > $balance) ? 'disabled="disabled"' : '';
+                                $output .= '<input type="radio" ' . $disabled . ' id="' . $htmlName . '" name="coupon" value="' . $coupon . '"><label for="' . $htmlName . '">Скидка ' . $amount . ' руб = ' . $price . ' бонусов</label>';
+                                $output .= '<div style="clear:both;"></div>';
+                            }
+                        }
+                        echo $output;
+                        ?>
 
-            $output .= '</div>
-	<input type="submit" name="submit" value="Обменять" />
-</form>';
-        }
+                    </div>
+                    <input type="submit" name="submit" value="Обменять" />
+                </form>
 
-        $output .= '</div></div>';
+            <?php } ?>
 
-        echo $output;
-    }
+            </div>
+        </div>
+
+<?php }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static function WC_Loy_My_Coupons($atts) {
