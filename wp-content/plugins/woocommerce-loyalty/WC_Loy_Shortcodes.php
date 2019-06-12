@@ -85,32 +85,37 @@ class WC_Loy_Shortcodes
         $output .= '
 <div class="wc-loy-exchange wc-loy-block">
 <h3>Обмен бонусов на купоны</h3>
-<div class="exchange-wrapper wc-loy-block-content">
-<p>Ваш бонусный счёт: ' . $balance . '</p>';
+<div class="exchange-wrapper wc-loy-block-content">';
 
-
-        $output .= '
+        if ($is_freeze) {
+            $output .= '<p>Вы можете обменять бонусы на купоны только после выполнения заказов на сумму ' . woocommerceLoyalty_Options::instance()->getSumOfPointsUnfreeze() . ' рублей</p>';
+        } else {
+            $output .= '<p>Ваш бонусный счёт: ' . $balance . '</p>';
+            $output .= '
 <form action="" method="post">
 	<input type="hidden" name="points_to_coupons[token]" value="' . wp_create_nonce( 'points-to-woo-coupon' ) . '" />
 	<input type="hidden" name="points_to_coupons[balance]" value="' . $balance . '" />
 	<div class="radio-inputs">';
 
-        $coupons_numinals_defaults = woocommerce_loyalty_defaults::$coupons_numinals_defaults;
-        foreach ( $coupons_numinals_defaults as $key => $entry) {
-            $htmlName = 'coupon[' . $key . ']';
-            $coupon = $key;
-            $amount = $entry['coupon_rub'];
-            $price = woocommerceLoyalty_Options::instance()->getPriceOfCoupon($key);
-            if ($price > 0) {
-                $disabled = ($is_freeze || $price > $balance) ? 'disabled="disabled"' : '';
-                $output .= '<input type="radio" ' . $disabled . ' id="' . $htmlName . '" name="coupon" value="' . $coupon . '"><label for="' . $htmlName . '">Скидка ' . $amount . ' руб = ' . $price . ' бонусов</label>';
-                $output .= '<div style="clear:both;"></div>';
+            $coupons_numinals_defaults = woocommerce_loyalty_defaults::$coupons_numinals_defaults;
+            foreach ( $coupons_numinals_defaults as $key => $entry) {
+                $htmlName = 'coupon[' . $key . ']';
+                $coupon = $key;
+                $amount = $entry['coupon_rub'];
+                $price = woocommerceLoyalty_Options::instance()->getPriceOfCoupon($key);
+                if ($price > 0) {
+                    $disabled = ($is_freeze || $price > $balance) ? 'disabled="disabled"' : '';
+                    $output .= '<input type="radio" ' . $disabled . ' id="' . $htmlName . '" name="coupon" value="' . $coupon . '"><label for="' . $htmlName . '">Скидка ' . $amount . ' руб = ' . $price . ' бонусов</label>';
+                    $output .= '<div style="clear:both;"></div>';
+                }
             }
+
+            $output .= '</div>
+	<input type="submit" name="submit" value="Обменять" />
+</form>';
         }
 
-        $output .= '</div>
-	<input type="submit" name="submit" value="Обменять" />
-</form></div></div>';
+        $output .= '</div></div>';
 
         echo $output;
     }
