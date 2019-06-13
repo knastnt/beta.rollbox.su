@@ -159,7 +159,22 @@ class woocommerceLoyalty_Options
         // Из настроек. Сумма, на которую нужно набрать заказов, чтобы разморозить бонусы
         $sumOfPointsUnfreeze = isset($optionsArray['sumOfPointsUnfreeze']) ? $optionsArray['sumOfPointsUnfreeze'] : $defaultValue;
 
+        if ($sumOfPointsUnfreeze < 0) $sumOfPointsUnfreeze = 0;
+
         return $sumOfPointsUnfreeze;
+    }
+
+    public function getPercentOfPointReturning()
+    {
+        $optionsArray = get_option('woocommerce_loyalty_options_array');
+        $defaultValue = woocommerce_loyalty_defaults::$main_defaults['percentOfPointReturning']['default'];
+
+        // Из настроек. Процент от суммы заказа, который будет возвращаться бонусами
+        $percentOfPointReturning = isset($optionsArray['percentOfPointReturning']) ? $optionsArray['percentOfPointReturning'] : $defaultValue;
+
+        if ($percentOfPointReturning < 0) $percentOfPointReturning = 0;
+
+        return $percentOfPointReturning;
     }
 
     public function getPriceOfCoupon($name)
@@ -174,6 +189,8 @@ class woocommerceLoyalty_Options
 
 
         $toReturn = isset($optionsArray[$name]) ? $optionsArray[$name] : $defaultValue;
+
+        if ($toReturn < 0) $toReturn = 0;
 
         return $toReturn;
     }
