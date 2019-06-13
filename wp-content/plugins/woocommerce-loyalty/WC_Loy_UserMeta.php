@@ -75,7 +75,9 @@ class WC_Loy_UserMeta
         return intval($this->protected_user_meta["points"]);
     }
     public function getPointsHistory() {
-        return $this->protected_user_meta["points_history"];
+        $toReturn = $this->protected_user_meta["points_history"];
+        $toReturn = array_reverse($toReturn);
+        return $toReturn;
     }
 
     private function changePoints ( $count, $description, $origincode ) {
@@ -163,6 +165,21 @@ class WC_Loy_UserMeta
         $toReturn = $sumOfPointsUnfreeze <= $totals;
 
         return $toReturn;
+    }
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public function isOriginCodeExistInHistory($origincode){
+        $history = $this->getPointsHistory();
+        foreach ($history as $entry) {
+            if (isset($entry["origincode"])) {
+                if ( $entry["origincode"] == $origincode ) return true;
+            }
+        }
+        return false;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
