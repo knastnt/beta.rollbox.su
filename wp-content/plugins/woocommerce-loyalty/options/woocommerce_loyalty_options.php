@@ -190,6 +190,19 @@ class woocommerceLoyalty_Options
         return $pointsForRegistration;
     }
 
+    public function getPointsForReview()
+    {
+        $optionsArray = get_option('woocommerce_loyalty_options_array');
+        $defaultValue = woocommerce_loyalty_defaults::$main_defaults['pointsForReview']['default'];
+
+        // Из настроек. Бонусы за регистрацию
+        $pointsForReview = isset($optionsArray['pointsForReview']) ? $optionsArray['pointsForReview'] : $defaultValue;
+
+        if ($pointsForReview < 0) $pointsForReview = 0;
+
+        return $pointsForReview;
+    }
+
     public function getPriceOfCoupon($name)
     {
         //Получаем массив опций плагина

@@ -17,6 +17,8 @@ add_action( 'woocommerce_coupon_is_valid', array('Coupons', 'check_user_id_when_
 add_action( 'woocommerce_order_status_completed', array( 'Coupons', 'add_bonus_when_order_complete' ) );
 //Начисление бонусов за регистрацию
 add_action( 'user_register', array( 'Coupons', 'add_bonus_when_user_registred') );
+//Начисление бонусов за оставление комментариев
+add_action( 'comment_post', array( 'Coupons', 'add_comment_to_product'), 10, 2 );
 
 class Coupons
 {
@@ -109,5 +111,41 @@ class Coupons
 
         //Если все тесты пройдены - начисляем бонусы
         $wc_loy_usermeta->addPoints($pointsForRegistration, "Начисление за регистрацию", $origincode);
+    }
+
+
+    //Начисление бонусов за оставление комментариев
+    static function add_comment_to_product( $comment_ID, $comment_approved ) {
+        //Получаем ID пользователя
+        $user_id = get_current_user_id();
+        // Если юзер не залогинен, то ничего не делаем
+        if ($user_id == 0) return;
+
+        if( 1 === $comment_approved ){
+            //function logic goes here
+            $wp_comment = get_comment( $comment_ID );
+            $post_ID = $wp_comment->comment_post_ID; //ID записи, на которой оставили этот коммент
+            $post = get_post($post_ID);
+            if ($post->post_type == "product") {
+                //Если коммент оставлен товару
+
+                //Получаем количество бонусов для зачисления за отзыв
+                $pointsForReview = woocommerceLoyalty_Options::instance()->getPointsForReview();
+                //Если 0, то ничего не делаем
+                if ($pointsForReview == 0) return;
+
+                //Получаем метаданные пользователя, относящиеся к плагину
+                $wc_loy_usermeta = new WC_Loy_UserMeta($user_id);
+
+                //Проверка, начислялись ли бонусы за комментирование этого товара
+                $origincode = 'fromProductComment_' . $post_ID; //Генерируем значение источника и проверяем нет ли такого у пользователя
+                $isOriginCodeExistInHistory = $wc_loy_usermeta->isOriginCodeExistInHistory($origincode);
+                //Если бонусы за это уже начислялись - то ничего не делаем
+                if ($isOriginCodeExistInHistory == true) return;
+
+                //Если все тесты пройдены - начисляем бонусы
+                $wc_loy_usermeta->addPoints($pointsForReview, "Начисление за отзыв. " . $post->post_title, $origincode);
+            }
+        }
     }
 }
