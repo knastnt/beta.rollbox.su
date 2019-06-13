@@ -185,6 +185,10 @@ class WC_Loy_AccountBonusPage
         // Иных способов вроде как нет.
         //придется переберать все ордера со статусом completed и искать в них этот товар.
 
+        // User must be logged in
+        if ( $user_id == 0 ){
+            return false;
+        }
 
         //Если у этого товара есть хоть один комментарий от этого пользователя, то return true;
 
@@ -192,8 +196,27 @@ class WC_Loy_AccountBonusPage
         //Если ни в одном из них нет продукта с ID = $product_id, то return false
         //В противном случае return true
 
+        $orders = wc_get_orders( array(
+            'customer_id' => $user_id,
+            'status' => 'completed',
+        ) );
 
-        return $null;
+        //Если совсем нет завершенных заказов
+        if ( count($orders) == 0 ) {
+            return false;
+        }
+
+        //Перебераем все товары в каждом найденном ордере
+        foreach ($orders as $order) {
+            $order_item = $order->get_items();
+            foreach ($order_item as $product) {
+                if ($product_id == $product->get_product_id()) return true;
+            }
+        }
+
+
+        return false;
+        //return $null;
     }
 
 
