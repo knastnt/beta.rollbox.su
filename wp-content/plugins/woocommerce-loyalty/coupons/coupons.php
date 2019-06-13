@@ -75,12 +75,13 @@ class Coupons
 
         //Проверка, начислялись ли бонусы за этот заказ
         $origincode = 'fromOrder_' . $order_ID; //Генерируем значение источника и проверяем нет ли такого у пользователя
+        $isOriginCodeExistInHistory = $wc_loy_usermeta->isOriginCodeExistInHistory($origincode);
+        //Если бонусы за это уже начислялись - то ничего не делаем
+        if ($isOriginCodeExistInHistory == true) return;
 
 
 
-
-        $wc_loy_usermeta->addPoints();
-
-        echo $order_ID;
+        //Если все тесты пройдены - начисляем бонусы
+        $wc_loy_usermeta->addPoints($pointsToReturn, "Начисление за заказ №$order_ID", $origincode);
     }
 }
