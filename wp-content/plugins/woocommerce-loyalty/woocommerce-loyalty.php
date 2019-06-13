@@ -8,6 +8,13 @@
 
 //add_action( 'plugins_loaded', 'woocommerce_loyalty_core' );
 
+add_action( 'comment_post', 'show_message_function', 10, 2 );
+function show_message_function( $comment_ID, $comment_approved ) {
+    if( 1 === $comment_approved ){
+        //function logic goes here
+    }
+}
+
 woocommerce_loyalty_core();
 
 function woocommerce_loyalty_core() {
