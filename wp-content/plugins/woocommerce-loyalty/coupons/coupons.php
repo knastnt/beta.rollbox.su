@@ -15,6 +15,8 @@ add_action( 'woocommerce_coupon_is_valid', array('Coupons', 'check_user_id_when_
 
 //Начисление бонусов при выполнении заказа
 add_action( 'woocommerce_order_status_completed', array( 'Coupons', 'add_bonus_when_order_complete' ) );
+//Начисление бонусов за регистрацию
+add_action( 'user_register', array( 'Coupons', 'add_bonus_when_user_registred') );
 
 class Coupons
 {
@@ -49,7 +51,7 @@ class Coupons
     //Начисление бонусов при выполнении заказа
     static function add_bonus_when_order_complete( $order_ID ) {
 
-        //Получаем ШВ пользователя
+        //Получаем ID пользователя
         $user_id = get_current_user_id();
         // Если юзер не залогинен, то ничего не делаем
         if ($user_id == 0) return;
@@ -83,5 +85,29 @@ class Coupons
 
         //Если все тесты пройдены - начисляем бонусы
         $wc_loy_usermeta->addPoints($pointsToReturn, "Начисление за заказ №$order_ID", $origincode);
+    }
+
+    //Начисление бонусов за регистрацию
+    static function add_bonus_when_user_registred( $user_id ) {
+
+        //Получаем количество бонусов для зачисления при регистрации
+        $pointsForRegistration = woocommerceLoyalty_Options::instance()->getPointsForRegistration();
+        //Если 0, то ничего не делаем
+        if ($pointsForRegistration == 0) return;
+
+
+        //Получаем метаданные пользователя, относящиеся к плагину
+        $wc_loy_usermeta = new WC_Loy_UserMeta($user_id);
+
+        //Проверка, начислялись ли бонусы за этот заказ
+        $origincode = 'fromRegistration'; //Генерируем значение источника и проверяем нет ли такого у пользователя
+        $isOriginCodeExistInHistory = $wc_loy_usermeta->isOriginCodeExistInHistory($origincode);
+        //Если бонусы за это уже начислялись - то ничего не делаем
+        if ($isOriginCodeExistInHistory == true) return;
+
+
+
+        //Если все тесты пройдены - начисляем бонусы
+        $wc_loy_usermeta->addPoints($pointsForRegistration, "Начисление за регистрацию", $origincode);
     }
 }

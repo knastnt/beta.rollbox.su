@@ -177,6 +177,19 @@ class woocommerceLoyalty_Options
         return $percentOfPointReturning;
     }
 
+    public function getPointsForRegistration()
+    {
+        $optionsArray = get_option('woocommerce_loyalty_options_array');
+        $defaultValue = woocommerce_loyalty_defaults::$main_defaults['pointsForRegistration']['default'];
+
+        // Из настроек. Бонусы за регистрацию
+        $pointsForRegistration = isset($optionsArray['pointsForRegistration']) ? $optionsArray['pointsForRegistration'] : $defaultValue;
+
+        if ($pointsForRegistration < 0) $pointsForRegistration = 0;
+
+        return $pointsForRegistration;
+    }
+
     public function getPriceOfCoupon($name)
     {
         //Получаем массив опций плагина
