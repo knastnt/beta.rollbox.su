@@ -18,6 +18,8 @@ add_action( 'woocommerce_account_rewards_endpoint', array('WC_Loy_AccountBonusPa
 //Обработка POST-запроса
 add_action( 'init', array('WC_Loy_AccountBonusPage', 'process_post') );
 
+add_action( 'woocommerce_pre_customer_bought_product', array('WC_Loy_AccountBonusPage', 'test_delme'), 10, 4 );
+
 
 class WC_Loy_AccountBonusPage
 {
@@ -171,6 +173,27 @@ class WC_Loy_AccountBonusPage
 
         do_shortcode('[WC_Loy_My_Coupons]');
         do_shortcode('[WC_Loy_Bonus_to_Coupons_Exchange]');
+    }
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    static function test_delme( $null, $customer_email, $user_id, $product_id ) {
+        //Заменяем логику метода wc_customer_bought_product в файле wp-content/plugins/woocommerce/includes/wc-user-functions.php
+        //только потому что поле $statuses      = array_map( 'esc_sql', wc_get_is_paid_statuses() ); должно возвращать только статус COMPLETED.
+        // я не стал переопределять wc_get_is_paid_statuses, т.к. он много где используется.
+        // Иных способов вроде как нет.
+        //придется переберать все ордера со статусом completed и искать в них этот товар.
+
+
+        //Если у этого товара есть хоть один комментарий от этого пользователя, то return true;
+
+        //Нужно получить все ордера со статусом completed у пользователя $user_id
+        //Если ни в одном из них нет продукта с ID = $product_id, то return false
+        //В противном случае return true
+
+
+        return $null;
     }
 
 
