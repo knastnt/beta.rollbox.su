@@ -42,6 +42,9 @@ final class woocommerceLoyalty_Core
         require_once( plugin_dir_path(__FILE__ ) . '/options/woocommerce_loyalty_defaults.php' );
 
 
+        //Общие функции
+        require_once( plugin_dir_path(__FILE__ ) . '/WC_Loy_Functions.php' );
+
         // страница настроек плагина
         require_once( plugin_dir_path(__FILE__ ) . '/options/woocommerce_loyalty_options.php' );
         woocommerceLoyalty_Options::instance();
