@@ -55,20 +55,20 @@ class WC_Loy_UserMeta
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public function addPoints ( $count, $description ) {
+    public function addPoints ( $count, $description, $origincode ) {
         $count = intval($count);
         if ($count <= 0) { return false; }
 
-        return $this->changePoints($count, $description);
+        return $this->changePoints($count, $description, $origincode);
     }
 
-    public function removePoints ( $count, $description ) {
+    public function removePoints ( $count, $description, $origincode ) {
         $count = intval($count);
         if ($count <= 0) { return false; }
 
         if ( $count > $this->protected_user_meta["points"] ) { return false; }
 
-        return $this->changePoints(-$count, $description);
+        return $this->changePoints(-$count, $description, $origincode);
     }
 
     public function getPoints() {
@@ -78,7 +78,10 @@ class WC_Loy_UserMeta
         return $this->protected_user_meta["points_history"];
     }
 
-    private function changePoints ( $count, $description ) {
+    private function changePoints ( $count, $description, $origincode ) {
+        // $origincode - текстом пишем источник этого бонуса
+        // если это от выполненного заказа, то fromOrder_%ORDER_ID%, например, fromOrder_148. Это нужно чтобы не было начислений по несколько раз
+
         $count = intval($count);
         if ($count == 0) { return false; }
 
@@ -88,7 +91,7 @@ class WC_Loy_UserMeta
         if ( $count < 0 && $temp["points"] + $count < 0 ) { $count = -$temp["points"]; }
 
         $temp["points"] = $temp["points"] + $count;
-        $temp["points_history"][] = array ( "time" => (int) current_time('timestamp'), "change" => $count, "description" => $description);
+        $temp["points_history"][] = array ( "time" => (int) current_time('timestamp'), "change" => $count, "description" => $description, "origincode" => $origincode);
 
         //Если $count > 0, то и рейтинг увеличиваем
         if ($count>0) {
