@@ -86,7 +86,7 @@ class Coupons
 
 
         //Если все тесты пройдены - начисляем бонусы
-        $wc_loy_usermeta->addPoints($pointsToReturn, "Начисление за заказ №$order_ID", $origincode);
+        $wc_loy_usermeta->addPoints($pointsToReturn, 'Начисление за заказ <a href="' . $order->get_view_order_url() . '">№' . $order_ID . '</a>', $origincode);
     }
 
     //Начисление бонусов за регистрацию
