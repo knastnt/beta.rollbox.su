@@ -237,7 +237,7 @@ function points_after_header_cart() {
                         echo $history_output;
                         ?>
                             <div class="footer">
-                                <a class="button button-gray" href="#">Показать полностью</a>
+                                <a class="button button-gray" href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>rewards#wc-loy-history">Показать полностью</a>
                             </div>
                         <?php
                     }else {
