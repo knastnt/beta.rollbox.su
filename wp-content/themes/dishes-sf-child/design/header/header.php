@@ -155,6 +155,7 @@ function get_account_menu() {
     global $current_user;
     $username = $current_user->user_nicename;
     $account_link = get_permalink( wc_get_page_id( 'myaccount' ) );
+    $cart_link = get_permalink( wc_get_page_id( 'cart' ) );
     $logout_link = wp_logout_url();
     /*<a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>">Личный кабинет</a>*/
     ?>
@@ -166,6 +167,18 @@ function get_account_menu() {
     <ul class="dropdown-site-menu account-menu" style="">
         <li>
             <a href="<?php echo $account_link; ?>">Личный кабинет</a>
+        </li>
+        <li class="line"></li>
+        <li>
+            <a href="<?php echo $account_link . "rewards/"; ?>">Бонусы</a>
+        </li>
+        <li class="line"></li>
+        <li>
+            <a href="<?php echo $account_link . "orders/"; ?>">Мои заказы</a>
+        </li>
+        <li class="line"></li>
+        <li>
+            <a href="<?php echo $cart_link; ?>">Корзина</a>
         </li>
         <li class="line"></li>
         <li>
