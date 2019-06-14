@@ -144,7 +144,7 @@ class Coupons
                 if ($isOriginCodeExistInHistory == true) return;
 
                 //Если все тесты пройдены - начисляем бонусы
-                $wc_loy_usermeta->addPoints($pointsForReview, "Начисление за отзыв. " . $post->post_title, $origincode);
+                $wc_loy_usermeta->addPoints($pointsForReview, 'Начисление за отзыв. <a href="' . get_permalink( $post_ID ) . '">' . $post->post_title . '</a>', $origincode);
             }
         }
     }
