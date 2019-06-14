@@ -292,30 +292,7 @@ ul.products li.product .button.added {
     -moz-transition: ease-in-out .3s all;
     transition: ease-in-out .3s all;
 }
-.site-header .user-points .user-points-menu li:not(:last-child) {
-    border-bottom: 1px solid #dbdbdb;
-    padding: 10px 0px;
-}
-.site-header .user-points .user-points-menu li > div {
-    display: inline-block;
-}
-.site-header .user-points .user-points-menu .time {
-    width: 115px;
-}
-.site-header .user-points .user-points-menu .change {
-    width: 50px;
-    font-size: 20px;
-    font-weight: 600;
-}
-.site-header .user-points .user-points-menu .change.plus {
-    color: #33c233;
-}
-.site-header .user-points .user-points-menu .change.minus {
-    color: #f63737;
-}
-.site-header .user-points .user-points-menu .descr {
-    width: 315px;
-}
+
 
 .site-header .user-points .header {
     font-size: 20px;
@@ -712,6 +689,18 @@ ul.products li.product:hover img {
 .woocommerce-order section.woocommerce-order-details {
     margin: 3em 0;
 }
+
+
+
+
+/* страница бонусов в личном кабинете */
+.wc-loy-history ul.user-points-menu {
+    margin: 0;
+}
+.wc-loy-history .wc-loy-block-content {
+    padding: 0 1em 2em;
+}
+
 
 
 /* ПОВТОРЯЮЩИЕСЯ ЭЛЕМЕНТЫ */

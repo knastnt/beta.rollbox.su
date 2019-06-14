@@ -50,7 +50,7 @@ class WC_Loy_Shortcodes
             $changeClass = $change > 0 ? 'plus' : 'minus';
             $descr = $entry["description"];
 
-            $toReturn = $toReturn . '<li><div class="time">' . $time . '</div><div class="change ' . $changeClass . '">' . $change . '</div><div class="descr">' . $descr . '</div><div style="clear: both"></div> </li>';
+            $toReturn = $toReturn . '<li class="user-points-menu-li"><div class="time">' . $time . '</div><div class="change ' . $changeClass . '">' . $change . '</div><div class="descr">' . $descr . '</div><div style="clear: both"></div> </li>';
         }
         //echo '</ul>';
 

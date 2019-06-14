@@ -87,3 +87,41 @@
 .exchange-wrapper form {
     margin-bottom: 0;
 }
+
+
+
+
+
+
+
+
+
+li.user-points-menu-li {
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+}
+li.user-points-menu-li:not(:last-child) {
+    border-bottom: 1px solid #dbdbdb;
+    padding: 10px 0px;
+}
+li.user-points-menu-li > div {
+    display: inline-block;
+}
+li.user-points-menu-li .time {
+    width: 115px;
+}
+li.user-points-menu-li .change {
+    width: 50px;
+    font-size: 20px;
+    font-weight: 600;
+}
+li.user-points-menu-li .change.plus {
+    color: #33c233;
+}
+li.user-points-menu-li .change.minus {
+    color: #f63737;
+}
+li.user-points-menu-li .descr {
+    width: 315px;
+}

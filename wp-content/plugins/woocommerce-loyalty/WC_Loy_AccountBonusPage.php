@@ -168,10 +168,15 @@ class WC_Loy_AccountBonusPage
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static function getContent() {
-        $output = 'Last time you logged in: yesterday from Terrano...';
-
         do_shortcode('[WC_Loy_My_Coupons]');
         do_shortcode('[WC_Loy_Bonus_to_Coupons_Exchange]');
+
+        echo '<div class="wc-loy-history wc-loy-block">
+                  <h3>Обмен бонусов на купоны</h3>
+                  <div class="history-wrapper wc-loy-block-content">
+                        <ul class="user-points-menu">';
+        echo do_shortcode('[WC_Loy_Get_Current_User_Points_History]');
+        echo '</ul></div></div>';
     }
 
 
