@@ -127,7 +127,7 @@ class WC_Loy_AccountBonusPage
                 // Вычитаем бонусы у пользователя
                 $price = woocommerceLoyalty_Options::instance()->getPriceOfCoupon($neededCoupon);
                 $amount = woocommerce_loyalty_defaults::$coupons_numinals_defaults[$neededCoupon]['coupon_rub'];
-                $result = $wc_loy_usermeta->removePoints($price, 'Покупка купона на сумму ' . $amount . ' руб.');
+                $result = $wc_loy_usermeta->removePoints($price, 'Покупка купона на сумму ' . $amount . ' руб.', 'forCoupon');
 
                 if ($result) {
                     // Update Coupon details
