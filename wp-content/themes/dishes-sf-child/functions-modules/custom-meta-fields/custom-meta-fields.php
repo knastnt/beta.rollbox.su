@@ -54,6 +54,23 @@ function save_custom_field( $post_id ) {
 	 
 	 $product->update_meta_data( 'set_contains_product_ids', array_filter( (array) $set_contains_product_ids ) );
 
+	 foreach ($set_contains_product_ids as $contain_product_id) {
+
+         $getted_attributes = wc_get_product( $contain_product_id )->get_attributes();
+         if (isset($getted_attributes['pa_consist'])) {
+             $pa_consist = $getted_attributes['pa_consist'];
+
+             //$product->set_attributes($pa_consist);
+
+             $text = '';
+         }
+
+    }
+
+
+
+	 //$product->set_attributes($getted_attributes);
+
 	 $product->save();
 }
 add_action( 'woocommerce_process_product_meta', 'save_custom_field' );
