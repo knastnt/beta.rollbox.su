@@ -19,6 +19,9 @@ require_once( get_stylesheet_directory() . '/functions-modules/woocommerce_clear
 // добавление +/- для количества товаров в корзине и автообновление
 require_once( get_stylesheet_directory() . '/functions-modules/woocommerce_ajax_change_quantity/woocommerce_ajax_change_quantity.php' );
 
+// добавление произвольного поля к товарам
+require_once( get_stylesheet_directory() . '/functions-modules/custom-meta-fields/custom-meta-fields.php' );
+
 
 //кастомные надписи к продуктам.
 require_once( get_stylesheet_directory() . '/design/productlables/productlables.php' );
