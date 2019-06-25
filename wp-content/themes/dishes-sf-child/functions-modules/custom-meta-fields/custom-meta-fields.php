@@ -15,6 +15,7 @@ function create_custom_fields() {
     <div class="options_group">
         <p class="form-field hide_if_grouped hide_if_external">
             <label for="set_contains_product_ids">Состав сета</label>
+            <?php echo wc_help_tip('Чтобы подцепился состав из этих роллов, нужно присвоить этому товару атрибут состава, указать любое значение и сохранить. Значения заменятся на вычесленные автоматически.'); ?>
             <select class="wc-product-search" multiple="multiple" style="width: 50%;" id="set_contains_product_ids" name="set_contains_product_ids[]" data-placeholder="<?php esc_attr_e( 'Search for a product&hellip;', 'woocommerce' ); ?>" data-action="woocommerce_json_search_products_and_variations" data-exclude="<?php echo intval( $post->ID ); ?>">
                 <?php
 
@@ -54,29 +55,79 @@ function save_custom_field( $post_id ) {
 	 
 	 $product->update_meta_data( 'set_contains_product_ids', array_filter( (array) $set_contains_product_ids ) );
 
-	 // ------------------------------------------------------------------------------- //
-	 // Переносим состав роллов в наш сет
+     $product->save();
+
+}
+add_action( 'woocommerce_process_product_meta', 'save_custom_field' );
+
+
+
+
+/**
+ * Подтягиваем состав дочерник роллов в сет
+ */
+function set_prepare_attributes( $attribute, $data, $i ) {
 
     $attribute_slug = 'consist';       // Слаг заранее созданного атрибута. В нем будем работать. В моём случае это состав.
     $taxonomy = 'pa_' . $attribute_slug; // The taxonomy
+
+    //Эта херня запускается на каждом атрибуте, который есть у товара. Если атрибута нет, то и не запускается
+
+    //Поэтому проверяем, тот ли атрибут сейчас обрабатывается, и если нет, то ретюрним
+    if ($attribute->get_name() != $taxonomy) {
+        return $attribute;
+    }
+
+    //Получаем ID продукта
+    $product_id = get_the_ID();
+    if ($product_id == false) {
+        $product_id = absint(wp_unslash($_POST['post_id'])); //Если запрос через ajax
+    }
+
+    // Получаем продукт
+    $product_object = wc_get_product( $product_id );
+
+    //Получаем массив ID роллов входящих в состав этого сета
+    $set_contains_product_ids = $product_object->get_meta('set_contains_product_ids');
+
+
+    // ------------------------------------------------------------------------------- //
+    // Переносим состав роллов в наш сет
 
     // Получаем массив состава из всех входящих роллов
     $znacheniya_to_add = array ();
     foreach ($set_contains_product_ids as $contain_product_id) {
         $attributes = wc_get_product( $contain_product_id )->get_attributes();
         if( array_key_exists( $taxonomy, $attributes ) ) {  // Если наш атрибут имеется у этого товара
-             $options = (array) $attributes[$taxonomy]->get_options();  // Получаем массив из ID значений этого атрибута
-             foreach ($options as $o_key => $o_id){
-                 if (! in_array($o_id, $znacheniya_to_add)){
-                     $znacheniya_to_add[] = $o_id;
-                 }
-             }
-             //$product->set_attributes($pa_consist);
-         }
+            $options = (array) $attributes[$taxonomy]->get_options();  // Получаем массив из ID значений этого атрибута
+            foreach ($options as $o_key => $o_id){
+                if (! in_array($o_id, $znacheniya_to_add)){
+                    $znacheniya_to_add[] = $o_id;
+                }
+            }
+            //$product->set_attributes($pa_consist);
+        }
     }
 
 
-    // ---------------------------------------------------------------------------------------------------- //
+    $options = (array) $attribute->get_options();  // Получаем массив из ID значений этого атрибута
+
+    //$options[] = $term_id;   //Вот здесь мы и зададим массив всех значений
+    foreach ($znacheniya_to_add as $o_key => $o_id){
+        if (! in_array($o_id, $options)){
+            $options[] = $o_id;
+        }
+    }
+
+    //Добавляем недостающие значения атрибута (можно указывать сверх того что заполнится автоматом, но автоматом не удаляются при удалении дочернего ролла)
+    //$attribute->set_options($options); //Применяем новый набор значений к этому атрибуту
+
+    //Заменяем все значения на вычесленные автоматом
+    $attribute->set_options($znacheniya_to_add); //Применяем новый набор значений к этому атрибуту
+
+    return $attribute;
+
+    /*// ---------------------------------------------------------------------------------------------------- //
     // Массив атрибутов товара (массив из WC_Product_Attribute)
     $attributes = (array) $product->get_attributes();
 
@@ -128,16 +179,14 @@ function save_custom_field( $post_id ) {
 
 
 
-    $product->save();
+    $product->save();*/
 
     /*// Append the new term in the product
     //х.з. что это
     if( ! has_term( $term_name, $taxonomy, $post_id ))
         wp_set_object_terms($post_id, $term_slug, $taxonomy, true );*/
 
-
-
 }
-add_action( 'woocommerce_process_product_meta', 'save_custom_field' );
+add_filter( 'woocommerce_admin_meta_boxes_prepare_attribute', 'set_prepare_attributes', 10, 3 );
 
 
