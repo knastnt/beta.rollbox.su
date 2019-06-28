@@ -90,6 +90,10 @@ function set_prepare_attributes( $attribute, $data, $i ) {
     //Получаем массив ID роллов входящих в состав этого сета
     $set_contains_product_ids = $product_object->get_meta('set_contains_product_ids');
 
+    //Если $set_contains_product_ids пуст, то ретюрним
+    if (count($set_contains_product_ids) == 0) {
+        return $attribute;
+    }
 
     // ------------------------------------------------------------------------------- //
     // Переносим состав роллов в наш сет
