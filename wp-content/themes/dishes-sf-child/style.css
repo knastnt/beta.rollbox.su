@@ -241,6 +241,18 @@ ul.products li.product .button.added {
 }
 
 
+.woocommerce-active .site-header .site-branding {
+    width: auto;
+    margin-right: 115px;
+    margin-top: 10px;
+}
+.woocommerce-active .site-header .site-search {
+    float: left;
+    width: 750px;
+    margin-top: 10px;
+}
+
+
 
 /* Ваши баллы */
 .site-header .user-points {
@@ -856,6 +868,33 @@ ul.products li.product:hover img {
     .col-full {
         max-width: 1200px;
     }
+    .top-info div {
+        padding: 0 1.3em 0 0;
+        margin: 0.5em .8em 0.5em 0;
+    }
+    .top-info .info3 {
+        margin-right: 0;
+        padding-right: 0;
+    }
+    .top-info div.right-info-wrapper {
+        padding: 0;
+        margin-left: 32px;
+    }
+    .header-top {
+        margin-bottom: 1em;
+    }
+    .woocommerce-active .site-header .site-branding {
+        margin-bottom: 5px;
+    }
+    .woocommerce-active .site-header .site-search {
+        margin-bottom: 5px;
+    }
+    .woocommerce-active .site-header .site-branding {
+        margin-right: 50px;
+    }
+    .woocommerce-active .site-header .site-search {
+        width: 550px;
+    }
     .top-section .slider-wrapper {
         width: 1200px;
     }
@@ -868,6 +907,27 @@ ul.products li.product:hover img {
     .col-full {
         max-width: 1022px;
         padding: 0 20px;
+    }
+    .top-info .info1,
+    .top-info .info2 {
+        margin-top: 1em;
+    }
+    .top-info .info3 {
+        margin-bottom: 1em;
+    }
+    .top-info .info2 {
+        margin-right: 300px;
+
+    }
+    .top-info div.right-info-wrapper {
+        position: relative;
+        top: -19px;
+    }
+    .woocommerce-active .site-header .site-branding {
+        margin-right: 38px;
+    }
+    .woocommerce-active .site-header .site-search {
+        width: 435px;
     }
     .top-section .slider-wrapper {
         width: 1022px;
@@ -883,27 +943,57 @@ ul.products li.product:hover img {
         max-width: none;
         margin: 0 auto;
     }
+    .top-info .info2 {
+        margin-right: 200px;
+
+    }
     .top-section .slider-wrapper {
         width: 100%;
     }
 
 }
 /*///////////////////////////////////////////////////////////////////////////*/
-@media (min-width:768px) {
-    /*
-     *
-     * Header
-     *
-     */
-    .woocommerce-active .site-header .site-branding {
-        width: auto;
-        margin-right: 7%;
-        margin-top: 10px;
+/* если экран меньше 850 */
+@media (max-width:850px) {
+
+    .top-info {
+        text-align: center;
     }
-    .woocommerce-active .site-header .site-search {
-        float: left;
-        width: 52.739%;
-        margin-top: 10px;
+    .top-info .info2 {
+        margin-right: 1em;
+    }
+    .top-info div.right-info-wrapper {
+        display: block;
+        top: 0;
+        position: inherit;
+        float: none;
+        padding: 0;
+    }
+    .top-info div.right-info-wrapper div {
+        padding: 0;
+        margin: 0.5em 1em;
+    }
+    .top-info .info1,
+    .top-info .info2,
+    .top-info .info3 {
+        padding: 0 1.5em;
+        margin: 0.5em 1em;
+    }
+    .top-info div.info1::after,
+    .top-info div.info2::after {
+        opacity: 0;
+    }
+
+}
+/*///////////////////////////////////////////////////////////////////////////*/
+@media (max-width:767px) {
+    .top-info .info1,
+    .top-info .info4 {
+        position: inherit;
+    }
+    .dropdown-site-menu {
+        right: 10px !important;
+        left: 10px !important;
     }
 
 }
