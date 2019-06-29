@@ -28,7 +28,8 @@ a, button { outline: none !important;}
 
 /*Ширина контента*/
 .col-full {
-    max-width: 95em;
+    max-width: 1520px;
+    padding: 0 40px;
 }
 
 /* Цвет нотисов */
@@ -848,6 +849,45 @@ ul.products li.product:hover img {
 /* ПОВТОРЯЮЩИЕСЯ ЭЛЕМЕНТЫ - конец */
 
 
+/*///////////////////////////////////////////////////////////////////////////*/
+/* если экран меньше 1600 */
+@media (max-width:1600px) {
+
+    .col-full {
+        max-width: 1200px;
+    }
+    .top-section .slider-wrapper {
+        width: 1200px;
+    }
+
+}
+/*///////////////////////////////////////////////////////////////////////////*/
+/* если экран меньше 1290 */
+@media (max-width:1290px) {
+
+    .col-full {
+        max-width: 1022px;
+        padding: 0 20px;
+    }
+    .top-section .slider-wrapper {
+        width: 1022px;
+    }
+
+}
+/*///////////////////////////////////////////////////////////////////////////*/
+/* если экран меньше 1065 */
+/* теперь - резиновый */
+@media (max-width:1065px) {
+
+    .col-full {
+        max-width: none;
+        margin: 0 auto;
+    }
+    .top-section .slider-wrapper {
+        width: 100%;
+    }
+
+}
 /*///////////////////////////////////////////////////////////////////////////*/
 @media (min-width:768px) {
     /*
