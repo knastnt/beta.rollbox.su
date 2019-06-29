@@ -16,8 +16,8 @@
 /// от слайдера
 ///
 // правильный способ подключить стили и скрипты
-//add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
-add_action('wp_print_styles', 'true_include_styles'); // можно использовать этот хук он более поздний
+add_action( 'wp_enqueue_scripts', 'true_include_styles' );
+//add_action('wp_print_styles', 'true_include_styles'); // можно использовать этот хук он более поздний
 function true_include_styles() {
     wp_enqueue_style( 'style-homepage', get_stylesheet_directory_uri() . '/homepage/homepage.css' );
     wp_enqueue_style( 'style-ocslideshow', get_stylesheet_directory_uri() . '/homepage/nivoslider/css/ocslideshow.css' );
