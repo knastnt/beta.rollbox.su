@@ -17,6 +17,8 @@
             $("#site-navigation").appendTo("#menu-stickey-wrapper");*/
             /*переносим корзину*/
             $("#site-header-cart").appendTo("#site-header-cart-stickey-wrapper");
+            /*переносим кнопку мобильного меню*/
+            $("#showMenu").addClass("fixed");
         } else {
             $('#stickey_menu_wrapper').removeClass("fix-nav");
 
@@ -24,6 +26,8 @@
             $("#site-navigation").appendTo(".storefront-primary-navigation .col-full");*/
             /*возвращаем корзину*/
             $("#site-header-cart").appendTo("#site-header-cart-head-wrapper");
+            /*возвращаем кнопку мобильного меню*/
+            $("#showMenu").removeClass("fixed");
         }
     });
 

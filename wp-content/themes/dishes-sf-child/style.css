@@ -257,6 +257,10 @@ ul.products li.product .button.added {
 #showMenu {
     display: none;
 }
+#site-navigation-stickey .menu-toggle,
+#site-navigation .menu-toggle {
+    display: none;
+}
 
 
 
@@ -1036,6 +1040,9 @@ ul.products li.product:hover img {
 
     #showMenu {
         display: block;
+    }
+    #stickey_menu_wrapper {
+        height: 88px;
     }
 
 }

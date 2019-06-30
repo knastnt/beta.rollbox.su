@@ -70,3 +70,7 @@ div.havechilds a {
 #showMenu.toggle-mnu.on span:after {
     transform: rotate(-45deg) translate(6px, -7px);
 }
+
+#showMenu.toggle-mnu.fixed {
+    position: fixed;
+}
