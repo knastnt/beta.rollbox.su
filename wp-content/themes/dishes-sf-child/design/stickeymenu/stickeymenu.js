@@ -1,7 +1,9 @@
 (function($) {
 
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 167) {
+        /*console.log($('#site-navigation').offset().top);
+        if ($(this).scrollTop() > 167) {*/
+        if ($(this).scrollTop() > $('#site-navigation').offset().top - 45) {
             $('#stickey_menu_wrapper').addClass("fix-nav");
 
             if($('#wpadminbar').length == 1){
