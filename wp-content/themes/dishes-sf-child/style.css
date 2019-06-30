@@ -933,6 +933,32 @@ ul.products li.product:hover img {
         width: 1022px;
     }
 
+    .site-header .user-points .ion-user-points::before {
+        width: 44px;
+        height: 44px;
+    }
+    #site-header-cart .cart-contents .ion-android-cart {
+        font-size: 18px;
+        width: 40px;
+        height: 40px;
+        line-height: 37px;
+    }
+    #site-header-cart .cart-contents .ion-android-cart::before {
+        margin-left: 9px;
+    }
+    #cart-total .number-cart {
+        left: 27px;
+    }
+    #site-header-cart {
+        top: 3px;
+    }
+    .site-header .user-points {
+        top: 7px;
+    }
+    .site-header .user-points {
+        margin-right: 30px;
+    }
+
 }
 /*///////////////////////////////////////////////////////////////////////////*/
 /* если экран меньше 1065 */
@@ -942,10 +968,6 @@ ul.products li.product:hover img {
     .col-full {
         max-width: none;
         margin: 0 auto;
-    }
-    .top-info .info2 {
-        margin-right: 200px;
-
     }
     .top-section .slider-wrapper {
         width: 100%;
@@ -958,9 +980,6 @@ ul.products li.product:hover img {
 
     .top-info {
         text-align: center;
-    }
-    .top-info .info2 {
-        margin-right: 1em;
     }
     .top-info div.right-info-wrapper {
         display: block;

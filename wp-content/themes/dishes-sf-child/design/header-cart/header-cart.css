@@ -191,7 +191,8 @@
 /*Отмена открытия при наведении*/
 .site-header-cart.focus .widget_shopping_cart, .site-header-cart:hover .widget_shopping_cart {
     /*left: 0;*/
-    display: block;
+    /*display: block;*/
+    display: unset !important;
 }
 .site-header-cart .widget_shopping_cart {
     left: 0;
