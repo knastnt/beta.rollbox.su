@@ -254,6 +254,12 @@ ul.products li.product .button.added {
 
 
 
+#showMenu {
+    display: none;
+}
+
+
+
 /* Ваши баллы */
 .site-header .user-points {
     display: block;
@@ -1026,6 +1032,10 @@ ul.products li.product:hover img {
     .dropdown-site-menu {
         right: 10px !important;
         left: 10px !important;
+    }
+
+    #showMenu {
+        display: block;
     }
 
 }
