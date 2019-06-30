@@ -973,6 +973,19 @@ ul.products li.product:hover img {
         width: 100%;
     }
 
+    .site-header > div.col-full {
+        position: relative;
+    }
+    .woocommerce-active .site-header .site-search {
+        position: absolute;
+        top: 65px;
+        left: 20px;
+        width: calc(100% - 40px);
+    }
+    #site-navigation {
+        margin-top: 77px;
+    }
+
 }
 /*///////////////////////////////////////////////////////////////////////////*/
 /* если экран меньше 850 */
