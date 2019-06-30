@@ -8,6 +8,22 @@
 
 
 
+//////////////////////////////////////////////////////////////////////////
+/// подключение стилей
+///
+// правильный способ подключить стили и скрипты
+add_action( 'wp_enqueue_scripts', 'header_cart_include_styles', 100 );
+//add_action('wp_print_styles', 'true_include_styles'); // можно использовать этот хук он более поздний
+function header_cart_include_styles() {
+    wp_enqueue_style( 'header-cart-style', get_stylesheet_directory_uri() . '/design/header-cart/header-cart.css' );
+}
+add_action( 'wp_enqueue_scripts', 'header_cart_include_scripts' );
+function header_cart_include_scripts() {
+    wp_enqueue_script( 'header-cart-script', get_stylesheet_directory_uri() . '/design/header-cart/header-cart.js' );
+}
+//////////////////////////////////////////////////////////////////////////
+
+
 if ( ! function_exists( 'storefront_header_cart' ) ) {
     /**
      * Display Header Cart
@@ -26,7 +42,6 @@ if ( ! function_exists( 'storefront_header_cart' ) ) {
             }
             ?>
 
-            <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/design/header-cart/header-cart.css" />
 
             <div id="site-header-cart-head-wrapper">
                 <ul id="site-header-cart" class="site-header-cart menu">
@@ -39,7 +54,6 @@ if ( ! function_exists( 'storefront_header_cart' ) ) {
                 </ul>
             </div>
 
-            <script src="<?php echo get_stylesheet_directory_uri(); ?>/design/header-cart/header-cart.js"></script>
 
             <?php
         }
