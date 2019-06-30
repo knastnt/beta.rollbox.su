@@ -12,7 +12,7 @@
 /// подключение стилей
 ///
 // правильный способ подключить стили и скрипты
-add_action( 'wp_enqueue_scripts', 'header_cart_include_styles', 100 );
+add_action( 'wp_enqueue_scripts', 'header_cart_include_styles', 30 );
 //add_action('wp_print_styles', 'true_include_styles'); // можно использовать этот хук он более поздний
 function header_cart_include_styles() {
     wp_enqueue_style( 'header-cart-style', get_stylesheet_directory_uri() . '/design/header-cart/header-cart.css' );
