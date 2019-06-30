@@ -58,9 +58,9 @@ function open_menu_wrapper() {
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/design/flexmobilemenu/js/modernizr.custom.25376.js"></script>
 
     <div id="perspective" class="perspective effect-airbnb">
+        <button id="showMenu" class="toggle-mnu hidden-lg"><span></span></button>
         <div class="container">
             <div class="wrapper"><!-- wrapper needed for scroll -->
-                <p style="position: fixed;top: 0;left: 0;z-index: 10000000;width: 15px;height: 15px;overflow: hidden;"><button id="showMenu">Show Menu</button></p>
 
                 <?php
 }
