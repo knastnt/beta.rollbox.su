@@ -47,26 +47,34 @@
             ev.stopPropagation();
             ev.preventDefault();
 
-            /*___________________________________*/
-            /*Это вместо CSS свойств в файле component.css строка 19.
-            Назначаем только при открытии меню
-	        Т.к. с этой хернёй в css - не работает позиционирование position:fixed*/
-            container.style.transform = 'translateZ(-1500px) translateX(100%) rotateY(-45deg)';
-            /*___________________________________*/
+            if( classie.has( perspectiveWrapper, 'modalview') ) {
+                /* меню открыто, закрываем */
+                container.click(); // вызвать клик
+            }else{
+                /* меню закрыто, открываем */
+                classie.add( showMenu, 'on' );
+
+                /*___________________________________*/
+                /*Это вместо CSS свойств в файле component.css строка 19.
+                Назначаем только при открытии меню
+                Т.к. с этой хернёй в css - не работает позиционирование position:fixed*/
+                container.style.transform = 'translateZ(-1500px) translateX(100%) rotateY(-45deg)';
+                /*___________________________________*/
 
 
 
-            document.getElementById( 'flexmobilemainmenu').innerHTML = document.getElementById( 'flexmobile-mainmenu').innerHTML;
+                document.getElementById( 'flexmobilemainmenu').innerHTML = document.getElementById( 'flexmobile-mainmenu').innerHTML;
 
-            docscroll = scrollY();
-            // change top of contentWrapper
-            contentWrapper.style.top = docscroll * -1 + 'px';
-            // mac chrome issue:
-            document.body.scrollTop = document.documentElement.scrollTop = 0;
-            // add modalview class
-            classie.add( perspectiveWrapper, 'modalview' );
-            // animate..
-            setTimeout( function() { classie.add( perspectiveWrapper, 'animate' ); }, 25 );
+                docscroll = scrollY();
+                // change top of contentWrapper
+                contentWrapper.style.top = docscroll * -1 + 'px';
+                // mac chrome issue:
+                document.body.scrollTop = document.documentElement.scrollTop = 0;
+                // add modalview class
+                classie.add( perspectiveWrapper, 'modalview' );
+                // animate..
+                setTimeout( function() { classie.add( perspectiveWrapper, 'animate' ); }, 25 );
+            }
         });
 
         container.addEventListener( clickevent, function( ev ) {
@@ -90,6 +98,7 @@
                 };
                 if( support ) {
 
+                    classie.remove( showMenu, 'on' );
                     /*___________________________________*/
                     /*назначаем transform вместо css*/
                     container.style.transform = 'translateZ(0) translateX(0) rotateY(0deg)';
