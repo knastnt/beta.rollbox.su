@@ -274,6 +274,7 @@ ul.products li.product .button.added {
 .site-header .user-points button {
     display: block;
     margin-bottom: 3px;
+    transition: none;
 }
 .site-header .user-points button span,
 .site-header .user-points button .ion-chevron-down {
@@ -1062,11 +1063,15 @@ ul.products li.product:hover img {
         margin-bottom: 44px;
     }
 
-    #site-header-cart {
-        position: relative;
-        top: -5px;
+
+    #site-header-cart-head-wrapper .widget_shopping_cart_content {
+        position: absolute;
+        width: auto;
+        right: 10px !important;
+        left: 10px !important;
+        top: 56px;
     }
-    #site-header-cart > li {
+    #site-header-cart > li:first-child {
         position: relative;
     }
 
@@ -1079,5 +1084,12 @@ ul.products li.product:hover img {
     }
     .site-header .user-points .user-points-menu::before {
         right: 197px;
+    }
+    .site-header .user-points button {
+        margin-bottom: 0px;
+        margin-top: 4px;
+    }
+    .site-header-cart .cart-contents .amount {
+        margin-right: .327em;
     }
 }
