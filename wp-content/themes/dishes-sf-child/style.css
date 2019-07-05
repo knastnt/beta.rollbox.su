@@ -24,7 +24,10 @@ Text Domain:	dishes-sf-child
 }
 
 /*Убираем обводку*/
-a, button { outline: none !important;}
+a, button {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent; /* for removing the highlight */
+}
 
 /*Ширина контента*/
 .col-full {
