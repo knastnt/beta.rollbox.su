@@ -49,7 +49,7 @@
 
             if( classie.has( perspectiveWrapper, 'modalview') ) {
                 /* меню открыто, закрываем */
-                container.click(); // вызвать клик
+                close_menu(); // сворачиваем меню
             }else{
                 /* меню закрыто, открываем */
                 classie.add( showMenu, 'on' );
@@ -78,6 +78,10 @@
         });
 
         container.addEventListener( clickevent, function( ev ) {
+            close_menu();
+        });
+
+        function close_menu() {
             if( classie.has( perspectiveWrapper, 'animate') ) {
                 var onEndTransFn = function( ev ) {
                     /*эта функция вызывается при завершении анимации закрытия меню*/
@@ -111,7 +115,7 @@
                 }
                 classie.remove( perspectiveWrapper, 'animate' );
             }
-        });
+        }
 
         perspectiveWrapper.addEventListener( clickevent, function( ev ) { return false; } );
     }
