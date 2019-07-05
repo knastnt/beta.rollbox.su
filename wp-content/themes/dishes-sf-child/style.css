@@ -1029,6 +1029,7 @@ ul.products li.product:hover img {
 
 }
 /*///////////////////////////////////////////////////////////////////////////*/
+/* мобильное меню */
 @media (max-width:767px) {
     .top-info {
         margin-left: 50px;
@@ -1091,5 +1092,13 @@ ul.products li.product:hover img {
     }
     .site-header-cart .cart-contents .amount {
         margin-right: .327em;
+    }
+
+
+    .outer-nav.vertical {
+        top: calc(50% + 15px) !important;
+    }
+    .outer-nav a {
+        margin-bottom: 16px !important;
     }
 }
