@@ -15,7 +15,7 @@ function create_custom_fields() {
     <div class="options_group">
         <p class="form-field hide_if_grouped hide_if_external">
             <label for="set_contains_product_ids">Состав сета</label>
-            <?php echo wc_help_tip('Чтобы подцепился состав из этих роллов, нужно присвоить этому товару атрибут состава, указать любое значение и сохранить. Значения заменятся на вычесленные автоматически.'); ?>
+            <?php echo wc_help_tip('Если существует атрибут Состав (slug = consist), то в него (к уже имеющимся ингридиентам) будет добавляться состав этих роллов.'); ?>
             <select class="wc-product-search" multiple="multiple" style="width: 50%;" id="set_contains_product_ids" name="set_contains_product_ids[]" data-placeholder="<?php esc_attr_e( 'Search for a product&hellip;', 'woocommerce' ); ?>" data-action="woocommerce_json_search_products_and_variations" data-exclude="<?php echo intval( $post->ID ); ?>">
                 <?php
 
