@@ -53,20 +53,21 @@ class Coupons
     //Начисление бонусов при выполнении заказа
     static function add_bonus_when_order_complete( $order_ID ) {
 
-        //Получаем ID пользователя
-        $user_id = get_current_user_id();
-        // Если юзер не залогинен, то ничего не делаем
-        if ($user_id == 0) return;
+        //Получаем ордер
+        $order = wc_get_order( $order_ID );
+        //Если такого ордера нет, то ничего не делаем
+        if (!$order) return;
+
+        //Получаем ID покупателя
+        $user = $order->get_user();
+        // Если юзер не возвращён (т.е. гость), то ничего не делаем
+        if ($user == false) return;
+        $user_id = $user->ID;
 
         //Получаем значение процента возврата от суммы ордера
         $percentOfPointReturning = woocommerceLoyalty_Options::instance()->getPercentOfPointReturning();
         //Если 0, то ничего не делаем
         if ($percentOfPointReturning == 0) return;
-
-        //Получаем ордер
-        $order = wc_get_order( $order_ID );
-        //Если такого ордера нет, то ничего не делаем
-        if (!$order) return;
 
         //Получаем количество бонусов для возврата
         $pointsToReturn = intval($order->get_total() * $percentOfPointReturning * 0.01);
@@ -116,14 +117,19 @@ class Coupons
 
     //Начисление бонусов за оставление комментариев
     static function add_comment_to_product( $comment_ID, $comment_approved ) {
-        //Получаем ID пользователя
-        $user_id = get_current_user_id();
-        // Если юзер не залогинен, то ничего не делаем
+
+        //Получаем комментарий из его ID
+        $wp_comment = get_comment( $comment_ID );
+        // Если коммент не существует, то ничего не делаем
+        if ($wp_comment == null) return;
+
+        //Получаем ID пользователя, оставившего коммент
+        $user_id = $wp_comment->user_id;
+        // Если юзер не существует, то ничего не делаем
         if ($user_id == 0) return;
 
         if( 1 === $comment_approved ){
             //function logic goes here
-            $wp_comment = get_comment( $comment_ID );
             $post_ID = $wp_comment->comment_post_ID; //ID записи, на которой оставили этот коммент
             $post = get_post($post_ID);
             if ($post->post_type == "product") {
