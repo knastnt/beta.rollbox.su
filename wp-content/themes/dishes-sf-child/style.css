@@ -198,7 +198,9 @@ ul.products li.product .button.added {
     left: -23px;
     width: 16px;
     height: 16px;
-    background: url('img/star_32.png') round center;
+    background: url('img/star_32.png');
+    background-repeat: no-repeat;
+    background-size: contain;
     content: "";
     margin: 3px;
 }
@@ -296,6 +298,7 @@ ul.products li.product .button.added {
     width: 54px;
     height: 54px;
     background: url('img/coinstatic_64.png');
+    background-repeat: no-repeat;
     background-size: contain;
     content: "";
     display: block;
