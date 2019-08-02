@@ -685,14 +685,22 @@ ul.products li.product:hover img {
 }
 
 /* Скрываем ненужные блоки */
-.woocommerce-checkout .woocommerce-checkout-review-order .woocommerce-checkout-review-order-table,
-.woocommerce-checkout h3#order_review_heading,
+/*.woocommerce-checkout .woocommerce-checkout-review-order .woocommerce-checkout-review-order-table,
+.woocommerce-checkout h3#order_review_heading,*/
+.woocommerce-checkout-review-order-table a.woocommerce-remove-coupon,
 .woocommerce-checkout .woocommerce-checkout-review-order .woocommerce-checkout-payment .wc_payment_methods{
     display: none;
 }
 .woocommerce-checkout .woocommerce-checkout-review-order .woocommerce-checkout-payment .place-order{
     margin-top: 0 !important;
 }
+
+
+/*Кнопки checkout не во всю ширину*/
+#payment .place-order .button {
+    width: auto;
+}
+
 
 
 /* Скрываем Страну */

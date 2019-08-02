@@ -90,6 +90,14 @@ add_filter( 'woocommerce_add_message', 'remove_some_notices' );
 add_filter( 'woocommerce_add_notice', 'remove_some_notices' ); //пришлось редактировать шаблон notices\notice.php
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Редирект в cart если checkout вызван не со страницы cart
 add_action( 'woocommerce_before_checkout_form', 'checkout_redirect_to_cart' );
 function checkout_redirect_to_cart(){
     $ref = $_SERVER['HTTP_REFERER'];
@@ -105,3 +113,21 @@ function checkout_redirect_to_cart(){
         wp_redirect( $cart_url );
     }
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Добавляем кнопочку Назад перед Подтвердить заказ
+add_action( 'woocommerce_review_order_before_submit', 'add_checkout_back_btn' );
+function add_checkout_back_btn(){
+    //echo '<button type="submit" name="woocommerce_checkout_place_order" id="place_order" value="Назад" data-value="Назад" class="button">Назад</button>';
+    echo '<a href="' . wc_get_cart_url() . '" class="button">Назад</a>';
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
