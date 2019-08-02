@@ -134,13 +134,17 @@ function get_info1_text() {
                 </tr>
                 <tr>
                     <td>Пятница</td>
-                    <td rowspan="3" style="vertical-align: middle;">с 11:00 до 23:30</td>
+                    <td rowspan="2" style="vertical-align: middle;">с 11:00 до 02:00</td>
                 </tr>
                 <tr>
                     <td>Суббота</td>
                 </tr>
                 <tr>
+                    <td style="border-bottom: 1px solid #dbdbdb;"></td><td style="border-bottom: 1px solid #dbdbdb;"></td>
+                </tr>
+                <tr>
                     <td>Воскресенье</td>
+                    <td>с 11:00 до 00:30</td>
                 </tr>
             </table>
         </li>
