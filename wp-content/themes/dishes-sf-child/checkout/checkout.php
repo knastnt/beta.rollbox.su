@@ -89,3 +89,19 @@ function remove_some_notices($content){
 add_filter( 'woocommerce_add_message', 'remove_some_notices' );
 add_filter( 'woocommerce_add_notice', 'remove_some_notices' ); //пришлось редактировать шаблон notices\notice.php
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+add_action( 'woocommerce_before_checkout_form', 'checkout_redirect_to_cart' );
+function checkout_redirect_to_cart(){
+    $ref = $_SERVER['HTTP_REFERER'];
+    if ($ref == '' || $ref == null) return; //Если referer не передан, то и ничего не делаем
+    $ref_path = parse_url($ref, PHP_URL_PATH);
+    $cart_url = wc_get_cart_url();
+    $cart_url_path = parse_url($cart_url, PHP_URL_PATH);
+
+    if (strcasecmp($ref_path, $cart_url_path) == 0) {
+        // равны при сравнении без учета регистра
+    }else{
+        //Не равны. Значит переход не из cart. Значит делаем редирект в cart
+        wp_redirect( $cart_url );
+    }
+}
