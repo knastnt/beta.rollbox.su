@@ -51,7 +51,7 @@ function custom_override_checkout_fields( $fields ) {
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Переименовываем некоторый текст
+//Переименовываем (изменяем, подменяем) некоторый текст
 add_filter( 'gettext' , 'rename_some_fields', 10, 3 );
 function rename_some_fields( $translation, $text, $domain ) {
     if ($text == 'House number and street name' && $domain == 'woocommerce') {
@@ -65,6 +65,9 @@ function rename_some_fields( $translation, $text, $domain ) {
     }
     if ($text == 'Billing address' && $domain == 'woocommerce') {
         $translation = 'Контакты клиента';
+    }
+    if ($text == 'Subtotal' && $domain == 'woocommerce') {
+        $translation = 'Сумма в корзине';
     }
     return $translation;
 }
