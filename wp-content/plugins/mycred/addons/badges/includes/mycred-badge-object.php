@@ -689,7 +689,7 @@ if ( ! class_exists( 'myCRED_Badge' ) ) :
 			if ( $image_identification === false || strlen( $image_identification ) == 0 ) return false;
 
 			$image_url    = $image_identification;
-			if ( is_numeric( $image_identification ) &&  strpos( '://', $image_identification ) === false )
+			if ( is_numeric( $image_identification ) &&  strpos( '://', (string) $image_identification ) === false )
 				$image_url = wp_get_attachment_url( $image_identification );
 
 			$image_width  = ( $this->image_width !== false ) ? ' width="' . esc_attr( $this->image_width ) . '"' : '';

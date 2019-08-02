@@ -145,7 +145,7 @@ if ( ! class_exists( 'myCRED_Hook' ) ) :
 
 			}
 
-			$option_id = 'mycred_pref_hooks';
+			$option_id = apply_filters( 'mycred_option_id', 'mycred_pref_hooks' );
 			if ( ! $this->is_main_type )
 				$option_id = $option_id . '_' . $this->mycred_type;
 

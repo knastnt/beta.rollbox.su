@@ -1,21 +1,71 @@
-=== Instagram Feed Gallery ===
+=== WP Instagram Feed Gallery ===
 Contributors: quadlayers
-Tags: instagram, instagram feed, instagram widget, gallery widget, pictures, carousel slider, image gallery, image slider, instagram gallery, instagram pictures
-Requires at least: 3.8.0
-Requires PHP: 5.3
+Donate link: https://quadlayers.com/portfolio/instagram-gallery/
+Tags: instagram, instagram feed, instagram widget, instagram gallery, instagram pictures, gallery widget, pictures, carousel slider, image gallery, image slider
+Requires at least: 4.6
 Tested up to: 5.2
-Stable tag: 2.3.0
+Requires PHP: 5.3
+Stable tag: 2.4.5
 License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Donate link: https://www.quadlayers.com
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Instagram Gallery is an easy way to display your Instagram feeds pictures your website.
+Instagram Feed Gallery is an easy way to display your Instagram feeds pictures your website.
 
 == Description ==
 
-Easy and simple way to display your Instagram Feed and Tag Gallery on your website.
+[Premium](https://quadlayers.com/portfolio/wordpress-instagram-feed/) | [Demo](https://quadlayers.com/instagram-feed/) | [Community](https://www.facebook.com/groups/quadlayers/)
 
-Display pictures from your Instagram account as gallery or as carousel Slider. Just press the button to generate your Instagram Access Token and configure gallery settings and display your pictures on your website.
+Instagram Feed Gallery is the most user-friendly Instagram plugin for Wordpress. It allows you to showcase your Instagram feed or Instagram tags on your website.
+
+This Instagram Gallery plugin offers you two different layouts to display your feeds, a grid gallery or a carousel slider. It also lets you create hashtags feeds, a feature that is usually available only the premium versions of other plugins.
+
+== Instagram Token setup ==
+
+Unlike other plugins that require creating an app with the developer tools, our Instagram Feed plugin offers you a one-click setup. 
+
+All you need to display your Instagram user or hashtags pictures is clicking on the "Add New Account" button and your Instagram access token will be automatically generated and saved.
+
+== Instagram Premium ==
+
+Instagram Feed Gallery is a freemium plugin which allows you to include an unlimited number of user accounts and then create a separate feed for each of them. 
+
+It also includes two extra layouts and offers a lot of customization options like a ‘Load More’ button, a box mode for the feed with colors and borders, the option to display the user profile avatar image, username and custom description and a lot more.
+####Pro Features:
+
+> * Multiple Instagram User Accounts
+> * Masonry Instagram Gallery layout
+> * Highlight Instagram Gallery layout
+> * Boxed mode for your Instagram Gallery
+> * Display user profile in your Instagram Gallery
+> * Display Instagram Pictures in a card
+> * Display user info inside Instagram Pictures popup
+> * Display image caption inside Instagram Pictures popup
+> * Display image likes inside Instagram Pictures popup
+> * Change Instagram Pictures popup description position
+> * Load more button
+
+
+== Frequently Asked Questions ==
+
+= Can I display pictures from Instagram Tag? =
+
+Yes, you can.
+
+= Can I display pictures in Instagram Widget? =
+
+Yes, you can.
+
+= Why my pictures are not showing on page? =
+
+You have to update your Instagram access token to display user media.
+
+= How to add Instagram Gallery to a widget? =
+
+Go to your admin dashboard, and add new Instagram gallery, then go to widgets, add Instagram Gallery Widget and select the Gallery item from the dropdown list.
+
+= Why there are two popups on image click? =
+
+There may be some other plugins(like: fancybox, elementor) which also uses image links to open popup. Try to disable popup images option in the setting panel of this plugin, which will allow other plugins to work.
 
 == Installation ==
 
@@ -24,41 +74,61 @@ Display pictures from your Instagram account as gallery or as carousel Slider. J
 3. Click "Install"
 4. Go to Instagram Gallery / Account in your admin dashboard
 5. Press the "Add new account" button and generate the access token
-6. Go to Instagram Gallery / Gallery and press the "Add new gallery" button
-7. Configure your gallery
-8. Press "Update" button and copy & paste your shortcode
-
-== Frequently Asked Questions ==
-
-= Why my pictures are not showing on page? =
-
-You have to update valid Instagram access token to display user media.
-
-= Can I display pictures from Instagram Tag? =
-
-Yes, you can.
-
-= How to add gallery to Widget? =
-
-Go to your admin dashboard, and add new gallery, then go to widgets, add Instagram Gallery widget and select the Gallery item from the dropdown list.
-
-= Why there are two popups on image click? =
-
-There may be some other plugins(like: fancybox, elementor) which also uses image links to open popup. Try to disable popup images option in the setting panel of this plugin, which will allow other plugins to work.
-
-= Error: No working transports found =
-
-This error visible sometimes in PHP 7+ installations due to the missing CURL extension.
+6. Go to Instagram Gallery / Feeds and press the "Add new gallery" button
+7. Configure your Instagram Gallery
+8. Press "Update" button and then copy & paste your shortcode
 
 == Screenshots ==
 
-1. Gallery front-end view
-2. Gallery front-end view with image popup
-3. Carousel Slider view
-4. Plugin backend
-5. Gallery Widget
+1. Instagram Gallery PRO / Account
+2. Instagram Gallery PRO / Feeds
+3. Instagram Gallery PRO / Feeds / Layouts 
+4. Instagram Gallery PRO / Load more button 
+5. Instagram Gallery PRO / Masonry layout
 
 == Changelog ==
+
+= 2.4.5 =
+* Fix. remove rating alert
+
+= 2.4.4 =
+* Improvement. Instagram Feed Gallery bad spelling
+* Improvement. Instagram Feed Gallery demo url
+
+= 2.4.3 =
+* Fix. Instagram Feed Gallery renamed
+
+= 2.4.2 =
+* Improvement. Instagram Token validation alerts
+
+= 2.4.1 =
+* Fix. small CSS fixes
+* Improvement. Instagram Premium compatibility
+
+= 2.4.0 =
+* Fix. multiple hooks for developers
+* Improvement. Instagram Premium compatibility
+
+= 2.3.3 =
+* Fix. Instagram Icon text decoration none
+
+= 2.3.2 =
+* Fix. Instagram Feed compatibility
+* Fix. Instagram Carousel Firefox issue
+* New. Instagram Carousel pagination option
+* Improvement. Instagram Tag Feed caption
+* Improvement. Instagram Tag Feed types
+* Improvement. Instagram Tag Feed consistency
+* Improvement. Instagram Feed core consistency
+* Improvement. Instagram Feed JS consistency
+* Improvement. Instagram Feed CSS speed
+* Improvement. Instagram Feed API consistency
+* Premium. Instagram User Feed load more button
+* Premium. Instagram User Feed load more button colors
+* Premium. Instagram User Feed popup caption and likes options
+* Premium. Instagram Tag Feed load more button
+* Premium. Instagram Tag Feed load more button colors
+* Premium. Instagram Tag Feed popup caption and likes options
 
 = 2.3.1 =
 * Fix. Reload on Instagram token removal

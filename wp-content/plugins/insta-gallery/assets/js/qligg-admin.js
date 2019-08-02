@@ -25,7 +25,14 @@
   // Toggles
   // ---------------------------------------------------------------------------
 
-  $('input[name=ig_select_from]').on('change', function (e) {
+  $('.ig-list-images > li').on('click', function (e) {
+    $(this).addClass('active');
+    $(this).siblings().removeClass('active');
+    $(this).find('input[type=radio]').prop('checked', true).trigger('change');
+    $(this).siblings().find('input[type=radio]').prop('checked', false);
+  });
+
+  $('input[name=insta_source]').on('change', function (e) {
     if (this.value == 'username') {
       $('#ig-select-tag-wrap').hide(500, function (e) {
         $('#ig-select-username-wrap').show().addClass('active');
@@ -37,23 +44,44 @@
     }
   });
 
-  $('input[name=ig_display_type]').on('change', function (e) {
-    if (this.value == 'gallery') {
-      $('#ig-section-carousel').hide(500, function (e) {
-        $('#ig-section-galllery').show().addClass('active');
+  $('input[name=insta_box]').on('change', function (e) {
+    if (this.checked) {
+      $('#ig-section-box').show('slow').addClass('active');
+    } else {
+      $('#ig-section-box').hide('slow').removeClass('active');
+    }
+  });
+
+  $('input[name=insta_layout]').on('change', function (e) {
+    if (this.value == 'carousel') {
+      $('#ig-section-gallery, #ig-section-masonry').hide(500, function (e) {
+        $('#ig-section-carousel').show().addClass('active');
       }).removeClass('active');
-    } else if (this.value == 'carousel') {
-      $('#ig-section-galllery').hide(500, function (e) {
-        $('#ig-section-').show().addClass('active');
+    } else if (this.value == 'gallery') {
+      $('#ig-section-carousel, #ig-section-masonry').hide(500, function (e) {
+        $('#ig-section-gallery').show().addClass('active');
+      }).removeClass('active');
+    } else {
+      $('#ig-section-carousel').hide(500, function (e) {
+        $('#ig-section-masonry').show().addClass('active');
+        $('#ig-section-gallery').show().addClass('active');
       }).removeClass('active');
     }
   });
 
-  $('input[name=insta_instalink]').on('change', function (e) {
+  $('input[name=insta_button]').on('change', function (e) {
     if (this.checked) {
       $('#ig-section-button').show('slow').addClass('active');
     } else {
       $('#ig-section-button').hide('slow').removeClass('active');
+    }
+  });
+
+  $('input[name=insta_button_load]').on('change', function (e) {
+    if (this.checked) {
+      $('#ig-section-button_load').show('slow').addClass('active');
+    } else {
+      $('#ig-section-button_load').hide('slow').removeClass('active');
     }
   });
 
@@ -65,37 +93,46 @@
     }
   });
 
+  $('input[name=insta_popup]').on('change', function (e) {
+    if (this.checked) {
+      $('#ig-section-popup').show('slow').addClass('active');
+    } else {
+      $('#ig-section-popup').hide('slow').removeClass('active');
+    }
+  });
+
+  $('input[name=insta_card]').on('change', function (e) {
+    if (this.checked) {
+      $('#ig-section-card').show('slow').addClass('active');
+    } else {
+      $('#ig-section-card').hide('slow').removeClass('active');
+    }
+  });
+
   // Spinner
   // -------------------------------------------------------------------------
 
   function ig_change_spinner(link) {
     if (link) {
-      if (!$('.ig_adv-setting .ig-spinner img').length) {
+      if (!$('#ig-save-settings .insta-gallery-spinner img').length) {
         var img = '<img src="' + link + '" class="ig-spin" />';
-        $('.ig_adv-setting .ig-spinner').append(img);
+        $('#ig-save-settings .insta-gallery-spinner').append(img);
       } else {
-        $('.ig_adv-setting .ig-spinner img').attr('src', link);
+        $('#ig-save-settings .insta-gallery-spinner img').attr('src', link);
       }
-      $('.ig_adv-setting .ig-spinner .ig-spin').hide();
-      $('.ig_adv-setting .ig-spinner img').show();
+      $('#ig-save-settings .insta-gallery-spinner .ig-spin').hide();
+      $('#ig-save-settings .insta-gallery-spinner img').show();
     } else {
-      $('.ig_adv-setting .ig-spinner .ig-spin').show();
-      $('.ig_adv-setting .ig-spinner img').remove();
+      $('#ig-save-settings .insta-gallery-spinner .ig-spin').show();
+      $('#ig-save-settings .insta-gallery-spinner img').remove();
     }
 
   }
 
-  var $igs_image_id = $('input[name=igs_spinner_image_id]'),
-          $igs_reset = $('#igs-spinner_reset');
+  var $igs_image_id = $('input[name=insta_spinner_image_id]'),
+          $igs_reset = $('#ig-spinner-reset');
 
-  $('.ig_adv-setting input[name=igs-spinner]').trigger('change');
-
-  $('.ig_adv-setting-toggle').on('click', function () {
-    $(this).toggleClass('active');
-    $('.ig_adv-setting').slideToggle();
-  });
-
-  $('#ig-adv-setting').on('submit', function (e) {
+  $('#ig-save-settings').on('submit', function (e) {
     e.preventDefault();
 
     var $form = $(this),
@@ -105,18 +142,13 @@
       url: ajaxurl,
       type: 'post',
       dataType: 'JSON',
-      data: {
-        action: 'qligg_save_igadvs',
-        igs_flush: $form.find('input[name=igs_flush]').is(':checked') || 0,
-        igs_spinner_image_id: $form.find('input[name=igs_spinner_image_id]').val(),
-        ig_nonce: $form.find('input[name=ig_nonce]').val()
-      },
+      data: $.param($form.serializeArrayAll()) + '&' + $.param({action: 'qligg_save_settings'}),
       beforeSend: function () {
         $spinner.addClass('is-active');
       },
       success: function (response) {
         if (response.success) {
-          console.log(response.data);
+          window.location.reload();
         }
       },
       complete: function () {
@@ -141,7 +173,7 @@
     ig_change_spinner($igs_image_id.data('misrc'));
 
   // select media image
-  $('#igs-spinner_media_manager').click(function (e) {
+  $('#ig-spinner-upload').click(function (e) {
     e.preventDefault();
     var image_frame;
 
@@ -356,7 +388,7 @@
           $tr.fadeOut();
 
           setTimeout(function () {
-            window.location.href = window.location.href;
+            window.location.reload();
           }, 300);
 
         } else {
@@ -392,7 +424,7 @@
       success: function (response) {
         if (response.success) {
           setTimeout(function () {
-            window.location.href = window.location.href;
+            window.location.href = response.data;
           }, 300);
         } else {
           alert(response.data);
@@ -432,10 +464,17 @@
       },
       success: function (response) {
         if (response.success) {
-          $tr.fadeOut();
+          setTimeout(function () {
+            window.location.href = response.data;
+          }, 300);
         } else {
           alert(response.data);
         }
+        //if (response.success) {
+        //  $tr.fadeOut();
+        //} else {
+        //  alert(response.data);
+        //}
       },
       complete: function () {
         setTimeout(function () {

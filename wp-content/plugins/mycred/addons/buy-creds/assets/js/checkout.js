@@ -106,10 +106,16 @@ console.log( formdata );
 
 			if ( buttontype == 'redirect' ) {
 
-				buyCREDform.attr( 'action', buttonvalue );
-				buyCREDform.submit();
-
 				$(this).attr( 'disabled', 'disabled' ).html( buyCRED.redirecting );
+				
+				if ( $('.myCRED-buy-form').hasClass('BitPay') ) {
+					window.location = buttonvalue;
+				}
+				else
+				{
+					buyCREDform.attr( 'action', buttonvalue );
+					buyCREDform.submit();
+				}
 
 			}
 

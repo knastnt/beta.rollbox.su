@@ -67,13 +67,13 @@ if ( ! class_exists( 'myCRED_Settings' ) ) :
 			$this->cred_id             = ( ( ! is_string( $point_type ) || sanitize_key( $point_type ) == '' || $point_type === NULL ) ? $this->default_cred_id : $point_type );
 			$this->is_main_type        = ( ( $this->cred_id == $this->default_cred_id ) ? true : false );
 
-			// Log table
-			$this->log_table           = $this->get_log_table();
-
 			// Multisite related
 			$this->is_multisite        = is_multisite();
 			$this->use_master_template = mycred_override_settings();
 			$this->use_central_logging = mycred_centralize_log();
+
+			// Log table
+			$this->log_table           = $this->get_log_table();
 
 			// Option ID
 			$this->option_id           = 'mycred_pref_core';
@@ -2654,7 +2654,9 @@ if ( ! function_exists( 'mycred_get_option' ) ) :
 
 		}
 
-		return get_option( $option_id, $default );
+		$get_option_id = apply_filters( 'mycred_get_option_id', $option_id );
+
+		return get_option( $get_option_id, $default );
 
 	}
 endif;

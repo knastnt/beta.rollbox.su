@@ -10,12 +10,12 @@ if (!defined('ABSPATH'))
     </a>
   </p>
 </div>
-<?php if (count($instagram_items)) : ?>
+<?php if (count($instagram_feeds)) : //var_dump($instagram_feeds);?>
   <table class="widefat ig-table">
     <thead>
       <tr>
-        <th>#</th>
-        <th><?php _e('Gallery', 'insta-gallery'); ?></th>
+        <th><?php _e('Image', 'insta-gallery'); ?></th>
+        <th><?php _e('Source', 'insta-gallery'); ?></th>
         <th><?php _e('Type', 'insta-gallery'); ?></th>
         <th><?php _e('Shortcode', 'insta-gallery'); ?></th>
         <th><?php _e('Action', 'insta-gallery'); ?></th>
@@ -24,24 +24,24 @@ if (!defined('ABSPATH'))
     <tbody>
       <?php
       $i = 1;
-      foreach ($instagram_items as $id => $instagram_item) {
+      foreach ($instagram_feeds as $id => $instagram_feed) {
+
+        if (!isset($instagram_feed['insta_source']))
+          continue;
+
+        if ($instagram_feed['insta_source'] == 'username') {
+          $profile_info = qligg_get_user_profile($instagram_feed['insta_username']);
+        } else {
+          $profile_info = qligg_get_tag_profile($instagram_feed['insta_tag']);
+        }
         ?>
         <tr>
-          <td><?php echo esc_attr($i++); ?></td>
+          <td class="profile-picture"><img src="<?php echo esc_url($profile_info['picture']); ?>" width="30" /></td>
           <td>
-            <?php
-            if ($instagram_item['ig_select_from'] == 'username') {
-
-              $profile_info = qligg_get_user_profile($instagram_item['insta_username']);
-
-              echo __('User', 'insta-gallery') . ' / @' . $profile_info['username'];
-            } else {
-              echo __('Tag', 'insta-gallery') . ' / #' . $instagram_item['insta_tag'];
-            }
-            ?>
+            <?php echo esc_html($profile_info['user']); ?>
           </td>
           <td>
-            <?php echo esc_html(ucfirst($instagram_item['ig_display_type'])); ?>
+            <?php echo esc_html(ucfirst($instagram_feed['insta_layout'])); ?>
           </td>
           <td>
             <input id="<?php echo esc_attr($id); ?>-gallery-item" type="text" data-qligg-copy="#<?php echo esc_attr($id); ?>-gallery-item" value='[insta-gallery id="<?php echo esc_attr($id); ?>"]' readonly />

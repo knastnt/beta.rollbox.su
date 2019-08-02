@@ -1047,11 +1047,14 @@ if ( ! class_exists( 'myCRED_Sell_Content_Module' ) ) :
 						$suffix = '';
 
 					$sale_setup = (array) mycred_get_post_meta( $post->ID, 'myCRED_sell_content' . $suffix );
+
+					$sale_setup = empty($sale_setup) ? $sale_setup : $sale_setup[0];
+
 					$sale_setup = shortcode_atts( array(
 						'status' => 'disabled',
 						'price'  => 0,
 						'expire' => 0 
-					), $sale_setup[0] );
+					), $sale_setup );
 
 					$expiration_description = __( 'Never expires', 'mycred' );
 					if ( absint( $sale_setup['expire'] ) > 0 )

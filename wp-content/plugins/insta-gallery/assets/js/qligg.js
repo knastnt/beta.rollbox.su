@@ -2,218 +2,305 @@
 //https://w3bits.com/flexbox-masonry/
   var swiper_index = 0, $swipers = {};
 
-  // Carousel
+  // Ajax load
   // ---------------------------------------------------------------------------
-  function add_insta_gallery_carousel($item) {
 
-    var $wrap = $('.insta-gallery-items', $item),
-            options = $wrap.data('igfs');
+  function qligg_load_item_images($item, next_max_id) {
 
-    if ($wrap.data('type') == 'carousel') {
-      swiper_index++;
+    var $wrap = $('.insta-gallery-list', $item),
+            $spinner = $('.insta-gallery-spinner', $item),
+            options = $item.data('feed');
 
-      // resize images to square
-      /*var instacarouselImages = $wrap.find('img.insta-gallery-image');
-       if (instacarouselImages.length) {
-       var images = instacarouselImages.length, loaded = 0, minheight = 0;
-       instacarouselImages.load(function () {
-       loaded++;
-       if (minheight == 0)
-       minheight = $(this).height();
-       // if(minheight > $(this).height())minheight =
-       // $(this).height();
-       if (($(this).width() == $(this).height()))
-       minheight = $(this).height();
-       if (loaded >= images) {
-       $wrap.find('img.insta-gallery-image').each(function () {
-       var i = $(this);
-       var th = i.height();
-       if (minheight < th) {
-       var m = (th - minheight) / 2;
-       $(this).css('margin-top', '-' + m + 'px');
-       $(this).css('margin-bottom', '-' + m + 'px');
-       }
-       });
-       $swipers[swiper_index].update();
-       }
-       });
-       }*/
+    $.ajax({
+      url: qligg.ajax_url,
+      type: 'post',
+      timeout: 30000,
+      data: {
+        action: 'qligg_load_item_images',
+        next_max_id: next_max_id,
+        feed: options
+      },
+      beforeSend: function () {
+        $spinner.show();
+      },
+      success: function (response) {
 
-      $swipers[swiper_index] = new Swiper($wrap, {
-        //direction: 'vertical',
-        loop: true,
-        autoHeight: true,
-        observer: true,
-        observeParents: true,
-        spaceBetween: parseInt(options.spacing),
-        slidesPerView: parseInt(options.slides),
-        autoplay: {
-          delay: parseInt(options.autoplay_interval),
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-          420: {
-            slidesPerView: 1,
-            spaceBetween: 2,
-          },
-          767: {
-            slidesPerView: Math.min(2, options.slides)
-          },
-          1023: {
-            slidesPerView: Math.min(3, options.slides)
-          }
+        if (response.success !== true) {
+          $wrap.append($(response.data));
+          $spinner.hide();
+          return;
+        }
+        var $images = $(response.data);
+
+        $wrap.append($images).trigger('qligg.loaded', [$images]);
+
+      },
+      complete: function () {
+      },
+      error: function (jqXHR, textStatus) {
+        $spinner.hide();
+        console.log(textStatus);
+      }
+    });
+
+  }
+
+  // Images
+  // ---------------------------------------------------------------------------
+
+  $('.insta-gallery-feed').on('qligg.loaded', function (e, images) {
+
+    var $item = $(e.delegateTarget),
+            $wrap = $('.insta-gallery-list', $item),
+            $spinner = $('.insta-gallery-spinner', $item),
+            $button = $('.insta-gallery-button.load', $item),
+            options = $item.data('feed'),
+            total = $(images).length,
+            loaded = 0;
+
+    if (total) {
+      $wrap.find('.insta-gallery-image').load(function (e) {
+        loaded++;
+        if (loaded >= total) {
+          $wrap.trigger('qligg.imagesLoaded', [images]);
         }
       });
     }
-  }
 
-  // Masonry Vertical
+    if (total < options.limit) {
+      $spinner.hide();
+      setTimeout(function () {
+        $button.fadeOut();
+      }, 300);
+    }
+
+  });
+
+  // Spinner
   // ---------------------------------------------------------------------------
-  function add_insta_gallery_masonry($item) {
 
-    var $wrap = $('.insta-gallery-items', $item),
-            options = $wrap.data('igfs');
+  $('.insta-gallery-feed').on('qligg.imagesLoaded', function (e) {
 
-    if ($wrap.data('type') == 'masonry') {
+    var $item = $(e.delegateTarget),
+            $spinner = $('.insta-gallery-spinner', $item);
 
-      var breakpoints = {
+    $spinner.hide();
+
+  });
+
+  // Gallery
+  // ---------------------------------------------------------------------------
+
+  $('.insta-gallery-feed[data-feed_layout=gallery]').on('qligg.imagesLoaded', function (e, images) {
+
+    var $item = $(e.delegateTarget);
+
+    $item.addClass('loaded');
+
+    $(images).each(function (i, item) {
+      setTimeout(function () {
+        $(item).addClass('ig-image-loaded');
+      }, 150 + (i * 30));
+
+    });
+  });
+
+  // Carousel
+  // ---------------------------------------------------------------------------
+
+  $('.insta-gallery-feed[data-feed_layout=carousel]').on('qligg.imagesLoaded', function (e, images) {
+
+    var $item = $(e.delegateTarget);
+
+    $item.addClass('loaded');
+
+    $(images).each(function (i, item) {
+      //setTimeout(function () {
+      $(item).addClass('ig-image-loaded');
+      //}, 500 + (i * 50));
+
+    });
+  });
+
+  $('.insta-gallery-feed[data-feed_layout=carousel]').on('qligg.imagesLoaded', function (e, images) {
+
+    var $item = $(e.delegateTarget),
+            $swiper = $('.swiper-container', $item),
+            options = $item.data('feed');
+
+    swiper_index++;
+
+    $swipers[swiper_index] = new Swiper($swiper, {
+      //direction: 'vertical',
+      //wrapperClass: 'insta-gallery-list',
+      //slideClass: 'insta-gallery-item',
+      loop: true,
+      autoHeight: true,
+      observer: true,
+      observeParents: true,
+      spaceBetween: parseInt(options.spacing),
+      slidesPerView: parseInt(options.carousel.slides),
+      autoplay: options.carousel.autoplay ? {
+        delay: parseInt(options.carousel.interval),
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        dynamicBullets: true,
+        clickable: true,
+        type: 'bullets',
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
         420: {
           slidesPerView: 1,
           spaceBetween: 2,
         },
         767: {
-          slidesPerView: Math.min(2, options.slides)
+          slidesPerView: Math.min(2, options.carousel.slides)
         },
         1023: {
-          slidesPerView: Math.min(3, options.slides)
+          slidesPerView: Math.min(3, options.carousel.slides)
         }
-      };
-
-      var g = $wrap,
-              gc = document.querySelectorAll('.ig-item'),
-              $images = $wrap.find('img.insta-gallery-image'),
-              gcLength = gc.length, // Total number of cells in the masonry
-              gHeight = 0, // Initial height of our masonry
-              gridGutter = 0,
-              dGridCol = options.columns,
-              tGridCol = 2,
-              mGridCol = 1,
-              //dWidth = Math.round($wrap.width() / $wrap.find('.ig-item')),
-              i; // Loop counter
-
-      if ($images.length) {
-
-        var images = $images.length, loaded = 0;
-
-        $images.load(function (e) {
-          loaded++;
-
-          if (loaded >= images) {
-
-            setTimeout(function () {
-              // Calculate the net height of all the cells in the masonry
-              for (i = 0; i < gcLength; ++i) {
-                gHeight += gc[i].offsetHeight + parseInt(gridGutter);
-              }
-
-              //$wrap.css({'height': gHeight / dWidth + gHeight / (gcLength + 1) + "px", 'display': 'flex'});
-
-              if (window.screen.width >= 1024) {
-                $wrap.css({'height': gHeight / dGridCol + gHeight / (gcLength + 1) + "px", 'display': 'flex'});
-              } else if (window.screen.width < 1024 && window.screen.width >= 768) {
-                $wrap.css({'height': gHeight / tGridCol + gHeight / (gcLength + 1) + "px", 'display': 'flex'});
-              } else {
-                $wrap.css({'height': gHeight / mGridCol + gHeight / (gcLength + 1) + "px", 'display': 'flex'});
-              }
-
-            }, 200);
-          }
-        });
       }
-      //});
-    }
+    });
+  });
 
-  }
-
-  // Initializing the carousel
+  // Masonry
   // ---------------------------------------------------------------------------
-  function add_insta_gallery_popup($item) {
 
-    var $wrap = $('.insta-gallery-items', $item),
-            options = $wrap.data('igfs');
+  $('.insta-gallery-feed[data-feed_layout=masonry]').on('qligg.imagesLoaded', function (e, images) {
 
-    if (options.popup) {
+    var $item = $(e.delegateTarget),
+            $wrap = $('.insta-gallery-list', $item);
 
-      $wrap.find('.ig-item > a').magnificPopup({
-        type: 'image',
-        mainClass: 'mfp-with-zoom',
-        zoom: {
-          enabled: true,
-          duration: 300,
-          easing: 'ease-in-out',
-          opener: function (openerElement) {
-            return openerElement.is('img') ? openerElement
-                    : openerElement.find('img');
-          }
-        },
-        gallery: {
-          enabled: true
-        },
-        image: {
-          titleSrc: function (item) {
-            return item.el.attr('data-title')
-                    + '<small><a href="'
-                    + item.el.attr('data-iplink')
-                    + '" target="blank" title="view on Instagram"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24"><path style=" " d="M 5 3 C 3.898438 3 3 3.898438 3 5 L 3 19 C 3 20.101563 3.898438 21 5 21 L 19 21 C 20.101563 21 21 20.101563 21 19 L 21 13 L 19 11 L 19 19 L 5 19 L 5 5 L 13 5 L 11 3 Z M 14 3 L 16.65625 5.65625 L 9.15625 13.15625 L 10.84375 14.84375 L 18.34375 7.34375 L 21 10 L 21 3 Z "/>Link</svg></a></small>';
-          }
-        }
+    if (!$wrap.data('masonry')) {
+      $wrap.masonry({
+        itemSelector: '.insta-gallery-item',
+        isResizable: true,
+        isAnimated: false,
+        transitionDuration: 0,
+        percentPosition: true,
+        columnWidth: '.insta-gallery-item:last-child'
       });
+    } else {
+      $wrap.masonry('appended', images, false);
     }
-  }
+  });
 
-  /*function add_insta_gallery_resizes($item, options) {
-   
-   var $wrap = $('.insta-gallery-items', $item),
-   $images = $wrap.find('.ig-item .insta-gallery-image'),
-   images = $images.length,
-   loaded = 0,
-   minheight = 0;
-   
-   if ($images.length) {
-   
-   $images.load(function (e) {
-   loaded++;
-   
-   if (minheight == 0) {
-   minheight = $(this).height();
-   }
-   if (($(this).width() == $(this).height())) {
-   minheight = $(this).height();
-   }
-   if (loaded >= images) {
-   $images.each(function (index) {
-   console.log('init resizes 2');
-   var th = $(this).height();
-   console.log(th);
-   console.log(minheight);
-   //if (minheight < th) {
-   console.log('init resizes 3');
-   var m = (th - minheight) / 2;
-   console.log(m);
-   $(this).css('margin-top', '-' + m + 'px');
-   $(this).css('margin-bottom', '-' + m + 'px');
-   //}
-   });
-   }
-   });
-   }
-   
-   }*/
 
-  /*function ig_lazy_load($wrap, igfs) {
+  $('.insta-gallery-feed[data-feed_layout=masonry]').on('layoutComplete', function (e, items) {
+
+    var $item = $(e.delegateTarget);
+
+    $item.addClass('loaded');
+
+    $(items).each(function (i, item) {
+      setTimeout(function () {
+        $(item.element).addClass('ig-image-loaded');
+      }, 500 + (i * 50));
+
+    });
+  });
+
+  // Popup
+  // ---------------------------------------------------------------------------
+  $('.insta-gallery-feed').on('qligg.loaded', function (e) {
+
+    var $item = $(e.delegateTarget),
+            $wrap = $('.insta-gallery-list', $item),
+            options = $item.data('feed');
+
+    // Redirect
+    // -------------------------------------------------------------------------
+    $('.insta-gallery-item .insta-gallery-icon.qligg-icon-instagram', $wrap).on('click', function (e) {
+      e.stopPropagation();
+    });
+
+    // Carousel
+    // -------------------------------------------------------------------------
+    //$('.insta-gallery-item', $wrap).on('mfpOpen', function (e) {
+    //console.log(e);
+    //});
+
+    if (!options.popup.display) {
+      return;
+    }
+
+    $('.insta-gallery-item', $wrap).magnificPopup({
+      type: 'inline',
+      callbacks: {
+        elementParse: function (item) {
+
+          var media = '', profile = '', counter = '', caption = '', likes = '';
+
+          //if (item.el.data('item').type == 'video') {
+          //  media = '<video autoplay>' +
+          //          '<source src="' + item.el.data('item').videos.standard + '" type="video/mp4">' +
+          //          '</video>';
+          //} else if (item.el.data('item').type == 'gallery') {
+          //media = 'this is a gallery';
+          //} else {
+          media = '<img src="' + item.el.data('item').images.standard + '"/>'
+          //}
+
+          counter = '<div class="mfp-icons"><div class="mfp-counter">' + (item.index + 1) + ' / ' + $('.insta-gallery-item', $wrap).length + '</div><a class="mfp-link" href="' + item.el.data('item').link + '" target="_blank" rel="noopener"><i class="qligg-icon-instagram"></i>Instagram</a></div>';
+
+          if (options.popup.profile) {
+            profile = '<div class="mfp-user"><img src="' + options.profile.picture + '"><a href="' + options.profile.link + '" title="' + options.profile.name + '" target="_blank" rel="noopener">' + options.profile.user + '</a></div>';
+          }
+
+          if (options.popup.caption) {
+            caption = '<div class="mfp-caption">' + item.el.data('item').caption + '</div>';
+          }
+
+          if (options.popup.likes) {
+            likes = '<div class="mfp-info"><div class="mfp-likes"><i class="qligg-icon-heart"></i>' + item.el.data('item').likes + '</div><div class="mfp-comments"><i class="qligg-icon-comment"></i>' + item.el.data('item').comments + '</div><div class="mfp-date">' + item.el.data('item').date + '</div></div>';
+          }
+
+          item.src = '<div class="mfp-figure ' + options.popup.align + '">' + media + '<div class="mfp-close"></div><div class="mfp-bottom-bar"><div class="mfp-title">' + profile + counter + caption + likes + '</div></div></div>';
+        }
+      },
+      gallery: {
+        enabled: true
+      }
+    });
+
+  });
+
+  // Init
+  // ---------------------------------------------------------------------------
+
+  $('.insta-gallery-feed').on('click', '.insta-gallery-button.load', function (e) {
+    e.preventDefault();
+
+    var $item = $(e.delegateTarget);
+
+    if (!$item.hasClass('loaded')) {
+      return false;
+    }
+
+    var next_max_id = $('.insta-gallery-list .insta-gallery-item:last-child', $item).data('item').i;
+
+    qligg_load_item_images($item, next_max_id);
+
+  });
+
+  $('.insta-gallery-feed').each(function (index, item) {
+
+    var $item = $(item);
+
+    if ($item.hasClass('loaded')) {
+      return false;
+    }
+
+    qligg_load_item_images($item, 0);
+
+  });
+
+  /*function ig_lazy_load($wrap, item) {
    var lazyImages = [].slice.call($wrap.find('img.ig-lazy'));
    var active = false;
    
@@ -274,62 +361,5 @@
   if (navigator.appVersion.indexOf("MSIE 9.") != -1) {
     document.body.className += ' ' + 'instagal-ie-9';
   }
-
-  $(document).on('ready', function (e) {
-
-    $('.ig-block').each(function (index, item) {
-
-      var $item = $(item);
-
-      if ($item.hasClass('ig-block-loaded')) {
-        return true;
-      }
-
-      if (!$item.data('item_id')) {
-        return false;
-      }
-
-      $item.addClass('ig-block-loaded');
-
-      var $spinner = $item.find('.ig-spinner'),
-              item_id = parseInt($item.data('item_id'));
-
-      $.ajax({
-        url: qligg.ajax_url,
-        type: 'post',
-        data: {
-          action: 'qligg_load_item',
-          item_id: item_id
-        },
-        beforeSend: function () {
-          //$spinner.show();
-        },
-        success: function (response) {
-
-          if (response.success !== true) {
-            console.log(response.data);
-            return;
-          }
-
-          $item.append($(response.data));
-
-          add_insta_gallery_carousel($item);
-          //add_insta_gallery_masonry($item);
-          //add_insta_gallery_resizes($item);
-          add_insta_gallery_popup($item);
-
-        },
-        complete: function () {
-          $spinner.hide();
-          //if ($item.find('.insta-gallery-actions').length) {
-          //  $spinner.prependTo($item.find('.insta-gallery-actions'));
-          //}
-        },
-        error: function (jqXHR, textStatus) {
-          console.log(textStatus);
-        }
-      });
-    });
-  });
 
 })(jQuery);

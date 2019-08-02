@@ -24,7 +24,7 @@ if ( ! function_exists( 'mycred_render_buy_points' ) ) :
 		// If we are not logged in
 		if ( ! is_user_logged_in() ) return $content;
 
-		global $mycred_modules, $buycred_sale;
+		global $mycred_modules, $buycred_sale, $post;
 
 		$buycred            = $mycred_modules['solo']['buycred'];
 		$installed          = mycred_get_buycred_gateways();
@@ -122,7 +122,7 @@ if ( ! function_exists( 'mycred_render_buy_form_points' ) ) :
 		$gifting      = false;
 
 		// Make sure we have a gateway we can use
-		if ( ( ! empty( $gateway ) && ! mycred_buycred_gateway_is_usable( $gateway_id ) ) || ( empty( $gateway ) && empty( $buycred_instance->active ) ) )
+		if ( ( ! empty( $gateway ) && ! mycred_buycred_gateway_is_usable( $gateway ) ) || ( empty( $gateway ) && empty( $buycred_instance->active ) ) )
 			return 'No gateway available.';
 
 		// Make sure we are trying to sell a point type that is allowed to be purchased
@@ -170,7 +170,7 @@ if ( ! function_exists( 'mycred_render_buy_form_points' ) ) :
 		$button_label = $mycred->template_tags_general( $button );
 
 		if ( ! empty( $gateway ) ) {
-			$gateway_name = explode( ' ', $installed[ $gateway ]['title'] );
+			$gateway_name = explode( ' ', $buycred_instance->active[ $gateway ]['title'] );
 			$button_label = str_replace( '%gateway%', $gateway_name[0], $button_label );
 			$classes[]    = $gateway_name[0];
 		}

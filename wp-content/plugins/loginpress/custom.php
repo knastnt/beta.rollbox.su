@@ -7,7 +7,7 @@ class LoginPress_Entities {
   *
   * @var string
   * @since 1.0.0
-  * @version 1.1.24
+  * @version 1.2.0
   */
   public $loginpress_key;
 
@@ -25,7 +25,7 @@ class LoginPress_Entities {
   * Hook into actions and filters
   *
   * @since 1.0.0
-  * @version 1.1.24
+  * @version 1.2.0
   */
   private function _hooks() {
 
@@ -43,6 +43,7 @@ class LoginPress_Entities {
     add_action( 'login_head',				 	array( $this, 'login_page_custom_head' ) );
     add_action( 'init',							 	array( $this, 'redirect_to_custom_page' ) );
     add_action( 'admin_menu',				 	array( $this, 'menu_url' ), 10 );
+    add_filter( 'wp_login_errors',    array( $this, 'remove_error_messages_in_wp_customizer' ), 10, 2 );
 
     /**
      * This function enqueues scripts and styles in the Customizer.
@@ -65,9 +66,10 @@ class LoginPress_Entities {
   * Enqueue jQuery and use wp_localize_script.
   *
   * @since 1.0.9
-  * @version 1.1.3
+  * @version 1.2.1
   */
   function loginpress_customizer_js() {
+
     wp_enqueue_script('jquery');
     wp_enqueue_script( 'loginpress-customize-control', plugins_url(  'js/customize-controls.js' , LOGINPRESS_ROOT_FILE  ), array( 'jquery', 'customize-preview' ), LOGINPRESS_VERSION, true );
 
@@ -78,12 +80,19 @@ class LoginPress_Entities {
   	 */
   	wp_enqueue_script( 'loginpress-control-script', plugins_url(  'js/customizer.js' , LOGINPRESS_ROOT_FILE  ), array( 'customize-controls' ), LOGINPRESS_VERSION, true );
 
-
     // Get Background URL for use in Customizer JS.
-    $user = wp_get_current_user();
-    $name = empty( $user->user_firstname ) ? ucfirst( $user->display_name ) : ucfirst( $user->user_firstname );
-    $loginpress_bg = get_option( 'loginpress_customization');
+    $user              = wp_get_current_user();
+    $name              = empty( $user->user_firstname ) ? ucfirst( $user->display_name ) : ucfirst( $user->user_firstname );
+    $loginpress_bg     = get_option( 'loginpress_customization');
+    $loginpress_st     = get_option( 'loginpress_setting');
+    $cap_type          = isset( $loginpress_st['recaptcha_type'] ) ? $loginpress_st['recaptcha_type'] : 'v2-robot'; // 1.2.1
     $loginpress_bg_url = $loginpress_bg['setting_background'] ? $loginpress_bg['setting_background'] : false;
+
+    if( isset( $_GET['autofocus'] ) && $_GET['autofocus'] == 'loginpress_panel' ) { // 1.2.0
+      $loginpress_auto_focus = true;
+    } else {
+      $loginpress_auto_focus = false;
+    }
 
     // Array for localize.
     $loginpress_localize = array(
@@ -92,9 +101,12 @@ class LoginPress_Entities {
       'plugin_url'        => plugins_url(),
       'login_theme'       => get_option( 'customize_presets_settings', true ),
       'loginpress_bg_url' => $loginpress_bg_url,
-      'preset_nonce'      => wp_create_nonce('loginpress-preset-nonce'),
-      'attachment_nonce'  => wp_create_nonce('loginpress-attachment-nonce'),
+      'preset_nonce'      => wp_create_nonce( 'loginpress-preset-nonce' ),
+      'attachment_nonce'  => wp_create_nonce( 'loginpress-attachment-nonce' ),
       'preset_loader'     => includes_url( 'js/tinymce/skins/lightgray/img/loader.gif' ),
+      'autoFocusPanel'    => $loginpress_auto_focus,
+      'recaptchaType'     => $cap_type,
+      'filter_bg'         => apply_filters( 'loginpress_default_bg', '' ),
     );
 
     wp_localize_script( 'loginpress-customize-control', 'loginpress_script', $loginpress_localize );
@@ -296,12 +308,15 @@ class LoginPress_Entities {
         __( 'Persona',        'loginpress' ),
         __( 'Geek',           'loginpress' ),
         __( 'Innovation',     'loginpress' ),
-        __( 'Photographers',  'loginpress' ) );
+        __( 'Photographers',  'loginpress' ),
+        __( 'Animated Wapo',  'loginpress' ) );
 
         // 1st template that is default
         $loginpress_free_templates["default1" ] = array(
-          'img'       => plugins_url( 'img/bg.jpg', LOGINPRESS_ROOT_FILE ),
-          'thumbnail' => plugins_url( 'img/thumbnail/default-1.png', LOGINPRESS_ROOT_FILE ),
+          // 'img'       => plugins_url( 'img/bg.jpg', LOGINPRESS_ROOT_FILE ),
+          // 'thumbnail' => plugins_url( 'img/thumbnail/default-1.png', LOGINPRESS_ROOT_FILE ),
+          'img'       => esc_url( apply_filters( 'loginpress_default_bg', plugins_url( 'img/bg.jpg', LOGINPRESS_PLUGIN_BASENAME ) ) ),
+          'thumbnail' => esc_url( apply_filters( 'loginpress_default_bg', plugins_url( 'img/thumbnail/default-1.png', LOGINPRESS_ROOT_FILE ) ) ), 
           'id'        => 'default1',
           'name'      => 'Default'
         ) ;
@@ -1519,7 +1534,7 @@ class LoginPress_Entities {
   * Manage the Login Footer Links
   *
   * @since	1.0.0
-  * @version 1.1.7
+  * @version 1.2.2
   * * * * * * * * * * * * * * * */
   public function login_page_custom_footer() {
 
@@ -1558,13 +1573,19 @@ class LoginPress_Entities {
 
     }
     echo '</div></div>';
+
+    /**
+     * Include LoginPress script in footer.
+     * @since 1.2.2
+     */
+    include( LOGINPRESS_DIR_PATH . 'js/script-login.php' );
   }
 
   /**
   * Manage the Login Head
   *
   * @since	1.0.0
-  * @version 1.1.7
+  * @version 1.2.2
   * * * * * * * * * * * */
   public function login_page_custom_head() {
 
@@ -1575,7 +1596,9 @@ class LoginPress_Entities {
     add_filter( 'gettext', array( $this, 'change_username_label' ), 20, 3 );
     // add_filter( 'gettext', array( $this, 'change_password_label' ), 20, 3 );
     // Include CSS File in heared.
-    wp_enqueue_script( 'jquery' );
+    if ( isset( $this->loginpress_key['loginpress_custom_js'] ) && ! empty( $this->loginpress_key['loginpress_custom_js'] ) ) { // 1.2.2
+      wp_enqueue_script( 'jquery' );
+    }
     include( LOGINPRESS_DIR_PATH . 'css/style-presets.php' );
     include( LOGINPRESS_DIR_PATH . 'css/style-login.php' );
 
@@ -1697,7 +1720,7 @@ class LoginPress_Entities {
   * @version 1.0.21
   * @return mixed
   * * * * * * * * * * * * * * * * * * */
-  public function change_lostpassword_message ( $translated_text, $text, $domain ) {
+  public function change_lostpassword_message( $translated_text, $text, $domain ) {
 
 		if ( is_array( $this->loginpress_key ) && array_key_exists( 'login_footer_text', $this->loginpress_key ) && $text == 'Lost your password?'  && 'default' == $domain && trim( $this->loginpress_key['login_footer_text'] ) ) {
 
@@ -1792,7 +1815,7 @@ class LoginPress_Entities {
   * @since	1.0.0
   * @return string
   * * * * * * * * * * * * */
-  public function change_welcome_message ($message) {
+  public function change_welcome_message($message) {
 
     if ( $this->loginpress_key ) {
 
@@ -1882,7 +1905,7 @@ class LoginPress_Entities {
 
         } else {
 
-          wp_redirect( get_admin_url() . "customize.php?url=" . wp_login_url() );
+          wp_redirect( get_admin_url() . "customize.php?url=" . wp_login_url() . '&autofocus=loginpress_panel' );
         }
       }
     }
@@ -1923,6 +1946,20 @@ class LoginPress_Entities {
         break;
       }
     }
+  }
+
+  /**
+   * This function is removed the error messages in the customizer.
+   * @param  array $errors      [description]
+   * @param  string $redirect_to [description]
+   * @since  1.2.0
+   */
+  function remove_error_messages_in_wp_customizer( $errors, $redirect_to ) {
+
+    if ( is_customize_preview() && version_compare( $GLOBALS['wp_version'], '5.2', '>=' ) ) {
+      return new WP_Error( '', '' );
+    }
+    return $errors;
   }
 }
 

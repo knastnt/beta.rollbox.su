@@ -9,19 +9,21 @@ if (!class_exists('QLIGG_AJAX')) {
 
     protected static $instance;
 
-    function save_igadvs() {
+    function save_settings() {
 
-      if (!empty($_REQUEST) && check_admin_referer('qligg_save_igadvs', 'ig_nonce')) {
+      global $qligg;
 
-        $igs_flush = isset($_REQUEST['igs_flush']) && $_REQUEST['igs_flush'] ? true : false;
-        $igs_spinner_image_id = isset($_REQUEST['igs_spinner_image_id']) ? absint($_REQUEST['igs_spinner_image_id']) : '';
+      if (check_admin_referer('qligg_save_settings', 'ig_nonce')) {
 
-        $insta_gallery_setting = array(
-            'igs_flush' => $igs_flush,
-            'igs_spinner_image_id' => $igs_spinner_image_id
+        $keys = array(
+            'insta_license' => 0,
+            'insta_flush' => 0,
+            'insta_spinner_image_id' => 0
         );
 
-        update_option('insta_gallery_setting', $insta_gallery_setting, false);
+        $qligg = wp_parse_args(array_intersect_key($_REQUEST, $keys), $qligg);
+
+        update_option('insta_gallery_settings', $qligg, false);
 
         wp_send_json_success(__('Settings updated successfully', 'insta-gallery'));
       }
@@ -31,12 +33,12 @@ if (!class_exists('QLIGG_AJAX')) {
 
     function generate_token() {
 
-      global $qligg, $qligg_api;
+      global $qligg_token, $qligg_api;
 
       if (!empty($_REQUEST) && check_admin_referer('qligg_generate_token', 'ig_nonce')) {
 
         if (empty($_REQUEST['ig_access_token'])) {
-          wp_send_json_error(__('Invalid access token', 'insta-gallery'));
+          wp_send_json_error(__('Empty access token', 'insta-gallery'));
         }
 
         $access_token = sanitize_text_field($_REQUEST['ig_access_token']);
@@ -46,23 +48,19 @@ if (!class_exists('QLIGG_AJAX')) {
         }
 
         if (!$qligg_api->validate_token($access_token)) {
-          wp_send_json_error(__('Invalid access token', 'insta-gallery'));
+          wp_send_json_error($qligg_api->get_message());
         }
 
-        if (isset($qligg[$access_token_id[0]]) && $qligg[$access_token_id[0]] == $access_token) {
+        if (isset($qligg_token[$access_token_id[0]]) && $qligg_token[$access_token_id[0]] == $access_token) {
           wp_send_json_error(__('Account already connected. To connect a new account logout from Instagram in this browser.', 'insta-gallery'));
         }
 
-        $qligg[$access_token_id[0]] = $access_token;
+        $new_token = array(
+            $access_token_id[0] => $access_token
+        );
 
-        qligg_save_options();
-
-        /* if ($profile_info = $qligg_api->get_user_profile($ig_user_token)) {
-          ob_start();
-          include_once QLIGG_PLUGIN_DIR . 'includes/pages/views/user-profile.php';
-          wp_send_json_success(ob_get_clean());
-          //wp_send_json_success(include_once QLIGG_PLUGIN_DIR . 'includes/pages/views/user-profile.php');
-          } */
+        update_option('insta_gallery_token', apply_filters('qligg_update_insta_gallery_token', $new_token), false);
+        delete_transient('insta_gallery_user_profile');
 
         wp_send_json_success(__('Access token created', 'insta-gallery'));
       }
@@ -70,31 +68,9 @@ if (!class_exists('QLIGG_AJAX')) {
       wp_send_json_error(__('Invalid Request', 'insta-gallery'));
     }
 
-    /* function update_token() {
-
-      global $qligg, $qligg_api;
-
-      if (!empty($_REQUEST) && check_admin_referer('qligg_update_token', 'ig_nonce')) {
-
-      $ig_access_token = filter_var($_REQUEST['ig_access_token'], FILTER_SANITIZE_STRING);
-
-      if (!$qligg_api->validate_token($ig_access_token)) {
-      wp_send_json_error($qligg_api->get_message());
-      }
-
-      $qligg['access_token'] = $ig_access_token;
-
-      qligg_save_options();
-
-      wp_send_json_success(__('Token removed successfully', 'insta-gallery'));
-      }
-
-      wp_send_json_error(__('Invalid Request', 'insta-gallery'));
-      } */
-
     function remove_token() {
 
-      global $qligg;
+      global $qligg_token;
 
       if (!empty($_REQUEST) && check_admin_referer('qligg_generate_token', 'ig_nonce')) {
 
@@ -104,9 +80,10 @@ if (!class_exists('QLIGG_AJAX')) {
 
         $item_id = sanitize_text_field($_REQUEST['item_id']);
 
-        unset($qligg[$item_id]);
+        unset($qligg_token[$item_id]);
 
-        qligg_save_options();
+        update_option('insta_gallery_token', $qligg_token, false);
+        delete_transient('insta_gallery_user_profile');
 
         wp_send_json_success(__('Token removed successfully', 'insta-gallery'));
       }
@@ -116,13 +93,11 @@ if (!class_exists('QLIGG_AJAX')) {
 
     function update_form() {
 
-      global $qligg, $qligg_api;
+      global $qligg_token, $qligg_api;
 
       if (!empty($_REQUEST) && check_admin_referer('qligg_update_form', 'ig_nonce')) {
 
-        $item_id = isset($_REQUEST['item_id']) ? absint($_REQUEST['item_id']) : 0;
-
-        if (empty($item_type = $_REQUEST['ig_select_from'])) {
+        if (empty($item_type = $_REQUEST['insta_source'])) {
           wp_send_json_error(__('Select gallery item type', 'insta-gallery'));
         }
         if ($item_type == 'username' && empty($_REQUEST['insta_username'])) {
@@ -132,61 +107,64 @@ if (!class_exists('QLIGG_AJAX')) {
           wp_send_json_error(__('Tag is empty', 'insta-gallery'));
         }
 
-        $instagram_item = array();
+        $instagram_feed = array();
 
-        $instagram_item['ig_select_from'] = $_REQUEST['ig_select_from'];
-        $instagram_item['ig_display_type'] = $_REQUEST['ig_display_type'];
-        $instagram_item['insta_username'] = $_REQUEST['insta_username'];
-        $instagram_item['insta_tag'] = $_REQUEST['insta_tag'];
-        $instagram_item['insta_limit'] = $_REQUEST['insta_limit'];
-        $instagram_item['insta_gal-cols'] = $_REQUEST['insta_gal-cols'];
-        $instagram_item['insta_spacing'] = @$_REQUEST['insta_spacing'];
-        $instagram_item['insta_instalink'] = @$_REQUEST['insta_instalink'];
-        $instagram_item['insta_instalink-text'] = trim(esc_html(@$_REQUEST['insta_instalink-text']));
-        $instagram_item['insta_instalink-bgcolor'] = sanitize_text_field(@$_REQUEST['insta_instalink-bgcolor']);
-        $instagram_item['insta_instalink-hvrcolor'] = sanitize_text_field(@$_REQUEST['insta_instalink-hvrcolor']);
-        $instagram_item['insta_car-slidespv'] = $_REQUEST['insta_car-slidespv'];
-        $instagram_item['insta_car-autoplay'] = isset($_REQUEST['insta_car-autoplay']) ? $_REQUEST['insta_car-autoplay'] : 0;
-        $instagram_item['insta_car-autoplay-interval'] = $_REQUEST['insta_car-autoplay-interval'];
-        $instagram_item['insta_car-navarrows'] = @$_REQUEST['insta_car-navarrows'];
-        $instagram_item['insta_car-navarrows-color'] = sanitize_text_field(@$_REQUEST['insta_car-navarrows-color']);
-        $instagram_item['insta_car-dots'] = @$_REQUEST['insta_car-dots'];
-        $instagram_item['insta_thumb-size'] = @$_REQUEST['insta_thumb-size'];
-        $instagram_item['insta_hover'] = @$_REQUEST['insta_hover'];
-        $instagram_item['insta_hover-color'] = sanitize_text_field(@$_REQUEST['insta_hover-color']);
-        $instagram_item['insta_popup'] = @$_REQUEST['insta_popup'];
-        $instagram_item['insta_popup-caption'] = @$_REQUEST['insta_popup-caption'];
-        $instagram_item['insta_likes'] = @$_REQUEST['insta_likes'];
-        $instagram_item['insta_comments'] = @$_REQUEST['insta_comments'];
+        $instagram_feed['insta_source'] = @$_REQUEST['insta_source'];
+        $instagram_feed['insta_layout'] = @$_REQUEST['insta_layout'];
+        $instagram_feed['insta_username'] = @$_REQUEST['insta_username'];
+        $instagram_feed['insta_tag'] = @$_REQUEST['insta_tag'];
+        $instagram_feed['insta_limit'] = @$_REQUEST['insta_limit'];
+        $instagram_feed['insta_gal-cols'] = @$_REQUEST['insta_gal-cols'];
+        $instagram_feed['insta_spacing'] = @$_REQUEST['insta_spacing'];
+        $instagram_feed['insta_button'] = @$_REQUEST['insta_button'];
+        $instagram_feed['insta_button-text'] = trim(esc_html(@$_REQUEST['insta_button-text']));
+        $instagram_feed['insta_button-background'] = sanitize_text_field(@$_REQUEST['insta_button-background']);
+        $instagram_feed['insta_button-background-hover'] = sanitize_text_field(@$_REQUEST['insta_button-background-hover']);
+        //$instagram_feed['insta_button_load'] = @$_REQUEST['insta_button_load'];
+        //$instagram_feed['insta_button_load-text'] = trim(esc_html(@$_REQUEST['insta_button_load-text']));
+        //$instagram_feed['insta_button_load-background'] = sanitize_text_field(@$_REQUEST['insta_button_load-background']);
+        //$instagram_feed['insta_button_load-background-hover'] = sanitize_text_field(@$_REQUEST['insta_button_load-background-hover']);
+        $instagram_feed['insta_car-slidespv'] = @$_REQUEST['insta_car-slidespv'];
+        $instagram_feed['insta_car-autoplay'] = @$_REQUEST['insta_car-autoplay'];
+        $instagram_feed['insta_car-autoplay-interval'] = @$_REQUEST['insta_car-autoplay-interval'];
+        $instagram_feed['insta_car-navarrows'] = @$_REQUEST['insta_car-navarrows'];
+        $instagram_feed['insta_car-navarrows-color'] = sanitize_text_field(@$_REQUEST['insta_car-navarrows-color']);
+        $instagram_feed['insta_car-pagination'] = @$_REQUEST['insta_car-pagination'];
+        $instagram_feed['insta_car-pagination-color'] = sanitize_text_field(@$_REQUEST['insta_car-pagination-color']);
+        $instagram_feed['insta_size'] = @$_REQUEST['insta_size'];
+        $instagram_feed['insta_hover'] = @$_REQUEST['insta_hover'];
+        $instagram_feed['insta_hover-color'] = sanitize_text_field(@$_REQUEST['insta_hover-color']);
+        $instagram_feed['insta_popup'] = @$_REQUEST['insta_popup'];
+        //$instagram_feed['insta_popup-profile'] = @$_REQUEST['insta_popup-profile'];
+        //$instagram_feed['insta_popup-caption'] = @$_REQUEST['insta_popup-caption'];
+        //$instagram_feed['insta_popup-likes'] = @$_REQUEST['insta_popup-likes'];
+        //$instagram_feed['insta_popup-align'] = @$_REQUEST['insta_popup-align'];
+        $instagram_feed['insta_likes'] = @$_REQUEST['insta_likes'];
+        $instagram_feed['insta_comments'] = @$_REQUEST['insta_comments'];
 
-        // removing @, # and trimming input
+        // Removing @, # and trimming input
         // ---------------------------------------------------------------------
-        $instagram_item['insta_username'] = trim($instagram_item['insta_username']);
-        $instagram_item['insta_username'] = str_replace('@', '', $instagram_item['insta_username']);
-        $instagram_item['insta_username'] = str_replace('#', '', $instagram_item['insta_username']);
-        $instagram_item['insta_tag'] = trim($instagram_item['insta_tag']);
-        $instagram_item['insta_tag'] = str_replace('@', '', $instagram_item['insta_tag']);
-        $instagram_item['insta_tag'] = str_replace('#', '', $instagram_item['insta_tag']);
+        $instagram_feed['insta_username'] = trim($instagram_feed['insta_username']);
+        $instagram_feed['insta_username'] = str_replace('@', '', $instagram_feed['insta_username']);
+        $instagram_feed['insta_username'] = str_replace('#', '', $instagram_feed['insta_username']);
+        $instagram_feed['insta_username'] = str_replace($qligg_api->instagram_url, '', $instagram_feed['insta_username']);
+        $instagram_feed['insta_username'] = str_replace('/', '', $instagram_feed['insta_username']);
 
-        $instagram_items = get_option('insta_gallery_items', array());
+        $instagram_feed['insta_tag'] = trim($instagram_feed['insta_tag']);
+        $instagram_feed['insta_tag'] = str_replace('@', '', $instagram_feed['insta_tag']);
+        $instagram_feed['insta_tag'] = str_replace('#', '', $instagram_feed['insta_tag']);
+        $instagram_feed['insta_tag'] = str_replace("{$qligg_api->instagram_url}/explore/tags/", '', $instagram_feed['insta_tag']);
+        $instagram_feed['insta_tag'] = str_replace('/', '', $instagram_feed['insta_tag']);
 
-        if ($item_id > 0) {
-          $instagram_items[$item_id] = $instagram_item;
-        } else {
-          $instagram_items[] = $instagram_item;
-          if (isset($instagram_items[0])) {
-            $instagram_items[] = $instagram_items[0];
-            unset($instagram_items[0]);
-          }
-        }
+        $instagram_feeds = get_option('insta_gallery_items', array());
 
-        update_option('insta_gallery_items', $instagram_items);
+        $item_id = isset($_REQUEST['item_id']) ? absint($_REQUEST['item_id']) : count($instagram_feeds) + 1;
 
-        // 1326
-        // check if remove transients is neccesary
+        $instagram_feeds[$item_id] = $instagram_feed;
 
+        update_option('insta_gallery_items', apply_filters('qligg_update_insta_gallery_items', $instagram_feeds, $item_id));
 
-        wp_send_json_success(__('Gallery item updated successfully', 'insta-gallery'));
+        wp_send_json_success(admin_url("admin.php?page=qligg_feeds&tab=edit&item_id={$item_id}"));
       }
 
       wp_send_json_error(__('Invalid Request', 'insta-gallery'));
@@ -196,18 +174,18 @@ if (!class_exists('QLIGG_AJAX')) {
 
       if (isset($_REQUEST['item_id'])) {
 
-        $instagram_items = get_option('insta_gallery_items');
+        $instagram_feeds = get_option('insta_gallery_items');
 
         $item_id = absint($_REQUEST['item_id']);
 
-        if (isset($instagram_items[$item_id])) {
+        if (isset($instagram_feeds[$item_id])) {
 
-          unset($instagram_items[$item_id]);
+          unset($instagram_feeds[$item_id]);
 
-          update_option('insta_gallery_items', $instagram_items, false);
+          update_option('insta_gallery_items', $instagram_feeds, false);
         }
 
-        wp_send_json_success(__('Gallery item deleted successfully.', 'insta-gallery'));
+        wp_send_json_success(admin_url("admin.php?page=qligg_feeds"));
       }
 
       wp_send_json_error(__('Invalid Request', 'insta-gallery'));
@@ -215,11 +193,10 @@ if (!class_exists('QLIGG_AJAX')) {
 
     function init() {
       // Settings
-      add_action('wp_ajax_qligg_save_igadvs', array($this, 'save_igadvs'));
+      add_action('wp_ajax_qligg_save_settings', array($this, 'save_settings'));
 
       // Token
       // -----------------------------------------------------------------------
-      //add_action('wp_ajax_qligg_update_token', array($this, 'update_token'));
       add_action('wp_ajax_qligg_generate_token', array($this, 'generate_token'));
       add_action('wp_ajax_qligg_remove_token', array($this, 'remove_token'));
 

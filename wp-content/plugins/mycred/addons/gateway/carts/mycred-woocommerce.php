@@ -772,7 +772,7 @@ if ( ! function_exists( 'mycred_woo_after_order_total' ) ) :
 		$balance_label      = $available_gateways['mycred']->get_option( 'balance_format' );
 
 		// If we should show the total in points
-		if ( ( $show_total == 'both' ) 
+		if ( ( $show_total == 'both' || $show_total == 'all') 
 			|| ( $show_total == 'cart' && is_cart() ) 
 			|| ( $show_total == 'checkout' && is_checkout() ) 
 		) {

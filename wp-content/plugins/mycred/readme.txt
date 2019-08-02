@@ -2,8 +2,8 @@
 Contributors: mycred,wpexpertsio
 Tags: point, credit, loyalty program, engagement, reward
 Requires at least: 4.8
-Tested up to: 5.1
-Stable tag: 1.8.3
+Tested up to: 5.2
+Stable tag: 1.8.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -103,6 +103,15 @@ Bug fixes release.
 = 1.8.3 =
 Bug fixes release.
 
+= 1.8.4 =
+Bug fixes release.
+
+= 1.8.4.1 =
+Bug fixes release.
+
+= 1.8.4.2 =
+Bug fixes release.
+
 
 == Other Notes ==
 
@@ -124,6 +133,28 @@ Bug fixes release.
 
 
 == Changelog ==
+
+= 1.8.4.2 =
+FIX - myCRED hooks not adding on other point types.
+FIX - option_id name not calling for other point types.
+
+= 1.8.4.1 =
+FIX - myCRED hooks not saving.
+FIX - setCookie function error when adding new hook.
+
+= 1.8.4 =
+NEW - Introduce a new filter “mycred_option_id” for manipulating hooks.
+NEW - Add new action "mycred_pref_hooks" on mycred hooks page
+TWEAK - Limits are showing for Approved comments hook in [mycred_hook_table] shortcode.
+FIX - Sell content undefined offset in Backend Pages & Posts.
+FIX - mycred_buy shortcode Undefined variable: post.
+FIX - Bitpay 404 page redirect.
+FIX - BuyCred Gateway error message no gateway available.
+FIX - myCred Email accept only ARRAY value in "get_subject" function.
+FIX - Incorrect log table name in multisite when central logging is enabled.
+FIX - strpos depreciated behavior.
+FIX - Coupon expiration before date.
+FIX - "Total in Points" value show in both Cart & Checkout page when you select "Show in Cart and on Checkout Page" in WooCommerce myCRED Gateway.
 
 = 1.8.3 =
 FIX - Fixed Woocommerce checkout errors.

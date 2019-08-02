@@ -9,9 +9,16 @@ if (!class_exists('QLIGG_API')) {
 
     protected $instagram;
     public $message;
-    private $limit = 50;
-    private $api_url = 'https://api.instagram.com/v1/users/self';
-    private $token_url = 'https://api.instagram.com/oauth';
+    public $instagram_url = 'https://www.instagram.com';
+    private $api_url = 'https://api.instagram.com';
+
+    public function get_create_account_link() {
+
+      $admin_url = admin_url('admin.php?page-qligg_token');
+      $client_id = '6e628e63145746bcb684912009514665';
+
+      return "{$this->instagram_url}/oauth/authorize/?client_id={$client_id}&scope=basic+public_content&redirect_uri=https://instagram.quadlayers.com/index.php?return_uri={$admin_url}&response_type=token&state={$admin_url}&hl=en";
+    }
 
     // API generate code generation url
     // ---------------------------------------------------------------------------
@@ -24,7 +31,7 @@ if (!class_exists('QLIGG_API')) {
           'redirect_uri' => urlencode(admin_url('admin.php?page=qligg_token&igigresponse=1'))
       );
 
-      return add_query_arg($args, "{$this->token_url}/authorize/");
+      return add_query_arg($args, "{$this->api_url}/oauth/authorize/");
     }
 
     // API call to get access token using authorization code
@@ -41,7 +48,7 @@ if (!class_exists('QLIGG_API')) {
               'scope' => 'public_content'
       ));
 
-      $response = $this->validate_response(wp_remote_post("{$this->token_url}/access_token", $args));
+      $response = $this->validate_response(wp_remote_post("{$this->api_url}/oauth/access_token", $args));
 
       if (isset($response['access_token'])) {
         return $response['access_token'];
@@ -58,7 +65,9 @@ if (!class_exists('QLIGG_API')) {
           'access_token' => $access_token
       );
 
-      $response = $this->remote_get($this->api_url, $args);
+      $url = "{$this->api_url}/v1/users/self";
+
+      $response = $this->remote_get($url, $args);
 
       if (empty($response)) {
         return false;
@@ -66,8 +75,6 @@ if (!class_exists('QLIGG_API')) {
 
       if (isset($response['meta']['code']) && ($response['meta']['code'] != 200) && isset($response['meta']['error_message'])) {
         $this->message = $response['meta']['error_message'];
-
-        //error_log($this->message);
         return false;
       }
 
@@ -82,7 +89,9 @@ if (!class_exists('QLIGG_API')) {
           'access_token' => $access_token
       );
 
-      $response = $this->remote_get($this->api_url, $args);
+      $url = "{$this->api_url}/v1/users/self";
+
+      $response = $this->remote_get($url, $args);
 
       if (isset($response['meta']['code']) && $response['meta']['code'] == 200) {
         return true;
@@ -97,16 +106,71 @@ if (!class_exists('QLIGG_API')) {
 
     // API call to get user feed using access token
     // ---------------------------------------------------------------------------
-    public function get_user_items($access_token, $count = 30) {
+
+    function setup_user_item($data, $next_max_id = null) {
+
+      static $load = false;
+      static $i = 1;
+
+      if (!$next_max_id) {
+        $load = true;
+      }
+
+      $instagram_items = array();
+
+      if (is_array($data) && !empty($data)) {
+
+        foreach ($data as $item) {
+
+          if ($load) {
+
+            preg_match_all("/#(\\w+)/", @$item['caption']['text'], $hashtags);
+
+            $instagram_items[] = array(
+                'i' => $i,
+                'id' => str_replace("_{$item['user']['id']}", '', $item['id']),
+                'images' => array(
+                    'standard' => @$item['images']['standard_resolution']['url'],
+                    'medium' => @$item['images']['low_resolution']['url'],
+                    'small' => @$item['images']['thumbnail']['url'],
+                ),
+                'videos' => array(
+                    'standard' => @$item['videos']['standard_resolution']['url'],
+                    'medium' => @$item['videos']['low_resolution']['url'],
+                    'small' => @$item['videos']['thumbnail']['url'],
+                ),
+                'likes' => @$item['likes']['count'],
+                'comments' => @$item['comments']['count'],
+                'caption' => preg_replace('/(?<!\S)#([0-9a-zA-Z]+)/', "<a href=\"{$this->instagram_url}/explore/tags/$1\">#$1</a>", htmlspecialchars(@$item['caption']['text'])),
+                'hashtags' => @$hashtags[1],
+                'link' => @$item['link'],
+                'type' => @$item['type'],
+                'user_id' => @$item['user']['id'],
+                'date' => date_i18n('j F, Y', strtotime(@$item['created_time']))
+            );
+          }
+          if ($next_max_id && ($next_max_id == $i)) {
+            $i = $next_max_id;
+            $load = true;
+          }
+          $i++;
+        }
+      }
+
+      return $instagram_items;
+    }
+
+    public function get_user_items($access_token, $max_id = null) {
 
       $args = array(
           'access_token' => $access_token,
-          'count' => $count
+          'max_id' => $max_id,
+          'count' => 33
       );
 
-      $url = add_query_arg($args, trailingslashit("{$this->api_url}/media/recent/"));
+      $url = "{$this->api_url}/v1/users/self/media/recent/";
 
-      $response = $this->remote_get($url);
+      $response = $this->remote_get($url, $args);
 
       if (empty($response)) {
         return false;
@@ -121,95 +185,90 @@ if (!class_exists('QLIGG_API')) {
         return false;
       }
 
-      return $this->setup_user_item($response['data']);
+      return $response;
     }
 
-    protected function setup_user_item($data) {
+    // Tag name and return items list array
+    // -------------------------------------------------------------------------
+
+    function setup_tag_item($data, $next_max_id = null) {
+
+      static $load = false;
+      static $i = 1;
+
+      if (!$next_max_id) {
+        $load = true;
+      }
 
       $instagram_items = array();
 
       if (is_array($data) && !empty($data)) {
-        foreach ($data as $id => $item) {
-          $instagram_items[] = array(
-              'img_standard' => $item['images']['standard_resolution']['url'],
-              'img_low' => $item['images']['low_resolution']['url'],
-              'img_thumb' => $item['images']['thumbnail']['url'],
-              'likes' => $item['likes']['count'],
-              'comments' => $item['comments']['count'],
-              'caption' => '',
-              'code' => '',
-              'link' => $item['link'],
-              'type' => $item['type'],
-              'owner_id' => ''
-          );
+
+        foreach ($data as $res) {
+
+          if (!isset($res['node']['display_url'])) {
+            continue;
+          }
+
+          preg_match_all("/#(\\w+)/", @$res['node']['edge_media_to_caption']['edges'][0]['node']['text'], $hashtags);
+
+          //$types = array(
+          //    'GraphImage' => 'image',
+          //    'GraphVideo' => 'video',
+          //    'GraphSidecar' => 'carousel',
+          //);
+
+          if ($load) {
+            $instagram_items[] = array(
+                'i' => $i,
+                'id' => $res['node']['id'],
+                'images' => array(
+                    'standard' => $res['node']['display_url'],
+                    'medium' => $res['node']['thumbnail_src'],
+                    'small' => $res['node']['thumbnail_resources'][0]['src'],
+                ),
+                'likes' => $res['node']['edge_liked_by']['count'],
+                'comments' => $res['node']['edge_media_to_comment']['count'],
+                'caption' => preg_replace('/(?<!\S)#([0-9a-zA-Z]+)/', "<a href=\"{$this->instagram_url}/explore/tags/$1\">#$1</a>", htmlspecialchars(@$res['node']['edge_media_to_caption']['edges'][0]['node']['text'])),
+                'hashtags' => @$hashtags[1],
+                'link' => "{$this->instagram_url}/p/{$res['node']['shortcode']}/",
+                'type' => 'image', //@$types[$res['node']['__typename']],
+                'user_id' => $res['node']['owner']['id'],
+                'date' => date_i18n('j F, Y', strtotime($res['node']['taken_at_timestamp']))
+            );
+          }
+          if ($next_max_id && ($next_max_id == $i)) {
+            $i = $next_max_id;
+            $load = true;
+          }
+          $i++;
         }
       }
 
       return $instagram_items;
     }
 
-    // Tag name and return items list array
-    // ---------------------------------------------------------------------------
-    public function get_tag_items($tag = null) {
+    public function get_tag_items($tag = null, $max_id = null) {
 
       if ($tag) {
 
         $tag = urlencode((string) $tag);
 
-        $url = "https://www.instagram.com/explore/tags/{$tag}/?__a=1";
-
         $args = array(
-            '__a' => 1
+            '__a' => 1,
+            'max_id' => "{$max_id}="
         );
 
-        $response = $this->remote_get($url, $args);
-
-        $tag_items = array();
+        $response = $this->remote_get("{$this->instagram_url}/explore/tags/{$tag}/", $args);
 
         // API updated on Jan 03 17
-        // -----------------------------------------------------------------------
-        if (isset($response['graphql']['hashtag']['edge_hashtag_to_media']['edges'])) {
+        // ---------------------------------------------------------------------
 
-          $instagram_items = $response['graphql']['hashtag']['edge_hashtag_to_media']['edges'];
-
-          if (count($instagram_items)) {
-
-            $instagram_items = array_slice($instagram_items, 0, $this->limit);
-
-
-            foreach ($instagram_items as $res) {
-
-              // Its to check if this API have required variables
-              // -----------------------------------------------------------------
-
-              if (!isset($res['node']['display_url'])) {
-                continue;
-              }
-
-              $type = 'image';
-
-              if (isset($res['node']['is_video']) && (true === $res['node']['is_video'])) {
-                $type = 'video';
-              }
-
-              $caption = isset($res['node']['edge_media_to_caption']['edges'][0]['node']['text']) ? htmlspecialchars($res['node']['edge_media_to_caption']['edges'][0]['node']['text']) : '';
-
-              $tag_items[] = array(
-                  'img_standard' => $res['node']['display_url'],
-                  'img_low' => $res['node']['thumbnail_src'],
-                  'img_thumb' => $res['node']['thumbnail_resources'][0]['src'],
-                  'likes' => $res['node']['edge_liked_by']['count'],
-                  'comments' => $res['node']['edge_media_to_comment']['count'],
-                  'caption' => $caption,
-                  'code' => $res['node']['shortcode'],
-                  'type' => $type,
-                  'owner_id' => $res['node']['owner']['id']
-              );
-            }
-          }
+        if (!isset($response['graphql']['hashtag']['edge_hashtag_to_media']['edges'])) {
+          return false;
         }
 
-        return $tag_items;
+        return $response;
       }
 
       $this->message = __('Please provide a valid #tag', 'insta-gallery');
@@ -264,6 +323,10 @@ if (!class_exists('QLIGG_API')) {
     // ---------------------------------------------------------------------------
     public function get_message() {
       return $this->message;
+    }
+
+    public function set_message($message = '') {
+      $this->message = $message;
     }
 
   }

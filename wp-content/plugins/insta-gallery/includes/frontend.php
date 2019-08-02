@@ -17,6 +17,10 @@ if (!class_exists('QLIGG_Frontend')) {
           'ajax_url' => admin_url('admin-ajax.php')
       ));
 
+      // Masonry
+      // -----------------------------------------------------------------------
+      wp_register_script('desandro', plugins_url('/assets/masonry/masonry.pkgd.min.js', QLIGG_PLUGIN_FILE), null, QLIGG_PLUGIN_VERSION, true);
+
       // Swiper
       // -----------------------------------------------------------------------
       wp_register_style('swiper', plugins_url('/assets/swiper/swiper.min.css', QLIGG_PLUGIN_FILE), null, QLIGG_PLUGIN_VERSION);
@@ -28,186 +32,233 @@ if (!class_exists('QLIGG_Frontend')) {
       wp_register_script('magnific-popup', plugins_url('/assets/magnific-popup/jquery.magnific-popup.min.js', QLIGG_PLUGIN_FILE), array('jquery'), QLIGG_PLUGIN_VERSION, true);
     }
 
-    function get_items($instagram_item = false) {
+    function get_items($instagram_feed = false, $next_max_id = false) {
 
-      if (isset($instagram_item['ig_select_from'])) {
+      if (isset($instagram_feed['type'])) {
 
-        if ($instagram_item['ig_select_from'] == 'username') {
-          return qligg_get_user_items($instagram_item);
+        if ($instagram_feed['type'] == 'username') {
+          return qligg_get_user_items($instagram_feed['username'], $instagram_feed['limit'], $next_max_id);
         }
 
-        if ($instagram_item['ig_select_from'] == 'tag') {
-          return qligg_get_tag_items($instagram_item);
+        if ($instagram_feed['type'] == 'tag') {
+          return qligg_get_tag_items($instagram_feed['tag'], $instagram_feed['limit'], $next_max_id);
         }
       }
 
-      return false;
+      return array();
     }
 
-    function get_link($instagram_item = false) {
+    function load_item_images() {
 
-      $url = 'https://www.instagram.com';
+      global $qligg_token, $qligg_api;
 
-      if (isset($instagram_item['ig_select_from'])) {
-
-        if ($instagram_item['ig_select_from'] == 'username') {
-
-          $profile_info = qligg_get_user_profile($instagram_item['insta_username']);
-
-          return "{$url}/{$profile_info['username']}";
-        } else {
-
-          return "{$url}/explore/tags/{$instagram_item['insta_tag']}";
-        }
-      }
-
-      return false;
-    }
-
-    function get_limit($instagram_item = false) {
-
-      // Backward compatibility v2.2.4
-      // -----------------------------------------------------------------------
-
-      if (empty($instagram_item['insta_limit'])) {
-
-        $instagram_item['insta_limit'] = 12;
-
-        if ($instagram_item['ig_select_from'] == 'username') {
-          $instagram_item['insta_limit'] = absint($instagram_item['insta_user-limit']);
-        }
-
-        if ($instagram_item['ig_select_from'] == 'tag') {
-          $instagram_item['insta_limit'] = absint($instagram_item['insta_tag-limit']);
-        }
-      }
-
-      return $instagram_item['insta_limit'];
-    }
-
-    function template_path($template_name) {
-
-      if (file_exists(trailingslashit(get_stylesheet_directory()) . "insta-gallery/{$template_name}")) {
-        return trailingslashit(get_stylesheet_directory()) . "insta-gallery/{$template_name}";
-      }
-
-      if (file_exists(QLIGG_PLUGIN_DIR . "templates/{$template_name}")) {
-        return QLIGG_PLUGIN_DIR . "templates/{$template_name}";
-      }
-    }
-
-    function load_item() {
-
-      global $qligg, $qligg_api;
-
-      if (!isset($_REQUEST['item_id'])) {
+      if (!isset($_REQUEST['feed']['id'])) {
         wp_send_json_error(__('Invalid item id', 'insta-gallery'));
       }
 
-      if (!$instagram_items = get_option('insta_gallery_items')) {
-        wp_send_json_error(__('Create your first gallery', 'insta-gallery'));
-      }
+      $instagram_feed = $_REQUEST['feed'];
 
-      $id = absint($_REQUEST['item_id']);
+      $next_max_id = isset($_REQUEST['next_max_id']) ? $_REQUEST['next_max_id'] : null;
 
-      if (!isset($instagram_items[$id])) {
-        wp_send_json_error(__('Invalid item id', 'insta-gallery'));
-      }
+      ob_start();
 
-      $instagram_item = $instagram_items[$id];
+      if (is_array($instagram_items = $this->get_items($instagram_feed, $next_max_id))) {
 
-      // Template
-      // -----------------------------------------------------------------------
-      
-      //$instagram_item['ig_display_type'] = 'masonry';
+        // Template
+        // ---------------------------------------------------------------------
 
-      if ($instagram_item['ig_display_type']) {
+        $i = 1;
 
-        ob_start();
+        foreach ($instagram_items as $item) {
 
-        include($this->template_path("{$instagram_item['ig_display_type']}.php"));
+          $image = @$item['images'][$instagram_feed['size']];
+
+          include($this->template_path('item/item.php'));
+
+          $i++;
+
+          if (($instagram_feed['limit'] != 0) && ($i > $instagram_feed['limit'])) {
+            break;
+          }
+        }
 
         wp_send_json_success(ob_get_clean());
       }
 
-      if (($instagram_item['ig_select_from'] == 'username') && !$qligg_api->validate_token($instagram_item['insta_username'])) {
+      $messages = array(
+          $qligg_api->get_message()
+      );
 
-        $messages = array(
-            __('Please update Instagram Access Token in plugin setting.', 'insta-gallery')
-        );
-      } else {
+      include($this->template_path('alert.php'));
 
-        $messages = array(
-            __('Unknow error', 'insta-gallery')
-        );
+      wp_send_json_error(ob_get_clean());
+    }
+
+    function template_path($template_name, $template_file = false) {
+
+      if (file_exists(trailingslashit(get_stylesheet_directory()) . "insta-gallery/{$template_name}")) {
+        $template_file = trailingslashit(get_stylesheet_directory()) . "insta-gallery/{$template_name}";
       }
 
-      ob_start();
+      if (file_exists(QLIGG_PLUGIN_DIR . "templates/{$template_name}")) {
+        $template_file = QLIGG_PLUGIN_DIR . "templates/{$template_name}";
+      }
 
-      include_once($this->template_path('alert.php'));
-
-      wp_send_json_success(ob_get_clean());
+      return apply_filters('qligg_template_file', $template_file, $template_name);
     }
 
     function do_shortcode($atts, $content = null) {
 
+      global $qligg, $qligg_token, $qligg_api;
+
       $atts = shortcode_atts(array(
-          'id' => 0,
-          'ajax' => true), $atts);
-
-      // Disable ajax loading from frontend request
-      // -----------------------------------------------------------------------
-
-      if (isset($_GET['insgal_ajax']) && ($_GET['insgal_ajax'] == 'false')) {
-        $atts['ajax'] = false;
-      }
+          'id' => 0), $atts);
 
       // Start loading
       // -----------------------------------------------------------------------
 
       if ($id = absint($atts['id'])) {
 
-        //if (count($instagram_items = get_option('insta_gallery_items'))) {
-        //if (isset($instagram_item) && ($instagram_item = $instagram_item)) {
+        if (count($instagram_feeds = get_option('insta_gallery_items'))) {
 
-        wp_enqueue_style('insta-gallery');
-        wp_enqueue_script('insta-gallery');
+          if (isset($instagram_feeds[$id])) {
 
-        wp_enqueue_style('magnific-popup');
-        wp_enqueue_script('magnific-popup');
+            $instagram_feed = wp_parse_args($instagram_feeds[$id], QLIGG_Options::instance()->instagram_feed);
 
-        //if ($instagram_item['ig_display_type'] == 'carousel') {
-        wp_enqueue_style('swiper');
-        wp_enqueue_script('swiper');
-        //}
+            wp_enqueue_style('insta-gallery');
+            wp_enqueue_script('insta-gallery');
 
-        if ($instagram_settings = get_option('insta_gallery_setting')) {
-          if (!empty($instagram_settings['igs_spinner_image_id'])) {
-            $image = wp_get_attachment_image_src($instagram_settings['igs_spinner_image_id']);
+            if ($instagram_feed['insta_popup']) {
+              wp_enqueue_style('magnific-popup');
+              wp_enqueue_script('magnific-popup');
+            }
+
+            if ($instagram_feed['insta_layout'] == 'carousel') {
+              wp_enqueue_style('swiper');
+              wp_enqueue_script('swiper');
+            }
+
+            if (in_array($instagram_feed['insta_layout'], array('masonry', 'highlight'))) {
+              wp_enqueue_script('desandro');
+            }
+
+            $item_selector = "insta-gallery-feed-{$id}";
+
+            if (isset($instagram_feed['insta_source'])) {
+
+              if ($instagram_feed['insta_source'] == 'username') {
+
+                $profile_info = qligg_get_user_profile($instagram_feed['insta_username']);
+              } else {
+                $profile_info = qligg_get_tag_profile($instagram_feed['insta_tag']);
+              }
+            }
+
+            $instagram_feed['insta_spacing'] = $instagram_feed['insta_spacing'] / 2;
+
+            $options = array(
+                'id' => $id,
+                'profile' => array(
+                    'id' => $profile_info['id'],
+                    'user' => $profile_info['user'],
+                    'name' => $profile_info['name'],
+                    'picture' => $profile_info['picture'],
+                    'link' => $profile_info['link'],
+                ),
+                'type' => $instagram_feed['insta_source'],
+                'username' => $instagram_feed['insta_username'],
+                'tag' => $instagram_feed['insta_tag'],
+                'layout' => $instagram_feed['insta_layout'],
+                'limit' => $instagram_feed['insta_limit'],
+                'spacing' => $instagram_feed['insta_spacing'],
+                'size' => $instagram_feed['insta_size'],
+                'hover' => $instagram_feed['insta_hover'],
+                'comments' => $instagram_feed['insta_comments'],
+                'likes' => $instagram_feed['insta_likes'],
+                'columns' => $instagram_feed['insta_gal-cols'],
+                'highlight' => (array) explode(',', str_replace(' ', '', "{$instagram_feed['insta_highlight-tag']},{$instagram_feed['insta_highlight-id']},{$instagram_feed['insta_highlight-position']}")),
+                'carousel' => array(
+                    'autoplay' => $instagram_feed['insta_car-autoplay'],
+                    'interval' => $instagram_feed['insta_car-autoplay-interval'],
+                    'slides' => $instagram_feed['insta_car-slidespv'],
+                ),
+                'popup' => array(
+                    'display' => $instagram_feed['insta_popup'],
+                    'profile' => $instagram_feed['insta_popup-profile'],
+                    'caption' => $instagram_feed['insta_popup-caption'],
+                    'likes' => $instagram_feed['insta_popup-likes'],
+                    'align' => $instagram_feed['insta_popup-align'],
+                ),
+                'card' => array(
+                    'display' => $instagram_feed['insta_card'],
+                    'info' => $instagram_feed['insta_card-info'],
+                    'caption' => $instagram_feed['insta_card-caption'],
+                    'length' => $instagram_feed['insta_card-length'],
+                )
+            );
+
+            ob_start();
+            ?>
+            <style>
+            <?php
+            if ($instagram_feed['insta_layout'] != 'carousel') {
+              if (!empty($instagram_feed['insta_spacing'])) {
+                echo "#{$item_selector} .insta-gallery-list {margin: 0 -{$instagram_feed['insta_spacing']}px;}";
+              }
+              if (!empty($instagram_feed['insta_spacing'])) {
+                echo "#{$item_selector} .insta-gallery-list .insta-gallery-item {padding: {$instagram_feed['insta_spacing']}px;}";
+              }
+            }
+            if ($instagram_feed['insta_layout'] == 'carousel') {
+              if (!empty($instagram_feed['insta_car-pagination-color'])) {
+                echo "#{$item_selector} .swiper-pagination-bullet-active {background-color: {$instagram_feed['insta_car-pagination-color']};}";
+              }
+              if (!empty($instagram_feed['insta_car-navarrows-color'])) {
+                echo "#{$item_selector} .swiper-button-next > i, #{$item_selector} .swiper-button-prev > i {color: {$instagram_feed['insta_car-navarrows-color']};}";
+              }
+            }
+            if (!empty($instagram_feed['insta_hover-color'])) {
+              echo "#{$item_selector} .insta-gallery-list .insta-gallery-item .insta-gallery-image-wrap .insta-gallery-image-mask {background-color: {$instagram_feed['insta_hover-color']};}";
+            }
+            if (!empty($instagram_feed['insta_button-background'])) {
+              echo "#{$item_selector} .insta-gallery-actions .insta-gallery-button {background-color: {$instagram_feed['insta_button-background']};}";
+            }
+            if (!empty($instagram_feed['insta_button-background-hover'])) {
+              echo "#{$item_selector} .insta-gallery-actions .insta-gallery-button:hover {background-color: {$instagram_feed['insta_button-background-hover']};}";
+            }
+
+            if (!empty($qligg['insta_spinner_image_id'])) {
+
+              $spinner = wp_get_attachment_image_src($qligg['insta_spinner_image_id'], 'full');
+
+              if (!empty($spinner[0])) {
+                echo "#{$item_selector} .insta-gallery-spinner {background-image:url($spinner[0])}";
+              }
+            }
+            do_action('qligg_template_style', $item_selector, $instagram_feed);
+            ?>
+            </style>
+            <?php
+            if ($template_file = $this->template_path("{$instagram_feed['insta_layout']}.php")) {
+              include($template_file);
+              return ob_get_clean();
+            }
+
+            $messages = array(
+                sprintf(__('The layout %s is not a available.', 'insta-gallery'), $instagram_feed['insta_layout'])
+            );
+
+            include($this->template_path('alert.php'));
+
+            return ob_get_clean();
           }
         }
-
-        ob_start();
-        ?>
-        <div id="ig-block-<?php echo esc_attr($id); ?>" class="ig-block <?php echo!$atts['ajax'] ? 'ig-block-loaded' : ''; ?>" data-item_id="<?php echo esc_attr($id); ?>">
-          <div class="ig-spinner" <?php echo!empty($image[0]) ? 'style="background-image:url(' . esc_url($image[0]) . ')"' : ''; ?>></div>
-          <?php
-          if (!$atts['ajax']) {
-            $_REQUEST['item_id'] = $id;
-            $this->load_item();
-          }
-          ?>
-        </div>
-        <?php
-        return ob_get_clean();
-        //}
-        //}
       }
     }
 
     function init() {
-      add_action('wp_ajax_nopriv_qligg_load_item', array($this, 'load_item'));
-      add_action('wp_ajax_qligg_load_item', array($this, 'load_item'));
+      add_action('wp_ajax_nopriv_qligg_load_item_images', array($this, 'load_item_images'));
+      add_action('wp_ajax_qligg_load_item_images', array($this, 'load_item_images'));
       add_action('wp_enqueue_scripts', array($this, 'add_frontend_js'));
       add_shortcode('insta-gallery', array($this, 'do_shortcode'));
     }

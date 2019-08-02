@@ -8,31 +8,80 @@ if (!class_exists('QLIGG_Options')) {
   class QLIGG_Options {
 
     protected static $instance;
-    public $instagram_item = array(
-        'ig_select_from' => 'username',
-        'ig_display_type' => 'gallery',
+    public $instagram_feed = array(
+        'insta_source' => 'username',
         'insta_tag' => '',
         'insta_username' => '',
-        'insta_limit' => 12,
-        'insta_spacing' => 10,
-        'insta_instalink' => true,
-        'insta_instalink-text' => 'View on Instagram',
-        'insta_instalink-bgcolor' => '',
-        'insta_instalink-hvrcolor' => '',
+        'insta_layout' => 'gallery',
+        // Box
+        // ---------------------------------------------------------------------
+        'insta_box' => false,
+        'insta_box-padding' => 0,
+        'insta_box-radius' => 0,
+        'insta_box-background' => false,
+        'insta_box-profile' => false,
+        'insta_box-desc' => false,
+        // Masonry
+        // ---------------------------------------------------------------------
+        'insta_highlight-tag' => '',
+        'insta_highlight-id' => '',
+        'insta_highlight-position' => '',
+        // Carousel
+        // ---------------------------------------------------------------------
+        'insta_car-slidespv' => 5,
         'insta_car-autoplay' => true,
+        'insta_car-autoplay-interval' => '3000',
         'insta_car-navarrows' => true,
         'insta_car-navarrows-color' => '',
-        'insta_car-dots' => true,
-        'insta_thumb-size' => 'standard',
+        'insta_car-pagination' => true,
+        'insta_car-pagination-color' => '',
+        // Gallery
+        // ---------------------------------------------------------------------
+        'insta_gal-cols' => 3,
+        // General
+        // ---------------------------------------------------------------------
+        'insta_limit' => 12,
+        'insta_spacing' => 10,
+        'insta_size' => 'standard',
+        // Mask
+        // ---------------------------------------------------------------------
         'insta_hover' => true,
         'insta_hover-color' => '',
-        'insta_popup' => true,
-        'insta_popup-caption' => true,
         'insta_likes' => true,
-        'insta_comments' => true
+        'insta_comments' => true,
+        // Button
+        // ---------------------------------------------------------------------        
+        'insta_button' => true,
+        'insta_button-text' => 'View on Instagram',
+        'insta_button-background' => '',
+        'insta_button-background-hover' => '',
+        // Popup
+        // ---------------------------------------------------------------------
+        'insta_popup' => true,
+        // Premium
+        // ---------------------------------------------------------------------
+        // ---------------------------------------------------------------------
+        'insta_popup-profile' => false,
+        'insta_popup-caption' => false,
+        'insta_popup-likes' => false,
+        'insta_popup-align' => 'bottom',
+        // Button
+        // ---------------------------------------------------------------------
+        'insta_button_load' => false,
+        'insta_button_load-text' => 'Load more...',
+        'insta_button_load-background' => '',
+        'insta_button_load-background-hover' => '',
+        // Card
+        // ---------------------------------------------------------------------
+        'insta_card' => false,
+        'insta_card-radius' => '',
+        'insta_card-font-size' => '',
+        'insta_card-background' => '',
+        'insta_card-padding' => '',
+        'insta_card-info' => '',
+        'insta_card-length' => 10,
+        'insta_card-caption' => '',
     );
-
-    //public $defaults;
 
     /* function defaults() {
 
@@ -45,99 +94,123 @@ if (!class_exists('QLIGG_Options')) {
 
     function options() {
 
-      global $qligg;
+      global $qligg, $qligg_token;
 
-      $qligg = get_option('insta_gallery_token', get_option('insta_gallery_iac', array()));
+      $qligg = get_option('insta_gallery_settings', array());
 
+      $qligg_token = get_option('insta_gallery_token', get_option('insta_gallery_iac', array()));
     }
 
-    function rename_insta_gallery_token($qligg = array()) {
+    function rename_insta_gallery_token($qligg_token = array()) {
 
-      if (isset($qligg['access_token'])) {
+      if (isset($qligg_token['access_token'])) {
 
-        $access_token = base64_decode($qligg['access_token']);
+        $access_token = base64_decode($qligg_token['access_token']);
 
         $access_token_id = explode('.', $access_token);
 
-        $qligg = array(
+        $qligg_token = array(
             $access_token_id[0] => $access_token
         );
       }
 
-      return $qligg;
+      return $qligg_token;
     }
 
-    function rename_insta_gallery_items($instagram_items = array()) {
+    function rename_insta_gallery_items($instagram_feeds = array()) {
 
-      global $qligg;
+      global $qligg_token;
 
       // Backward compatibility v2.2.3
       // -----------------------------------------------------------------------
 
-      foreach ($instagram_items as $id => $instagram_item) {
+      foreach ($instagram_feeds as $id => $instagram_feed) {
 
-        if (empty($instagram_item['insta_instalink-text'])) {
-          $instagram_items[$id]['insta_instalink-text'] = 'View on Instagram';
+        if (!isset($instagram_feed['insta_username']) && !empty($instagram_feed['insta_user'])) {
+          $instagram_feeds[$id]['insta_username'] = key($qligg_token);
         }
 
-        if (!isset($instagram_item['insta_username']) && !empty($instagram_item['insta_user'])) {
-          $instagram_items[$id]['insta_username'] = key($qligg);
+        if (!isset($instagram_feed['insta_source']) && !empty($instagram_feed['ig_select_from'])) {
+          $instagram_feeds[$id]['insta_source'] = $instagram_feed['ig_select_from'];
         }
 
-        if (!isset($instagram_item['insta_limit'])) {
-
-          $instagram_items[$id]['insta_limit'] = 12;
-
-          if (isset($instagram_item['ig_select_from']) && $instagram_item['ig_select_from'] == 'username') {
-            $instagram_items[$id]['insta_limit'] = absint($instagram_item['insta_user-limit']);
-          }
-
-          if (isset($instagram_item['ig_select_from']) && $instagram_item['ig_select_from'] == 'tag') {
-            $instagram_items[$id]['insta_limit'] = absint($instagram_item['insta_tag-limit']);
-          }
+        if (!isset($instagram_feed['insta_layout']) && !empty($instagram_feed['ig_display_type'])) {
+          $instagram_feeds[$id]['insta_layout'] = $instagram_feed['ig_display_type'];
         }
 
-        if (!isset($instagram_item['insta_spacing'])) {
-
-          $instagram_items[$id]['insta_spacing'] = 0;
-
-          if (!empty($instagram_item['insta_gal-spacing']) && $instagram_item['ig_display_type'] == 'gallery') {
-            $instagram_items[$id]['insta_spacing'] = 10;
-          }
-
-          if (!empty($instagram_item['insta_car-spacing']) && $instagram_item['ig_display_type'] == 'carousel') {
-            $instagram_items[$id]['insta_spacing'] = 10;
-          }
+        if (empty($instagram_feed['insta_button-text'])) {
+          $instagram_feeds[$id]['insta_button-text'] = 'View on Instagram';
+        }
+        if (empty($instagram_feed['insta_thumb']) && !empty($instagram_feed['insta_thumb-size'])) {
+          $instagram_feeds[$id]['insta_size'] = $instagram_feed['insta_thumb-size'];
+        }
+        if (empty($instagram_feed['insta_button']) && !empty($instagram_feed['insta_instalink'])) {
+          $instagram_feeds[$id]['insta_button'] = $instagram_feed['insta_instalink'];
+        }
+        if (empty($instagram_feed['insta_button-text']) && !empty($instagram_feed['insta_instalink-text'])) {
+          $instagram_feeds[$id]['insta_button-text'] = $instagram_feed['insta_instalink-text'];
+        }
+        if (empty($instagram_feed['insta_button-background']) && !empty($instagram_feed['insta_instalink-bgcolor'])) {
+          $instagram_feeds[$id]['insta_button-background'] = $instagram_feed['insta_instalink-bgcolor'];
+        }
+        if (empty($instagram_feed['insta_button-background-hover']) && !empty($instagram_feed['insta_instalink-hvrcolor'])) {
+          $instagram_feeds[$id]['insta_button-background-hover'] = $instagram_feed['insta_instalink-hvrcolor'];
         }
 
-        if (!isset($instagram_item['insta_hover'])) {
+        if (!isset($instagram_feed['insta_limit'])) {
 
-          $instagram_items[$id]['insta_hover'] = true;
+          $instagram_feeds[$id]['insta_limit'] = 12;
 
-          if (isset($instagram_item['insta_gal-hover']) && $instagram_item['ig_display_type'] == 'gallery') {
-            $instagram_items[$id]['insta_hover'] = $instagram_item['insta_gal-hover'];
+          if (isset($instagram_feed['insta_source']) && $instagram_feed['insta_source'] == 'username') {
+            $instagram_feeds[$id]['insta_limit'] = absint($instagram_feed['insta_user-limit']);
           }
 
-          if (isset($instagram_item['insta_car-hover']) && $instagram_item['ig_display_type'] == 'carousel') {
-            $instagram_items[$id]['insta_hover'] = $instagram_item['insta_car-hover'];
+          if (isset($instagram_feed['insta_source']) && $instagram_feed['insta_source'] == 'tag') {
+            $instagram_feeds[$id]['insta_limit'] = absint($instagram_feed['insta_tag-limit']);
           }
         }
 
-        if (!isset($instagram_item['insta_popup'])) {
+        if (!isset($instagram_feed['insta_spacing'])) {
 
-          $instagram_items[$id]['insta_popup'] = true;
+          $instagram_feeds[$id]['insta_spacing'] = 0;
 
-          if (isset($instagram_item['insta_gal-popup']) && $instagram_item['ig_display_type'] == 'gallery') {
-            $instagram_items[$id]['insta_popup'] = $instagram_item['insta_gal-popup'];
+          if (!empty($instagram_feed['insta_gal-spacing']) && $instagram_feed['insta_layout'] == 'gallery') {
+            $instagram_feeds[$id]['insta_spacing'] = 10;
           }
 
-          if (isset($instagram_item['insta_car-popup']) && $instagram_item['ig_display_type'] == 'carousel') {
-            $instagram_items[$id]['insta_popup'] = $instagram_item['insta_car-popup'];
+          if (!empty($instagram_feed['insta_car-spacing']) && $instagram_feed['insta_layout'] == 'carousel') {
+            $instagram_feeds[$id]['insta_spacing'] = 10;
+          }
+        }
+
+        if (!isset($instagram_feed['insta_hover'])) {
+
+          $instagram_feeds[$id]['insta_hover'] = true;
+
+          if (isset($instagram_feed['insta_gal-hover']) && $instagram_feed['insta_layout'] == 'gallery') {
+            $instagram_feeds[$id]['insta_hover'] = $instagram_feed['insta_gal-hover'];
+          }
+
+          if (isset($instagram_feed['insta_car-hover']) && $instagram_feed['insta_layout'] == 'carousel') {
+            $instagram_feeds[$id]['insta_hover'] = $instagram_feed['insta_car-hover'];
+          }
+        }
+
+        if (!isset($instagram_feed['insta_popup'])) {
+
+          $instagram_feeds[$id]['insta_popup'] = true;
+
+          if (isset($instagram_feed['insta_gal-popup']) && $instagram_feed['insta_layout'] == 'gallery') {
+            $instagram_feeds[$id]['insta_popup'] = $instagram_feed['insta_gal-popup'];
+          }
+
+          if (isset($instagram_feed['insta_car-popup']) && $instagram_feed['insta_layout'] == 'carousel') {
+            $instagram_feeds[$id]['insta_popup'] = $instagram_feed['insta_car-popup'];
           }
         }
       }
 
-      return $instagram_items;
+      return $instagram_feeds;
     }
 
     function init() {
@@ -145,7 +218,6 @@ if (!class_exists('QLIGG_Options')) {
       add_filter('option_insta_gallery_token', array($this, 'rename_insta_gallery_token'), 10);
       add_filter('option_insta_gallery_items', array($this, 'rename_insta_gallery_items'), 10);
       add_action('init', array($this, 'options'));
-      //add_filter('default_option_insta_gallery_items', array($this, 'insta_gallery_items'), 10);
     }
 
     public static function instance() {

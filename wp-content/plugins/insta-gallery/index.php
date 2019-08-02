@@ -1,1 +1,3 @@
-silence is Golden!
+<?php
+// Silence is golden.
+?>

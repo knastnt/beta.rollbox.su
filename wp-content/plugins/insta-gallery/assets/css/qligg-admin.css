@@ -14,6 +14,12 @@
     transform: rotate(360deg);
   }
 }
+.qlwrap .nav-tab i {
+  line-height: 26px;
+}
+.qlwrap hr {
+  margin: 3em 0 1em 0;
+}
 .qligg-box {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -25,8 +31,33 @@
 .qligg-box h4 {
   margin: 0;
 }
+div.premium,
+tr.premium,
+li.premium {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.5;
+}
+div.premium:before,
+tr.premium:before,
+li.premium:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  background-color: #eee;
+  opacity: 0.25;
+}
 .ig-table .iris-picker .iris-slider {
   margin-left: 8px!important;
+}
+.ig-table tr.premium {
+  display: block!important;
+}
+.ig-table tr.premium td p.description {
+  display: none;
 }
 .ig-table td {
   vertical-align: middle;
@@ -34,6 +65,13 @@
 .ig-table td.profile-picture img {
   width: 46px;
   border-radius: 50%;
+}
+.ig-table td p.premium,
+.ig-table td span.premium {
+  font-size: 11px;
+  font-weight: 600;
+  font-style: italic;
+  color: #747474;
 }
 .ig-table input[type="text"]:read-only {
   font-weight: bold;
@@ -49,13 +87,55 @@
   border-color: transparent;
   box-shadow: none;
 }
-.ig-thm-color {
+.ig-list-images {
+  display: inline-block;
+  margin: 0px;
+}
+.ig-list-images li {
+  display: inline-block;
+  margin: 0 10px 0 0;
+  margin-bottom: 0;
+  vertical-align: middle;
+  color: #aaa;
+  position: relative;
+  border: 1px solid #f1f1f1;
+  border-radius: 3px;
+  padding: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+}
+.ig-list-images li:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #eee;
+  opacity: 0.2;
+}
+.ig-list-images li.active:before,
+.ig-list-images li:hover:before {
+  opacity: 0;
+}
+.ig-list-images li.active label,
+.ig-list-images li:hover label {
   color: #e23565;
 }
-.ig-page-header .ig-logo {
-  float: left;
-  margin-right: 20px;
-  max-height: 35px;
+.ig-list-images label {
+  display: block;
+  position: relative;
+  line-height: 2em;
+  z-index: 9;
+  cursor: pointer;
+  transition: all .25s linear;
+  text-align: center;
+  font-weight: bold;
+  color: #23282d;
+}
+.ig-list-images input[type=radio] {
+  display: none;
 }
 .ig-list-buttons {
   display: inline-block;
@@ -123,39 +203,44 @@
   -webkit-transition: all 0.25s linear;
   transition: all 0.25s linear;
 }
-.btn-instagram {
-  display: inline-block;
-  height: auto;
-  box-shadow: none;
-  text-shadow: none;
-  border: none;
+.btn-instagram-account {
+  padding: 0 24px 0 120px;
+  height: 44px;
+  line-height: 44px;
   text-transform: uppercase;
-  cursor: pointer;
-  padding: 5px 20px;
-  border-radius: 3px;
-  -webkit-transition: all .5s;
-  transition: all .5s;
+  color: rgba(255, 255, 255, 0.8) !important;
   text-decoration: none;
-  line-height: 1.5;
-  background: #972dbe;
-  color: #fff;
+  border-radius: 3px;
+  transition: all 0.5s ease-in-out;
+  font-weight: 600;
+  display: inline-block;
+  background: #408bd1 url(../img/instagram.png) no-repeat 16px 13.5px;
+  background-size: auto 20px;
 }
+.btn-instagram-account:focus,
+.btn-instagram-account:hover {
+  box-shadow: inset 0 0 20px 20px rgba(255, 255, 255, 0.2);
+}
+.btn-instagram,
 .btn-instagram:focus {
   display: inline-block;
   height: auto;
   box-shadow: none;
   text-shadow: none;
-  border: none;
+  border: 0;
   text-transform: uppercase;
   cursor: pointer;
-  padding: 5px 20px;
+  padding: 8px 24px;
   border-radius: 3px;
-  -webkit-transition: all .5s;
   transition: all .5s;
   text-decoration: none;
-  line-height: 1.5;
-  background: #feb547;
+  background: #972dbe;
   color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+.btn-instagram:focus {
+  background: #feb547;
 }
 .btn-instagram:hover {
   background: #feb547;
@@ -163,10 +248,12 @@
 }
 .btn-instagram .dashicons {
   text-decoration: none;
-  line-height: normal;
   vertical-align: middle;
   height: initial;
   padding-right: 5px;
+  font-size: 14px;
+  line-height: 12px;
+  position: relative;
 }
 .btn-instagram.secondary {
   background: #e23565;
@@ -185,16 +272,6 @@
 }
 .ig-tab-content-row.active {
   display: table-row;
-}
-.ig-generate-msgs {
-  color: #e23565;
-  display: none;
-}
-.ig-tab-content-row.error {
-  border-color: #e23565;
-}
-.ig-tab-content-row.error .ig-generate-msgs {
-  display: block;
 }
 .ig_page_msg p {
   font-size: 20px;
@@ -215,32 +292,13 @@
   width: 50px;
   height: 26px;
 }
-.ig_adv-setting {
-  display: none;
-}
-.ig_adv-setting input[type="checkbox"] {
-  zoom: 1.5;
-}
-.ig_adv-setting input[type="url"] {
-  min-width: 75%;
-}
-.ig_adv-setting .ig-spinner {
+#ig-save-settings .insta-gallery-spinner {
   position: relative;
   padding: 10px 30px;
   height: 60px;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-}
-.ig_adv-setting .ig-spinner .ig-spin {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60px;
-  margin: -30px 0 0 -30px;
-  -webkit-animation: igspin 4s linear infinite;
-  -moz-animation: igspin 4s linear infinite;
-  animation: igspin 4s linear infinite;
 }
 .igf-response {
   font-size: 16px;
@@ -303,17 +361,17 @@ input.ig-doc-red-url {
   margin: auto;
   display: inline-block;
 }
-.ig_adv-setting-toggle {
+#ig-save-settings-toggle {
   cursor: pointer;
   border: 0px;
 }
-.ig_adv-setting-toggle .dashicons-minus {
+#ig-save-settings-toggle .dashicons-minus {
   display: none;
 }
-.ig_adv-setting-toggle.active .dashicons-minus {
+#ig-save-settings-toggle.active .dashicons-minus {
   display: initial;
 }
-.ig_adv-setting-toggle.active .dashicons-plus {
+#ig-save-settings-toggle.active .dashicons-plus {
   display: none;
 }
 .ig_donation-wrap {

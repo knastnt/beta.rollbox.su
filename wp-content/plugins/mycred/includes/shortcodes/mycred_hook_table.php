@@ -25,7 +25,7 @@ if ( ! function_exists( 'mycred_render_shortcode_hook_table' ) ) :
 
 		$mycred     = mycred( $type );
 		$id         = str_replace( '_', '-', $type );
-		$prefs_key  = 'mycred_pref_hooks';
+		$prefs_key  = apply_filters( 'mycred_option_id', 'mycred_pref_hooks' );
 
 		if ( $type != MYCRED_DEFAULT_TYPE_KEY )
 			$prefs_key .= '_' . $type;
@@ -96,6 +96,27 @@ if ( ! function_exists( 'mycred_render_shortcode_hook_table' ) ) :
 				$limit = '';
 				if ( isset( $prefs['limit'] ) )
 					$limit = $prefs['limit'];
+					
+				if( $id == "approved" ) {
+				    if ( isset( $hooks["hook_prefs"]["comments"]["limits"] ) ) {
+				        $approved_limits = $hooks["hook_prefs"]["comments"]["limits"];
+				        if( (int) $approved_limits["per_post"] > 0 && (int) $approved_limits["per_day"] > 0 ) {
+				            $limit = 'Maximum '. $approved_limits["per_post"] .' times per post and Maximum '. $approved_limits["per_day"].' times per day';
+				        }
+				        elseif( (int) $approved_limits["per_post"] > 0 && (int) $approved_limits["per_day"] < 1 ) {
+				            $limit = 'Maximum '. $approved_limits["per_post"] .' times per post';
+				        }
+				        elseif( (int) $approved_limits["per_post"] < 1 && (int) $approved_limits["per_day"] > 0 ) {
+				            $limit = 'Maximum '. $approved_limits["per_day"].' times per day';
+				        }
+				        else {
+				            $limit = 'No limit';
+				        }
+				    }   
+			    }
+			    else {
+			        $limit = mycred_translate_limit_code( $limit );
+			    }
 
 				$creds = apply_filters( 'mycred_hook_table_creds', $mycred->format_creds( $prefs['creds'] ), $id, $prefs, $atts );
 
@@ -103,7 +124,7 @@ if ( ! function_exists( 'mycred_render_shortcode_hook_table' ) ) :
 			<tr>
 				<td class="column-instance"><?php echo $log; ?></td>
 				<td class="column-amount"><?php echo $creds; ?></td>
-				<td class="column-limit"><?php echo mycred_translate_limit_code( $limit ); ?></td>
+				<td class="column-limit"><?php echo $limit; ?></td>
 			</tr>
 <?php
 

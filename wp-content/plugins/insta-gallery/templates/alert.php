@@ -1,4 +1,4 @@
-<div class="ig-alert">
+<div class="insta-gallery-alert">
   <b><?php esc_html_e('Unable to get results', 'insta-gallery'); ?></b>
   <?php if ($messages) : ?>
     <ul>

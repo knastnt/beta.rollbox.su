@@ -338,7 +338,7 @@ if ( ! class_exists( 'myCRED_Email' ) ) :
 				$subject = $mycred->template_tags_amount( $subject, $event['amount'] );
 				$subject = $mycred->template_tags_user( $subject, $event['user_id'] );
 
-				if ( array_key_exists( 'data', $event ) && ! empty( $event['data'] ) && array_key_exists( 'ref_type', $event['data'] ) && $event['data']['ref_type'] == 'post' )
+				if ( array_key_exists( 'data', $event ) && is_array($event['data']) && ! empty( $event['data'] ) && array_key_exists( 'ref_type', $event['data'] ) && $event['data']['ref_type'] == 'post' )
 					$subject = $mycred->template_tags_post( $subject, $event['ref_id'] );
 
 				$subject = str_replace( '%amount%', $event['amount'], $subject );
@@ -377,7 +377,7 @@ if ( ! class_exists( 'myCRED_Email' ) ) :
 				$content = $mycred->template_tags_amount( $content, $event['amount'] );
 				$content = $mycred->template_tags_user( $content, $event['user_id'] );
 
-				if ( array_key_exists( 'data', $event ) && ! empty( $event['data'] ) && array_key_exists( 'ref_type', $event['data'] ) && $event['data']['ref_type'] == 'post' )
+				if ( array_key_exists( 'data', $event ) && is_array($event['data']) && ! empty( $event['data'] ) && array_key_exists( 'ref_type', $event['data'] ) && $event['data']['ref_type'] == 'post' )
 					$content = $mycred->template_tags_post( $content, $event['ref_id'] );
 
 				$content = str_replace( '%amount%',        $mycred->format_creds( $event['amount'] ), $content );
