@@ -429,6 +429,21 @@ ul.products li.product .button.added {
 
 
 
+/*Слайдер*/
+.top-section .slider-wrapper .nivoSlider {
+    height: 558px;
+}
+.top-section .slider-wrapper .nivoSlider img:first-child {
+    display: block;
+    height: 558px;
+}
+.top-section .slider-wrapper .nivoSlider img:not(:first-child) {
+    display: none;
+}
+
+
+
+
 /*Sticky menu - прилипающее*/
 #stickey_menu_wrapper {
     transition: all 1000ms ease;

@@ -25,9 +25,9 @@ function true_include_scripts() {
             <div class="oc-loading"></div>
             <div id="oc-inivoslider1" class="nivoSlider">
 
-                <img style="display: none;" src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>bg1-slidershow-870x410.png" alt="" title="#banner7-caption2"  />
-                <img style="display: none;" src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>bg2-slidershow-870x410.png" alt="" title="#banner7-caption3"  />
-                <img style="display: none;" src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>bg-slidershow-870x410.png" alt="" title="#banner7-caption4"  />
+                <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>bg1-slidershow-870x410.png" alt="" title="#banner7-caption2"  />
+                <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>bg2-slidershow-870x410.png" alt="" title="#banner7-caption3"  />
+                <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>bg-slidershow-870x410.png" alt="" title="#banner7-caption4"  />
 
             </div>
 
@@ -95,7 +95,7 @@ function true_include_scripts() {
                 </div>
             </div>
             <script type="text/javascript">
-                jQuery(window).load(function() {
+                jQuery(window).ready(function() {
                     jQuery('#oc-inivoslider1').nivoSlider({
                         effect:    "random"  ,
                         slices: 15,
