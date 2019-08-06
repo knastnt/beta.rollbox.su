@@ -38,7 +38,7 @@
             jQuery('.center-section .first .content .num1 .woocommerce .products').slick({
                 swipeToSlide: true,
                 infinite: false,
-                dots: false,
+                dots: true,
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 responsive: [
@@ -136,7 +136,7 @@
                     rows: 2,
                     swipeToSlide: true,
                     infinite: false,
-                    dots: false,
+                    dots: true,
                     slidesToShow: 4,
                     slidesToScroll: 1,
                     responsive: [
@@ -203,7 +203,7 @@ if ( isset($shortcode->get_query_args()['post__in']) && count($shortcode->get_qu
                 jQuery('.center-section .first .content .num5 .woocommerce .products').slick({
                     swipeToSlide: true,
                     infinite: false,
-                    dots: false,
+                    dots: true,
                     slidesToShow: 4,
                     slidesToScroll: 1,
                     responsive: [

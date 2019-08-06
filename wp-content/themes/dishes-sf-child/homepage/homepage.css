@@ -236,3 +236,10 @@
 }
 
 /* - end --------------------- last-section --------------------- */
+
+
+
+
+.slick-dots {
+    bottom: -15px !important;
+}

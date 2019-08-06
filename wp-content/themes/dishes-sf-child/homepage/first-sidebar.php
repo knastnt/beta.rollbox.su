@@ -72,7 +72,7 @@
                     jQuery('.center-section .first .sidebar .num2 .products').slick({
                         swipeToSlide: true,
                         infinite: true,
-                        dots: false,
+                        dots: true,
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         responsive: [
@@ -220,7 +220,7 @@ if (strlen($result) > 50){
                     rows: 2,
                     swipeToSlide: true,
                     infinite: false,
-                    dots: false,
+                    dots: true,
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     responsive: [
