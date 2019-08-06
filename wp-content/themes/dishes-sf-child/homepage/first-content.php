@@ -91,15 +91,9 @@
 <div class="products-slick-slider num1">
     <div class="title">
         <div class="tab-wrapper">
-            <a href="#popular">
-                <h4>Самые популярные</h4>
-            </a>
-            <a href="#sales">
-                <h4>Со скидками</h4>
-            </a>
-            <a href="#new">
-                <h4>Новинки</h4>
-            </a>
+            <label for="popular">Самые популярные</label>
+            <label for="sale" <?php if(!$isSalesExist) { echo 'style="display: none;"'; }?>>Со скидками</label>
+            <label for="new" <?php if(!$isNewExist) { echo 'style="display: none;"'; }?>>Новинки</label>
 
         </div>
         <div class="nav">
@@ -113,23 +107,8 @@
 
     <div class="content-wrapper">
         <input type="radio" name="odin" checked="checked" id="popular"/>
-        <label for="popular">Самые популярные</label>
         <input type="radio" name="odin" id="sale"/>
-        <label for="sale" <?php if(!$isSalesExist) { echo 'style="display: none;"'; }?>>Со скидками</label>
         <input type="radio" name="odin" id="new"/>
-        <label for="new" <?php if(!$isNewExist) { echo 'style="display: none;"'; }?>>Новинки</label>
-        <style>
-            .content-wrapper > div, .content-wrapper > input { display: none; }
-
-            .content-wrapper label { padding: 5px; border: 1px solid #aaa; line-height: 28px; cursor: pointer; position: relative; bottom: 1px; background: #fff; }
-            .content-wrapper input[type="radio"]:checked + label { border-bottom: 2px solid #fff; }
-
-            .content-wrapper > input:nth-of-type(1):checked ~ div:nth-of-type(1),
-            .content-wrapper > input:nth-of-type(2):checked ~ div:nth-of-type(2),
-            .content-wrapper > input:nth-of-type(3):checked ~ div:nth-of-type(3) { display: block; padding: 5px; border: 1px solid #aaa; }
-        </style>
-
-
 
         <div id="popular" class="content-entry">
             <?php
@@ -151,7 +130,7 @@
             <?php
                 // Блок Новинки
                 if ( $isNewExist ) {
-                    echo $newContent;
+                    echo '<div class="woocommerce">' . $newContent . '</div>';
                 }
             ?>
         </div>
