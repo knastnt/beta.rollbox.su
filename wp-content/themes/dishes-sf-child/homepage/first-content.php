@@ -115,9 +115,9 @@
         <input type="radio" name="odin" checked="checked" id="popular"/>
         <label for="popular">Самые популярные</label>
         <input type="radio" name="odin" id="sale"/>
-        <label for="sale">Со скидками</label>
+        <label for="sale" <?php if(!$isSalesExist) { echo 'style="display: none;"'; }?>>Со скидками</label>
         <input type="radio" name="odin" id="new"/>
-        <label for="new">Новинки</label>
+        <label for="new" <?php if(!$isNewExist) { echo 'style="display: none;"'; }?>>Новинки</label>
         <style>
             .content-wrapper > div, .content-wrapper > input { display: none; }
 
@@ -160,7 +160,8 @@
         <script type="text/javascript">
 
             (function() {
-                refreshSliderTab('popular');
+                refreshSliderTab(jQuery('.content-wrapper input[name=odin]:checked').attr('id'));
+
 
                 jQuery('.content-wrapper input').on('change', function() {refreshSliderTab(this.id)});
 
