@@ -831,6 +831,9 @@ ul.products li.product:hover img {
     width: 100%;
     border-bottom: 2px solid var(--color-red);
 }
+.products-slick-slider .title a {
+    float: left;
+}
 .products-slick-slider .title h4 {
     float: left;
     font-size: .9em;

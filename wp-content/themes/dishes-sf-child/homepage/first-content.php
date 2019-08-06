@@ -13,9 +13,18 @@
 
 <div class="products-slick-slider num1">
     <div class="title">
-        <h4>
-            Самые популярные
-        </h4>
+        <div class="tab-wrapper">
+            <a href="#popular">
+                <h4>Самые популярные</h4>
+            </a>
+            <a href="#sales">
+                <h4>Со скидками</h4>
+            </a>
+            <a href="#new">
+                <h4>Новинки</h4>
+            </a>
+
+        </div>
         <div class="nav">
             <div class="nav-prev">
                 <i class="arrow-back"></i>
@@ -24,43 +33,71 @@
             </div>
         </div>
     </div>
-    <?php
-    $result = do_shortcode( '[best_selling_products per_page="12"]' );
-    $result = str_replace('<ul', '<div', $result);
-    $result = str_replace('</ul', '</div', $result);
-    $result = str_replace('<li', '<div', $result);
-    $result = str_replace('</li', '</div', $result);
-    echo $result;
-    ?>
 
-    <script type="text/javascript">
-        (function() {
-            jQuery('.center-section .first .content .num1 .woocommerce .products').slick({
-                swipeToSlide: true,
-                infinite: false,
-                dots: true,
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                responsive: [
-                    {
-                        breakpoint: 1064,
-                        settings: {
-                            slidesToShow: 3
-                        }
-                    },
-                    {
-                        breakpoint: 767,
-                        settings: {
-                            slidesToShow: 1
-                        }
-                    }
-                ],
-                arrows: true,
-                nextArrow: jQuery('.products-slick-slider.num1 .nav-next'),
-                prevArrow: jQuery('.products-slick-slider.num1 .nav-prev')
-            });
-        })()
-    </script>
+    <div class="content-wrapper">
+        <input type="radio" name="odin" checked="checked" id="vkl1"/>
+        <label for="vkl1">CSS</label>
+        <input type="radio" name="odin" id="vkl2"/>
+        <label for="vkl2">HTML</label>
+        <input type="radio" name="odin" id="vkl3"/>
+        <label for="vkl3">Дополнительно</label>
+        <style>
+            .content-wrapper > div, .content-wrapper > input { display: none; }
+
+            .content-wrapper label { padding: 5px; border: 1px solid #aaa; line-height: 28px; cursor: pointer; position: relative; bottom: 1px; background: #fff; }
+            .content-wrapper input[type="radio"]:checked + label { border-bottom: 2px solid #fff; }
+
+            .content-wrapper > input:nth-of-type(1):checked ~ div:nth-of-type(1),
+            .content-wrapper > input:nth-of-type(2):checked ~ div:nth-of-type(2),
+            .content-wrapper > input:nth-of-type(3):checked ~ div:nth-of-type(3) { display: block; padding: 5px; border: 1px solid #aaa; }
+        </style>
+
+        <div id="popular" class="content-entry">
+            <?php
+            $result = do_shortcode( '[best_selling_products per_page="12"]' );
+            $result = str_replace('<ul', '<div', $result);
+            $result = str_replace('</ul', '</div', $result);
+            $result = str_replace('<li', '<div', $result);
+            $result = str_replace('</li', '</div', $result);
+            echo $result;
+            ?>
+
+            <script type="text/javascript">
+                (function() {
+                    jQuery('.center-section .first .content .num1 .woocommerce .products').slick({
+                        swipeToSlide: true,
+                        infinite: false,
+                        dots: true,
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                        responsive: [
+                            {
+                                breakpoint: 1064,
+                                settings: {
+                                    slidesToShow: 3
+                                }
+                            },
+                            {
+                                breakpoint: 767,
+                                settings: {
+                                    slidesToShow: 1
+                                }
+                            }
+                        ],
+                        arrows: true,
+                        nextArrow: jQuery('.products-slick-slider.num1 .nav-next'),
+                        prevArrow: jQuery('.products-slick-slider.num1 .nav-prev')
+                    });
+                })()
+            </script>
+        </div>
+        <div id="sales" class="content-entry">
+
+        </div>
+        <div id="new" class="content-entry">
+
+        </div>
+    </div>
 </div>
 
 <div class="module-image">
