@@ -36,6 +36,8 @@ require_once( get_stylesheet_directory() . '/functions-modules/validate_billing_
 // Настройки оформления заказа
 require_once( get_stylesheet_directory() . '/checkout/checkout.php' );
 
+//Карта на главной странице
+require_once( get_stylesheet_directory() . '/homepage/map/homeepageMap.php' );
 
 //Максимальное количество автоматически создаваемых вариаций woocommerce
 //Если сервер не будет пропускать, то, возможно, решение тут: https://toster.ru/q/165355

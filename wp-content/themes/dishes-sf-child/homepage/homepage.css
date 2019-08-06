@@ -18,12 +18,12 @@
 .module-image {
     position: relative;
     cursor: pointer;
+    margin-bottom: 3em;
 }
 .module-image img {
     width: 100%;
     object-fit: fill;
     border-radius: 0px;
-    margin-bottom: 3em;
     height: 143px;
 }
 .module-image:hover::before {
