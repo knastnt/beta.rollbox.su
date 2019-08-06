@@ -129,15 +129,48 @@
             .content-wrapper > input:nth-of-type(3):checked ~ div:nth-of-type(3) { display: block; padding: 5px; border: 1px solid #aaa; }
         </style>
 
+
+
+        <div id="popular" class="content-entry">
+            <?php
+
+            echo $popular_content;
+            ?>
+
+
+        </div>
+        <div id="sale" class="content-entry">
+            <?php
+                // Блок Товары со скидкой
+                if ( $isSalesExist ) {
+                     echo $salesContent;
+                }
+            ?>
+        </div>
+        <div id="new" class="content-entry">
+            <?php
+                // Блок Новинки
+                if ( $isNewExist ) {
+                    echo $newContent;
+                }
+            ?>
+        </div>
+
+
         <script type="text/javascript">
 
             (function() {
-                jQuery('.content-wrapper input').on('change', function() {
+                refreshSliderTab('popular');
+
+                jQuery('.content-wrapper input').on('change', function() {refreshSliderTab(this.id)});
+
+                function refreshSliderTab(tabId) {
+                    //alert(tabId);
 
                     try {
-                        jQuery('#' + this.id + ' .products').slick('refresh');
+                        jQuery('#' + tabId + ' .products').slick('refresh');
                     }catch (e) {
-                        jQuery('#' + this.id + ' .products').slick({
+                        jQuery('#' + tabId + ' .products').slick({
                             swipeToSlide: true,
                             infinite: false,
                             dots: true,
@@ -164,36 +197,9 @@
                     }
 
 
-                });
-
-
+                };
             })()
         </script>
-
-        <div id="popular" class="content-entry">
-            <?php
-
-            echo $popular_content;
-            ?>
-
-
-        </div>
-        <div id="sale" class="content-entry">
-            <?php
-                // Блок Товары со скидкой
-                if ( $isSalesExist ) {
-                     echo $salesContent;
-                }
-            ?>
-        </div>
-        <div id="new" class="content-entry">
-            <?php
-                // Блок Новинки
-                if ( $isNewExist ) {
-                    echo $newContent;
-                }
-            ?>
-        </div>
     </div>
 </div>
 
