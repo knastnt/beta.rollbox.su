@@ -234,3 +234,10 @@
 }
 
 /* - end --------------------- last-section --------------------- */
+
+.homepage-r-sdbar-widget.widget .widget-title {
+    padding: 0;
+}
+.homepage-r-sdbar-widget.widget a {
+    color: var(--color-darkgray-light);
+}

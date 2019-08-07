@@ -39,10 +39,16 @@ require_once( get_stylesheet_directory() . '/checkout/checkout.php' );
 //Карта на главной странице
 require_once( get_stylesheet_directory() . '/homepage/map/homeepageMap.php' );
 
+//Переработанный шорткод инстаграма
+require_once( get_stylesheet_directory() . '/homepage/instagram.php' );
+
 //Максимальное количество автоматически создаваемых вариаций woocommerce
 //Если сервер не будет пропускать, то, возможно, решение тут: https://toster.ru/q/165355
 define( 'WC_MAX_LINKED_VARIATIONS', 1000 );
 
+
+/*Регистрируем панель для виджетов на главной странице справа*/
+register_sidebar(array( 'name' => 'Сайдбар справа на главной странице', 'id' => 'homepage-right-sidebar', 'before_widget' => '<div class="homepage-r-sdbar-widget widget">', 'after_widget' => '</div>', 'before_title' => '<span class="homepage-r-sdbar-widget widget-title">', 'after_title' => '</span>', ));
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

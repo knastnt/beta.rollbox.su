@@ -55,12 +55,13 @@ function theme_settings(){
     add_settings_field('new_product_duration', 'Сколько дней после публикации продукт считается новым (Например, 14)', 'fill_new_product_duration', 'rollbox_page', 'section_id_2' );
 
 
+    /** выпилено
     // Регистрируем раздел
     add_settings_section( 'section_id_3', 'Инстаграм', '', 'rollbox_page' );
     // Регистрируем поля ввода
     add_settings_field('sidebar_instagram_title', 'Заголовок инстаграм виджета', 'fill_sidebar_instagram_title', 'rollbox_page', 'section_id_3' );
     add_settings_field('sidebar_instagram_shortcode_id', 'ID шорткода галереи инстаграм плагина. Размещение в сайдбаре (Например, для шорткода [insta-gallery id="3"] - нужно ввести 3)', 'fill_sidebar_instagram_shortcode_id', 'rollbox_page', 'section_id_3' );
-
+    */
 
 
 }
@@ -102,6 +103,7 @@ function fill_new_product_duration(){
     <?php
 }
 
+/** выпилено
 ## Заполняем опцию заголовок инстаграм виджета
 function fill_sidebar_instagram_title(){
     $val = get_option('rollbox_options_array');
@@ -118,6 +120,7 @@ function fill_sidebar_instagram_shortcode_id(){
     <input type="number" name="rollbox_options_array[sidebar_instagram_shortcode_id]" value="<?php echo esc_attr( $val ) ?>" style="width: 30%;" />
     <?php
 }
+ */
 
 ## Очистка данных
 function sanitize_callback( $options ){
@@ -138,12 +141,14 @@ function sanitize_callback( $options ){
                 $options[ $key ]  = intval( $value );
             }
 
+            /** выпилено
             if( $key == 'sidebar_instagram_title' ){
                 $options[ $key ]  = $value;
             }
             if( $key == 'sidebar_instagram_shortcode_id' ){
                 $options[ $key ]  = intval( $value );
             }
+             */
 
 
         }

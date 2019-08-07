@@ -99,41 +99,28 @@
         <?php
     }*/
 
+
+
+if ( is_active_sidebar( 'homepage-right-sidebar' ) ) {
+    if ( !dynamic_sidebar('homepage-right-sidebar') ) {
+
+    }
+}
+
+
 ?>
 
 
 
 
-<div class="insta-sidebar">
-    <div class="title">
-        <h4>
-            <?php
-                //Узнаем что отображать в заголовке
-                $title = isset(get_option( 'rollbox_options_array' ) ['sidebar_instagram_title']) ? get_option( 'rollbox_options_array' ) ['sidebar_instagram_title'] : 'Instagram';
-                echo $title;
-            ?>
-        </h4>
-        <img src="<?php echo get_stylesheet_directory_uri() . '/img/insta_logo_32x32.png'; ?>">
-        <div style="clear: both"></div>
-    </div>
-    <div class="wrapper">
-        <?php
-            //Узнаем какой ID шорткода вставлять
-            $shortcode_id = isset(get_option( 'rollbox_options_array' ) ['sidebar_instagram_shortcode_id']) ? get_option( 'rollbox_options_array' ) ['sidebar_instagram_shortcode_id'] : 0;
-            if ($shortcode_id < 1) {
-                echo 'Неверно указан ID шорткода галереи';
-            }else {
-                echo do_shortcode('[insta-gallery id="'. $shortcode_id . '"]');
-            }
-        ?>
-    </div>
-</div>
+
 
 
 
 
 
 <?php
+/*
 // Блок Недавно просмотренные
 
 /////////////////////////////////////////////////////
@@ -245,6 +232,6 @@ if (strlen($result) > 50){
         </script>
     </div>
     <?php
-}
+}*/
 
 ?>
