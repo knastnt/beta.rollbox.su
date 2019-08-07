@@ -980,7 +980,7 @@ ul.products li.product:hover img {
 /* если экран меньше 1600 */
 @media (max-width:1600px) {
     body {
-        font-size: 90%;
+        font-size: 95%;
     }
 
     .col-full {
@@ -1013,9 +1013,6 @@ ul.products li.product:hover img {
     .woocommerce-active .site-header .site-search {
         width: 550px;
     }
-    .top-section .slider-wrapper {
-        width: 1200px;
-    }
 
 
     /*баннеры около слайда*/
@@ -1034,6 +1031,10 @@ ul.products li.product:hover img {
 /*///////////////////////////////////////////////////////////////////////////*/
 /* если экран меньше 1290 */
 @media (max-width:1290px) {
+
+    body {
+        font-size: 90%;
+    }
 
     .col-full {
         max-width: 1022px;
@@ -1060,9 +1061,22 @@ ul.products li.product:hover img {
     .woocommerce-active .site-header .site-search {
         width: 435px;
     }
+
+
+    /*баннеры около слайда*/
     .top-section .slider-wrapper {
-        width: 1022px;
+        width: 798px;
     }
+    .top-section .banner-wrapper .banner1 {
+        width: 212px;
+    }
+    .top-section .banner-wrapper .banner2 {
+        margin-top: 10px;
+        width: 212px;
+    }
+
+
+
 
     .site-header .user-points .ion-user-points::before {
         width: 44px;
