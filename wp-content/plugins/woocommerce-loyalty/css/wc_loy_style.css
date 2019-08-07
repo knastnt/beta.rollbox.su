@@ -49,12 +49,12 @@
     text-align: left;
 }
 .wc-loy-myCoupons .coupons-wrapper .coupon-wrapper .coupon .title {
-    font-size: 25px;
+    font-size: 1.6em;
     font-weight: 700;
 }
 .wc-loy-myCoupons .coupons-wrapper .coupon-wrapper .coupon .description {
     margin-bottom: 5px;
-    font-size: 15px;
+    font-size: 1.1em;
 }
 .wc-loy-myCoupons .coupons-wrapper .coupon-wrapper .coupon .time {
     text-align: right;
@@ -97,7 +97,6 @@
 
 
 li.user-points-menu-li {
-    font-size: 14px;
     text-align: left;
     list-style: none;
 }
@@ -113,7 +112,7 @@ li.user-points-menu-li .time {
 }
 li.user-points-menu-li .change {
     width: 50px;
-    font-size: 20px;
+    font-size: 1.4em;
     font-weight: 600;
 }
 li.user-points-menu-li .change.plus {
