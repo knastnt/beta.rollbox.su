@@ -112,7 +112,7 @@
         <label for="sale" <?php if(!$isSalesExist) { echo 'style="display: none;"'; }?>>Со скидками</label>
         <input type="radio" name="odin" id="new"/>
         <label for="new" <?php if(!$isNewExist) { echo 'style="display: none;"'; }?>>Новинки</label>
-
+        <hr>
         <div id="popular" class="content-entry">
             <?php
 

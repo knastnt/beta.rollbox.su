@@ -870,6 +870,7 @@ ul.products li.product:hover img {
     background: var(--color-red);
 }
 
+
 .products-slick-slider .content-wrapper > input:nth-of-type(1):checked ~ div:nth-of-type(1),
 .products-slick-slider .content-wrapper > input:nth-of-type(2):checked ~ div:nth-of-type(2),
 .products-slick-slider .content-wrapper > input:nth-of-type(3):checked ~ div:nth-of-type(3) {
@@ -878,6 +879,13 @@ ul.products li.product:hover img {
 
 .products-slick-slider.num1 .title {
     margin: 0;
+    border: none;
+}
+.products-slick-slider.num1 hr {
+    position: relative;
+    top: -36px;
+    height: 2px;
+    background-color: var(--color-red);
 }
 
 .products-slick-slider.num1 label {
@@ -897,7 +905,7 @@ ul.products li.product:hover img {
     background-color: #DFDFDF;
 }
 .products-slick-slider.num1 .title .nav {
-    margin-bottom: 10px;
+    margin-bottom: 13px;
 }
 
 
@@ -971,6 +979,9 @@ ul.products li.product:hover img {
 /*///////////////////////////////////////////////////////////////////////////*/
 /* если экран меньше 1600 */
 @media (max-width:1600px) {
+    body {
+        font-size: 90%;
+    }
 
     .col-full {
         max-width: 1200px;
