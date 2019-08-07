@@ -173,6 +173,10 @@
     color: var(--color-white);
     font-weight: 500;
     border-radius: 3px;
+    margin-bottom: 0;
+}
+#site-header-cart p.woocommerce-mini-cart__buttons a.checkout {
+    display: none;
 }
 #site-header-cart p.woocommerce-mini-cart__buttons a:after {
     content: "";
