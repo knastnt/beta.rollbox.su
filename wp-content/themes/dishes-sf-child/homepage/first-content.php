@@ -90,12 +90,12 @@
 
 <div class="products-slick-slider num1">
     <div class="title">
-        <div class="tab-wrapper">
-            <label for="popular">Самые популярные</label>
-            <label for="sale" <?php if(!$isSalesExist) { echo 'style="display: none;"'; }?>>Со скидками</label>
-            <label for="new" <?php if(!$isNewExist) { echo 'style="display: none;"'; }?>>Новинки</label>
+        <!--div class="tab-wrapper">
+            <label >Самые популярные</label>
+            <label  <?php if(!$isSalesExist) { echo 'style="display: none;"'; }?>>Со скидками</label>
+            <label  <?php if(!$isNewExist) { echo 'style="display: none;"'; }?>>Новинки</label>
 
-        </div>
+        </div-->
         <div class="nav">
             <div class="nav-prev">
                 <i class="arrow-back"></i>
@@ -107,8 +107,11 @@
 
     <div class="content-wrapper">
         <input type="radio" name="odin" checked="checked" id="popular"/>
+        <label for="popular">Самые популярные</label>
         <input type="radio" name="odin" id="sale"/>
+        <label for="sale" <?php if(!$isSalesExist) { echo 'style="display: none;"'; }?>>Со скидками</label>
         <input type="radio" name="odin" id="new"/>
+        <label for="new" <?php if(!$isNewExist) { echo 'style="display: none;"'; }?>>Новинки</label>
 
         <div id="popular" class="content-entry">
             <?php
