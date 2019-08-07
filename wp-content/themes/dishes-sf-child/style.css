@@ -429,15 +429,12 @@ ul.products li.product .button.added {
 
 
 
-/*Слайдер*/
-.top-section .slider-wrapper .nivoSlider {
-    height: 558px;
+/*Слайдер. Чтобы показывалась заглушка в виде первого изображения, пока не загрузится слайдер*/
+.nivoSlider.loading img {
+    position: relative;
+    width: 100%;
 }
-.top-section .slider-wrapper .nivoSlider img:first-child {
-    display: block;
-    height: 558px;
-}
-.top-section .slider-wrapper .nivoSlider img:not(:first-child) {
+.nivoSlider.loading img:not(:first-child) {
     display: none;
 }
 
@@ -1060,6 +1057,7 @@ ul.products li.product:hover img {
     #site-navigation {
         margin-top: 77px;
     }
+
 
 }
 /*///////////////////////////////////////////////////////////////////////////*/

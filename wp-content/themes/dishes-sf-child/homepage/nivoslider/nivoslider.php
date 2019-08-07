@@ -23,7 +23,7 @@ function true_include_scripts() {
     <div class= "oc-banner7-container">
         <div class="flexslider oc-nivoslider">
             <div class="oc-loading"></div>
-            <div id="oc-inivoslider1" class="nivoSlider">
+            <div id="oc-inivoslider1" class="nivoSlider loading">
 
                 <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>bg1-slidershow-870x410.png" alt="" title="#banner7-caption2"  />
                 <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>bg2-slidershow-870x410.png" alt="" title="#banner7-caption3"  />
@@ -116,6 +116,7 @@ function true_include_scripts() {
                             jQuery('.timeloading').css('animation-duration'," 5000ms ");
                         },
                     });
+                    jQuery('#oc-inivoslider1').removeClass('loading');
                 });
             </script>
         </div>
