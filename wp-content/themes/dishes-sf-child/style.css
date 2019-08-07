@@ -757,7 +757,7 @@ ul.products li.product:hover img {
 /* ПОВТОРЯЮЩИЕСЯ ЭЛЕМЕНТЫ */
 /* - start --------------------- product-slider --------------------- */
 .products-slick-slider {
-    margin-bottom: 2em;
+    margin-bottom: 4em;
 }
 .products-slick-slider .slick-slide {
     padding: 0 20px;
@@ -883,7 +883,7 @@ ul.products li.product:hover img {
 }
 .products-slick-slider.num1 hr {
     position: relative;
-    top: -36px;
+    top: -2.3em;
     height: 2px;
     background-color: var(--color-red);
 }
@@ -891,11 +891,11 @@ ul.products li.product:hover img {
 .products-slick-slider.num1 label {
     margin: 0;
     position: relative;
-    top: -45px;
+    top: -3.1em;
     font-size: .9em;
     font-weight: 700;
     text-transform: uppercase;
-    padding: 13px 30px;
+    padding: .9em 2.1em;
     border-radius: 3px 3px 0 0;
     cursor: pointer;
     transition: .5s;

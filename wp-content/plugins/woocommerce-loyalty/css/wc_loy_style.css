@@ -102,7 +102,7 @@ li.user-points-menu-li {
 }
 li.user-points-menu-li:not(:last-child) {
     border-bottom: 1px solid #dbdbdb;
-    padding: 10px 0px;
+    padding: .3em 0;
 }
 li.user-points-menu-li > div {
     display: inline-block;

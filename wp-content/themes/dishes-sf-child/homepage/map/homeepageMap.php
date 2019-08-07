@@ -15,7 +15,7 @@ function homepage_map_include_script() {
 function print_homepage_map() {
 ?>
 
-<div id="map" style="width:1140px; height:143px"></div>
+<div id="map"></div>
         <script>
 			var map, marker;
 
@@ -72,6 +72,10 @@ function print_homepage_map() {
 			background-repeat: no-repeat;
 			height: 50px;
 		 }
+            #map {
+                /*width:1140px;*/
+                height:143px
+            }
 		</style>
 <?php
 }
