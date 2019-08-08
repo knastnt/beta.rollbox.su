@@ -74,9 +74,9 @@
 #site-header-cart .widget_shopping_cart_content {
     background: #fff;
     border: 0;
-    min-width: 435px;
+    min-width: 31em;
     margin: 0;
-    padding: 15px 35px 0px 35px;
+    padding: 1em .5em 0px 2em;
     top: 65px;
     border-radius: 3px;
     box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.1);
@@ -87,8 +87,9 @@
     top: 0;
 }
 #site-header-cart .widget_shopping_cart_content ul {
-    max-height: 400px;
+    max-height: 300px;
     overflow-y: auto;
+    padding-right: 1.5em;
 }
 #site-header-cart .widget_shopping_cart_content ul:before {
     content: '';
@@ -120,6 +121,14 @@
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
+/*Высота элмента в корзине*/
+#site-header-cart li.woocommerce-mini-cart-item > p {
+    margin: 0;
+}
+#site-header-cart .product_list_widget li {
+    padding: .5em 0;
+}
+
 /*Заголовок элемента товара корзины*/
 #site-header-cart .woocommerce-mini-cart-item a,
 #site-header-cart p.woocommerce-mini-cart__buttons a{
@@ -163,9 +172,9 @@
 }
 #site-header-cart p.woocommerce-mini-cart__buttons {
     background: var(--color-darkgray);
-    margin-left: -35px;
-    margin-right: -35px;
-    padding: 23px 35px;
+    margin-left: -1.8em;
+    margin-right: -.5em;
+    padding: 1.3em 1.8em;
     border-radius: 0px 0px 3px 3px;
 }
 #site-header-cart p.woocommerce-mini-cart__buttons a {
