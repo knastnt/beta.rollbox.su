@@ -1349,6 +1349,11 @@ ul.products li.product:hover img {
         display: flex;
         flex-wrap: wrap;
     }
+    /*Меньше картинки*/
+    .products-slick-slider .product img,
+    .products-slick-slider .slick-slide .woocommerce-LoopProduct-link img {
+        height: 100px;
+    }
 
 
     /*Расширяем сайдбар*/
