@@ -24,7 +24,6 @@
     width: 100%;
     object-fit: fill;
     border-radius: 0px;
-    height: 143px;
 }
 .module-image:hover::before {
     box-shadow: 0 0 0 15px rgba(0,0,0,0.2) inset;

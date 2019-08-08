@@ -1040,20 +1040,13 @@ ul.products li.product:hover img {
         max-width: 1022px;
         padding: 0 20px;
     }
+    .top-info div.right-info-wrapper {
+        margin-left: 0;
+    }
     .top-info .info1,
     .top-info .info2 {
-        margin-top: 1em;
-    }
-    .top-info .info3 {
-        margin-bottom: 1em;
-    }
-    .top-info .info2 {
-        margin-right: 300px;
-
-    }
-    .top-info div.right-info-wrapper {
-        position: relative;
-        top: -19px;
+        padding: 0 .9em 0 0;
+        margin: 0.5em .6em 0.5em 0;
     }
     .woocommerce-active .site-header .site-branding {
         margin-right: 38px;
@@ -1102,6 +1095,58 @@ ul.products li.product:hover img {
     }
     .site-header .user-points {
         margin-right: 30px;
+    }
+
+
+    .top-section .bottom {
+        padding: 10px;
+    }
+    .top-section .bottom .iconedtext {
+        padding: 0px 10px;
+    }
+    .top-section .bottom .iconedtext img {
+        width: 20%;
+    }
+
+
+
+    .center-section .white-wrapper {
+        padding: 1.5em 0;
+    }
+    .products-slick-slider.num1 hr {
+        margin: 0 0 -1em;
+    }
+
+
+
+    .products-slick-slider .slick-slide {
+        padding: 0 8px;
+    }
+
+
+
+    .center-section .first .sidebar {
+        padding-left: 20px;
+    }
+
+
+    .widget {
+        margin: 0 0 1.706em;
+    }
+
+
+    .products-slick-slider {
+        margin-bottom: 3em;
+    }
+
+
+    .module-image {
+        margin-bottom: 2em;
+    }
+
+
+    .products-slick-slider .title {
+        margin: 0 0 10px;
     }
 
 }
