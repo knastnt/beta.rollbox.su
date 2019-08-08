@@ -68,7 +68,7 @@ function header_top() {
             <div class="top-info">
                 <div class="info1"><?php get_info1_text(); ?></div>
                 <div class="info2"><?php get_phone(); ?></div>
-                <div class="info3">г.Комсомольск-на-Амуре, проспект Мира 29</div>
+                <div class="info3"><span class="town">г.Комсомольск-на-Амуре, </span>проспект Мира 29</div>
 
                 <div class="right-info-wrapper">
                 <?php if(is_user_logged_in()) { ?>
