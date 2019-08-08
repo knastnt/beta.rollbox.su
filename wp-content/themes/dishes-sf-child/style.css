@@ -1152,6 +1152,15 @@ ul.products li.product:hover img {
         margin: 0 0 10px;
     }
 
+
+    /*Инстаграм*/
+    #insta-gallery-feed-3 .insta-gallery-list .insta-gallery-item.insta-gallery-cols-3 {
+        width: 50%;
+    }
+    #insta-gallery-feed-3 .insta-gallery-list > div:nth-last-child(-n+6) {
+        display: none;
+    }
+
 }
 /*///////////////////////////////////////////////////////////////////////////*/
 /* если экран меньше 1065 */
