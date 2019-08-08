@@ -1161,6 +1161,12 @@ ul.products li.product:hover img {
         display: none;
     }
 
+
+
+    .product_list_widget li img {
+        margin-top: .3em;
+    }
+
 }
 /*///////////////////////////////////////////////////////////////////////////*/
 /* если экран меньше 1065 */
@@ -1232,6 +1238,125 @@ ul.products li.product:hover img {
     }
     .added_to_cart, .button, button, input[type="button"], input[type="reset"], input[type="submit"] {
         padding: .4180469716em 1.41575em;
+    }
+
+
+
+    /*Сносим ниже телефон и адрес*/
+    .top-info .info2 {
+        position: absolute;
+        top: 54px;
+        left: 300px;
+        font-size: 1.5em;
+        font-weight: 300;
+    }
+    .top-info div.info2::after {
+        display: none;
+    }
+
+
+
+    /*Строка приемуществ теперь горизонтальная*/
+    .top-section .bottom .iconedtext {
+        width: 50%;
+    }
+    .top-section .bottom .iconedtext img {
+        position: absolute;
+        width: auto;
+    }
+    .top-section .bottom .iconedtext .banner-text {
+        text-align: left;
+        margin-left: 72px;
+    }
+    .top-section .bottom .iconedtext3 {
+        border-left: none !important;
+    }
+    .top-section .bottom .iconedtext3:before,
+    .top-section .bottom .iconedtext4:before {
+        border-top: 1px solid #ebebeb;
+        content: '';
+        display: block;
+        margin: 5px 0;
+        width: 100%;
+        background-color: #640c1f;
+    }
+
+
+
+    .center-section .white-wrapper {
+        padding: 1em 0;
+    }
+
+
+    /*Инстаграм*/
+    .insta-gallery-feed .insta-gallery-list .insta-gallery-item .insta-gallery-image-wrap .insta-gallery-image-mask-content > span.ig-likes-comments {
+        display: none;
+    }
+    .insta-gallery-feed .insta-gallery-list .insta-gallery-item .insta-gallery-icon.qligg-icon-instagram {
+        display: none;
+    }
+    .insta-sidebar .title {
+        margin-top: .2em;
+        padding: 0px 10px;
+    }
+    .insta-sidebar .title h4 {
+        float: left;
+        margin: 0;
+    }
+    .insta-sidebar .title img {
+        margin: .2em 0;
+        width: 28px;
+    }
+    .insta-sidebar .wrapper {
+        padding: 4px 8px 0px 8px !important;
+    }
+    .insta-gallery-feed .insta-gallery-actions {
+        margin: 0 0 .5em 0 !important;
+    }
+    .insta-gallery-feed .insta-gallery-actions .insta-gallery-button {
+        margin: 0 !important;
+    }
+
+
+
+    /*Недавно просмотренные*/
+    .homepage-r-sdbar-widget.widget .widget-title {
+        text-align: center;
+        display: block;
+        line-height: 1.1em;
+        margin-bottom: .5em;
+    }
+    .product_list_widget li {
+        padding: .4em 0;
+    }
+    .product_list_widget li img {
+        margin-top: .5em;
+    }
+
+
+
+    /*Изображения товаров делаем в 3 столбца*/
+    .site-main ul.products.columns-4 li.product {
+        width: 29%;
+    }
+    ul.products li.product.last {
+        margin-right: 3.8% !important;
+    }
+    ul.products li.product.first {
+        clear: none !important;
+    }
+    ul.products {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+
+    /*Расширяем сайдбар*/
+    body:not(.page-template-template-fullwidth-php):not(.page-template-template-homepage-php) #primary {
+        width: 69.913%;
+    }
+    body:not(.page-template-template-fullwidth-php):not(.page-template-template-homepage-php) #secondary {
+        width: 25.739%;
     }
 
 

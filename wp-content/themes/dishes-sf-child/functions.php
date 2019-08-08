@@ -46,6 +46,12 @@ require_once( get_stylesheet_directory() . '/homepage/instagram.php' );
 //Если сервер не будет пропускать, то, возможно, решение тут: https://toster.ru/q/165355
 define( 'WC_MAX_LINKED_VARIATIONS', 1000 );
 
+/*24 товара на странице*/
+add_filter( 'loop_shop_per_page', function ( $cols ) {
+    // $cols contains the current number of products per page based on the value stored on Options -> Reading
+    // Return the number of products you wanna show per page.
+    return 24;
+}, 20 );
 
 /*Регистрируем панель для виджетов на главной странице справа*/
 register_sidebar(array( 'name' => 'Сайдбар справа на главной странице', 'id' => 'homepage-right-sidebar', 'before_widget' => '<div class="homepage-r-sdbar-widget widget">', 'after_widget' => '</div>', 'before_title' => '<span class="homepage-r-sdbar-widget widget-title">', 'after_title' => '</span>', ));
