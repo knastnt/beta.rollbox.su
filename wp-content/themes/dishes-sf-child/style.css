@@ -1393,27 +1393,15 @@ ul.products li.product:hover img {
 
 
     /*Расширяем сайдбар*/
-    /*body:not(.page-template-template-fullwidth-php):not(.page-template-template-homepage-php) #primary {
+    body:not(.page-template-template-fullwidth-php):not(.page-template-template-homepage-php) #primary {
         width: 69.913%;
     }
     body:not(.page-template-template-fullwidth-php):not(.page-template-template-homepage-php) #secondary {
         width: 25.739%;
-    }*/
-
+    }
 
 
 }
-
-/*Правильно расширяем сайдбар*/
-@media (min-width:768px) {
-    .left-sidebar .content-area {
-        width: 69.913%;
-    }
-    .left-sidebar .widget-area {
-        width: 25.739%;
-    }
-}
-
 /*///////////////////////////////////////////////////////////////////////////*/
 /* если экран меньше 850 */
 @media (max-width:850px) {
