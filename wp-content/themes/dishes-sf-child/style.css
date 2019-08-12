@@ -1194,6 +1194,10 @@ ul.products li.product:hover img {
         margin-top: 77px;
     }
 
+    .aws-container .aws-search-form {
+        height: 38px;
+    }
+
     /*Баннеры справа будут баннерами снизу*/
     .top-section .banner-wrapper {
         float: none;
@@ -1370,7 +1374,7 @@ ul.products li.product:hover img {
 /* если экран меньше 850 */
 @media (max-width:850px) {
 
-    .top-info {
+    /*.top-info {
         text-align: center;
     }
     .top-info div.right-info-wrapper {
@@ -1393,7 +1397,68 @@ ul.products li.product:hover img {
     .top-info div.info1::after,
     .top-info div.info2::after {
         opacity: 0;
+    }*/
+
+    /*Опускаем сайдбар ниже*/
+    .center-section .first .content {
+        width: auto;
+        float: none;
     }
+    .center-section .first .sidebar {
+        width: auto;
+        float: none;
+    }
+    .center-section .first .sidebar {
+        padding-left: 0;
+    }
+
+    /*Инстаграм*/
+    .insta-gallery-feed .insta-gallery-list .insta-gallery-item .insta-gallery-image-wrap .insta-gallery-image-mask-content > span.ig-likes-comments {
+        display: block;
+    }
+    .insta-gallery-feed .insta-gallery-list .insta-gallery-item .insta-gallery-icon.qligg-icon-instagram {
+        display: block;
+    }
+    #insta-gallery-feed-3 .insta-gallery-list .insta-gallery-item.insta-gallery-cols-3 {
+        width: 16.64%;
+        min-width: auto;
+    }
+    #insta-gallery-feed-3 .insta-gallery-list > div:nth-last-child(-n+6) {
+        display: block;
+    }
+
+    .insta-gallery-feed .insta-gallery-actions {
+        margin: 1em 0 1em 0 !important;
+    }
+    #insta-gallery-feed-3 .insta-gallery-list {
+        margin: .5em .1em !important;
+    }
+    .insta-sidebar .title img {
+        margin: 5px 0;
+    }
+
+
+
+
+    .top-info div.info1::after {
+        display: none;
+    }
+    .top-info .info1 {
+        margin-right: 0;
+        padding-right: 0;
+    }
+    .top-info .info2 {
+        left: 280px;
+        top: 45px;
+        margin-right: 0;
+        padding-right: 0;
+    }
+    .top-info .info3 {
+        position: absolute;
+        top: 80px;
+        left: 290px;
+    }
+
 
 }
 /*///////////////////////////////////////////////////////////////////////////*/
