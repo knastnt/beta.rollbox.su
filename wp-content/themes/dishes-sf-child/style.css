@@ -531,8 +531,23 @@ ul.products.columns-4 li.product img {
 
 /* стиль фильтра товаров */
 /* кнопки фильтра */
+.woof_submit_search_form_container {
+    text-align: center;
+}
 .woof_submit_search_form_container button {
     margin-right: 10px;
+    float: none !important;
+    margin-bottom: .5em;
+    padding: .7em 1.2em;
+    font-size: 110%;
+}
+.woof_submit_search_form_container button.woof_reset_search_form {
+    background-color: #495465;
+    border-color: #495465;
+}
+.woof_submit_search_form_container button.woof_reset_search_form:hover {
+    background-color: #303b4c;
+    border-color: #303b4c;
 }
 
 .woof_redraw_zone .woof_container:not(:first-child) .woof_container_inner h4 {
