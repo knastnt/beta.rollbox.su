@@ -1501,10 +1501,10 @@ ul.products li.product:hover img {
         height: 68px;
     }
 
-
     .top-info .info2 {
         float: right;
     }
+
     .top-info .info3 {
         padding: 0 .9em 0 0;
         margin: 0.5em .6em 0.5em 0;
@@ -1512,6 +1512,7 @@ ul.products li.product:hover img {
         left: 82px !important;
         top: 31px !important;
     }
+
     .top-info .info2,
     .top-info .info3 {
         position: relative;
@@ -1520,37 +1521,44 @@ ul.products li.product:hover img {
         font-size: 100%;
         font-weight: 400;
     }
+
     .top-info div {
         font-size: unset;
     }
+
     .top-info .info1,
     .top-info .info2 {
         margin-bottom: 0;
     }
-
 
     /*Корзина*/
     #site-header-cart .widget_shopping_cart_content {
         padding: .3em .5em 0px 2em;
         font-size: 85%;
     }
+
     #site-header-cart .widget_shopping_cart_content ul {
         max-height: calc(100vh - 270px);
     }
+
     #site-header-cart .product_list_widget li {
         padding: .3em 0;
     }
+
     #site-header-cart p.woocommerce-mini-cart__total {
         float: left;
         width: 50%;
         padding: .5em 0;
     }
+
     #site-header-cart p.woocommerce-mini-cart__total > span.subtotal-price {
         width: 100%;
     }
+
     #site-header-cart p.woocommerce-mini-cart__total span.woocommerce-Price-amount {
         float: left;
     }
+
     #site-header-cart p.woocommerce-mini-cart__buttons {
         float: right;
         width: 50%;
@@ -1560,6 +1568,7 @@ ul.products li.product:hover img {
         padding: 1em 1.8em;
         border-radius: 0px 0px 3px 0px;
     }
+
     #site-header-cart p.woocommerce-mini-cart__buttons a.button {
         padding: .5em 1em;
         font-size: 1em;
@@ -1573,6 +1582,7 @@ ul.products li.product:hover img {
     #site-header-cart > li:first-child {
         position: relative;
     }
+
     #site-header-cart .remove_from_cart_button {
         position: relative;
     }
@@ -1580,30 +1590,27 @@ ul.products li.product:hover img {
     #site-header-cart .widget_shopping_cart_content {
         min-width: 400px;
     }
+
     #site-header-cart .widget_shopping_cart .product_list_widget img {
         max-width: 80px;
     }
 
-
-
-
+    #site-header-cart .widget_shopping_cart .product_list_widget li a.remove {
+        top: 0.2em;
+    }
 
     /*Корзина во всплывающем меню*/
     #site-header-cart-stickey-wrapper {
         margin-top: .9em;
     }
+
     #site-header-cart-stickey-wrapper .site-header-cart li:last-child {
         position: relative;
     }
+
     #site-header-cart-stickey-wrapper .widget_shopping_cart_content ul {
         max-height: calc(100vh - 181px);
     }
-
-
-
-
-
-
 
     .account-menu {
         left: -75px !important;
@@ -1650,39 +1657,53 @@ ul.products li.product:hover img {
     }
 
 
+    table.cart td.product-remove a.remove {
+        position: relative;
+        top: 0;
+    }
+    table.cart td.product-remove {
+        border-top-width: 0;
+        border-bottom: 2px solid #e8e8e8;
+        padding-bottom: 1em;
+        margin-bottom: 1em;
+    }
+    table.cart td.product-thumbnail {
+        border-top: 2px solid #e8e8e8;
+    }
+
+}
 
 
 /*///////////////////////////////////////////////////////////////////////////*/
-    @media (max-width: 600px) {
-        .dropdown-site-menu {
-            right: 10px !important;
-            left: 10px !important;
-        }
+@media (max-width: 600px) {
+    .dropdown-site-menu {
+        right: 10px !important;
+        left: 10px !important;
+    }
 
-        .site-header .user-points {
-            position: unset;
-        }
+    .site-header .user-points {
+        position: unset;
+    }
 
-        .site-header .user-points .user-points-menu {
-            width: auto;
-        }
+    .site-header .user-points .user-points-menu {
+        width: auto;
+    }
 
-        .site-header .user-points .user-points-menu::before {
-            right: 197px;
-        }
+    .site-header .user-points .user-points-menu::before {
+        right: 197px;
+    }
 
-        .site-header .user-points button {
-            margin-bottom: 0px;
-            margin-top: 4px;
-        }
+    .site-header .user-points button {
+        margin-bottom: 0px;
+        margin-top: 4px;
+    }
 
 
-        #site-header-cart-head-wrapper .widget_shopping_cart_content {
-            position: absolute;
-            width: auto;
-            /*right: 10px !important;*/
-            left: 10px !important;
-            /*top: 56px;*/
-        }
+    #site-header-cart-head-wrapper .widget_shopping_cart_content {
+        position: absolute;
+        width: auto;
+        /*right: 10px !important;*/
+        left: 10px !important;
+        /*top: 56px;*/
     }
 }
