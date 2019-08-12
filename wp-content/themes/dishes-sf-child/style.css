@@ -1030,6 +1030,11 @@ ul.products li.product:hover img {
     }
 
 
+    .aws-container .aws-search-form {
+        height: 41px;
+    }
+
+
     /*баннеры около слайда*/
     .top-section .slider-wrapper {
         width: 940px;
@@ -1113,6 +1118,11 @@ ul.products li.product:hover img {
     }
     .site-header .user-points {
         margin-right: 30px;
+    }
+
+
+    .aws-container .aws-search-form {
+        height: 38px;
     }
 
 
@@ -1211,6 +1221,13 @@ ul.products li.product:hover img {
 
     .aws-container .aws-search-form {
         height: 38px;
+    }
+    
+    .woocommerce-active .site-header .site-search {
+        top: 63px;
+    }
+    #site-navigation {
+        margin-top: 64px;
     }
 
     /*Баннеры справа будут баннерами снизу*/
