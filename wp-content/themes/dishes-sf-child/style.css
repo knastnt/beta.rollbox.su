@@ -1222,7 +1222,7 @@ ul.products li.product:hover img {
     .aws-container .aws-search-form {
         height: 38px;
     }
-    
+
     .woocommerce-active .site-header .site-search {
         top: 63px;
     }
@@ -1495,40 +1495,79 @@ ul.products li.product:hover img {
 }
 /*///////////////////////////////////////////////////////////////////////////*/
 /* мобильное меню */
-@media (max-width:767px) {
+@media (max-width:768px) {
     .top-info {
-        margin-left: 50px;
+        margin-left: 64px;
+        height: 68px;
+    }
+
+
+    .top-info .info2 {
+        float: right;
+    }
+    .top-info .info3 {
+        padding: 0 .9em 0 0;
+        margin: 0.5em .6em 0.5em 0;
+        position: absolute !important;
+        left: 82px !important;
+        top: 31px !important;
+    }
+    .top-info .info2,
+    .top-info .info3 {
+        position: relative;
+        left: 0px;
+        top: 0px;
+        font-size: 100%;
+        font-weight: 400;
+    }
+    .top-info div {
+        font-size: unset;
     }
     .top-info .info1,
-    .top-info .info4 {
-        position: inherit;
+    .top-info .info2 {
+        margin-bottom: 0;
     }
+
+
+    #site-header-cart-stickey-wrapper {
+        margin-top: .9em;
+    }
+
+
+
+
+
     .dropdown-site-menu {
         right: 10px !important;
         left: 10px !important;
     }
 
+    .account-menu {
+        left: -75px !important;
+    }
+
     #showMenu {
         display: block;
     }
-    #stickey_menu_wrapper {
-        height: 88px;
-    }
 
+    #stickey_menu_wrapper {
+        height: 68px;
+    }
 
     .woocommerce-active .site-header .site-search {
         display: block;
         z-index: 0;
     }
+
     .site-header-cart .cart-contents {
         display: block;
     }
+
     #site-navigation {
         margin-top: 0px;
         visibility: hidden;
         margin-bottom: 44px;
     }
-
 
     #site-header-cart-head-wrapper .widget_shopping_cart_content {
         position: absolute;
@@ -1537,33 +1576,44 @@ ul.products li.product:hover img {
         left: 10px !important;
         top: 56px;
     }
+
     #site-header-cart > li:first-child {
         position: relative;
     }
 
-
     .site-header .user-points {
         position: unset;
     }
+
     .site-header .user-points .user-points-menu {
         width: auto;
     }
+
     .site-header .user-points .user-points-menu::before {
         right: 197px;
     }
+
     .site-header .user-points button {
         margin-bottom: 0px;
         margin-top: 4px;
     }
+
     .site-header-cart .cart-contents .amount {
         margin-right: .327em;
     }
 
-
     .outer-nav.vertical {
         top: calc(50% + 15px) !important;
     }
+
     .outer-nav a {
         margin-bottom: 16px !important;
+    }
+
+
+
+
+/*///////////////////////////////////////////////////////////////////////////*/
+    @media (max-width: 600px) {
     }
 }
