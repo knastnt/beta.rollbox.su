@@ -1599,6 +1599,10 @@ ul.products li.product:hover img {
         top: 0.2em;
     }
 
+    .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__empty-message {
+        margin-top: 1em;
+    }
+
     /*Корзина во всплывающем меню*/
     #site-header-cart-stickey-wrapper {
         margin-top: .9em;
@@ -1657,6 +1661,21 @@ ul.products li.product:hover img {
     }
 
 
+    .site-header .user-points button {
+        margin-bottom: 0px;
+        margin-top: 4px;
+    }
+    .site-header .user-points {
+        position: unset;
+    }
+    .site-header .user-points .user-points-menu {
+        right: 10px;
+    }
+    .site-header .user-points .user-points-menu::before {
+        right: 197px;
+    }
+
+
     table.cart td.product-remove a.remove {
         position: relative;
         top: 0;
@@ -1671,6 +1690,49 @@ ul.products li.product:hover img {
         border-top: 2px solid #e8e8e8;
     }
 
+
+
+
+    .products-slick-slider .product img,
+    .products-slick-slider .slick-slide .woocommerce-LoopProduct-link img {
+        height: 80px;
+    }
+    .delta, h4 {
+        font-size: 1.3em;
+    }
+
+
+
+
+    .top-section .bottom .iconedtext img {
+        width: 50px;
+    }
+    .top-section .bottom .iconedtext .banner-text {
+        margin-left: 62px;
+    }
+    .top-section .bottom .iconedtext .banner-text h4 {
+        line-height: 1.2em;
+    }
+    .top-section .bottom .iconedtext .banner-text p {
+        line-height: 1.2em;
+        margin-top: .5em;
+    }
+
+
+
+    .products-slick-slider.num1 label {
+        top: -2.9em;
+        padding: .7em 2.1em;
+    }
+    .products-slick-slider .title h4 {
+        padding: 0 2.1em;
+        height: 2.6em;
+        line-height: 2.6em;
+    }
+    .products-slick-slider .title .nav {
+        margin: 5px;
+    }
+
 }
 
 
@@ -1681,22 +1743,10 @@ ul.products li.product:hover img {
         left: 10px !important;
     }
 
-    .site-header .user-points {
-        position: unset;
-    }
-
     .site-header .user-points .user-points-menu {
         width: auto;
     }
 
-    .site-header .user-points .user-points-menu::before {
-        right: 197px;
-    }
-
-    .site-header .user-points button {
-        margin-bottom: 0px;
-        margin-top: 4px;
-    }
 
 
     #site-header-cart-head-wrapper .widget_shopping_cart_content {
