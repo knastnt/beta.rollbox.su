@@ -1774,6 +1774,13 @@ ul.products li.product:hover img {
 
 /*///////////////////////////////////////////////////////////////////////////*/
 @media (max-width: 600px) {
+    .col-full {
+        padding: 0px 13px;
+    }
+    .center-section .white-wrapper {
+        box-shadow: 100px 0 0px 0px #fff, -100px 0 0px 0px #fff;
+    }
+
     .dropdown-site-menu {
         right: 10px !important;
         left: 10px !important;
@@ -1873,6 +1880,27 @@ ul.products li.product:hover img {
 
     .top-info .info2 {
         margin-left: 1.5em;
+    }
+
+
+    /*Блок преимуществ*/
+    .top-section .bottom .iconedtext {
+        width: 100%;
+        border-left: none !important;
+    }
+    .top-section .bottom .iconedtext2::before {
+        border-top: 1px solid #ebebeb;
+        content: '';
+        display: block;
+        margin: 5px 0;
+        width: 100%;
+        background-color: #640c1f;
+    }
+    .top-section .bottom .iconedtext {
+        padding: 0px 5px;
+    }
+    .top-section .bottom {
+        padding: 5px;
     }
 
 }
