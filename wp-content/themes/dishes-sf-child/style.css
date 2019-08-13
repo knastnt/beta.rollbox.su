@@ -336,7 +336,7 @@ ul.products li.product .button.added {
     border-bottom: 6px solid #fff;
     position: absolute;
     top: -6px;
-    right: 179px;
+    right: 142px;
     -webkit-transition: ease-in-out .3s all;
     -moz-transition: ease-in-out .3s all;
     transition: ease-in-out .3s all;
@@ -1806,7 +1806,7 @@ ul.products li.product:hover img {
         display: none;
     }
     #site-header-cart .widget_shopping_cart_content ul::before {
-        right: 36px;
+        right: 29px;
     }
     /*Кружок с количеством меньше*/
     #cart-total .number-cart {
@@ -1821,7 +1821,7 @@ ul.products li.product:hover img {
         display: none;
     }
     .site-header .user-points .user-points-menu::before {
-        right: 109px;
+        right: 86px;
     }
 
     /*Размер монетки*/
@@ -1833,14 +1833,14 @@ ul.products li.product:hover img {
         margin: 4px 0px;
     }
     .site-header .user-points {
-        margin-right: 3%;
+        margin-right: 15px;
     }
 
     /*Отображаем user account button*/
     .site-header .user-account-toggle-button {
         display: block;
         float: right;
-        margin-right: 3%;
+        margin-right: 15px;
     }
     .site-header .user-account-toggle-button .dropdown-toggle .name,
     .site-header .user-account-toggle-button .dropdown-toggle .ion-chevron-down {
@@ -1874,7 +1874,7 @@ ul.products li.product:hover img {
 
 
     .woocommerce-active .site-header .site-branding {
-        margin-right: 3%;
+        margin-right: 15px;
     }
 
 
@@ -1901,6 +1901,19 @@ ul.products li.product:hover img {
     }
     .top-section .bottom {
         padding: 5px;
+    }
+
+
+
+    #showMenu.toggle-mnu {
+        margin: 14px !important;
+    }
+    /*Всплывающая панель*/
+    #stickey_menu_wrapper {
+        height: 55px;
+    }
+    #site-header-cart-stickey-wrapper {
+        margin-top: 7px;
     }
 
 }
