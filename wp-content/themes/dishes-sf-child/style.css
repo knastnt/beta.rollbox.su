@@ -1946,6 +1946,10 @@ ul.products li.product:hover img {
 
 /*///////////////////////////////////////////////////////////////////////////*/
 @media (max-width: 450px) {
+    .col-full {
+        padding: 0px 6px;
+    }
+
     .site-header .custom-logo-link img {
         max-width: 125px;
     }
