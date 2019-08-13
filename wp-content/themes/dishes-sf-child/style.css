@@ -1825,12 +1825,15 @@ ul.products li.product:hover img {
     .site-header .user-points .user-points-menu {
         margin: 4px 0px;
     }
+    .site-header .user-points {
+        margin-right: 3%;
+    }
 
     /*Отображаем user account button*/
     .site-header .user-account-toggle-button {
         display: block;
         float: right;
-        margin-right: 30px;
+        margin-right: 3%;
     }
     .site-header .user-account-toggle-button .dropdown-toggle .name,
     .site-header .user-account-toggle-button .dropdown-toggle .ion-chevron-down {
@@ -1854,6 +1857,22 @@ ul.products li.product:hover img {
         font-style: normal;
         font-size: 0.9em;
         content: "\f007";
+    }
+
+
+    /*Скрываем right-info-wrapper*/
+    .top-info .right-info-wrapper {
+        display: none;
+    }
+
+
+    .woocommerce-active .site-header .site-branding {
+        margin-right: 3%;
+    }
+
+
+    .top-info .info2 {
+        margin-left: 1.5em;
     }
 
 }
