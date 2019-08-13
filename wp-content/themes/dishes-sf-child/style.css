@@ -1945,12 +1945,73 @@ ul.products li.product:hover img {
 
 
 /*///////////////////////////////////////////////////////////////////////////*/
-@media (max-width: 480px) {
+@media (max-width: 450px) {
+    .site-header .custom-logo-link img {
+        max-width: 125px;
+    }
+    #showMenu.toggle-mnu {
+        width: 50px !important;
+        height: 50px !important;
+        padding: 12px !important;
+    }
+    #showMenu.toggle-mnu {
+        margin: 0px !important;
+    }
+    .site-header {
+        height: 51px;
+    }
+    .site-header .site-branding {
+        margin-left: 40px;
+    }
 
-}
 
+    /*Уменьшаем иконки. Корзина*/
+    #site-header-cart .cart-contents .ion-android-cart {
+        font-size: 13px;
+        width: 34px;
+        height: 34px;
+        line-height: 32px;
+    }
+    #site-header-cart .cart-contents .ion-android-cart::before {
+        margin-left: 8px;
+    }
+    #cart-total .number-cart {
+        width: 21px;
+        height: 21px;
+        line-height: 21px;
+        font-size: 8px;
+        left: 24px;
+        top: 5px;
+    }
+    #site-header-cart-head-wrapper .widget_shopping_cart_content {
+        top: 49px;
+    }
+    #site-header-cart .widget_shopping_cart_content ul::before {
+        right: 26px;
+    }
 
-/*///////////////////////////////////////////////////////////////////////////*/
-@media (max-width: 320px) {
+    /*Уменьшаем иконки. Бонусы*/
+    .site-header .user-points .ion-user-points::before {
+        width: 36px;
+        height: 36px;
+    }
+    .site-header .user-points .user-points-menu {
+        margin: 2px 0px;
+    }
+    .site-header .user-points .user-points-menu::before {
+        right: 77px;
+    }
+
+    /*Уменьшаем иконки. Аккаунт*/
+    .site-header .user-account-toggle-button .dropdown-toggle .ion-image {
+        font-size: 13px;
+        width: 34px;
+        height: 34px;
+        line-height: 31px;
+        margin-top: 8px;
+    }
+    .site-header .user-account-toggle-button .account-menu::before {
+        right: 127px;
+    }
 
 }
