@@ -1770,4 +1770,41 @@ ul.products li.product:hover img {
         left: 10px !important;
         /*top: 56px;*/
     }
+
+    /*Убираем цену у корзины*/
+    #cart-total i,
+    .site-header-cart .cart-contents .amount {
+        display: none;
+    }
+    #site-header-cart .widget_shopping_cart_content ul::before {
+        right: 36px;
+    }
+    /*Кружок с количеством меньше*/
+    #cart-total .number-cart {
+        width: 26px;
+        height: 26px;
+        line-height: 26px;
+        font-size: 10px;
+    }
+
+    /*Убираем стрелочку вниз у бонусов*/
+    .site-header .user-points button span, .site-header .user-points button .ion-chevron-down {
+        display: none;
+    }
+    .site-header .user-points .user-points-menu::before {
+        right: 109px;
+    }
+
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////*/
+@media (max-width: 480px) {
+
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////*/
+@media (max-width: 320px) {
+
 }
