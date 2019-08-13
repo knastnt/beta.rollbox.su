@@ -165,29 +165,40 @@ function get_account_menu() {
     ?>
 
     <button class="btn-link dropdown-toggle">
-        <?php echo strtoupper ($username); ?>
+        <i class="ion-image"></i>
+        <span class="name"><?php echo strtoupper ($username); ?></span>
         <i class="ion-chevron-down"></i>
     </button>
     <ul class="dropdown-site-menu account-menu" style="">
-        <li>
-            <a href="<?php echo $account_link; ?>">Личный кабинет</a>
-        </li>
-        <li class="line"></li>
-        <li>
-            <a href="<?php echo $account_link . "rewards/"; ?>">Бонусы</a>
-        </li>
-        <li class="line"></li>
-        <li>
-            <a href="<?php echo $account_link . "orders/"; ?>">Мои заказы</a>
-        </li>
-        <li class="line"></li>
-        <li>
-            <a href="<?php echo $cart_link; ?>">Корзина</a>
-        </li>
-        <li class="line"></li>
-        <li>
-            <a href="<?php echo $logout_link; ?>">Выйти</a>
-        </li>
+        <?php if(is_user_logged_in()) { ?>
+            <li>
+                <a href="<?php echo $account_link; ?>">Личный кабинет</a>
+            </li>
+            <li class="line"></li>
+            <li>
+                <a href="<?php echo $account_link . "rewards/"; ?>">Бонусы</a>
+            </li>
+            <li class="line"></li>
+            <li>
+                <a href="<?php echo $account_link . "orders/"; ?>">Мои заказы</a>
+            </li>
+            <li class="line"></li>
+            <li>
+                <a href="<?php echo $cart_link; ?>">Корзина</a>
+            </li>
+            <li class="line"></li>
+            <li>
+                <a href="<?php echo $logout_link; ?>">Выйти</a>
+            </li>
+        <?php } else { ?>
+            <li>
+                <a href="/wp-login.php">Войти</a>
+            </li>
+            <li>
+                <a href="/wp-login.php?action=register">Регистрация</a>
+            </li>
+        <?php } ?>
+
     </ul>
     <?php
 }
@@ -224,7 +235,7 @@ function points_after_header_cart() {
                     if ($history_output != '') {
                         ?>
                             <div class="header" style="font-size: 20px;font-weight: 300;margin: 5px;">
-                                Ваш бонусный счет
+                                Ваш бонусный счет: <b><?php echo do_shortcode('[WC_Loy_Get_Current_User_Points]'); ?></b>
                             </div>
                             <div class="header-buttons" style="border-bottom: 1px solid #dbdbdb;padding-bottom: 10px;">
                                 <div class="header-button-wrapper" style="">
@@ -254,6 +265,17 @@ function points_after_header_cart() {
 
             ?>
         </ul>
+    </div>
+<?php
+}
+
+
+// Значек аккаунта около баллов
+add_action('storefront_header', 'account_after_points', 42);
+function account_after_points() {
+?>
+    <div class="user-account-toggle-button">
+        <?php get_account_menu(); ?>
     </div>
 <?php
 }

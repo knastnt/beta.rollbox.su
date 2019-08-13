@@ -324,6 +324,24 @@ ul.products li.product .button.added {
     transition: ease-in-out .3s all;
 }
 
+.site-header .user-account-toggle-button .account-menu {
+    margin-top: 7px;
+}
+.site-header .user-account-toggle-button .account-menu::before {
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #fff;
+    position: absolute;
+    top: -6px;
+    right: 179px;
+    -webkit-transition: ease-in-out .3s all;
+    -moz-transition: ease-in-out .3s all;
+    transition: ease-in-out .3s all;
+}
+
 
 .site-header .user-points .header {
     font-size: 20px;
@@ -363,6 +381,10 @@ ul.products li.product .button.added {
 
 .site-header .user-points .info {
     text-align: center;
+}
+
+.site-header .user-account-toggle-button {
+    display: none;
 }
 
 
@@ -1793,6 +1815,45 @@ ul.products li.product:hover img {
     }
     .site-header .user-points .user-points-menu::before {
         right: 109px;
+    }
+
+    /*Размер монетки*/
+    .site-header .user-points .ion-user-points::before {
+        width: 42px;
+        height: 42px;
+    }
+    .site-header .user-points .user-points-menu {
+        margin: 4px 0px;
+    }
+
+    /*Отображаем user account button*/
+    .site-header .user-account-toggle-button {
+        display: block;
+        float: right;
+        margin-right: 30px;
+    }
+    .site-header .user-account-toggle-button .dropdown-toggle .name,
+    .site-header .user-account-toggle-button .dropdown-toggle .ion-chevron-down {
+        display: none;
+    }
+    .site-header .user-account-toggle-button .dropdown-toggle .ion-image {
+        font-size: 18px;
+        width: 40px;
+        height: 40px;
+        line-height: 37px;
+        border: 2px solid #fff;
+        border-radius: 100%;
+        color: #fff;
+        display: inline-block;
+        font-weight: 400;
+        margin-top: 7px;
+    }
+    .site-header .user-account-toggle-button .dropdown-toggle .ion-image:before {
+        display: inline-block;
+        font-family: "Font Awesome 5 Free";
+        font-style: normal;
+        font-size: 0.9em;
+        content: "\f007";
     }
 
 }
