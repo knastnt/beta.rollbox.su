@@ -7,9 +7,8 @@
  */
 ?>
 
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/design/slick/slick.min.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/design/slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/design/slick/slick-theme.css"/>
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/design/flickity/flickity.pkgd.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/design/flickity/flickity.css"/>
 
 
 <?php
@@ -151,9 +150,12 @@
                     //alert(tabId);
 
                     try {
-                        jQuery('#' + tabId + ' .products').slick('refresh');
+                        /*jQuery('#' + tabId + ' .products').slick('refresh');*/
+                        jQuery('#' + tabId + ' .products').flickity({
+
+                        });
                     }catch (e) {
-                        jQuery('#' + tabId + ' .products').slick({
+                        /*jQuery('#' + tabId + ' .products').slick({
                             swipeToSlide: true,
                             infinite: false,
                             dots: true,
@@ -176,6 +178,9 @@
                             arrows: true,
                             nextArrow: jQuery('.products-slick-slider.num1 .nav-next'),
                             prevArrow: jQuery('.products-slick-slider.num1 .nav-prev')
+                        });*/
+                        jQuery('#' + tabId + ' .products').flickity({
+
                         });
                     }
 
@@ -255,7 +260,7 @@
 
         <script type="text/javascript">
             (function() {
-                jQuery('.center-section .first .content .num4 .products').slick({
+                /*jQuery('.center-section .first .content .num4 .products').slick({
                     rows: 2,
                     swipeToSlide: true,
                     infinite: false,
@@ -279,6 +284,9 @@
                     arrows: true,
                     nextArrow: jQuery('.products-slick-slider.num4 .nav-next'),
                     prevArrow: jQuery('.products-slick-slider.num4 .nav-prev')
+                });*/
+                jQuery('.center-section .first .content .num4 .products').flickity({
+
                 });
             })()
         </script>
