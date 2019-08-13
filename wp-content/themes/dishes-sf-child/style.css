@@ -1496,6 +1496,15 @@ ul.products li.product:hover img {
 /*///////////////////////////////////////////////////////////////////////////*/
 /* мобильное меню */
 @media (max-width:768px) {
+    /*Расширяем сайдбар*/
+    body:not(.page-template-template-fullwidth-php):not(.page-template-template-homepage-php) #primary {
+        width: 100%;
+    }
+    body:not(.page-template-template-fullwidth-php):not(.page-template-template-homepage-php) #secondary {
+        width: 100%;
+    }
+
+
     .top-info {
         margin-left: 64px;
         height: 68px;
@@ -1688,6 +1697,11 @@ ul.products li.product:hover img {
     }
     table.cart td.product-thumbnail {
         border-top: 2px solid #e8e8e8;
+    }
+    table.cart .product-thumbnail img {
+        height: 150px;
+        width: auto;
+        max-width: none;
     }
 
 
