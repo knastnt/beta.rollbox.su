@@ -1916,6 +1916,31 @@ ul.products li.product:hover img {
         margin-top: 7px;
     }
 
+
+
+    /*Делаем фиксированный заголовок!*/
+    #showMenu {
+        position: fixed !important;
+    }
+    .site-header {
+        height: 58px;
+        position: fixed;
+        width: 100%;
+    }
+    .site-header .header-top {
+        display: none;
+    }
+    .woocommerce-active .site-header .site-search {
+        display: none;
+    }
+    .site-header .site-branding {
+        margin-left: 50px;
+        margin-top: 15px !important;
+    }
+    .site-header .custom-logo-link img {
+        max-width: 170px;
+    }
+
 }
 
 

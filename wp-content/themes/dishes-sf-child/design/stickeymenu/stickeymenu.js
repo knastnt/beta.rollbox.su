@@ -3,7 +3,7 @@
     $(window).scroll(function () {
         /*console.log($('#site-navigation').offset().top);
         if ($(this).scrollTop() > 167) {*/
-        if ($(this).scrollTop() > $('#site-navigation').offset().top - 45) {
+        if (($(this).scrollTop() > $('#site-navigation').offset().top - 45) && (!window.matchMedia('(max-width: 600px)').matches)) {
             $('#stickey_menu_wrapper').addClass("fix-nav");
 
             if($('#wpadminbar').length == 1){
