@@ -149,39 +149,17 @@
                 function refreshSliderTab(tabId) {
                     //alert(tabId);
 
-                    try {
-                        /*jQuery('#' + tabId + ' .products').slick('refresh');*/
-                        jQuery('#' + tabId + ' .products').flickity({
+                    if (jQuery('#' + tabId + ' .products').hasClass('flickity-enabled')) {
 
-                        });
-                    }catch (e) {
-                        /*jQuery('#' + tabId + ' .products').slick({
-                            swipeToSlide: true,
-                            infinite: false,
-                            dots: true,
-                            slidesToShow: 4,
-                            slidesToScroll: 1,
-                            responsive: [
-                                {
-                                    breakpoint: 1064,
-                                    settings: {
-                                        slidesToShow: 3
-                                    }
-                                },
-                                {
-                                    breakpoint: 600,
-                                    settings: {
-                                        slidesToShow: 2
-                                    }
-                                }
-                            ],
-                            arrows: true,
-                            nextArrow: jQuery('.products-slick-slider.num1 .nav-next'),
-                            prevArrow: jQuery('.products-slick-slider.num1 .nav-prev')
-                        });*/
-                        jQuery('#' + tabId + ' .products').flickity({
+                        jQuery('#' + tabId + ' .products').flickity('resize');
 
+                    } else {
+
+                        jQuery('#' + tabId + ' .products').flickity({
+                            freeScroll: true,
+                            groupCells: true,
                         });
+
                     }
 
 
@@ -260,33 +238,9 @@
 
         <script type="text/javascript">
             (function() {
-                /*jQuery('.center-section .first .content .num4 .products').slick({
-                    rows: 2,
-                    swipeToSlide: true,
-                    infinite: false,
-                    dots: true,
-                    slidesToShow: 4,
-                    slidesToScroll: 1,
-                    responsive: [
-                        {
-                            breakpoint: 1064,
-                            settings: {
-                                slidesToShow: 3
-                            }
-                        },
-                        {
-                            breakpoint: 600,
-                            settings: {
-                                slidesToShow: 2
-                            }
-                        }
-                    ],
-                    arrows: true,
-                    nextArrow: jQuery('.products-slick-slider.num4 .nav-next'),
-                    prevArrow: jQuery('.products-slick-slider.num4 .nav-prev')
-                });*/
                 jQuery('.center-section .first .content .num4 .products').flickity({
-
+                    freeScroll: true,
+                    groupCells: true,
                 });
             })()
         </script>
