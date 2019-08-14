@@ -1513,7 +1513,9 @@ ul.products li.product:hover img {
         left: 290px;
     }
 
-
+    .products-slick-slider.num1 .title .nav {
+        margin-bottom: 12px;
+    }
 }
 /*///////////////////////////////////////////////////////////////////////////*/
 /* мобильное меню */
@@ -1769,6 +1771,11 @@ ul.products li.product:hover img {
         margin: 5px;
     }
 
+
+
+    .products-slick-slider.num1 .title .nav {
+        margin-bottom: 7px;
+    }
 }
 
 
@@ -1944,8 +1951,41 @@ ul.products li.product:hover img {
         padding-top: 50px;
     }
 
+
+
+    .products-slick-slider.num1 .title .nav {
+        margin-bottom: 0px;
+    }
+
+    .products-slick-slider.num1 .content-wrapper {
+        text-align: center;
+        border-spacing: 2px 0;
+    }
+    .products-slick-slider.num1 label {
+        display: table-cell;
+        word-break: break-word;
+        vertical-align: middle;
+        padding: .7em 1em;
+    }
+    .products-slick-slider.num1 hr {
+        margin: -5px 0 -1em;
+    }
+
+    .products-slick-slider .title h4 {
+        padding: 0 1em;
+    }
+
 }
 
+/*///////////////////////////////////////////////////////////////////////////*/
+@media (max-width: 485px) {
+    .products-slick-slider.num1 label {
+        padding: .7em .4em;
+    }
+    .products-slick-slider .title h4 {
+        padding: 0 .4em;
+    }
+}
 
 /*///////////////////////////////////////////////////////////////////////////*/
 @media (max-width: 450px) {
@@ -2040,21 +2080,18 @@ ul.products li.product:hover img {
     }
 
 
-    .products-slick-slider.num1 .content-wrapper {
-        text-align: center;
-        border-spacing: 2px 0;
-    }
     .products-slick-slider.num1 label {
-        display: table-cell;
-        word-break: break-all;
-        padding: .7em 1em;
+        max-width: 100px;
     }
-    .products-slick-slider.num1 hr {
-        margin: -5px 0 -1em;
-    }
-
 }
 
+
+/*///////////////////////////////////////////////////////////////////////////*/
+@media (max-width: 400px) {
+    .products-slick-slider.num1 label {
+        max-width: 82px;
+    }
+}
 
 /*///////////////////////////////////////////////////////////////////////////*/
 @media (max-width: 350px) {
@@ -2160,4 +2197,7 @@ ul.products li.product:hover img {
         margin-right: 8px;
     }
 
+    .products-slick-slider.num1 label {
+        max-width: 21vw;
+    }
 }
