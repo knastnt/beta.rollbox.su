@@ -1033,6 +1033,16 @@ ul.products li.product:hover img {
         width: 250px;
     }
 
+
+    .products-slick-slider .product {
+        width: 225px;
+    }
+
+    .products-slick-slider .title h4 {
+        height: 40px;
+        line-height: 44px;
+    }
+
 }
 /*///////////////////////////////////////////////////////////////////////////*/
 /* если экран меньше 1290 */
@@ -1125,7 +1135,7 @@ ul.products li.product:hover img {
 
 
     .center-section .white-wrapper {
-        padding: 1.5em 0;
+        padding: 2.5em 0;
     }
     .products-slick-slider.num1 hr {
         margin: 0 0 -1em;
@@ -1176,6 +1186,11 @@ ul.products li.product:hover img {
 
     .product_list_widget li img {
         margin-top: .3em;
+    }
+
+
+    .products-slick-slider .product {
+        width: 192px;
     }
 
 }
@@ -1306,7 +1321,7 @@ ul.products li.product:hover img {
 
 
     .center-section .white-wrapper {
-        padding: 1em 0;
+        padding: 2em 0;
     }
 
 
@@ -1386,6 +1401,11 @@ ul.products li.product:hover img {
         width: 25.739%;
     }
 
+
+
+    .products-slick-slider .product {
+        width: 165px;
+    }
 
 }
 /*///////////////////////////////////////////////////////////////////////////*/
@@ -1477,6 +1497,11 @@ ul.products li.product:hover img {
         left: 290px;
     }
 
+
+    .products-slick-slider .title h4 {
+        height: 37px;
+        line-height: 40px;
+    }
 
 }
 /*///////////////////////////////////////////////////////////////////////////*/
@@ -1722,7 +1747,7 @@ ul.products li.product:hover img {
 
     .products-slick-slider.num1 label {
         top: -2.9em;
-        padding: .7em 2.1em;
+        padding: .7em 2em;
     }
     .products-slick-slider .title h4 {
         padding: 0 2.1em;
@@ -1734,7 +1759,6 @@ ul.products li.product:hover img {
     }
 
 }
-
 
 /*///////////////////////////////////////////////////////////////////////////*/
 @media (max-width: 600px) {
@@ -2001,6 +2025,28 @@ ul.products li.product:hover img {
     }
     .site-header .user-account-toggle-button .account-menu::before {
         right: 127px;
+    }
+
+
+    .products-slick-slider.num1 .content-wrapper {
+        text-align: center;
+    }
+    .products-slick-slider.num1 label {
+        display: table-cell;
+        word-break: break-all;
+        padding: .7em 1em;
+        border: 1px solid white;
+    }
+    .products-slick-slider.num1 hr {
+        margin: -5px 0 -1em;
+    }
+
+    .products-slick-slider .title {
+        text-align: center;
+    }
+    .products-slick-slider .title h4 {
+        float: none;
+        display: inline-block;
     }
 
 }
