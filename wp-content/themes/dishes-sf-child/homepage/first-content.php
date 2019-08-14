@@ -5,9 +5,11 @@
  * Date: 22.05.2019
  * Time: 16:04
  */
-
-
 ?>
+
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/design/slick/slick.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/design/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/design/slick/slick-theme.css"/>
 
 
 <?php
@@ -94,6 +96,13 @@
             <label  <?php if(!$isNewExist) { echo 'style="display: none;"'; }?>>Новинки</label>
 
         </div-->
+        <div class="nav">
+            <div class="nav-prev">
+                <i class="arrow-back"></i>
+            </div><div class="nav-break"></div><div class="nav-next">
+                <i class="arrow-forward"></i>
+            </div>
+        </div>
     </div>
 
     <div class="content-wrapper">
@@ -141,18 +150,33 @@
                 function refreshSliderTab(tabId) {
                     //alert(tabId);
 
-                    if (jQuery('#' + tabId + ' .products').hasClass('flickity-enabled')) {
-
-                        jQuery('#' + tabId + ' .products').flickity('resize');
-
-                    } else {
-
-                        jQuery('#' + tabId + ' .products').flickity({
-                            freeScroll: true,
-                            contain: true,
-                            /*groupCells: true,*/
+                    try {
+                        jQuery('#' + tabId + ' .products').slick('refresh');
+                    }catch (e) {
+                        jQuery('#' + tabId + ' .products').slick({
+                            swipeToSlide: true,
+                            infinite: false,
+                            dots: true,
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            responsive: [
+                                {
+                                    breakpoint: 1064,
+                                    settings: {
+                                        slidesToShow: 3
+                                    }
+                                },
+                                {
+                                    breakpoint: 600,
+                                    settings: {
+                                        slidesToShow: 2
+                                    }
+                                }
+                            ],
+                            arrows: true,
+                            nextArrow: jQuery('.products-slick-slider.num1 .nav-next'),
+                            prevArrow: jQuery('.products-slick-slider.num1 .nav-prev')
                         });
-
                     }
 
 
@@ -173,6 +197,13 @@
             <h4>
                 Основное меню
             </h4>
+            <div class="nav">
+                <div class="nav-prev">
+                    <i class="arrow-back"></i>
+                </div><div class="nav-break"></div><div class="nav-next">
+                    <i class="arrow-forward"></i>
+                </div>
+            </div>
         </div>
         <?php
         /*$result = do_shortcode( '[product_categories orderby="slug"]' );
@@ -224,10 +255,30 @@
 
         <script type="text/javascript">
             (function() {
-                jQuery('.center-section .first .content .num4 .products').flickity({
-                    freeScroll: true,
-                    contain: true,
-                    /*groupCells: true,*/
+                jQuery('.center-section .first .content .num4 .products').slick({
+                    rows: 2,
+                    swipeToSlide: true,
+                    infinite: false,
+                    dots: true,
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    responsive: [
+                        {
+                            breakpoint: 1064,
+                            settings: {
+                                slidesToShow: 3
+                            }
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                                slidesToShow: 2
+                            }
+                        }
+                    ],
+                    arrows: true,
+                    nextArrow: jQuery('.products-slick-slider.num4 .nav-next'),
+                    prevArrow: jQuery('.products-slick-slider.num4 .nav-prev')
                 });
             })()
         </script>
