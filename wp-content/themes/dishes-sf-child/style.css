@@ -1754,9 +1754,6 @@ ul.products li.product:hover img {
         height: 2.6em;
         line-height: 2.6em;
     }
-    .products-slick-slider .title .nav {
-        margin: 5px;
-    }
 
 }
 
@@ -2030,24 +2027,22 @@ ul.products li.product:hover img {
 
     .products-slick-slider.num1 .content-wrapper {
         text-align: center;
+        border-spacing: 2px 0;
     }
     .products-slick-slider.num1 label {
         display: table-cell;
         word-break: break-all;
         padding: .7em 1em;
-        border: 1px solid white;
     }
     .products-slick-slider.num1 hr {
         margin: -5px 0 -1em;
     }
 
-    .products-slick-slider .title {
-        text-align: center;
-    }
     .products-slick-slider .title h4 {
-        float: none;
-        display: inline-block;
+        margin-left: 2px;
     }
+
+
 
 }
 
