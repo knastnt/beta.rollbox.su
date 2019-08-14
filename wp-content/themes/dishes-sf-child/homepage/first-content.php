@@ -5,10 +5,9 @@
  * Date: 22.05.2019
  * Time: 16:04
  */
-?>
 
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/design/flickity/flickity.pkgd.min.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/design/flickity/flickity.css"/>
+
+?>
 
 
 <?php
@@ -95,13 +94,6 @@
             <label  <?php if(!$isNewExist) { echo 'style="display: none;"'; }?>>Новинки</label>
 
         </div-->
-        <div class="nav">
-            <div class="nav-prev">
-                <i class="arrow-back"></i>
-            </div><div class="nav-break"></div><div class="nav-next">
-                <i class="arrow-forward"></i>
-            </div>
-        </div>
     </div>
 
     <div class="content-wrapper">
@@ -157,7 +149,8 @@
 
                         jQuery('#' + tabId + ' .products').flickity({
                             freeScroll: true,
-                            groupCells: true,
+                            contain: true,
+                            /*groupCells: true,*/
                         });
 
                     }
@@ -180,13 +173,6 @@
             <h4>
                 Основное меню
             </h4>
-            <div class="nav">
-                <div class="nav-prev">
-                    <i class="arrow-back"></i>
-                </div><div class="nav-break"></div><div class="nav-next">
-                    <i class="arrow-forward"></i>
-                </div>
-            </div>
         </div>
         <?php
         /*$result = do_shortcode( '[product_categories orderby="slug"]' );
@@ -240,7 +226,8 @@
             (function() {
                 jQuery('.center-section .first .content .num4 .products').flickity({
                     freeScroll: true,
-                    groupCells: true,
+                    contain: true,
+                    /*groupCells: true,*/
                 });
             })()
         </script>

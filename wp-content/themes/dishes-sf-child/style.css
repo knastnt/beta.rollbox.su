@@ -793,70 +793,71 @@ ul.products li.product:hover img {
 
 /* ПОВТОРЯЮЩИЕСЯ ЭЛЕМЕНТЫ */
 /* - start --------------------- product-slider --------------------- */
-.products-slick-slider {
-    margin-bottom: 4em;
-}
-.products-slick-slider .slick-slide {
-    padding: 0 20px;
-    font-size: .875em;
-    text-align: center;
-    margin-bottom: 1em;
-}
-.products-slick-slider .slick-slide:not(:last-child) {
-    border-right: 1px solid #f0f0f0;
-}
-/* я сделал правый border у элементов и в итоке справа всего слайдера остался виден крайний border. рисуем поверх него border с цветом фона */
-.products-slick-slider .slick-list {
-    border-right: 1px solid #fff;
+.flickity-button:hover {
+    background: #b9b9b9a8;
 }
 
-.products-slick-slider .slick-slide .woocommerce-LoopProduct-link {
+.products-slick-slider {
+    margin-bottom: 4em;
+    padding: 0 20px;
+    font-size: .875em;
+}
+.products-slick-slider .product {
+    text-align: center;
+    width: 285px;
+}
+
+
+.products-slick-slider .woocommerce-LoopProduct-link {
     clear: both;
     display: block;
     position: relative;
 }
 
-.products-slick-slider .slick-slide .woocommerce-LoopProduct-link img {
+.products-slick-slider .woocommerce-LoopProduct-link img {
     display: block;
     margin: 0 auto 1.618em;
     object-fit: contain;
     height: 145px;
 }
 
-.products-slick-slider .slick-slide .woocommerce-LoopProduct-link .labels {
+.products-slick-slider .woocommerce-LoopProduct-link .labels {
     right: 15px;
 }
 
-.products-slick-slider .slick-slide .woocommerce-LoopProduct-link h2 {
+.products-slick-slider .woocommerce-LoopProduct-link h2 {
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: .5407911001em;
 }
 
-.products-slick-slider .slick-slide .woocommerce-LoopProduct-link .star-rating {
+.products-slick-slider .woocommerce-LoopProduct-link .star-rating {
     font-size: .875em;
     margin: 0 auto .5407911001em;
 }
 
 /* текст с ценой */
-.products-slick-slider .slick-slide .woocommerce-LoopProduct-link .price {
+.products-slick-slider .woocommerce-LoopProduct-link .price {
     color: var(--color-red);
     display: block;
     font-weight: 400;
     margin-bottom: 1rem;
 }
 /* обычный */
-.products-slick-slider .slick-slide .woocommerce-LoopProduct-link .price > .amount,
-.products-slick-slider .slick-slide .woocommerce-LoopProduct-link .price > ins {
+.products-slick-slider .woocommerce-LoopProduct-link .price > .amount,
+.products-slick-slider .woocommerce-LoopProduct-link .price > ins {
     font-size: 1.5em;
     font-weight: 600;
 }
 /* перечеркнутый (при скидке) */
-.products-slick-slider .slick-slide .woocommerce-LoopProduct-link .price > del {
+.products-slick-slider .woocommerce-LoopProduct-link .price > del {
     color: var(--color-darkgray-light);
     font-weight: 500;
     font-size: 1.3em;
 }
+
+
+
 
 /* заголовок */
 .products-slick-slider .title {
@@ -946,44 +947,7 @@ ul.products li.product:hover img {
 }
 
 
-.products-slick-slider .title .nav {
-    font-family: "Font Awesome 5 Free";
-    float: right;
-    margin: 10px;
-    margin-bottom: 0;
-    position: relative;
-}
-.products-slick-slider .title .nav i {
-    font-style: normal;
-}
-.products-slick-slider .title .nav > div {
-    display: inline-block;
-    padding: 0 15px;
-    cursor: pointer;
-    transition: .3s ease;
-}
-.products-slick-slider .title .nav .slick-disabled,
-.products-slick-slider .title .nav .slick-disabled > div:hover {
-    color: #d2d2d2 !important;
-}
-.products-slick-slider .title .nav .nav-break {
-    height: 13px;
-    width: 1px;
-    background: #e1e1e1;
-    padding: 0;
-    cursor: none;
-    margin: 0 5px;
-}
-.products-slick-slider .title .nav > div:hover {
-    color: var(--color-red);
-    background-color: #f0f0f0;
-}
-.products-slick-slider .title .nav .nav-prev i::before {
-    content: "\f053";
-}
-.products-slick-slider .title .nav .nav-next i::before {
-    content: "\f054";
-}
+
 
 /* Увеличение картинки при наведении */
 .products-slick-slider .product img {
@@ -1169,7 +1133,7 @@ ul.products li.product:hover img {
 
 
 
-    .products-slick-slider .slick-slide {
+    .products-slick-slider .product {
         padding: 0 8px;
     }
 
@@ -1274,23 +1238,23 @@ ul.products li.product:hover img {
 
 
     /*Уменьшаем отображения товаров woocommerce*/
-    .products-slick-slider .slick-slide .woocommerce-LoopProduct-link h2,
+    .products-slick-slider .woocommerce-LoopProduct-link h2,
     ul.products li.product .woocommerce-loop-product__title, ul.products li.product h2, ul.products li.product h3 {
         font-size: .9rem;
     }
-    .products-slick-slider .slick-slide .woocommerce-LoopProduct-link .star-rating,
+    .products-slick-slider .woocommerce-LoopProduct-link .star-rating,
     ul.products li.product .woocommerce-loop-product__title, ul.products li.product h2, ul.products li.product h3 {
         margin-bottom: 0.2em;
     }
-    .products-slick-slider .slick-slide .woocommerce-LoopProduct-link .star-rating,
+    .products-slick-slider .woocommerce-LoopProduct-link .star-rating,
     ul.products li.product .star-rating {
         margin: 0 auto;
     }
-    .products-slick-slider .slick-slide .woocommerce-LoopProduct-link .price > .amount, .products-slick-slider .slick-slide .woocommerce-LoopProduct-link .price > ins,
+    .products-slick-slider .woocommerce-LoopProduct-link .price > .amount, .products-slick-slider .woocommerce-LoopProduct-link .price > ins,
     ul.products li.product .price > .amount, ul.products li.product .price > ins {
         font-size: 1.3em;
     }
-    .products-slick-slider .slick-slide .woocommerce-LoopProduct-link .price,
+    .products-slick-slider .woocommerce-LoopProduct-link .price,
     ul.products li.product .price {
         margin-bottom: .5rem;
     }
@@ -1409,7 +1373,7 @@ ul.products li.product:hover img {
     }
     /*Меньше картинки*/
     .products-slick-slider .product img,
-    .products-slick-slider .slick-slide .woocommerce-LoopProduct-link img {
+    .products-slick-slider .woocommerce-LoopProduct-link img {
         height: 100px;
     }
 
@@ -1730,7 +1694,7 @@ ul.products li.product:hover img {
 
 
     .products-slick-slider .product img,
-    .products-slick-slider .slick-slide .woocommerce-LoopProduct-link img {
+    .products-slick-slider .woocommerce-LoopProduct-link img {
         height: 80px;
     }
     .delta, h4 {
