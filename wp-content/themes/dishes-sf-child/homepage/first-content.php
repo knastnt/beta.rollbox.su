@@ -154,22 +154,24 @@
                         jQuery('#' + tabId + ' .products').slick('refresh');
                     }catch (e) {
                         jQuery('#' + tabId + ' .products').slick({
-                            swipeToSlide: true,
+                            touchThreshold: 100,
                             infinite: false,
                             dots: true,
                             slidesToShow: 4,
-                            slidesToScroll: 1,
+                            slidesToScroll: 4,
                             responsive: [
                                 {
                                     breakpoint: 1064,
                                     settings: {
-                                        slidesToShow: 3
+                                        slidesToShow: 3,
+                                        slidesToScroll: 3
                                     }
                                 },
                                 {
                                     breakpoint: 600,
                                     settings: {
-                                        slidesToShow: 2
+                                        slidesToShow: 2,
+                                        slidesToScroll: 2
                                     }
                                 }
                             ],
@@ -257,22 +259,24 @@
             (function() {
                 jQuery('.center-section .first .content .num4 .products').slick({
                     rows: 2,
-                    swipeToSlide: true,
+                    touchThreshold: 100,
                     infinite: false,
                     dots: true,
                     slidesToShow: 4,
-                    slidesToScroll: 1,
+                    slidesToScroll: 4,
                     responsive: [
                         {
                             breakpoint: 1064,
                             settings: {
-                                slidesToShow: 3
+                                slidesToShow: 3,
+                                slidesToScroll: 3
                             }
                         },
                         {
                             breakpoint: 600,
                             settings: {
-                                slidesToShow: 2
+                                slidesToShow: 2,
+                                slidesToScroll: 2
                             }
                         }
                     ],
