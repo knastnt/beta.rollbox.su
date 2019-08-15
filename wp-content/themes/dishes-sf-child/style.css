@@ -1785,6 +1785,29 @@ ul.products li.product:hover img {
     ul.products li.product.last {
         margin-right: 0 !important;
     }
+    #woof_widget-3 {
+        position: fixed;
+        top: 68px;
+        left: 0;
+        right: 0;
+        bottom: 50px;
+        margin-bottom: 0;
+        background-color: white;
+        z-index: 100;
+        overflow: scroll;
+        overflow-x: scroll;
+        overflow-x: hidden;
+    }
+    #woof_widget-3 .woof_submit_search_form_container {
+        text-align: center;
+        position: fixed;
+        height: 50px;
+        bottom: 0;
+        background-color: #32a6a6;
+        right: 0;
+        left: 0;
+        margin: 0;
+    }
 }
 
 
