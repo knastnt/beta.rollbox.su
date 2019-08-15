@@ -1979,18 +1979,18 @@ ul.products li.product:hover img {
         padding: 0 1em;
     }
 
-
-    /*Инстаграм*/
-    #insta-gallery-feed-3 .insta-gallery-list .insta-gallery-item.insta-gallery-cols-3 {
-        width: 25%;
-    }
-
 }
 
 /*///////////////////////////////////////////////////////////////////////////*/
 @media (max-width: 485px) {
     .products-slick-slider.num1 .content-wrapper.popular-btn.sale-btn.new-btn label {
         padding: .7em .4em;
+    }
+
+
+    /*Инстаграм*/
+    #insta-gallery-feed-3 .insta-gallery-list .insta-gallery-item.insta-gallery-cols-3 {
+        width: 25%;
     }
 }
 
