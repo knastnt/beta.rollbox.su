@@ -1776,6 +1776,15 @@ ul.products li.product:hover img {
     .products-slick-slider.num1 .title .nav {
         margin-bottom: 7px;
     }
+
+
+    /*Меню на странице магазина*/
+    .site-main ul.products.columns-4 li.product {
+        width: 33%;
+    }
+    ul.products li.product.last {
+        margin-right: 0 !important;
+    }
 }
 
 
@@ -1991,6 +2000,19 @@ ul.products li.product:hover img {
     /*Инстаграм*/
     #insta-gallery-feed-3 .insta-gallery-list .insta-gallery-item.insta-gallery-cols-3 {
         width: 25%;
+    }
+
+
+    /*Меню страницы магазина*/
+    .site-main ul.products.columns-4 li.product {
+        width: 50%;
+        margin-bottom: 3em;
+    }
+    ul.products.columns-4 li.product img {
+        height: 120px;
+    }
+    ul.products li.product img {
+        margin: 0 auto 0.618em;
     }
 }
 
