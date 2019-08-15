@@ -2096,6 +2096,11 @@ ul.products li.product:hover img {
     .products-slick-slider.num1 .content-wrapper.popular-btn.sale-btn.new-btn label {
         max-width: 82px;
     }
+
+
+    .products-slick-slider.num4 .slick-slide > div {
+        height: 173px;
+    }
 }
 
 /*///////////////////////////////////////////////////////////////////////////*/
