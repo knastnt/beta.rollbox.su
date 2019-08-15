@@ -1979,6 +1979,12 @@ ul.products li.product:hover img {
         padding: 0 1em;
     }
 
+
+    /*Инстаграм*/
+    #insta-gallery-feed-3 .insta-gallery-list .insta-gallery-item.insta-gallery-cols-3 {
+        width: 25%;
+    }
+
 }
 
 /*///////////////////////////////////////////////////////////////////////////*/
@@ -2224,5 +2230,13 @@ ul.products li.product:hover img {
 
     .products-slick-slider.num1 .content-wrapper.popular-btn.sale-btn.new-btn label {
         max-width: calc(38vw - 50px);
+    }
+
+
+
+
+    /*Инстаграм*/
+    #insta-gallery-feed-3 .insta-gallery-list .insta-gallery-item.insta-gallery-cols-3 {
+        width: 33.3%;
     }
 }
