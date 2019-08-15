@@ -1979,11 +1979,8 @@ ul.products li.product:hover img {
 
 /*///////////////////////////////////////////////////////////////////////////*/
 @media (max-width: 485px) {
-    .products-slick-slider.num1 label {
+    .products-slick-slider.num1 .content-wrapper.popular-btn.sale-btn.new-btn label {
         padding: .7em .4em;
-    }
-    .products-slick-slider .title h4 {
-        padding: 0 .4em;
     }
 }
 
@@ -2080,7 +2077,7 @@ ul.products li.product:hover img {
     }
 
 
-    .products-slick-slider.num1 label {
+    .products-slick-slider.num1 .content-wrapper.popular-btn.sale-btn.new-btn label {
         max-width: 100px;
     }
 }
@@ -2088,7 +2085,15 @@ ul.products li.product:hover img {
 
 /*///////////////////////////////////////////////////////////////////////////*/
 @media (max-width: 400px) {
-    .products-slick-slider.num1 label {
+    .products-slick-slider.num1 .content-wrapper.popular-btn.new-btn label {
+        max-width: 140px;
+    }
+
+    .products-slick-slider.num1 .content-wrapper.popular-btn.sale-btn label {
+        max-width: 120px;
+    }
+
+    .products-slick-slider.num1 .content-wrapper.popular-btn.sale-btn.new-btn label {
         max-width: 82px;
     }
 }
@@ -2197,7 +2202,18 @@ ul.products li.product:hover img {
         margin-right: 8px;
     }
 
-    .products-slick-slider.num1 label {
-        max-width: 21vw;
+
+
+
+    .products-slick-slider.num1 .content-wrapper.popular-btn.new-btn label {
+        max-width: calc(52vw - 58px);
+    }
+
+    .products-slick-slider.num1 .content-wrapper.popular-btn.sale-btn label {
+        max-width: calc(50vw - 55px);
+    }
+
+    .products-slick-slider.num1 .content-wrapper.popular-btn.sale-btn.new-btn label {
+        max-width: calc(38vw - 50px);
     }
 }

@@ -105,7 +105,7 @@
         </div>
     </div>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper popular-btn<?php if($isSalesExist) { echo ' sale-btn'; }?><?php if($isNewExist) { echo ' new-btn'; }?>">
         <input type="radio" name="odin" checked="checked" id="popular"/>
         <label for="popular">Самые популярные</label>
         <input type="radio" name="odin" id="sale"/>
