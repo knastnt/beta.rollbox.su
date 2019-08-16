@@ -281,4 +281,57 @@
         }
     });
 
+
+
+    //Отслеживаем scroll и resize
+    //Scrolling
+    jQuery(document).scroll(function () {
+        ScrollAndResizeFnc();
+    });
+    //Resizing
+    jQuery(window).resize(function () {
+        ScrollAndResizeFnc();
+    });
+    function ScrollAndResizeFnc () {
+
+        var andermenuY = 0;
+
+        var m = $("#masthead");
+        var stm = $("#stickey_menu_wrapper");
+        var ffb = $("#fixedFilterBlock");
+
+        if (m.css('position') == 'fixed')
+        {
+            //Меню на маленьких экранах - фиксированно. stm - отключено. andermenuY - под m.height
+            ffb.css('position', 'fixed');
+            andermenuY = m.innerHeight();
+        }else{
+            //Меню на больших экранах - обычное, привязанное к контенту. stm может быть видимо или нет
+            if (stm.hasClass("fix-nav") && (m.innerHeight() - $(window).scrollTop()) < stm.innerHeight()) {
+                // если stm - есть и оно ниже, чем m
+                ffb.css('position', 'fixed');
+                andermenuY = stm.innerHeight();
+
+                //andermenuY = andermenuY < stm.height() ? stm.height() : andermenuY;
+            }else{
+                // если stm - нет. ffb должно быть absolute
+                ffb.css('position', 'absolute');
+                andermenuY = m.innerHeight();
+            }
+
+            // stm - скрыто. andermenuY - под меню (m.height , position:absolute)
+           // andermenuY = m.height() - $(window).scrollTop();
+
+        }
+
+        console.log(andermenuY);
+
+        $("#fixedFilterBlock").css("top", andermenuY + "px");
+
+
+    };
+
+
+    jQuery("#secondary").parent().append('<div id="fixedFilterBlock" style="position: fixed;background-color: aqua;">Фильтровать</div>');
+
 })(jQuery);

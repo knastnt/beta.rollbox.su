@@ -1800,7 +1800,7 @@ ul.products li.product:hover img {
     }
     #woof_widget-3 .woof_submit_search_form_container {
         text-align: center;
-        position: fixed;
+        position: sticky;
         height: 50px;
         bottom: 0;
         background-color: #32a6a6;
