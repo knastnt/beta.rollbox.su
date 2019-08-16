@@ -42,6 +42,9 @@ require_once( get_stylesheet_directory() . '/homepage/map/homeepageMap.php' );
 //Переработанный шорткод инстаграма
 require_once( get_stylesheet_directory() . '/homepage/instagram.php' );
 
+//Фильтр товаров для мобильных устройств
+require_once( get_stylesheet_directory() . '/mobile-filter/mobileFilter.php' );
+
 //Максимальное количество автоматически создаваемых вариаций woocommerce
 //Если сервер не будет пропускать, то, возможно, решение тут: https://toster.ru/q/165355
 define( 'WC_MAX_LINKED_VARIATIONS', 1000 );

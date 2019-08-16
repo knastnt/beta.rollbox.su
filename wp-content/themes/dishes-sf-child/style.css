@@ -389,6 +389,14 @@ ul.products li.product .button.added {
 
 
 
+
+/*Мобильный фильтр товаров*/
+#fixedFilterBlock {
+    display: none;
+}
+
+
+
 /*Строка меню в заголовке*/
 .woocommerce-active .site-header .main-navigation {
     width: 100%;
@@ -1785,7 +1793,15 @@ ul.products li.product:hover img {
     ul.products li.product.last {
         margin-right: 0 !important;
     }
+
+
+    /*Мобильный фильтр товаров*/
+    #fixedFilterBlock {
+        display: block;
+    }
+
     #woof_widget-3 {
+        display: none;
         position: fixed;
         top: 68px;
         left: 0;
