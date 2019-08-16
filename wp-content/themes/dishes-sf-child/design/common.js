@@ -331,7 +331,25 @@
     };
 
 
+
+
+
+    //переделать и/или убрать
     jQuery("#secondary").parent().append('<div id="fixedFilterBlock" style="position: fixed;background-color: aqua;">Фильтровать</div>');
     ScrollAndResizeFnc();
+    jQuery("#fixedFilterBlock").click(function (e) {
+        if ($("#woof_widget-3").css('display') == 'none') {
+            $("#woof_widget-3").css('display', 'block');
+        }else{
+            $("#woof_widget-3").css('display', 'none');
+        }
+    });
+    //переделать и/или убрать
+
+
+
+
+
+
 
 })(jQuery);
