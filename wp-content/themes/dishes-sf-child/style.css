@@ -1743,7 +1743,7 @@ ul.products li.product:hover img {
     .products-slick-slider .slick-slide .woocommerce-LoopProduct-link img {
         height: 80px;
     }
-    .delta, h4 {
+    .products-slick-slider .delta h4 {
         font-size: 1.3em;
     }
 
@@ -1798,6 +1798,25 @@ ul.products li.product:hover img {
     /*Мобильный фильтр товаров*/
     #fixedFilterBlock {
         display: block;
+        position: fixed;
+        background-color: white;
+        border: 1px solid rgb(167, 167, 167);
+        border-radius: 3px;
+        left: 0;
+        right: 0;
+        padding: .3em 1.5em;
+        margin: 5px;
+        cursor: pointer;
+        z-index: 100;
+        font-size: 1.2em;
+        font-weight: 300;
+    }
+    #fixedFilterBlock span::before {
+        content: "\f1de";
+        font-family: 'Font Awesome 5 Free';
+        margin-right: 14px;
+        font-size: 90%;
+        color: var(--color-red);
     }
 
     #woof_widget-3 {
@@ -1810,19 +1829,27 @@ ul.products li.product:hover img {
         margin-bottom: 0;
         background-color: white;
         z-index: 100;
-        overflow: scroll;
         overflow-x: scroll;
         overflow-x: hidden;
+        padding: 15px;
+        padding-bottom: 0;
     }
     #woof_widget-3 .woof_submit_search_form_container {
         text-align: center;
         position: sticky;
         height: 50px;
         bottom: 0;
-        background-color: #32a6a6;
+        border-top: 1px solid #d7dcde;
+        background-color: white;
         right: 0;
         left: 0;
         margin: 0;
+    }
+    #woof_widget-3 .widget .widget-title {
+        display: none;
+    }
+    #woof_widget-3 .woof_submit_search_form_container button {
+        margin-top: .5em;
     }
 }
 

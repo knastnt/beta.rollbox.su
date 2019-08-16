@@ -21,7 +21,7 @@ add_action( 'storefront_sidebar', 'addMobileFilterButton', 20 );
 function addMobileFilterButton() {
 
     ?>
-    <div id="fixedFilterBlock" style="position: fixed;background-color: aqua;">Фильтровать</div>
+    <div id="fixedFilterBlock"><span>Фильтры и сортировка</span></div>
     <?php
 
 }

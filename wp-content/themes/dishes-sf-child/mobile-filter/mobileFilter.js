@@ -9,6 +9,10 @@
     jQuery(window).resize(function () {
         ScrollAndResizeFnc();
     });
+    //Ready
+    jQuery(window).ready(function () {
+        ScrollAndResizeFnc();
+    });
     function ScrollAndResizeFnc () {
 
         var andermenuY = 0;
@@ -37,19 +41,19 @@
             //Меню на маленьких экранах - фиксированно. stm - отключено. andermenuY - под m.height
             ffb.css('position', 'fixed');
             andermenuY = m.innerHeight();
-            filterY = andermenuY + ffb.innerHeight();
+            filterY = andermenuY + ffb.outerHeight();
         }else{
             //Меню на больших экранах - обычное, привязанное к контенту. stm может быть видимо или нет
             if (stm.hasClass("fix-nav") && (m.innerHeight() - $(window).scrollTop()) < stm.innerHeight()) {
                 // если stm - есть и оно ниже, чем m
                 ffb.css('position', 'fixed');
                 andermenuY = stm.innerHeight();
-                filterY = andermenuY + ffb.innerHeight();
+                filterY = andermenuY + ffb.outerHeight();
             }else{
                 // если stm - нет. ffb должно быть absolute
                 ffb.css('position', 'absolute');
                 andermenuY = m.innerHeight();
-                filterY = m.innerHeight() - $(window).scrollTop() + ffb.innerHeight();
+                filterY = m.innerHeight() - $(window).scrollTop() + ffb.outerHeight();
             }
         }
 
@@ -64,9 +68,7 @@
 
 
 
-    //переделать и/или убрать
-    /*jQuery("#secondary").parent().append('<div id="fixedFilterBlock" style="position: fixed;background-color: aqua;">Фильтровать</div>');*/
-    ScrollAndResizeFnc();
+
     jQuery("#fixedFilterBlock").live('click', function(e) {
         if ($("#woof_widget-3").css('display') == 'none') {
             $("#woof_widget-3").css('display', 'block');
@@ -74,7 +76,6 @@
             $("#woof_widget-3").css('display', 'none');
         }
     });
-    //переделать и/или убрать
 
 
 
