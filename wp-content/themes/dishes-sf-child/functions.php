@@ -45,6 +45,9 @@ require_once( get_stylesheet_directory() . '/homepage/instagram.php' );
 //Меняем url у хлебных крошек
 require_once( get_stylesheet_directory() . '/products-filter/changeBreadcrumbs.php' );
 
+//Меняем url у ингридиентов из состава
+require_once( get_stylesheet_directory() . '/products-filter/changePaConsist.php' );
+
 //Фильтр товаров для мобильных устройств
 require_once( get_stylesheet_directory() . '/products-filter/mobileFilter.php' );
 
