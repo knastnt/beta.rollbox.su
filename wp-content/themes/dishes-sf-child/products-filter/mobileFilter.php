@@ -11,7 +11,7 @@
 // правильный способ подключить скрипты
 add_action( 'wp_enqueue_scripts', 'true_include_mobileFilter_script' );
 function true_include_mobileFilter_script() {
-    wp_enqueue_script( 'script-mobileFilter', get_stylesheet_directory_uri() . '/mobile-filter/mobileFilter.js' );
+    wp_enqueue_script( 'script-mobileFilter', get_stylesheet_directory_uri() . '/products-filter/mobileFilter.js' );
 }
 //////////////////////////////////////////////////////////////////////////
 

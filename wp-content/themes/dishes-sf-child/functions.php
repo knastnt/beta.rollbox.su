@@ -42,8 +42,11 @@ require_once( get_stylesheet_directory() . '/homepage/map/homeepageMap.php' );
 //Переработанный шорткод инстаграма
 require_once( get_stylesheet_directory() . '/homepage/instagram.php' );
 
+//Меняем url у хлебных крошек
+require_once( get_stylesheet_directory() . '/products-filter/changeBreadcrumbs.php' );
+
 //Фильтр товаров для мобильных устройств
-require_once( get_stylesheet_directory() . '/mobile-filter/mobileFilter.php' );
+require_once( get_stylesheet_directory() . '/products-filter/mobileFilter.php' );
 
 //Максимальное количество автоматически создаваемых вариаций woocommerce
 //Если сервер не будет пропускать, то, возможно, решение тут: https://toster.ru/q/165355
