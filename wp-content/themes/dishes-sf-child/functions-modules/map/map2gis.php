@@ -21,7 +21,9 @@ function map2gis_fnc($atts)
         'height' => 'auto',
     ), $atts);
 
+    ob_start();
     print_map($atts);
+    return ob_get_clean();
 }
 
 
