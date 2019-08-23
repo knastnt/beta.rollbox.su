@@ -293,7 +293,7 @@
 
 <div class="module-image">
     <!--img src="http://demo.towerthemes.com/tt_boxstore/image/cache/catalog/category/img1-category-870x125.jpg" alt=""-->
-    <?php print_homepage_map(); ?>
+    <?php do_shortcode('[map2gis height=143px]'); ?>
 </div>
 
 

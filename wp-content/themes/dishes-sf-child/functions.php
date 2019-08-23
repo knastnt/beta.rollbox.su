@@ -36,8 +36,8 @@ require_once( get_stylesheet_directory() . '/functions-modules/validate_billing_
 // Настройки оформления заказа
 require_once( get_stylesheet_directory() . '/checkout/checkout.php' );
 
-//Карта на главной странице
-require_once( get_stylesheet_directory() . '/homepage/map/homeepageMap.php' );
+//Шорткод карты
+require_once( get_stylesheet_directory() . '/functions-modules/map/map2gis.php' );
 
 //Переработанный шорткод инстаграма
 require_once( get_stylesheet_directory() . '/homepage/instagram.php' );

@@ -12,7 +12,20 @@ function homepage_map_include_script() {
 }
 
 
-function print_homepage_map() {
+add_shortcode( 'map2gis', 'map2gis_fnc' );
+function map2gis_fnc($atts)
+{
+    // белый список параметров и значения по умолчанию
+    $atts = shortcode_atts(array(
+        'width' => 'auto',
+        'height' => 'auto',
+    ), $atts);
+
+    print_map($atts);
+}
+
+
+function print_map($atts) {
 ?>
 
 <div id="map"></div>
@@ -73,8 +86,8 @@ function print_homepage_map() {
 			height: 50px;
 		 }
             #map {
-                /*width:1140px;*/
-                height:143px
+                width:<?php echo $atts['width']; ?>;
+                height:<?php echo $atts['height']; ?>;
             }
 		</style>
 <?php
