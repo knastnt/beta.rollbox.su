@@ -89,10 +89,10 @@
 
     //Отслеживаем изменение слайдера выбора цены и веса
     $('.woof_container_inner input.woof_range_slider, .woof_container_inner input.woof_metarange_slider').live('change', function(event) {
-        showApplyButton(3);
+        showApplyButton($(this).parent());
     });
     $('.woof_container_inner input.woof_checkbox_term').live('ifClicked', function(event){
-        showApplyButton(4);
+        showApplyButton(this);
     });
 
     //На работает на лэйбле
@@ -291,7 +291,7 @@
 
 
     function showApplyButton(e){
-        alert(e);
+        alert($(e).offset().top);
     }
 
 })(jQuery);
