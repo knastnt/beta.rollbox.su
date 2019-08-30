@@ -87,6 +87,14 @@
 
     // http://icheck.fronteed.com
 
+    //Отслеживаем изменение слайдера выбора цены и веса
+    $('.woof_container_inner input.woof_range_slider, .woof_container_inner input.woof_metarange_slider').live('change', function(event) {
+        showApplyButton(3);
+    });
+    $('.woof_container_inner input.woof_checkbox_term').live('ifClicked', function(event){
+        showApplyButton(4);
+    });
+
     //На работает на лэйбле
     //Точное выделение только элементов с чайлдами. Чтобы не срабатывали события по нескольку раз
     //$('.woof_childs_list_li > div > input.woof_checkbox_term').live('ifChanged', function(event){
@@ -282,6 +290,8 @@
     });
 
 
-
+    function showApplyButton(e){
+        alert(e);
+    }
 
 })(jQuery);
