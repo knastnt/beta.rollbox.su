@@ -1268,7 +1268,7 @@ ul.products li.product:hover img {
     .top-section .banner-wrapper .banner2 {
         width: 50%;
         margin-top: 10px;
-        height: 150px;
+        /*height: 150px;*/
     }
     .top-section .banner-wrapper .banner1 {
         float: left;
