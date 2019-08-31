@@ -38,7 +38,7 @@ function true_include_scripts() {
             <div id="banner7-caption2" class="banner7-caption nivo-html-caption nivo-caption move-slides-effect" data-class="slide-movetype1">
                 <div class="timeloading"></div>
                 <div class="banner7-content slider-1">
-                    <div class="text-content">
+                    <!--div class="text-content">
                         <h1 class="title1"> Exclusive Offer -40% Off This Week </h1>
 
                         <h2 class="sub-title"> Samsung S7/S7 edge 2018 </h2>
@@ -49,7 +49,7 @@ function true_include_scripts() {
                         <div class="banner7-readmore">
                             <a class="btn" href="  # " title="Shop Now!">Shop Now!</a>
                         </div>
-                    </div>
+                    </div-->
                 </div>
             </div>
 
@@ -59,7 +59,7 @@ function true_include_scripts() {
             <div id="banner7-caption3" class="banner7-caption nivo-html-caption nivo-caption move-slides-effect" data-class="slide-movetype1">
                 <div class="timeloading"></div>
                 <div class="banner7-content slider-1">
-                    <div class="text-content">
+                    <!--div class="text-content">
                         <h1 class="title1"> Exclusive Offer -30% Off This Week </h1>
 
                         <h2 class="sub-title"> Google Home  New Product 2018 </h2>
@@ -70,7 +70,7 @@ function true_include_scripts() {
                         <div class="banner7-readmore">
                             <a class="btn" href="  # " title="Shop Now!">Shop Now!</a>
                         </div>
-                    </div>
+                    </div-->
                 </div>
             </div>
 
@@ -106,11 +106,11 @@ function true_include_scripts() {
                         pauseTime:   5000  ,
                         startSlide: 0,
                         controlNav:   true  ,
-                        directionNav:     false   ,
+                        directionNav:     true   ,
                         controlNavThumbs: false,
                         pauseOnHover:     false   ,
-                        prevText: '<i class="ion-chevron-left"></i>',
-                        nextText: '<i class="ion-chevron-right"></i>',
+                        prevText: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
+                        nextText: '<i class="fa fa-chevron-right" aria-hidden="true"></i',
                         afterLoad: function(){
                             jQuery('.oc-loading').css("display","none");
                             jQuery('.timeloading').css('animation-duration'," 5000ms ");
