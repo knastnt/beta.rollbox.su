@@ -25,8 +25,8 @@ function true_include_scripts() {
             <div class="oc-loading"></div>
             <div id="oc-inivoslider1" class="nivoSlider loading">
 
-                <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>bg1-slidershow-870x410.png" alt="" title="#banner7-caption2"  />
-                <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>bg2-slidershow-870x410.png" alt="" title="#banner7-caption3"  />
+                <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>slider_20_sale_1185_558.jpg" alt="" title="#banner7-caption2"  />
+                <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>slider_bonuses_1185_558.jpg" alt="" title="#banner7-caption3"  />
                 <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>bg-slidershow-870x410.png" alt="" title="#banner7-caption4"  />
 
             </div>
