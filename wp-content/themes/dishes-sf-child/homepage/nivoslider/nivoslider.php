@@ -27,7 +27,7 @@ function true_include_scripts() {
 
                 <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>slider_20_sale_1185_558.jpg" alt="" title="#banner7-caption2"  />
                 <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>slider_bonuses_1185_558.jpg" alt="" title="#banner7-caption3"  />
-                <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>bg-slidershow-870x410.png" alt="" title="#banner7-caption4"  />
+                <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>slider_imeninnikam_1185_558.jpg" alt="" title="#banner7-caption4"  />
 
             </div>
 
@@ -80,7 +80,7 @@ function true_include_scripts() {
             <div id="banner7-caption4" class="banner7-caption nivo-html-caption nivo-caption move-slides-effect" data-class="slide-movetype1">
                 <div class="timeloading"></div>
                 <div class="banner7-content slider-1">
-                    <div class="text-content">
+                    <!--div class="text-content">
                         <h1 class="title1"> Exclusive Offer -20% Off This Week </h1>
 
                         <h2 class="sub-title"> Samsung Gear Vr Sale 70% Off </h2>
@@ -91,7 +91,7 @@ function true_include_scripts() {
                         <div class="banner7-readmore">
                             <a class="btn" href="  # " title="Shop Now!">Shop Now!</a>
                         </div>
-                    </div>
+                    </div-->
                 </div>
             </div>
             <script type="text/javascript">
