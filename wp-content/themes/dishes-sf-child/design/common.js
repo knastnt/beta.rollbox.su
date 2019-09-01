@@ -88,11 +88,14 @@
     // http://icheck.fronteed.com
 
     //Отслеживаем изменение слайдера выбора цены и веса
-    $('.woof_container_inner input.woof_range_slider, .woof_container_inner input.woof_metarange_slider').live('change', function(event) {
-        showApplyButton($(this).parent());
+    $('.woof_container_inner input.woof_range_slider').live('change', function(event) {
+        showApplyButton($(this).parent().offset().top + 40);
+    });
+    $('.woof_container_inner input.woof_metarange_slider').live('change', function(event) {
+        showApplyButton($(this).parent().offset().top);
     });
     $('.woof_container_inner input.woof_checkbox_term').live('ifClicked', function(event){
-        showApplyButton(this);
+        showApplyButton($(this).offset().top);
     });
 
     //На работает на лэйбле
@@ -289,10 +292,24 @@
         }
     });
 
+    var floatApplyButtonTimer;
 
-    function showApplyButton(e){
+    function showApplyButton(top){
+        var floatApplyButton = $('#floatApplyButton');
         if ($('#fixedFilterBlock').css('display') == 'none') {
-            alert($(e).offset().top);
+
+            floatApplyButton.show();
+            floatApplyButton.css("top", top + "px");
+            floatApplyButton.css("left", $('#secondary').offset().left + $('#secondary').width() + 15 + "px");
+            //alert(top);
+
+            clearTimeout(floatApplyButtonTimer);
+            floatApplyButtonTimer = setTimeout(function () {
+                floatApplyButton.hide();
+            }, 3000);
+
+        }else{
+            floatApplyButton.hide();
         }
     }
 

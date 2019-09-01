@@ -48,6 +48,9 @@ require_once( get_stylesheet_directory() . '/products-filter/changeBreadcrumbs.p
 //Меняем url у ингридиентов из состава
 require_once( get_stylesheet_directory() . '/products-filter/changePaConsist.php' );
 
+//Добавляем плавающую кнопку применить фильтр
+require_once( get_stylesheet_directory() . '/products-filter/floatApplyButton.php' );
+
 //Фильтр товаров для мобильных устройств
 require_once( get_stylesheet_directory() . '/products-filter/mobileFilter.php' );
 

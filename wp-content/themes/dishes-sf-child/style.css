@@ -799,6 +799,30 @@ ul.products li.product:hover img {
 
 
 
+/*Плавающая кнопка применить фильтр*/
+#floatApplyButton {
+    z-index: 900;
+    position: absolute;
+    font-size: 110%;
+    box-shadow: rgba(54, 63, 77, 0.35) 0px 0px 17px;
+    border-radius: 5px;
+}
+#floatApplyButton:before {
+    display: block;
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 16%;
+    width: 26%;
+    height: 69%;
+    border-radius: 4px;
+    transform: rotate(135deg);
+    z-index: -1;
+    background-color: var(--color-red);
+}
+
+
+
 /* ПОВТОРЯЮЩИЕСЯ ЭЛЕМЕНТЫ */
 /* - start --------------------- product-slider --------------------- */
 .products-slick-slider {
