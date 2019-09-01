@@ -291,7 +291,9 @@
 
 
     function showApplyButton(e){
-        alert($(e).offset().top);
+        if ($('#fixedFilterBlock').css('display') == 'none') {
+            alert($(e).offset().top);
+        }
     }
 
 })(jQuery);
