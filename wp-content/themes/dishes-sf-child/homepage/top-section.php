@@ -20,7 +20,8 @@
             <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>banner_kalyan_ps_315_405.jpg" alt="" />
         </div>
         <div class="banner2">
-            <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>banner_mini_orderrolls_315_138.jpg" alt="" />
+            <img class="desktop" src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>banner_mini_orderrolls_315_138.jpg" alt="" />
+            <img class="mobile" src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>banner_mini_orderrolls_315_405.jpg" alt="" />
         </div>
     </div>
     <div style="clear: both"></div>

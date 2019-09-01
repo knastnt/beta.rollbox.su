@@ -1270,6 +1270,15 @@ ul.products li.product:hover img {
         margin-top: 10px;
         /*height: 150px;*/
     }
+    /*Заменяем картинку у banner2*/
+    .top-section .banner-wrapper .banner2 img.desktop {
+        display: none;
+    }
+    .top-section .banner-wrapper .banner2 img.mobile {
+        display: block;
+    }
+
+
     .top-section .banner-wrapper .banner1 {
         float: left;
         padding-right: 5px;
