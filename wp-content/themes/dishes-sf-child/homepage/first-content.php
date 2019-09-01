@@ -189,7 +189,7 @@
 </div>
 
 <div class="module-image">
-    <img src="http://demo.towerthemes.com/tt_boxstore/image/cache/catalog/category/img-category-870x125.jpg" alt="">
+    <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>banner_slim_1140_160.jpg" alt="">
 </div>
 
 <div class="main-categiries">
