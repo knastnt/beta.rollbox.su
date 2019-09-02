@@ -26,7 +26,7 @@
                     <p>ИНН: 2703032391, ОГРН: 1052740252388</p>
                     <p>Хабаровский край, г. Комсомольск-на-Амуре, пр. Мира 29</p>
                     <p>Тел.: <b id="footer-mobile-phone">8-924-100-5522</b>, <b id="footer-fixed-phone">54-51-58</b></p>
-                    <p>E-Mail: <a href="mailto:rollboxinfo@mail.ru">rollboxinfo@mail.ru</a></p>
+                    <p>E-Mail: <a href="mailto:rollboxinfo@yandex.ru">rollboxinfo@yandex.ru</a></p>
                 </div>
                 <script>
                     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
