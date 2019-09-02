@@ -103,6 +103,7 @@ add_filter( 'woocommerce_add_notice', 'remove_some_notices' ); //пришлос�
 //Редирект в cart если checkout вызван не со страницы cart
 add_action( 'woocommerce_before_checkout_form', 'checkout_redirect_to_cart' );
 function checkout_redirect_to_cart(){
+    if (!isset($_SERVER['HTTP_REFERER'])) return; //Если referer не передан, то и ничего не делаем
     $ref = $_SERVER['HTTP_REFERER'];
     if ($ref == '' || $ref == null) return; //Если referer не передан, то и ничего не делаем
     $ref_path = parse_url($ref, PHP_URL_PATH);
