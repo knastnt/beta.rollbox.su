@@ -92,6 +92,7 @@
     width: 25%;
     padding: 0px 20px;
     float: left;
+    pointer-events: none;
 }
 .top-section .bottom .iconedtext:not(:first-child) {
     border-left: 1px solid #ebebeb;
