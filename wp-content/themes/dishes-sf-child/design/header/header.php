@@ -239,11 +239,11 @@ function points_after_header_cart() {
                             </div>
                             <div class="header-buttons" style="border-bottom: 1px solid #dbdbdb;padding-bottom: 10px;">
                                 <div class="header-button-wrapper" style="">
-                                    <a class="button" href="#">Как накопить</a>
+                                    <a class="button" href="/bonusnaya-sistema">О бонусной системе</a>
                                 </div>
-                                <div class="header-button-wrapper">
+                                <!--div class="header-button-wrapper">
                                     <a class="button" href="#">На что потратить</a>
-                                </div>
+                                </div-->
                                 <div style="clear: both;">
 
                                 </div>

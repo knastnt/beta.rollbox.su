@@ -35,6 +35,10 @@ a, button {
     padding: 0 40px;
 }
 
+.alpha, h1 {
+    font-size: 2em;
+}
+
 /* Цвет нотисов */
 .woocommerce-error, .woocommerce-info, .woocommerce-message, .woocommerce-noreviews, p.no-comments {
     background-color: #eb3e32;
@@ -821,6 +825,18 @@ ul.products li.product:hover img {
     background-color: var(--color-red);
 }
 
+
+/*максимальная ширина картинки в посте*/
+article .entry-content {
+    font-size: 115%;
+}
+article .entry-content .wp-post-image {
+    max-width: 500px;
+}
+article .post-author,
+article .entry-taxonomy {
+    display: none;
+}
 
 
 
