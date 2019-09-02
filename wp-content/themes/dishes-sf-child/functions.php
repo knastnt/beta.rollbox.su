@@ -133,6 +133,41 @@ function my_wc_order_is_editable($res, $order) {
 
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+Редактируем письмо, отправляемое пользователю при регистрации
+
+Проблема в том, что он шлет ссылку - текстом, а потом вставляет ссылку входа на сайт. идиот
+*/
+add_filter('wp_new_user_notification_email', 'edit_wp_new_user_notification_email', 10, 1);
+function edit_wp_new_user_notification_email($wp_new_user_notification_email) {
+
+    $message = $wp_new_user_notification_email['message'];
+
+    //Убираем ссылку на вход
+    $message = str_replace("\r\n" . wp_login_url() . "\r\n", "\r\n", $message);
+
+    //Оборачиваем в ссылку на смену пароля
+    $pattern = "/(\r\n\r\n)<(\\S+)>(\r\n\r\n)/";
+    $replacement = '\1\2\3';
+    $message = preg_replace($pattern, $replacement, $message);
+
+
+
+    $wp_new_user_notification_email['message'] = $message;
+
+    return $wp_new_user_notification_email;
+
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
 
 
 
