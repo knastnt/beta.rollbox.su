@@ -292,8 +292,8 @@
         }
     });
 
+    /*Отображаем кнопку Показать на фильтре*/
     var floatApplyButtonTimer;
-
     function showApplyButton(top){
         var floatApplyButton = $('#floatApplyButton');
         if ($('#fixedFilterBlock').css('display') == 'none') {
@@ -312,5 +312,42 @@
             floatApplyButton.hide();
         }
     }
+
+
+    /*Перемещаем поиск в мобильное меню, если ширина меньше или равна 600*/
+    //Resizing
+    jQuery(window).resize(function () {
+        searchMobileMenuReplace();
+    });
+    //Ready
+    jQuery(window).ready(function () {
+        searchMobileMenuReplace();
+    });
+    function searchMobileMenuReplace () {
+        var wrapperInHeader = $("#masthead .site-search");
+        var wrapperInMenu = $("#searchMobileWrapper");
+
+        var searchForm = $("div.widget.woocommerce.widget_product_search");
+
+        if(wrapperInHeader.length == 1 && wrapperInMenu.length == 1 && searchForm.length == 1) {
+            if (!window.matchMedia('(max-width: 600px)').matches) {
+                /*переносим в хеадер*/
+                if(!$(wrapperInHeader).hasClass("searchThere")) {
+                    console.log("переносим в хеадер");
+                    $(searchForm).appendTo(wrapperInHeader);
+                    $(wrapperInHeader).addClass("searchThere");
+                    $(wrapperInMenu).removeClass("searchThere");
+                }
+            } else {
+                /*переносим в меню*/
+                if(!$(wrapperInMenu).hasClass("searchThere")) {
+                    console.log("переносим в меню");
+                    $(searchForm).appendTo(wrapperInMenu);
+                    $(wrapperInMenu).addClass("searchThere");
+                    $(wrapperInHeader).removeClass("searchThere");
+                }
+            }
+        }
+    };
 
 })(jQuery);

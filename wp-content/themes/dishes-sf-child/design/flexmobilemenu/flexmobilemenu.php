@@ -59,6 +59,7 @@ function open_menu_wrapper() {
 
     <div id="perspective" class="perspective effect-airbnb">
         <button id="showMenu" class="toggle-mnu hidden-lg"><span></span></button>
+        <div id="searchMobileWrapper" style="height: 20px;background-color: black;right: 15px;left: 85px;position: absolute;top: 10px;"><div></div></div>
         <div class="container">
             <div class="wrapper"><!-- wrapper needed for scroll -->
 
