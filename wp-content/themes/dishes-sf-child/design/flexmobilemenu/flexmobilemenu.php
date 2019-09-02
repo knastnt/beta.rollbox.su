@@ -152,6 +152,10 @@ function close_menu_wrapper() {
                     <a class="flexmobile icon-mail" href="#">Messages</a>
                     <a class="flexmobile icon-lock" href="#">Security</a>*/
 
+                    if ($parent == 0) {
+                        echo "<a class=\"flexmobile icon-main\" href=\"/\">Главная</a>";
+                    }
+
                     foreach ($menu_array as $item) {
 
                         if($item->parent_ID == $parent) {
