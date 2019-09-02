@@ -47,6 +47,8 @@
             ev.stopPropagation();
             ev.preventDefault();
 
+            document.getElementById( 'aws-search-result-1').style.display = 'none';
+
             if( classie.has( perspectiveWrapper, 'modalview') ) {
                 /* меню открыто, закрываем */
                 close_menu(); // сворачиваем меню
