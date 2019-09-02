@@ -823,6 +823,9 @@ ul.products li.product:hover img {
 
 
 
+
+
+
 /* ПОВТОРЯЮЩИЕСЯ ЭЛЕМЕНТЫ */
 /* - start --------------------- product-slider --------------------- */
 .products-slick-slider {
@@ -2087,6 +2090,19 @@ ul.products li.product:hover img {
         padding: 0 1em;
     }
 
+
+    /*Поиск в мобильном меню*/
+    #searchMobileWrapper {
+        right: 15px;
+        left: 85px;
+        position: absolute;
+        top: 10px;
+    }
+    #aws-search-result-1 {
+        left: 3% !important;
+        width: 94% !important;
+    }
+
 }
 
 /*///////////////////////////////////////////////////////////////////////////*/
@@ -2210,6 +2226,14 @@ ul.products li.product:hover img {
 
     .products-slick-slider.num1 .content-wrapper.popular-btn.sale-btn.new-btn label {
         max-width: 100px;
+    }
+
+
+    /*Поиск в мобильном меню*/
+    #searchMobileWrapper {
+        right: 10px;
+        left: 70px;
+        top: 6px;
     }
 }
 
@@ -2359,5 +2383,14 @@ ul.products li.product:hover img {
     /*Инстаграм*/
     #insta-gallery-feed-3 .insta-gallery-list .insta-gallery-item.insta-gallery-cols-3 {
         width: 33.3%;
+    }
+
+
+
+    /*Поиск в мобильном меню*/
+    #searchMobileWrapper {
+        right: 4px;
+        left: 60px;
+        top: 4px;
     }
 }

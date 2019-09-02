@@ -333,7 +333,7 @@
             if (!window.matchMedia('(max-width: 600px)').matches) {
                 /*переносим в хеадер*/
                 if(!$(wrapperInHeader).hasClass("searchThere")) {
-                    console.log("переносим в хеадер");
+                    //console.log("переносим в хеадер");
                     $(searchForm).appendTo(wrapperInHeader);
                     $(wrapperInHeader).addClass("searchThere");
                     $(wrapperInMenu).removeClass("searchThere");
@@ -341,7 +341,7 @@
             } else {
                 /*переносим в меню*/
                 if(!$(wrapperInMenu).hasClass("searchThere")) {
-                    console.log("переносим в меню");
+                    //console.log("переносим в меню");
                     $(searchForm).appendTo(wrapperInMenu);
                     $(wrapperInMenu).addClass("searchThere");
                     $(wrapperInHeader).removeClass("searchThere");
