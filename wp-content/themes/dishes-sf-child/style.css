@@ -695,6 +695,7 @@ ul.products li.product:hover img {
 .site-footer .footer-block.logo-address-block img {
     border-radius: 0;
     margin-bottom: 2em;
+    max-width: 56%;
 }
 .site-footer .footer-block.logo-address-block p {
     margin-bottom: .8em;
@@ -1483,6 +1484,22 @@ article .entry-taxonomy {
     }
 
 
+    /*Футер*/
+    .site-footer .footer-block ul {
+        margin: 0 0 1.41575em 1em;
+    }
+    .site-footer .footer-block.menu-block .column1 {
+        width: 30%;
+        margin-left: 3%;
+    }
+    .site-footer .footer-block.menu-block .column2 {
+        width: 41%;
+    }
+    .site-footer .footer-block.menu-block .column3 {
+        width: 25%;
+    }
+
+
 }
 /*///////////////////////////////////////////////////////////////////////////*/
 /* если экран меньше 850 */
@@ -2119,6 +2136,35 @@ article .entry-taxonomy {
         width: 94% !important;
     }
 
+
+    /*Футер*/
+    .site-footer .footer-block.logo-address-block {
+        width: 100%;
+        float: none;
+        text-align: center;
+    }
+    .site-footer .footer-block.logo-address-block img {
+        margin: 0 auto 2em auto;
+    }
+    .site-footer .footer-block.menu-block {
+        width: 100%;
+        float: none;
+        text-align: center;
+    }
+    .site-footer .footer-block.menu-block .column1 {
+        width: 30%;
+        margin-left: 0;
+    }
+    .site-footer .footer-block.menu-block .column2 {
+        width: 40%;
+    }
+    .site-footer .footer-block.menu-block .column3 {
+        width: 30%;
+    }
+    .site-footer .footer-block ul {
+        margin: 0 0 1.41575em 0;
+    }
+
 }
 
 /*///////////////////////////////////////////////////////////////////////////*/
@@ -2250,6 +2296,18 @@ article .entry-taxonomy {
         right: 10px;
         left: 70px;
         top: 6px;
+    }
+
+
+    /*Футер*/
+    .site-footer .footer-block.menu-block .column1 {
+        width: 100%;
+    }
+    .site-footer .footer-block.menu-block .column2 {
+        width: 100%;
+    }
+    .site-footer .footer-block.menu-block .column3 {
+        width: 100%;
     }
 }
 
