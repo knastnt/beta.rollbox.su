@@ -1315,10 +1315,10 @@ article .entry-taxonomy {
         /*height: 150px;*/
     }
     /*Заменяем картинку у banner2*/
-    .top-section .banner-wrapper .banner2 img.desktop {
+    .top-section .banner-wrapper .banner1 img.desktop {
         display: none;
     }
-    .top-section .banner-wrapper .banner2 img.mobile {
+    .top-section .banner-wrapper .banner1 img.mobile {
         display: block;
     }
 

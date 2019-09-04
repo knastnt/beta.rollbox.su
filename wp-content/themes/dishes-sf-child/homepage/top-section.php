@@ -17,12 +17,12 @@
     </div>
     <div class="banner-wrapper">
         <div class="banner1">
-            <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>banner_kalyan_ps_315_405.jpg" alt="" />
+            <img class="desktop" src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>banner_kalyan_ps_315_405.jpg" alt="" />
+            <img class="mobile" src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>banner_kalyan_ps_horiz_500_219.jpg" alt="" />
         </div>
         <div class="banner2">
             <a href="tel:+79241005522">
-                <img class="desktop" src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>banner_mini_orderrolls_315_138.jpg" alt="" />
-                <img class="mobile" src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>banner_mini_orderrolls_315_405.jpg" alt="" />
+                <img src="<?php echo get_stylesheet_directory_uri() . '/homepage/nivoslider/img/' ?>banner_mini_orderrolls_500_219.jpg" alt="" />
             </a>
         </div>
     </div>
