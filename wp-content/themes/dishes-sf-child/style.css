@@ -2165,6 +2165,14 @@ article .entry-taxonomy {
         margin: 0 0 1.41575em 0;
     }
 
+    /*Заменяем картинку у module-image*/
+    .module-image img.desktop {
+        display: none;
+    }
+    .module-image img.mobile {
+        display: block;
+    }
+
 }
 
 /*///////////////////////////////////////////////////////////////////////////*/

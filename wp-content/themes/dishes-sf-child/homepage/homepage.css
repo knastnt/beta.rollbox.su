@@ -63,6 +63,7 @@
     height: 100%;
     margin: 0 auto;
 }
+.module-image img.mobile,
 .top-section .banner-wrapper .banner1 img.mobile {
     display: none;
 }
