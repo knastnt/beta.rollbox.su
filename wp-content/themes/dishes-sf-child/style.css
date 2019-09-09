@@ -661,6 +661,8 @@ ul.products li.product .price > del {
     -webkit-transition: ease-in-out .3s all;
     -moz-transition: ease-in-out .3s all;
     transition: ease-in-out .3s all;
+    margin-top: .1em;
+    margin-bottom: .1em;
 }
 
 /*Увеличение картинки при наведении*/
