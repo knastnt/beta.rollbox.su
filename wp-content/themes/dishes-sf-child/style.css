@@ -1870,7 +1870,7 @@ article .entry-taxonomy {
     }
 
 
-    #primary .related ul.products li.product {
+    .related ul.products li.product {
         width: 33%;
     }
 
@@ -2351,7 +2351,7 @@ article .entry-taxonomy {
     }
 
 
-    #primary .related ul.products li.product {
+    .related ul.products li.product {
         width: 50%;
     }
 }
