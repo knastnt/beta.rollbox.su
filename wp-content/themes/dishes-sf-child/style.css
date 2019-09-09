@@ -844,6 +844,17 @@ article .entry-taxonomy {
 
 
 
+.woocommerce-tabs > ul.tabs {
+    display: none;
+}
+.woocommerce-tabs > div.woocommerce-Tabs-panel {
+    display: block !important;
+    width: 100%;
+}
+
+
+
+
 
 /* ПОВТОРЯЮЩИЕСЯ ЭЛЕМЕНТЫ */
 /* - start --------------------- product-slider --------------------- */
