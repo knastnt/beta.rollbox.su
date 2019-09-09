@@ -67,7 +67,10 @@ function rename_some_fields( $translation, $text, $domain ) {
         $translation = 'Контакты клиента';
     }
     if ($text == 'Subtotal' && $domain == 'woocommerce') {
-        $translation = 'Сумма в корзине';
+        $translation = 'Сумма товаров';
+    }
+    if ($text == 'Subtotal:' && $domain == 'woocommerce') {
+        $translation = 'Сумма товаров:';
     }
     return $translation;
 }
