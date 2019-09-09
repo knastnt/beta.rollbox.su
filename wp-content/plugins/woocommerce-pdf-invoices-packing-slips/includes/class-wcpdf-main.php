@@ -56,7 +56,6 @@ class Main {
 	 * Attach PDF to WooCommerce email
 	 */
 	public function attach_pdf_to_email ( $attachments, $email_id, $order, $email = null ) {
-		$order = apply_filters( 'wpo_wcpdf_email_attachment_order', $order, $email );
 		// check if all variables properly set
 		if ( !is_object( $order ) || !isset( $email_id ) ) {
 			return $attachments;
@@ -77,6 +76,7 @@ class Main {
 		if ( get_post_type( $order_id ) == 'wc_booking' && isset($order->order) ) {
 			// $order is actually a WC_Booking object!
 			$order = $order->order;
+			$order_id = WCX_Order::get_id( $order );
 		}
 
 		// do not process low stock notifications, user emails etc!
@@ -107,7 +107,7 @@ class Main {
 
 			try {
 				// prepare document
-				$document = wcpdf_get_document( $document_type, (array) $order_id, true );
+				$document = wcpdf_get_document( $document_type, apply_filters( 'wpo_wcpdf_email_attachment_order', $order, $email, $document_type ), true );
 				if ( !$document ) { // something went wrong, continue trying with other documents
 					continue;
 				}
