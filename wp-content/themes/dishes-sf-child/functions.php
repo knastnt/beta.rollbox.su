@@ -169,15 +169,32 @@ function setroll_contains($product_attributes, $product) {
     $value = '';
 
     ob_start();
+    ?><ul class="product_list_widget setroll_contains"><?php
     if ($product_ids != '') {
         foreach ( $product_ids as $product_id ) {
             $product = wc_get_product( $product_id );
             if ( is_object( $product ) ) {
                 //$value .= '<option value="' . esc_attr( $product_id ) . '"' . selected( true, true, false ) . '>' . wp_kses_post( $product->get_formatted_name() ) . '</option>';
-                wc_get_template( 'content-widget-product.php', null );
+                //wc_get_template( 'content-widget-product.php', null );
+                ?>
+                <li>
+
+
+                    <a href="<?php echo esc_url( $product->get_permalink() ); ?>">
+                        <?php echo $product->get_image(); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                        <span class="product-title"><?php echo wp_kses_post( $product->get_name() ); ?></span>
+
+                        <?php echo wc_get_rating_html( $product->get_average_rating()+0.01 ); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+
+                        <?php echo $product->get_price_html(); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                    </a>
+
+                </li>
+                <?php
             }
         }
     }
+    ?></ul><?php
     $content = ob_get_clean();
 
     if ($content != ''){

@@ -843,13 +843,27 @@ article .entry-taxonomy {
 
 
 
-
+/*Отзывы и детали на одной странице*/
 .woocommerce-tabs > ul.tabs {
     display: none;
 }
 .woocommerce-tabs > div.woocommerce-Tabs-panel {
     display: block !important;
     width: 100%;
+}
+
+
+/*Содержимое сетов*/
+.setroll_contains.product_list_widget li img {
+    width: 100px;
+    max-width: unset;
+}
+.setroll_contains.product_list_widget li {
+    width: 33%;
+    display: inline-block;
+}
+.setroll_contains.product_list_widget .star-rating {
+    margin: 0;
 }
 
 
@@ -1134,6 +1148,10 @@ article .entry-taxonomy {
         width: 250px;
     }
 
+    /*Содержимое сетов*/
+    .setroll_contains.product_list_widget li {
+        width: 49%;
+    }
 }
 /*///////////////////////////////////////////////////////////////////////////*/
 /* если экран меньше 1290 */
@@ -1277,6 +1295,11 @@ article .entry-taxonomy {
 
     .product_list_widget li img {
         margin-top: .3em;
+    }
+
+    /*Содержимое сетов*/
+    .setroll_contains.product_list_widget li img {
+        width: 31%;
     }
 
 }
@@ -1510,6 +1533,14 @@ article .entry-taxonomy {
     }
     .site-footer .footer-block.menu-block .column3 {
         width: 25%;
+    }
+
+    /*Содержимое сетов*/
+    .setroll_contains.product_list_widget li {
+        width: 100%;
+    }
+    .setroll_contains.product_list_widget li img {
+        width: 85px;
     }
 
 
@@ -2192,6 +2223,13 @@ article .entry-taxonomy {
         display: none;
     }
     .module-image img.mobile {
+        display: block;
+    }
+
+
+    /*Содержимое сетов*/
+    .woocommerce-product-attributes-item th,
+    .woocommerce-product-attributes-item td {
         display: block;
     }
 
