@@ -162,8 +162,34 @@ add_action( 'wp_print_scripts', 'wc_ninja_remove_password_strength', 100 );
 
 
 
+function setroll_contains($product_attributes, $product) {
 
+    $product_ids = $product->get_meta('set_contains_product_ids');
 
+    $value = '';
+
+    ob_start();
+    if ($product_ids != '') {
+        foreach ( $product_ids as $product_id ) {
+            $product = wc_get_product( $product_id );
+            if ( is_object( $product ) ) {
+                //$value .= '<option value="' . esc_attr( $product_id ) . '"' . selected( true, true, false ) . '>' . wp_kses_post( $product->get_formatted_name() ) . '</option>';
+                wc_get_template( 'content-widget-product.php', null );
+            }
+        }
+    }
+    $content = ob_get_clean();
+
+    if ($content != ''){
+        $product_attributes['setroll_contains'] = [
+            'label' => 'Входящие в состав:',
+            'value' => $content
+            ];
+    }
+
+    return $product_attributes;
+}
+add_filter( 'woocommerce_display_product_attributes', 'setroll_contains', 10, 2 );
 
 
 
