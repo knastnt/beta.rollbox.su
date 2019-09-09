@@ -1595,6 +1595,10 @@ article .entry-taxonomy {
     .products-slick-slider.num1 .title .nav {
         margin-bottom: 12px;
     }
+
+    .woocommerce-MyAccount-content {
+        font-size: 90%;
+    }
 }
 /*///////////////////////////////////////////////////////////////////////////*/
 /* мобильное меню */
