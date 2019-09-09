@@ -1870,6 +1870,11 @@ article .entry-taxonomy {
     }
 
 
+    #primary .related ul.products li.product {
+        width: 33%;
+    }
+
+
     /*Мобильный фильтр товаров*/
     #fixedFilterBlock {
         display: block;
@@ -2343,6 +2348,11 @@ article .entry-taxonomy {
 
     .products-slick-slider.num4 .slick-slide > div {
         height: 173px;
+    }
+
+
+    #primary .related ul.products li.product {
+        width: 50%;
     }
 }
 
