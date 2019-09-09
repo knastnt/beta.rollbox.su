@@ -148,6 +148,16 @@ function worldless_custom_script() {
     <?php
 }
 add_action('login_head','worldless_custom_script');
+
+/*
+Изменить требование сложного пароля при восстановлении пароля
+*/
+function wc_ninja_remove_password_strength() {
+    if ( wp_script_is( 'wc-password-strength-meter', 'enqueued' ) ) {
+        wp_dequeue_script( 'wc-password-strength-meter' );
+    }
+}
+add_action( 'wp_print_scripts', 'wc_ninja_remove_password_strength', 100 );
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
