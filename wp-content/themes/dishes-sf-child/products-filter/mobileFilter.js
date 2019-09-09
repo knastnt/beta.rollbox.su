@@ -20,11 +20,16 @@
 
         var m = $("#masthead");
         var stm = $("#stickey_menu_wrapper");
-        var ffb = $("#fixedFilterBlock");
+        var ffb = $("#fixedFilterBlock"); //Плавающая строка Фильтровать товары
         var wwf = $("#woof_widget-3");
 
         //Если фильтр на странице отсутствует, то ретюрним
         if (!wwf.length) {
+            try {
+                ffb.hide();
+            }catch (e) {
+
+            }
             //console.log ("ret");
             return;
         }
