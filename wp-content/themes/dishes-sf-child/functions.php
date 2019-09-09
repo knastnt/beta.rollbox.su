@@ -197,7 +197,7 @@ function setroll_contains($product_attributes, $product) {
     ?></ul><?php
     $content = ob_get_clean();
 
-    if ($content != ''){
+    if (strpos($content, '<li') > 0){
         $product_attributes['setroll_contains'] = [
             'label' => 'Входящие в состав:',
             'value' => $content
