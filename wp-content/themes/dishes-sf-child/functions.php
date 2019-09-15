@@ -144,6 +144,26 @@ function woocommerce_currency_symbol_add_space($currency_symbol) {
 
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+меняю ссылку у продукта в заказе в админке
+*/
+add_filter('woocommerce_before_order_item_line_item_html', 'urlChangeProdAdm', 20, 3);
+function urlChangeProdAdm($item_id, $item, $order) {
+    $url = '';
+    try{
+        $url = $item->get_product()->get_permalink();
+    }catch (Exception $e){
+
+    }
+    echo '<div class="hidden_url_product">' . $url . '</div>';
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
 
 
 
