@@ -36,7 +36,7 @@ if ( $max_value && $min_value === $max_value ) {
 		<!-- Делаем +/- на количестве товара
 			http://denis-creative.com/kak-stilizovat-strelki-dlya-input-type-number/ -->
 		<!--button class="quantity-arrow-minus"> - </button-->
-		<input id="btn-<?php echo trim(esc_attr( $input_id )); ?>" class="quantity-arrow-minus" type=button value=' - '>
+		<input id="btn-<?php echo trim(esc_attr( $input_id )); ?>" class="quantity-arrow quantity-arrow-minus" type=button value=' - '>
 		<input
 			type="number"
 			id="<?php echo esc_attr( $input_id ); ?>"
@@ -52,7 +52,7 @@ if ( $max_value && $min_value === $max_value ) {
 			inputmode="<?php echo esc_attr( $inputmode ); ?>"
 			aria-labelledby="<?php echo esc_attr( $labelledby ); ?>" />
 		<!--button class="quantity-arrow-plus"> + </button-->
-		<input id="btn-<?php echo trim(esc_attr( $input_id )); ?>" class="quantity-arrow-plus" type=button value=' + '>
+		<input id="btn-<?php echo trim(esc_attr( $input_id )); ?>" class="quantity-arrow quantity-arrow-plus" type=button value=' + '>
 				
 	</div>
 	<?php

@@ -730,8 +730,14 @@ ul.products li.product h3 {
     -moz-appearance: textfield;
     appearance: textfield;
 }
+.product-quantity .quantity{
+    min-width: 145px;
+}
+.product-quantity .quantity-arrow {
+    padding: 7px 15px !important;
+}
 
-/* Скрываем кнопку Обновить */
+    /* Скрываем кнопку Обновить */
 .woocommerce-cart-form button[name=update_cart] {
     visibility: hidden;
 }
@@ -1552,6 +1558,24 @@ article .entry-taxonomy {
     }
 
 
+    .product-quantity .quantity{
+        min-width: auto;
+        text-align: center;
+    }
+    .product-quantity .quantity-arrow {
+
+        padding: 4px 20px !important;
+        display: block;
+        margin: 5px auto;
+
+    }
+    table.cart td, table.cart th {
+
+        padding: 1em;
+
+    }
+
+
 }
 /*///////////////////////////////////////////////////////////////////////////*/
 /* если экран меньше 850 */
@@ -1652,7 +1676,7 @@ article .entry-taxonomy {
 }
 /*///////////////////////////////////////////////////////////////////////////*/
 /* мобильное меню */
-@media (max-width:768px) {
+@media (max-width:767px) {
     /*Расширяем сайдбар*/
     body:not(.page-template-template-fullwidth-php):not(.page-template-template-homepage-php) #primary {
         width: 100%;
@@ -1980,6 +2004,23 @@ article .entry-taxonomy {
     }
     #woof_widget-3 .woof_submit_search_form_container button {
         margin-top: .5em;
+    }
+
+
+    .product-quantity .quantity{
+        text-align: right;
+    }
+    .product-quantity .quantity-arrow {
+
+        padding: 7px 15px !important;
+        display: unset;
+        margin: auto;
+
+    }
+    table.cart td, table.cart th {
+
+        padding: 1em;
+
     }
 }
 
