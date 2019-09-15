@@ -150,13 +150,26 @@ function woocommerce_currency_symbol_add_space($currency_symbol) {
 */
 add_filter('woocommerce_before_order_item_line_item_html', 'urlChangeProdAdm', 20, 3);
 function urlChangeProdAdm($item_id, $item, $order) {
+    $url_edit = '';
     $url = '';
     try{
+        $url_edit = admin_url( 'post.php?post=' . $item->get_product_id() . '&action=edit' );
         $url = $item->get_product()->get_permalink();
     }catch (Exception $e){
 
     }
-    echo '<div class="hidden_url_product">' . $url . '</div>';
+    //echo '<p class="hidden_url_product"><a class="search" href="' . $url_edit . '">search</a><a class="replace" href="' . $url . '">replace</a></p>';
+    ?>
+    <script>
+        jQuery(document).ready(function() {
+            //jQuery('#login .pw-checkbox').prop('checked', true);
+            //jQuery('table.woocommerce_order_items a.wc-order-item-name[href=\"' . $url_edit . '\"]').attr('href',\"" . $url . "\");
+            var s = jQuery('table.woocommerce_order_items a.wc-order-item-name[href="<?php echo $url_edit; ?>"]');
+            s.attr('href',"<?php echo $url; ?>");
+            s.attr('target',"_blank");
+        });
+    </script>
+    <?php
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
