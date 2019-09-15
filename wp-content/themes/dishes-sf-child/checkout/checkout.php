@@ -130,10 +130,11 @@ function checkout_redirect_to_cart(){
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Добавляем кнопочку Назад перед Подтвердить заказ
+//Добавляем кнопочку Назад перед Подтвердить заказ + предупреждение
 add_action( 'woocommerce_review_order_before_submit', 'add_checkout_back_btn' );
 function add_checkout_back_btn(){
     //echo '<button type="submit" name="woocommerce_checkout_place_order" id="place_order" value="Назад" data-value="Назад" class="button">Назад</button>';
+    echo '<p style="color: #ff493e;">* Внимание! Оплата по картам не принимается. Возможен перевод через Сбербанк-Онлайн, либо наличные</p>';
     echo '<a href="' . wc_get_cart_url() . '" class="button">Назад</a>';
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
