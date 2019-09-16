@@ -177,6 +177,26 @@ function urlChangeProdAdm($item_id, $item, $order) {
 
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+создаю ссылку у продукта в превью заказа в админке
+*/
+add_filter('woocommerce_admin_html_order_preview_item_class', 'urlAddProdPrevAdm', 20, 3);
+function urlAddProdPrevAdm($emptyVar, $item, $order) {
+    $product = $item->get_product();
+    if ($product==false || $product == null) return '';
+    $slug = $product->get_slug();
+    if ($slug==false || $slug == '') return '';
+
+    return 'slug--' . $product->get_slug();
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
 
 
 
