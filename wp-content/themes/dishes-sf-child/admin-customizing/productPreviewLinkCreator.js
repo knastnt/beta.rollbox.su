@@ -14,11 +14,6 @@ function addUrlToProducts(i) {
             addUrlToProducts(--i);
             return;
         };
-        //Далее уже при присутствующем окне
-
-        //var products = jQuery(modalDialog).find('tr.wc-order-preview-table__item');
-
-        //[class ^= pre]
 
         jQuery(modalDialog).find('tr.wc-order-preview-table__item').each(function(i,elem) {
             var classes = jQuery(this).attr('class').split(/\s+/);
@@ -27,21 +22,13 @@ function addUrlToProducts(i) {
                 if (value.indexOf("slug--") == 0) {
                     var slug = value.substr(6);
                     console.log(slug);
+                    //jQuery(".list").wrap("<div class='new'></div>");
+
+                    jQuery(elem).find('td.wc-order-preview-table__column--product').wrapInner("<a href='/product/" + slug + "/' target='_blank'></a>");
+
                 }
             });
-            //alert(jQuery(this).attr('class'));
-            /*if ($(this).hasClass("stop")) {
-                alert("Остановлено на " + i + "-м пункте списка.");
-                return false;
-            } else {
-                alert(i + ': ' + $(elem).text());
-            }*/
         });
-
-        alert(modalDialog.length + " " + i);
-
-
-
 
     }, 1000); //задержка перед выполнением 1 секунда
 }
