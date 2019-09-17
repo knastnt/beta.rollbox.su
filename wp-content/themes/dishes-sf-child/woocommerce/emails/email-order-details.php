@@ -27,7 +27,7 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
 	<?php
 	if ( $sent_to_admin ) {
 		//$before = '<a class="link" href="' . esc_url( $order->get_edit_order_url() ) . '">';
-		$before = '<a class="link" href="/wp-admin/edit.php?post_type=shop_order">';
+		$before = '<a class="link" href="' . $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/wp-admin/edit.php?post_type=shop_order">';
 		$after  = '</a>';
 	} else {
 		$before = '';
