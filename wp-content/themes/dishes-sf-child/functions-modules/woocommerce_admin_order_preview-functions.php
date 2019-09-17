@@ -42,7 +42,8 @@ function admin_order_preview_add_custom_meta_data( $data, $order ) {
 //file_put_contents($_SERVER['DOCUMENT_ROOT'].'/dump.txt', $order->get_status(), FILE_APPEND);
 		if ( is_user_logged_in() && $order->get_status() !== "processing" ) {
 			$order_id = $order->get_id(); //method_exists($order, 'get_id') ? $order->get_id() : $order->id;
-			$pdf_url = wp_nonce_url( admin_url( 'admin-ajax.php?action=generate_wpo_wcpdf&template_type=invoice&order_ids=' . $order_id . '&my-account'), 'generate_wpo_wcpdf' );
+			//$pdf_url = wp_nonce_url( admin_url( 'admin-ajax.php?action=generate_wpo_wcpdf&template_type=invoice&order_ids=' . $order_id . '&my-account'), 'generate_wpo_wcpdf' );
+			$pdf_url = wp_nonce_url( admin_url( "admin-ajax.php?action=generate_wpo_wcpdf&document_type=invoice&order_ids=" . $order_id ), 'generate_wpo_wcpdf' );
 			$text = '<p><a href="'.esc_attr($pdf_url).'" target="_blank">Распечатать счет</a></p>';
 		}
         $data['custom_key'] = $text; // <= Store the value in the data array.
