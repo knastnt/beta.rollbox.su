@@ -48,7 +48,7 @@ function urlChangeProdAdm($item_id, $item, $order) {
             //jQuery('table.woocommerce_order_items a.wc-order-item-name[href=\"' . $url_edit . '\"]').attr('href',\"" . $url . "\");
             var s = jQuery('table.woocommerce_order_items a.wc-order-item-name[href="<?php echo $url_edit; ?>"]');
             s.attr('href',"<?php echo $url; ?>");
-            s.attr('target',"_blank");
+            //s.attr('target',"_blank");
         });
     </script>
     <?php
@@ -67,10 +67,24 @@ add_filter('woocommerce_admin_html_order_preview_item_class', 'urlAddProdPrevAdm
 function urlAddProdPrevAdm($emptyVar, $item, $order) {
     $product = $item->get_product();
     if ($product==false || $product == null) return '';
-    $slug = $product->get_slug();
-    if ($slug==false || $slug == '') return '';
 
-    return 'slug--' . $product->get_slug();
+//    $slug = $product->get_slug();
+//    if ($product instanceof WC_Product_Variation) {
+//
+//        $variationId = $item->get_product_id();
+//
+//        $variableProduct = new WC_Product_Variable($variationId);
+//
+//        $slug = $variableProduct->get_slug();
+//    }
+//
+//    if ($slug==false || $slug == '') return '';
+//
+//    return 'slug--' . $slug;
+    $url = $product->get_permalink();
+    if ($url==false || $url == '') return '';
+
+    return 'urlb--' . base64_encode($url);
 }
 
 add_action('admin_enqueue_scripts', 'urlAddProdPrevAdmJScript');

@@ -19,12 +19,11 @@ function addUrlToProducts(i) {
             var classes = jQuery(this).attr('class').split(/\s+/);
 
             jQuery.each(classes,function(index,value){
-                if (value.indexOf("slug--") == 0) {
-                    var slug = value.substr(6);
-                    console.log(slug);
-                    //jQuery(".list").wrap("<div class='new'></div>");
+                if (value.indexOf("urlb--") == 0) {
+                    var urlb = value.substr(6);
+                    console.log(urlb);
 
-                    jQuery(elem).find('td.wc-order-preview-table__column--product').wrapInner("<a href='/product/" + slug + "/' target='_blank'></a>");
+                    jQuery(elem).find('td.wc-order-preview-table__column--product').wrapInner("<a href='" + atob(urlb) + "'></a>");
 
                 }
             });
