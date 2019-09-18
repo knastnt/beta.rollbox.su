@@ -680,7 +680,8 @@ ul.products li.product:hover img {
 /*Минимальная высота поля с названием*/
 ul.products li.product .woocommerce-loop-product__title,
 ul.products li.product h2,
-ul.products li.product h3 {
+ul.products li.product h3,
+.products-slick-slider .slick-slide .woocommerce-LoopProduct-link h2 {
     min-height: 3em;
     margin-bottom: 0;
 }
