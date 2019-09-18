@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 ?>
-<p style="color: #ff493e;">* Внимание! Оплата по картам не принимается. Возможен перевод через Сбербанк-Онлайн, либо наличные</p>
+<p style="color: #ff493e;">* Уважаемые посетители! Оплата производится только <b>наличными</b> или <b>онлайн переводом</b> на карту Сбербанка. Спасибо за понимание</p>
 <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="checkout-button button alt wc-forward">
 	<?php esc_html_e( 'Proceed to checkout', 'woocommerce' ); ?>
 </a>
